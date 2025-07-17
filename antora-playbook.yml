@@ -1,0 +1,17 @@
+site:
+  title: OpenBPM
+  start_page: openbpm:ROOT:intro.adoc
+  url: https://docs.openbpm.io/
+content:
+  sources: 
+  - url: ./
+    branches: HEAD
+    start_path: content
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./content/supplemental
+asciidoc:
+  extensions:
+    - asciidoctor-kroki

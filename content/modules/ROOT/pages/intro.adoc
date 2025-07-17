@@ -1,0 +1,9 @@
+= Introduction
+
+Welcome to the https://www.openbpm.io[OpenBPM^] documentation!
+
+== What's OpenBPM Platform?
+
+*OpenBPM* is open source business process automation platform for passionate software engineers.
+
+OpenBPM empowers developers and analysts to seamlessly collaborate and build process-driven applications using a fully integrated open-source tech stack. With a unified toolchain designed for smooth workflows, OpenBPM reduces development time and eliminates friction between teams, enabling faster, more efficient automation compared to traditional development, making it similar to BPMS approaches, while delivering financial results up to x6 faster than using traditional development approach.

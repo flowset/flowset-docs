@@ -1,0 +1,71 @@
+{{#unless (eq page.attributes.pagination undefined)}}
+    {{#if (or page.previous page.next)}}
+        <nav class="pagination">
+            {{#with page.previous}}
+                <span class="prev"><a href="{{{relativize ./url}}}">{{{./content}}}</a></span>
+            {{/with}}
+            {{#with page.next}}
+                <span class="next"><a href="{{{relativize ./url}}}">{{{./content}}}</a></span>
+            {{/with}}
+        </nav>
+    {{/if}}
+{{/unless}}
+
+<div class="feedback-form">
+    <div class="feedback-form__vote">
+        <div class="feedback-form__title">Was this page helpful?</div>
+        <button class="feedback-form__btn feedback-form__btn_yes" data-link="https://media.jmix.io/forms/doc-upvote">Yes</button>
+        <button class="feedback-form__btn feedback-form__btn_no">No</button>
+    </div>
+    <div class="feedback-form__success">
+        <img class="feedback-form__icon" src="{{uiRootPath}}/feedback-form__thumb-up.svg" alt="">
+        <div class="feedback-form__title">Thank you for your feedback</div>
+    </div>
+    <div class="feedback-form__error-message">
+        <div class="feedback-form__title">
+            Something went wrong
+        </div>
+    </div>
+    <div class="feedback-form__form">
+        <form action="https://media.jmix.io/forms/doc-feedback" method="POST">
+            <div class="feedback-form__title">Thank you for your feedback</div>
+            <div class="feedback-form__text">Please let us know about the problem.</div>
+            <div class="feedback-form__input-row">
+                <div>
+                    <label class="feedback-form__label" for="feedback-form-email">Email</label>
+                </div>
+                <input
+                        class="feedback-form__input feedback-form__email-input"
+                        id="feedback-form-email"
+                        name="feedback-from-email"
+                        type="email"
+                        placeholder="example@company.com"
+                >
+            </div>
+            <div class="feedback-form__input-row">
+                <div>
+                    <label class="feedback-form__label"for="feedback-form-message">
+                        Message <span>*</span>
+                    </label>
+                </div>
+                <textarea
+                        class="feedback-form__input feedback-form__message-input"
+                        name="feedback-from-message"
+                        id="feedback-form-message"
+                        cols="30"
+                        rows="10"
+                        required
+                        placeholder="Please specify what could be improved."
+                ></textarea>
+            </div>
+            <div class="feedback-form__input-row">
+                <button
+                        class="feedback-form__submit feedback-form__btn feedback-form__btn_dark"
+                        type="submit"
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

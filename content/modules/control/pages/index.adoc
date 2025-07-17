@@ -1,0 +1,18 @@
+= Control
+
+**OpenBPM Control** is a web application that provides administrative functionality for external BPM engines.
+
+*Key Features*
+
+- **Connection Management:** Easily set up connections to various BPM engines and switch between them as needed.
+- **Process Browsing:** Navigate through the processes deployed to the engine.
+- **Process Deployment:** Deploy a new version of a business process with a convenient diagram preview.
+- **Instance Management:** Manage process instances currently running on the BPM engine.
+- **User Task Management:** View user tasks with the ability to reassign them.
+
+[NOTE]
+====
+Currently, only Camunda 7 is supported.
+====
+
+OpenBPM Control is built using the open-source https://www.jmix.io[Jmix] framework.

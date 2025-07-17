@@ -1,0 +1,43 @@
+{{! This Source Code Form is subject to the terms of the Mozilla Public }}
+{{! License, v. 2.0. If a copy of the MPL was not distributed with this }}
+{{! file, You can obtain one at http://mozilla.org/MPL/2.0/. }}
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
+                <img src="{{uiRootPath}}/img/openbpm-logo.png" width="150"></img>
+            </a>
+            <button class="navbar-burger" data-target="topbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="topbar-nav" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <input id="search-input" placeholder="Search docs" onfocusout="this.value=''"
+                           style="font-size: 16px;" />
+                </div>
+            </div>
+
+            <div class="header-btn">
+                <a class="git-link"
+                   href="https://github.com/openbpm-platform"
+                   target="_blank">Star us on GitHub
+                   <img alt="Star us on GitHub" title="Star us on GitHub"></img>
+                </a>
+                <a class="slack-link"
+                   href="https://join.slack.com/t/openbpm/shared_invite/zt-31ghauwhi-eaF8kkgtcM091pt4P4HXyA"
+                   target="_blank">Join us on Slack
+                   <img alt="Join us on Slack" title="Join us on Slack"></img>
+                </a>
+                <a class="website-link"
+                   href="https://openbpm.io/"
+                   target="_blank">Go to OpenBPM website
+                   <img alt="Go to OpenBPM website" title="Go to OpenBPM website"></img>
+               </a>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,22 @@
+{{! This Source Code Form is subject to the terms of the Mozilla Public }}
+{{! License, v. 2.0. If a copy of the MPL was not distributed with this }}
+{{! file, You can obtain one at http://mozilla.org/MPL/2.0/. }}
+<script src="{{{uiRootPath}}}/js/site.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"
+></script>
+<script>
+  hljs.highlightAll();
+</script>
+<script src="{{uiRootPath}}/js/vendor/lunr.js"></script>
+<script src="{{uiRootPath}}/js/search-ui.js" id="search-ui-script" data-site-root-path="{{uiRootPath}}/.." data-snippet-length="100" data-stylesheet="{{uiRootPath}}/css/search.css"></script>
+<script async src="{{uiRootPath}}/../search-index.js"></script>
+<script async src="{{uiRootPath}}/js/feedback-form.js"></script>
+<script async src="{{uiRootPath}}/js/dropdown-menu.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const copyIcons = document.querySelectorAll('.copy-icon')
+        copyIcons.forEach(icon => icon.src = 'https://img.icons8.com/material-rounded/24/000000/copy.png')
+    })
+</script>
+

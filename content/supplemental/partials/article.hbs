@@ -1,0 +1,14 @@
+<article class="doc">
+{{#with page.title}}
+<h1 class="page">{{{this}}}</h1>
+{{/with}}
+{{#if (eq page.layout 'home')}}
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Поиск"{{#if page.home}} autofocus{{/if}}>
+        </div>
+      </div>
+{{/if}}
+{{{page.contents}}}
+{{> pagination}}
+</article>

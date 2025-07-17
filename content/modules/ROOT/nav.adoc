@@ -1,0 +1,8 @@
+* xref:ROOT:intro.adoc[]
+
+include::requirements:partial$nav.adoc[]
+include::whats-new:partial$nav.adoc[]
+include::control:partial$nav.adoc[]
+include::studio:partial$nav.adoc[]
+include::tasklist:partial$nav.adoc[]
+include::workspace:partial$nav.adoc[]

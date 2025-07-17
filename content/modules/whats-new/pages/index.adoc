@@ -1,0 +1,3 @@
+= What's New
+
+This section covers new features of OpenBPM Platform, as well as some breaking changes to be aware of when upgrading from a previous version of the platform.

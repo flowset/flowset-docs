@@ -1,0 +1,1 @@
+* xref:whats-new:index.adoc[]

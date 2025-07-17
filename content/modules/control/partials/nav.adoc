@@ -1,0 +1,2 @@
+* xref:control:index.adoc[]
+** xref:control:setup.adoc[]

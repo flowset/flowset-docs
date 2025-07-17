@@ -1,0 +1,13 @@
+= Studio
+
+*OpenBPM Studio* allows developers to leverage the Java and Spring Boot ecosystem for development of enterprise applications following BPMN approach. OpenBPM Studio provides developers with an all-in-one tool from modeling to deployment.
+
+*Key features*
+
+* Explicit project structure
+* Navigation between process-related objects
+* Working with processes locally and remotely
+* Smart search
+* Business process modeler
+* Smart code completion and validations
+* Services and Java delegates generation

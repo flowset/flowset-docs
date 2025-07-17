@@ -1,0 +1,1 @@
+* xref:workspace:index.adoc[]

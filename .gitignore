@@ -1,0 +1,6 @@
+.idea/*
+!.idea/copyright
+!.idea/encodings.xml
+
+.DS_Store
+node_modules/

@@ -1,0 +1,145 @@
+.feedback-form {
+    display: none;
+    padding: 16px 24px;
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    margin: 32px -1rem -1rem;
+}
+
+.feedback-form_visible {
+    display: block;
+}
+
+.feedback-form__vote {
+    display: none;
+    align-items: center;
+}
+
+.feedback-form__vote_visible {
+    display: flex;
+}
+
+.feedback-form__icon {
+    margin-right: 8px;
+}
+
+.feedback-form__btn {
+    border: 1px solid #3D72D6;
+    background: #3D72D6;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    transition: width 0.1ms;
+}
+
+.feedback-form__btn_loading:before {
+    content: '';
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    animation: 1s infinite ease-in-out rotateInfinite;
+}
+
+.feedback-form__btn_dark {
+    border-color: #043278;
+    background: #043278;
+    color: #fff;
+}
+
+
+.feedback-form__btn + .feedback-form__btn {
+    margin-left: 8px;
+}
+
+.feedback-form__title {
+    margin-right: 20px;
+    color: #424242;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.feedback-form__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 4px;
+}
+
+.feedback-form__input {
+    border: 1px solid #C1C1C1;
+    border-radius: 6px;
+    padding: 12px 8px;
+    width: 100%;
+    max-width: 394px;
+}
+
+.feedback-form__message-input {
+    max-width: 788px;
+}
+
+.feedback-form__input-row {
+    margin-top: 12px;
+}
+
+.feedback-form__label {
+    color: #424242;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.feedback-form__form {
+    display: none;
+}
+
+.feedback-form__form_visible {
+    display: block;
+}
+
+.feedback-form__success {
+    display: none;
+}
+
+.feedback-form__success_visible {
+    display: flex;
+}
+
+.feedback-form__error-message {
+    display: none;
+    align-items: center;
+}
+
+.feedback-form__error-message_visible {
+    display: flex;
+}
+
+.feedback-form__error-message:before {
+    content: 'X';
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 0.7;
+    color: indianred;
+    border: 2px solid;
+    padding: 10px;
+    font-family: sans-serif;
+    margin-right: 10px;
+}
+
+@keyframes rotateInfinite {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
