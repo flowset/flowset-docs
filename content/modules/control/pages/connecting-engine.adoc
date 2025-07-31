@@ -1,0 +1,107 @@
+= BPM Engine Connection
+
+The application allows administrators to establish and manage multiple connections to BPM engines. This section explains how to add, configure, and test these connections.
+
+[[empty-dashboard]]
+When launching the application, the xref:dashboard.adoc[Dashboard] view opens. If no BPM engine is connected, the view appears as follows:
+
+image::empty-dashboard.png[align="center", width="1552"]
+
+To configure a new BPM engine:
+
+. Click the *Add* button to open the *New BPM engine* dialog.
+. Alternatively, navigate to the *BPM engines* view through the application's main menu. Once there, select the *Create* button.
+
+Once the *New BPM engine* view is open, complete all required fields as described in <<adding-new-engine,Adding a New Engine>>.
+
+[NOTE, caption="Key Features"]
+====
+* *Multiple Connections*: Configure as many engine connections as needed for different environments.
+
+* *Immediate Activation*: Changes take effect without requiring application restart.
+
+* *Connection Validation*: Test functionality ensures proper configuration before saving.
+
+* *Default Engine*: One engine must be designated as default.
+
+* *Edit Existing Connections*: Modify any parameter later by selecting the connection and clicking *Edit*.
+====
+
+[[bpm-engines]]
+== BPM Engines
+
+The *BPM engines* view displays a list of BPM engines connected to the process application. Administrators can perform the following actions:
+
+* Create or remove an engine.
+* Edit an existing engine’s configuration.
+
+image::bpm-engine-view.png[align="center", width="1548"]
+
+Engines are displayed in a table with the following columns:
+
+* *Name*: The engine’s display name.
+* *Base URL*: The endpoint URL for the engine.
+* *Type*: The engine type.
+* *Default Engine*: A flag indicating the default engine (only one engine can be marked as default).
+
+NOTE: The first engine added is automatically set as the default. To change the default engine, manually mark as default another engine from the list.
+
+[[adding-new-engine]]
+== Adding a New Engine
+
+To connect to a running BPM engine:
+
+. Access the *New BPM engine* configuration view. There are two methods to begin configuring a new BPM engine connection:
++
+--
+* From the application dashboard, if <<empty-dashboard,no BPM engines>> are configured.
+* Through the <<bpm-engines,BPM Engines>> view, by clicking the *Create* button.
+--
++
+image::new-bpm-engine-view.png[align="center", width="752"]
+
+. Configure connection parameters:
++
+* *Name* (required):
++
+Enter a descriptive name for your BPM engine instance (for example, `"Production Camunda 7"`, `"QA OpenBPM"`).
+
+* *Base URL* (required):
++
+Specify the complete endpoint URL (for example, `++https://bpm-server.example.com:8080/engine-rest++`)
+
+* *Type*:
++
+Select from supported engine types:
++
+** Operation
+** Camunda 7
+
+. If the target BPM engine requires authenticated access, select the *Enabled* checkbox in the *Authentication* group.
++
+Select authentication method:
++
+* *HTTP Basic Authentication*. Provide username and password.
+* *HTTP Headers Authentication*. Configure custom headers.
+
+. Before saving any changes, click *Test connection* to ensure the accuracy of the connection settings. This action initiates a connection attempt to the selected engine. The system will then display a message indicating whether the connection was successful or if any errors were encountered.
+
+. Click *OK* to save the connection.
+
+[[managing-connections]]
+== Managing BPM Engine Connections
+
+The OpenBPM Control displays your currently connected BPM engine in the upper-right corner status badge. This shows:
+
+* Active engine name
+* Connection status
+
+image::bpm-engine-managing.png[align="center", width="1300"]
+
+To change the active BPM engine, locate the engine status badge in the upper-right corner and click the *Edit* button next to the engine status badge.
+
+The *Select BPM engine* dialog will appear:
+
+image::select-bpm-engine.png[align="center", width="642"]
+
+The administrator can choose the BPM engine and specify authentication parameters, including the header name and parameter value. Before switching BPM engines, a connection test is available.

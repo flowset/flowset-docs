@@ -1,2 +1,4 @@
 * xref:control:index.adoc[]
 ** xref:control:setup.adoc[]
+** xref:control:dashboard.adoc[]
+** xref:control:connecting-engine.adoc[]

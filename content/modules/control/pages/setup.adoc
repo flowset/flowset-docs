@@ -1,6 +1,16 @@
 = Setup
 
+[[check-system-requirements]]
+== Check System Requirements
+
+Make sure your computer meets the following requirements:
+
+* 64-bit operating system: Windows, Linux or macOS.
+* Memory – at least 8 GB (16 GB is recommended).
+* Hard drive free space – at least 10 GB.
+
 == Docker Image
+
 This method allows running OpenBPM Control with a pre-built Docker image.
 
 **Prerequisites:**
@@ -51,4 +61,3 @@ OpenBPM Control requires a PostgreSQL database by default:
 ----
 
 The application is now running at http://localhost:8081 in the browser.
-
