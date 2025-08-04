@@ -2,3 +2,4 @@
 ** xref:control:setup.adoc[]
 ** xref:control:dashboard.adoc[]
 ** xref:control:connecting-engine.adoc[]
+** xref:control:process-definition-management.adoc[]
