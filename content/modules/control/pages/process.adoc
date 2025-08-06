@@ -69,7 +69,7 @@ The system will validate the BPMN 2.0 syntax and display a preview of the proces
 
 Launching a process creates a new process instance that automatically appears in:
 
-* Process instances view
+* xref:process-instances.adoc[Process instances] view
 * System xref:dashboard.adoc[dashboard]
 
 To start a process:

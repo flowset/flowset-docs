@@ -1,0 +1,90 @@
+= Working with Process Instances
+
+To view process instances stored in the BPM engine, select *Process instances* from the application menu.
+
+[[instance-list]]
+== Instance List Features
+
+The *Process instances* view presents all currently running process executions retrieved from the xref:connecting-engine.adoc[connected BPM engine].
+
+Every xref:process.adoc#starting-processes[process initiation] generates a new instance that is visible in this view. The system presents instances in a tabular format, displaying essential execution details.
+
+image::process-instances.png[align="center", width="1552"]
+
+The process instances table provides filtering and sorting capabilities, enabling users to organize instances according to various criteria, such as:
+
+* State: running, suspended, completed, or error
+* Business key: used to initiate and execute the instance
+* Start time/End time
+* And so forth.
+
+By default, the process instances table shows exclusively active instances to focus attention on currently executing workflows.
+
+[[actions]]
+The following operations are available:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Action | Description
+
+| *Refresh*
+| Updates the current process instance list, synchronizing it with the most recent state from the BPM engine.
+
+| *Terminate*
+| Immediately stops the execution of selected process instances.
+
+| *Suspend*
+| Pauses the execution of running process instances.
+
+| *Activate*
+| Resumes previously suspended process instances.
+|===
+
+NOTE: These actions are applicable to a set of process instances selected by the user.
+
+[WARNING]
+====
+Process instances that encounter errors (incidents) during execution are marked with a special icon: a red triangle.
+
+image::process-with-incident.png[align="center", width="1165"]
+====
+
+[[detailed-instance]]
+== Process Instance Details
+
+To view the execution details of a particular process instance, use the *View* action.
+
+This action opens the detailed instance view, which contains:
+
+* *Process diagram* with execution progress visualization:
++
+image::process-instance-detail.png[align="center", width="1549"]
+** Green-highlighted nodes - completed activities
+** Blue-highlighted node - currently active element
+** Red borders - error locations (with tooltip details)
+
+* The *Runtime* tab is accessible only for active process instances and provides information about the current process state. This tab includes:
+** *Execution* tree. Selecting items in the execution tree updates the content of the *Variables* and *Tasks* tabs. When you select a specific execution, only objects related to that execution are displayed.
+** *Variables*. View and modify process variables:
++
+image::process-instance-variable.png[align="center", width="1168"]
+** *User tasks*. View a list of active tasks and reassign tasks to other users:
++
+image::process-instance-user-task.png[align="center", width="1168"]
+** *Jobs*
+** *External tasks*
+** *Incidents*
+
+* The *History* tab displays a list of all user tasks (both completed and active), a comprehensive list of completed activities, and the last values of process variables. The *History* tab is available for both active and completed process instances.
++
+image::process-instance-history.png[align="center", width="1163"]
+
+* The right panel displays <<actions,actions>> available for the process instance, including:
+
+** Viewing instance information.
+** Reloading the process instance.
+** Suspending the instance.
+** xref:process.adoc#process-migration[Migrating] the instance to a new process definition version.
+** Terminating the process instance.
++
+image::process-instance-info.png[align="center", width="1166"]
