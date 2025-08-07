@@ -1,4 +1,4 @@
-= Working with Process Instances
+= Process Instances
 
 To view process instances stored in the BPM engine, select *Process instances* from the application menu.
 

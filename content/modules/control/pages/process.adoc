@@ -1,4 +1,4 @@
-= Working with Processes
+= Processes
 
 The *Processes* view provides centralized management for all business processes deployed to your active BPM engine. Access this view by selecting *Processes* in the application menu.
 

@@ -4,3 +4,4 @@
 ** xref:control:connecting-engine.adoc[]
 ** xref:control:process.adoc[]
 ** xref:control:process-instances.adoc[]
+** xref:control:user-tasks.adoc[]

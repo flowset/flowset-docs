@@ -1,0 +1,68 @@
+= User Tasks
+
+The *User tasks* view allows administrators to monitor and manage all tasks associated with the selected BPM engine.
+
+[[task-list]]
+== User Tasks List
+
+To view active user tasks, select *User tasks* from the application menu.
+
+image::user-tasks.png[align="center", width="1552"]
+
+The system displays tasks in a sortable and filterable table format with the following information for each task:
+
+* *Key* - unique system identifier
+* *Name* - human-readable description
+* *Process* - parent *process* information
+* *Creation time* - task creation timestamp
+* *Assignee* - currently responsible user
+
+*Advanced Filtering Capabilities*
+
+Administrators can refine the task list using multiple filter criteria:
+
+* By business key
+* By task name
+* By process definition
+* By task state (active, suspended, or all tasks)
+* By current assignee
+* By creation date range
+
+== Task Operations
+
+For tasks that are not suspended, you have the option to complete them or reassign them.
+
+[[task-completion]]
+=== Completing Tasks
+
+Administrators can manually complete tasks when necessary:
+
+. Select the desired task from the list.
+. Click the *Complete* action button.
+. Provide any required process variables.
++
+image::user-task-complete.png[align="center", width="1163"]
+. Confirm the completion.
+
+[[task-reassignment]]
+=== Reassigning Tasks
+
+The system enables straightforward task reassignment:
+
+. Select the desired task from the list.
+. Click the *Reassign* action button.
+. Enter the exact username of the new assignee.
++
+image::user-task-reassign.png[align="center", width="1164"]
++
+NOTE: The system requires precise username entry without auto-complete suggestions.
+. Confirm the reassignment.
+
+[[detailed-user-task]]
+== Viewing Task Details
+
+To view the details of a particular user task, use the *View* action in the User task list.
+
+This action opens the detailed User task view:
+
+image::user-task-details.png[align="center", width="860"]
