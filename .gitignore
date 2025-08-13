@@ -2,6 +2,8 @@
 !.idea/copyright
 !.idea/encodings.xml
 
+build/
+
 .DS_Store
 node_modules/
 
