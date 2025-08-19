@@ -1,0 +1,105 @@
+= DMN Decisions
+
+The application provides comprehensive support for DMN (Decision Model and Notation) decision tables through the *DMN → Decisions* menu item.
+
+Selecting this menu item displays a comprehensive list of all decision tables currently deployed to your active BPM engine.
+
+NOTE: Decision definitions and instances are displayed using historical data.
+
+[[decision-table-list]]
+== Decision Table List
+
+The *Decisions* view displays all DMN decision tables deployed to your active BPM engine in a sortable, filterable table format.
+
+image::dmn-table-list.png[align="center", width="1537"]
+
+A simplified filter appears at the top of the table with the following behavior:
+
+* Supports basic name-based and key-based searching
+* Includes the *Latest version only* checkbox option
+
+WARNING: The name search and *Latest version only* filter are mutually exclusive. When a name is specified, the *Latest version only* checkbox automatically clears to ensure accurate results.
+
+The following actions are available:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Action | Description
+
+| *Refresh*
+| Reloads the current DMN decision list from the connected BPM engine.
+
+| *Deploy*
+| Uploads and deploys new DMN files. See <<deploy-dmn-table>>.
+
+| *View*
+| Displays detailed DMN table information. See <<view-desicion-details>>.
+|===
+
+[[deploy-dmn-table]]
+== Deploying DMN Table
+
+To deploy a DMN table:
+
+. In the *Decisions* view, click *Deploy*
+. In the *New decision deployment* view, click *Upload* and select your DMN 1.1(.dmn or .dmn11.xml) file.
++
+image::deploy-decision.png[align="center", width="1186"]
+. Click *OK* to complete deployment.
+
+[[view-desicion-details]]
+== Viewing Decision Details
+
+The *View* action provides comprehensive insights into deployed decision definition.
+
+Select a deployed decision definition and click *View* in the actions column. The application opens in a multi-tab view:
+
+image::dmn-details.png[align="center", width="1186"]
+
+. The *General* tab - basic decision table information.
++
+The left panel contains:
++
+--
+* *Name* - human-readable decision table identifier.
+* *Key* - unique business key for reference.
+* *Version* - the version of the decision definition.
+* *Id* - system-generated unique identifier.
+* *Deployment Id* - includes a direct link to navigate to the parent deployment.
+--
++
+The right panel displays concrete execution instances in a tabular format with:
++
+* Built-in column filters in the table header.
+* Capability to drill down into specific instances.
+
+. The *Schema* tab - a diagram of the deployed decision definition.
++
+image::dmn-details-diagram.png[align="center", width="1186"]
+. The *XML* tab - raw DMN 1.1 definition
++
+image::dmn-details-xml.png[align="center", width="1186"]
+
+[[view-dmn-table-instance]]
+== Analyzing Decision Instances
+
+The decision table instance view includes the basic info about this instance and specialized features for analyzing executions.
+
+image::dmn-details-instance.png[align="center", width="1186"]
+
+*Input/Output Parameters*
+
+* Clear tabular representation of all parameters.
+* Organized by execution flow.
+
+*Highlighted Rules*
+
+* Applied rules are visually emphasized.
+* Color-coding indicates which expressions were evaluated and triggered.
+
+*DRD View*
+
+The *View DRD* button provides access to the complete Decision Requirements Diagram, with the following considerations:
+
+* Navigating to the DRD view clears current execution highlights.
+* The diagram shows the full decision dependency network.
