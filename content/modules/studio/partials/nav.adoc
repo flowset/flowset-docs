@@ -1,2 +1,3 @@
 * xref:studio:index.adoc[]
 ** xref:studio:setup.adoc[]
+** xref:studio:wizard.adoc[]

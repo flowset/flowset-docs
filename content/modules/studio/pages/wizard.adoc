@@ -1,0 +1,121 @@
+= Create new project
+
+Use the OpenBPM project wizard to generate a new BPM-application project in IntelliJ IDEA.
+
+[TIP, caption="Create BPM-application project"]
+====
+1. In the main menu, go to *File | New | Project*.
+2. In the *New Project* dialog, select *OpenBPM Project*.
+====
+
+== Basic project configuration
+
+image::new-project-wizard.png[alt="Мастер создания нового проекта"]
+
+
+[cols="1,3", frame=none, grid=rows]
+|===
+| *Project Name:*
+| Specify a name for your project.
+
+| *Project Path:*
+| Specify the filesystem path for your project.
+
+| *Build System:*
+| Select **Gradle** or **Maven** build system.
+
+| *Group:*
+| Specify the unique group identifier (preferably reverse domain name you control, e.g., `com.example`).
+
+| *Artifact:*
+| Specify the artifact name within the group (typically matches project name).
+
+| *SDK:*
+| Select Java SDK for the project.
+
+| *Java Version:*
+| Specify Java language level.
+
+| *Engine:*
+| Select process engine: **Camunda** or **Operaton**.
+
+| *H2 Database:*
+| Select H2 database type: **On-Disk** (persistent) or **In-Memory** (volatile).
+
+| *Camunda (Operaton) Version:*
+| Select process engine version (for Camunda or Operaton).
+
+| *Admin Username:*
+a|
+Specify username for automatic admin creation.
+On first startup, Camunda checks for existing users with this ID.
+If not found, creates a new administrative account.
+
+*Privileges:*
+
+* Membership in `camunda-admin` group
+* `ALL` permissions
+
+| *Admin Password:*
+| Specify password for the admin user.
+|===
+
+[WARNING]
+====
+
+Auto-creating users is a development-only feature. Not for Production Use! In production environments:
+
+* Create users via LDAP/Keycloak
+* Add accounts through database migrations
+
+*Security Vulnerability Warning:* storing passwords in `application.properties` exposes them in version control (Git). Always use:
+
+* `.env` files
+* Kubernetes secrets
+====
+
+
+== Modules
+
+[cols="1, 3", frame=none, grid=rows]
+|===
+| *REST API*
+| Provides access to all relevant engine interfaces.
+Enables interaction with the engine via HTTP requests.
+
+| *Webapps*
+a| Includes standard Camunda modules:
+
+* Cockpit - monitoring and management of running processes
+* Tasklist - interface for user task completion
+* Admin - administrative interface for system configuration and management
+
+| *Spin (XML & JSON)*
+| Camunda Spin is a JVM library for simplified XML and JSON processing in Java and JVM-based languages (e.g., Groovy, JavaScript).
+Offers a fluent API with lightweight data format wrappers.
+
+| *Assert*
+a| Includes testing libraries:
+
+* Camunda Assert - automated business process testing
+* JUnit/Mockito - integration with testing frameworks
+
+| *Security*
+| Spring Boot Security provides authentication and authorization for Camunda 7 projects.
+Secures access to Cockpit, Tasklist, and Admin interfaces, ensuring only authorized users can manage processes.
+
+| *Web*
+a| The Spring Boot Web module adds:
+
+* Embedded web server (Tomcat by default)
+* Spring MVC for HTTP request handling
+* REST controller support and JSON serialization
+
+Automatically integrates with camunda-bpm-spring-boot-starter.
+|===
+
+
+[WARNING]
+====
+When adding Spring Boot Security, the generated default WebSecurityConfiguration fully opens access to all endpoints without authentication. Never use it in production without modifications. Always configure authentication, authorization, and CORS policies according to security requirements.
+====
