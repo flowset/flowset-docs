@@ -1,0 +1,80 @@
+= Access Management
+
+OpenBPM Control utilizes https://www.jmix.io[Jmix's^] role-based access control to manage user permissions and secure access to application functionality. This section explains how to create users, assign roles, and configure permissions to ensure secure system operation.
+
+[[user-management]]
+== User Management
+
+Users in the OpenBPM Control are defined by the https://docs.jmix.io/jmix/security/users.html#entity[User^] entity. Their information is stored in the `USER_` table within the configured database.
+
+The system comes with a default administrator user with the credentials `admin`/`admin`, which has full access rights.
+
+[[adding-users]]
+=== Adding Users
+
+To create a new user:
+
+. Log in to OpenBPM Control using administrator credentials (default: `admin`/`admin`).
+
+. Navigate to the *Administration → Users* menu item and click the *Create* button.
++
+image::add-user-1.png[align="center", width="1428"]
+. In the *User* view, fill in the required fields:
+
+* *Username*: Must be unique.
+* *Password* and *Confirm Password*.
+
+. Click *OK* to save the user.
++
+image::add-user-2.png[align="center", width="1428"]
+
+[[granting-permissions]]
+=== Granting Permissions
+
+Newly created users have no permissions by default and cannot log in or use any functionality.
+
+To assign the default full-access <<role-management,resource role>>:
+
+. Select the user from the list and click *Role assignments*.
++
+image::role-assignment.png[align="center", width="1048"]
+. In the *Resource roles* section, click *Add*.
++
+image::role-assignment-2.png[align="center", width="1051"]
+. Select the row labeled `Full Access` and click *Select*.
++
+image::role-assignment-3.png[align="center", width="802"]
+. Click *OK* to save the role assignment.
+
+The user can now log in and access all application functionality.
+
+[[role-management]]
+== Role Management
+
+https://docs.jmix.io/jmix/security/resource-roles.html[Resource roles^] define permissions for users to access specific objects and operations within the system, including CRUD operations on entities, entity attributes, UI screens, and more.
+
+A system administrator can create new custom roles to implement a granular security model tailored to specific organizational needs.
+
+[[creating-roles]]
+=== Creating Roles
+
+To define a new role with a specific set of permissions:
+
+. Navigate to the *Administration → Roles* menu item.
+. Click *Create* to define a new role.
++
+image::add-role-1.png[align="center", width="1428"]
+. Specify a descriptive *Name* and a unique *Code*.
+. Configure the role's permissions by defining the following policies:
++
+--
+* *Menu policy*: Specifies which items in the main menu are visible to users assigned this role.
+* *View policy*: Grants permission to access specific application views. For example, the `Deployments` view, the `Decisions` view.
+* *Entity policy*: Defines the Create, Read, Update, Delete (CRUD) operations allowed for a data entity. Example: Grant _Create_ and _Read_ permission for the `Deployment` entity, but explicitly deny _Delete_ permission.
+* *Entity attribute policy*: Controls read or write access to specific attributes within an entity.
+Example: Make the `email` field of the `User` entity read-only for this role.
+* *Specific policy*: Defines permissions for arbitrary, named functionality within the application.
+--
++
+image::add-role-2.png[align="center", width="1163"]
+. Click *OK* to save the new role.

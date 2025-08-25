@@ -7,3 +7,4 @@
 ** xref:control:user-tasks.adoc[]
 ** xref:control:dmn-decisions.adoc[]
 ** xref:control:deployments.adoc[]
+** xref:control:access-management.adoc[]
