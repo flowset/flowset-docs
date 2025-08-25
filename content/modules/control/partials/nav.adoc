@@ -6,3 +6,4 @@
 ** xref:control:process-instances.adoc[]
 ** xref:control:user-tasks.adoc[]
 ** xref:control:dmn-decisions.adoc[]
+** xref:control:deployments.adoc[]
