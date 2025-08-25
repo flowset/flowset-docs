@@ -10,7 +10,7 @@ Use the OpenBPM project wizard to generate a new BPM-application project in Inte
 
 == Basic project configuration
 
-image::new-project-wizard.png[alt="Мастер создания нового проекта"]
+image::new-project-wizard.png[alt="New project wizard"]
 
 
 [cols="1,3", frame=none, grid=rows]
