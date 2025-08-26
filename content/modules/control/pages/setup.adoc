@@ -1,40 +1,129 @@
 = Setup
 
 [[check-system-requirements]]
-== Check System Requirements
+== System Requirements
 
-Make sure your computer meets the following requirements:
+Before proceeding with installation, ensure your system meets the following minimum requirements:
 
-* 64-bit operating system: Windows, Linux or macOS.
-* Memory – at least 8 GB (16 GB is recommended).
-* Hard drive free space – at least 10 GB.
+* Operating System: 64-bit Windows, Linux, or macOS
+* RAM: Minimum 8 GB (16 GB recommended)
+* Disk Space: Minimum 10 GB of free space
+* Java: JDK or JRE version 21
 
-== Docker Image
+Verify your Java installation by running:
 
-This method allows running OpenBPM Control with a pre-built Docker image.
+[source,shell]
+----
+java -version
+----
 
-**Prerequisites:**
+== Installation Methods
 
-You must have the following installed:
+[[portable]]
+=== Portable Distribution
 
-. Docker
-. Docker Compose
+The portable distribution allows you to run OpenBPM Control without additional dependencies (except Java). Ideal for quick testing or local development.
 
-Instructions can be found https://github.com/openbpm-platform/openbpm-control/tree/main/docker-compose[here].
+*Running Instructions*:
 
-[#_using_sources]
-== Using Sources
-This method allows building and running OpenBPM Control locally with Gradle.
+. Download the portable archive from the provided https://openbpm.io/downloads#control[link^].
 
-**Prerequisites:**
+. Extract the archive to your preferred directory.
 
-You must have the following installed:
+. Execute the launch script based on your OS:
++
+*Linux/macOS*:
++
+[source,shell]
+----
+./run.sh
+----
++
+Windows:
++
+[source,bash]
+----
+run.bat
+----
+. Access the application at: `++http://localhost:8081++`.
 
-. Git
-. Java 21 (JDK and JRE)
-. PostgreSQL
+[[docker-compose]]
+=== Docker Compose
 
-**Instructions:**
+This method allows for quick startup of OpenBPM Control in containers, without manual database or environment configuration.
+
+*Prerequisites*:
+
+* *Docker* and *Docker Compose*
+* Verify installations:
++
+[source,shell]
+----
+docker --version
+docker compose version
+----
+
+*Running Instructions*:
+
+. Create a `docker-compose.yml` file with:
++
+[source,yaml]
+----
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: openbpm-control
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+
+  openbpm-control:
+    image: openbpm/openbpm-control:latest
+    environment:
+      MAIN_DATASOURCE_URL: jdbc:postgresql://postgres:5432/openbpm-control
+      MAIN_DATASOURCE_USERNAME: root
+      MAIN_DATASOURCE_PASSWORD: root
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+----
+
+. Start the containers:
++
+[source,shell]
+----
+docker compose up -d
+----
+
+. Access the application at: `++http://localhost:8081++`.
+
+. To stop the containers:
++
+[source,shell]
+----
+docker compose down
+----
+
+Detailed instructions are available at https://github.com/openbpm-platform/openbpm-control/tree/main/docker-compose[GitHub^].
+
+[[source-code-build]]
+=== Source Code Build
+
+Build and run from source for development or custom deployments.
+
+*Prerequisites*:
+
+* Git
+* Java 21 JDK
+* PostgreSQL database
+
+*Running Instructions*:
 
 . Clone the repository:
 +
@@ -42,22 +131,81 @@ You must have the following installed:
 ----
 git clone https://github.com/openbpm-platform/openbpm-control
 ----
-
-. Configure a PostgreSQL database.
+. Configure PostgreSQL database.
 +
-OpenBPM Control stores data such as connections to BPM engines in the database.
-OpenBPM Control requires a PostgreSQL database by default:
+OpenBPM Control stores data, such as BPM engine connections, in a database. By default, OpenBPM Control requires a PostgreSQL database with the following parameters:
 
-** Name: `openbpm-control`
-** Connection username: `root`
-** Connection password: `root`
+* Database name: `openbpm-control`
+* Username: `root`
+* Password: `root`
 
-. Navigate to the cloned project directory and open a terminal.
-. Run the following command:
+. Navigate to the project directory and run:
 +
 [source,shell]
 ----
-.\gradlew bootRun
+./gradlew bootRun
 ----
 
-The application is now running at http://localhost:8081 in the browser.
+. Access the application at: `++http://localhost:8081++`.
+
+[[post-installation]]
+== Post-Installation
+
+After successful installation:
+
+. Open your web browser and navigate to `++http://localhost:8081++`.
+. Use default administrator credentials (`admin`/`admin`).
+. Configure your xref:connecting-engine.adoc[BPM engine] connections.
+
+// == Docker Image
+//
+// This method allows running OpenBPM Control with a pre-built Docker image.
+//
+// **Prerequisites:**
+//
+// You must have the following installed:
+//
+// . Docker
+// . Docker Compose
+//
+// Instructions can be found https://github.com/openbpm-platform/openbpm-control/tree/main/docker-compose[here].
+//
+// [#_using_sources]
+// == Using Sources
+// This method allows building and running OpenBPM Control locally with Gradle.
+//
+// **Prerequisites:**
+//
+// You must have the following installed:
+//
+// . Git
+// . Java 21 (JDK and JRE)
+// . PostgreSQL
+//
+// **Instructions:**
+//
+// . Clone the repository:
+// +
+// [source,shell]
+// ----
+// git clone https://github.com/openbpm-platform/openbpm-control
+// ----
+//
+// . Configure a PostgreSQL database.
+// +
+// OpenBPM Control stores data such as connections to BPM engines in the database.
+// OpenBPM Control requires a PostgreSQL database by default:
+//
+// ** Name: `openbpm-control`
+// ** Connection username: `root`
+// ** Connection password: `root`
+//
+// . Navigate to the cloned project directory and open a terminal.
+// . Run the following command:
+// +
+// [source,shell]
+// ----
+// .\gradlew bootRun
+// ----
+//
+// The application is now running at http://localhost:8081 in the browser.
