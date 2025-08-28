@@ -105,3 +105,81 @@ The *Select BPM engine* dialog will appear:
 image::select-bpm-engine.png[align="center", width="642"]
 
 The administrator can choose the BPM engine and specify authentication parameters, including the header name and parameter value. Before switching BPM engines, a connection test is available.
+
+[[monitoring]]
+== BPM Engine Monitoring
+
+[NOTE, caption="Enterprise Feature"]
+====
+This feature is exclusively available in the Enterprise Edition of *OpenBPM Control*.
+====
+
+OpenBPM Control allows viewing the current state of business processes within the engine. However, for the system administrator, it is also useful to have information about the overall system status, such as the number of CPU cores, available RAM, disk space, etc. This information will allow the administrator to be proactively alerted to increasing load. In conjunction with automatic/manual system scaling, OpenBPM Control can solve the problem of fully managing business process engines.
+
+[[monitoring-configuration]]
+=== Monitoring Configuration
+
+The Enterprise Edition enhances the BPM engine detail view with a dedicated *Monitoring* section:
+
+image::bpm-engine-monitoring.png[align="center", width="1440"]
+
+==== External Dashboard URL
+
+* Specify the URL of an external monitoring dashboard (e.g., https://grafana.com/[Grafana^]).
+* Example: For Camunda, you can configure a Grafana dashboard and paste its URL here.
+* Provides one-click navigation from OpenBPM Control directly to the external dashboard:
++
+image::grafana-monitoring.png[align="center", width="1440"]
+
+==== Integrated Metrics
+
+* Enable the *Enable* checkbox to activate metrics collection and display within OpenBPM Control.
+* *URL* field: Configure the endpoint URL sourcing the metrics (e.g., a Spring Boot Actuator endpoint).
+* Click *Generate* to fetch available metrics from the specified endpoint.
++
+image::actuator-metrics.png[align="center", width="776"]
+
+==== Metric Selection
+
+* Select relevant metrics by checking the boxes next to their names.
++
+image::actuator-metrics-select.png[align="center", width="779"]
+
+* Hover over the question mark icon (?) for a brief description of each metric.
+
+* You can configure tags for each metric to enable more detailed monitoring focused on specific areas:
++
+image::actuator-metrics-tags.png[align="center", width="802"]
+
+[[viewing-metrics]]
+=== Viewing Metrics
+
+. Navigate to the list of <<bpm-engines,BPM engines>> in OpenBPM Control.
+. Click *View metrics* for the desired engine.
++
+image::view-metrics.png[align="center", width="1254"]
+. A dialog displays:
++
+image::metrics.png[align="center", width="962"]
+* All configured metrics and their tags.
+* Current metric values.
+* A *Refresh* button to update values in real-time.
+
+[NOTE]
+====
+Use the *External dashboard* button for quick access to the configured Grafana (or other) dashboard.
+
+image::external-dashboard.png[align="center", width="855"]
+====
+
+[[quick-access-toolbar]]
+=== Quick Access Toolbar
+
+For rapid monitoring, use the engine selection panel at the top of the view.
+
+image::quick-access-monitoring.png[align="center", width="876"]
+
+This allows you to:
+
+* Quickly view metrics for the currently selected engine.
+* Navigate directly to its external dashboard.
