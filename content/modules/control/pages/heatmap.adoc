@@ -1,0 +1,34 @@
+= Heatmap
+
+[NOTE, caption="Enterprise Feature"]
+====
+This feature is exclusively available in the Enterprise Edition of *OpenBPM Control*.
+====
+
+Heatmaps, a feature of OpenBPM Control Enterprise, provide a visual representation of the most frequently traversed paths in your business process executions. This allows for easy identification of performance bottlenecks and problem areas, leading to process optimization.
+
+To use this feature, navigate to *Heatmap* in the main menu.
+
+Heatmaps are available for all versions of your processes. Use the dropdown list to select the process you want to analyze.
+
+image::heatmap.png[align="center", width="1552"]
+
+Heatmaps support two grouping modes to visualize process data:
+
+* *By count*
++
+image::heatmap-count.png[align="center", width="785"]
++
+** Visualizes the frequency of token passes through each activity (task) in the process.
+** The numeric value displayed on the heatmap near an activity indicates how many times a token reached that activity.
++
+Example: A number 44 on a task means it was executed 44 times for the selected process version.
+
+* *By duration in minutes*
++
+image::heatmap-duration.png[align="center", width="787"]
++
+** Visualizes the average time (in minutes) required to complete each activity.
+** The numeric value displayed represents the mean execution time for that activity.
+
+NOTE: For both grouping modes, you can use the *Hide connections* checkbox to remove connection arrows (sequence flows) between elements, focusing solely on the activities and their metrics.
