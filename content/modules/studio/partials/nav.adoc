@@ -2,3 +2,4 @@
 ** xref:studio:setup.adoc[]
 ** xref:studio:new-project-wizard.adoc[]
 ** xref:studio:bpmn-designer.adoc[]
+** xref:studio:dmn-designer.adoc[]
