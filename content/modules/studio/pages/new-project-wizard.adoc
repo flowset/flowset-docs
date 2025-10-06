@@ -1,4 +1,4 @@
-= Create new project
+= New project wizard
 
 Use the OpenBPM project wizard to generate a new BPM-application project in IntelliJ IDEA.
 
