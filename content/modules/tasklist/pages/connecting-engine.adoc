@@ -1,0 +1,61 @@
+= Connecting to the BPM Engine
+
+*Flowset Tasklist* uses the REST API of BPM engines to work with processes and user tasks.
+The application does not require its own backend and connects directly to the existing BPM engine through environment configuration.
+
+== Connection Configuration
+
+To establish a connection to the engine, you must specify environment variables.
+They can be defined in the `.env` file, `env.local`, or through Docker container launch parameters.
+
+[cols="2,3,3", options="header"]
+|===
+| Variable
+| Description
+| Example Value
+
+| `VITE_BPM_ENGINE_API_URL`
+| Full URL of the BPM engine REST API
+| `http://localhost:8080/engine-rest`
+
+| `VITE_BPM_ENGINE_TYPE`
+| Type of the connected engine
+Supported values: `CAMUNDA_7`, `OPERATON`
+| `OPERATON`
+|===
+
+[NOTE]
+====
+For local development, it is recommended to create an `env.local` file in the root of the project and copy the contents of `env.example` into it.
+This makes it easy to manage environment variables without modifying the source code.
+====
+
+== User Configuration
+
+Flowset Tasklist uses *Basic Authentication*, so users and their passwords are configured on the BPM engine side.
+The application does not manage users by itself.
+
+=== Example of User Configuration in Camunda 7
+
+. Open the *Camunda WebApps* in your browser
+. Log in as an administrator
+. Go to *Admin → Users*
+. Click *Create New User* and fill out the form
+. After creating the user, add them to a group with the following permissions:
+* User
+* Process Definition
+* Process Instance
+* Task
+* Historic Task Instance
+
+[TIP]
+====
+If you are using *Operaton*, the procedure is similar.
+The main thing is to ensure that the user has permissions to read and execute processes and tasks.
+====
+
+== Connection Check
+
+After configuring and launching the application, go to  `http://localhost:3000`
+and log in using BPM engine credentials.
+If the connection is configured correctly, a list of active tasks will appear.

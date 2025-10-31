@@ -1,1 +1,172 @@
 = Setup
+
+== Running from Source
+
+Running from source allows developers to quickly deploy *Flowset Tasklist* in a development environment and flexibly adapt the application to their needs.
+
+=== Requirements
+
+Before installation, make sure the following components are installed:
+
+* *Node.js* version 20.19 or higher (LTS recommended)
+* *npm* version 8 or higher
+* *Git* for cloning the repository
+
+=== Installation and Launch
+
+. Clone the project repository:
++
+[source,shell]
+----
+git clone https://github.com/flowset/flowset-tasklist-react-community
+cd flowset-tasklist-react-community
+----
+. Create an environment configuration file:
++
+[source,shell]
+----
+cp env.example env.local
+----
+. Edit `env.local`, specifying the connection parameters for your BPM engine:
++
+[source,properties]
+----
+VITE_APP_LOCALE=ru
+VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
+VITE_BPM_ENGINE_TYPE=OPERATON
+----
++
+* `VITE_APP_LOCALE` — interface language (`ru` or `en`);
+* `VITE_BPM_ENGINE_API_URL` — URL of the engine's REST API;
+* `VITE_BPM_ENGINE_TYPE` — engine type (`CAMUNDA`, `OPERATON`).
+
+. Install dependencies:
++
+[source,shell]
+----
+npm install
+----
+. Run the application in development mode:
++
+[source,shell]
+----
+npm run dev
+----
+. After a successful launch, the interface will be available at: http://localhost:3000
+
+[NOTE]
+====
+For a production build, you can use the following commands:
+[source,shell]
+----
+npm run build
+npm run preview
+----
+====
+
+== Docker
+
+To quickly launch *Flowset Tasklist* without installing Node.js, you can use the ready-made Docker image.
+
+=== Requirements
+
+* Docker
+* Docker Compose (recommended for complex deployments)
+
+=== Launch via Docker
+
+. Clone the project repository:
++
+[source,shell]
+----
+git clone https://github.com/flowset/flowset-tasklist-react-community
+cd flowset-tasklist-react-community/docker-compose
+----
+. Edit the `.env` file, specifying the connection parameters for the BPM engine:
++
+[source,properties]
+----
+VITE_APP_LOCALE=ru
+VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
+VITE_BPM_ENGINE_TYPE=OPERATON
+----
+. Start the container:
++
+[source,shell]
+----
+docker-compose up -d
+----
+. Check that the container is running:
++
+[source,shell]
+----
+docker ps
+----
+. After launch, the interface will be available at: http://localhost:3000
+
+[WARNING, caption=Warning]
+====
+If you run *Tasklist* in a container while the BPM engine is running locally, you must allow CORS requests.
+
+For *Tomcat*, add the following filter to `web.xml`:
+[source,xml]
+----
+<filter>
+  <filter-name>CorsFilter</filter-name>
+  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+  <init-param>
+    <param-name>cors.allowed.origins</param-name>
+    <param-value>http://localhost:3000</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.allowed.methods</param-name>
+    <param-value>GET,POST,HEAD,OPTIONS,PUT,DELETE</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.allowed.headers</param-name>
+    <param-value>Content-Type,Accept,X-Requested-With,Authorization,Origin</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.exposed.headers</param-name>
+    <param-value>Location</param-value>
+  </init-param>
+</filter>
+
+<filter-mapping>
+  <filter-name>CorsFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+----
+
+For *Run*, add the following configuration to `default.yml`:
+
+[source, yml]
+----
+operaton.bpm:
+  run:
+# https://docs.operaton.org/docs/documentation/user-guide/operaton-bpm-run/#cross-origin-resource-sharing
+    cors:
+      enabled: true
+      allowed-origins: "http://localhost:3000"
+----
+====
+
+=== Stopping the Container
+
+To stop it, use the command:
+[source,shell]
+----
+docker-compose down
+----
+
+[NOTE]
+====
+If you want to run the container directly without Docker Compose, use:
+[source,shell]
+----
+docker run -d --name flowset-tasklist -p 3000:3000 \
+  -e VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest \
+  -e VITE_BPM_ENGINE_TYPE=OPERATON \
+  flowset/flowset-tasklist-react-community:latest
+----
+====

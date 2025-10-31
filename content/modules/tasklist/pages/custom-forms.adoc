@@ -1,0 +1,203 @@
+= Custom Forms
+
+*Flowset Tasklist* supports using custom React components as forms for starting processes and completing user tasks.
+This allows you to create interfaces that are fully adapted to specific business processes.
+
+== Core Concepts
+
+Each form in *Flowset Tasklist* corresponds to the `formKey` value specified in the BPMN diagram.
+If the `formKey` matches a registered component, Tasklist automatically displays the appropriate form.
+
+Two types of forms are supported:
+
+* *Start Forms* — displayed when initiating a process
+* *Task Forms* — displayed when completing user tasks
+
+== Creating a Custom Form
+
+. In the BPMN editor, set the form type to *Embedded or External Task Form* and define a *Form key* value (for example, `newVisit`).
+. In the project, create a new form in the directory:
++
+[source,shell]
+----
+src/custom-forms/
+----
+. Define a React component that implements one of the interfaces:
++
+* `CustomStartFormProps` — for start forms
+* `CustomTaskFormProps` — for task forms
+
+=== Example of a Start Form
+
+[source,typescript]
+----
+// src/custom-forms/NewVisitForm.tsx
+import {Button, DatePicker, Flex, Form, type FormProps, Input, Typography} from "antd";
+import type {CustomStartFormProps} from "@features/custom-forms/types.ts";
+import dayjs, {type Dayjs} from "dayjs";
+
+const {Title} = Typography;
+
+// a type with list of output process variables
+export interface NewVisitVariables {
+    visitDate: Dayjs; // will be automatically formatted to string
+    contactName: string;
+    contactEmail: string;
+}
+
+export const NewVisitForm = (props: CustomStartFormProps<NewVisitVariables>) => { //here the required type of props is used
+    const {onSubmit: startProcess, submitInProgress, onCancel} = props;
+
+    const handleSend: FormProps<NewVisitVariables>["onFinish"] = (formValues) => {
+        // generate a business key for a new process instance
+        const businessKey = "Visit by" + formValues.visitDate.format('DD/MM/YYYY HH:MM');
+
+        // start a process with variables and business key
+        startProcess(formValues, businessKey);
+    };
+    return (
+        <>
+            <Title level={4}>New visit</Title>
+            <Form onFinish={handleSend} layout="vertical">
+                <Form.Item<NewVisitVariables> label="Visit date"
+                                              name="visitDate"
+                                              rules={[{required: true, message: "Please input a date!"}]}>
+                    <DatePicker minDate={dayjs()} showTime showSecond={false}
+                                disabledHours={() => [...Array(9).keys(), 21, 22, 23]}
+                                format="MM/DD/YYYY HH:mm"
+                                maxDate={dayjs().add(2, "week")} minuteStep={30}/>
+                </Form.Item>
+
+                <Form.Item<NewVisitVariables>
+                    label="Contact name"
+                    name="contactName"
+                    rules={[{required: true, message: "Please input your name!"}]}
+                >
+                    <Input/>
+                </Form.Item>
+
+                <Form.Item<NewVisitVariables> label="Contact Email" name="contactEmail"
+                                              rules={[{required: true, message: "Please input your email!"},
+                                                  {type: "email", message: "The input is not valid E-mail!"}]}>
+                    <Input/>
+                </Form.Item>
+
+                <Form.Item label={null}>
+                    <Flex gap="small">
+                        <Button type="primary" htmlType="submit" loading={submitInProgress}>
+                            Send
+                        </Button>
+                        <Button onClick={onCancel}>
+                            Close
+                        </Button>
+                    </Flex>
+                </Form.Item>
+            </Form>
+        </>
+    );
+};
+
+----
+
+=== Example of a Task Form
+
+[source,typescript]
+----
+// src/custom-forms/CheckVisitForm.tsx
+import type {CustomTaskFormProps} from "@features/custom-forms/types.ts";
+import {Button, Descriptions, type DescriptionsProps, Flex, Form, Space, Switch, Typography} from "antd";
+import dayjs from "dayjs";
+
+export interface VisitInputVariables {
+    visitDate: string;
+    contactName: string;
+    contactEmail: string;
+}
+
+export interface CheckResultVariables {
+    approved: boolean;
+}
+
+export const CheckVisitDetailsForm = (props: CustomTaskFormProps<VisitInputVariables, CheckResultVariables>) => {
+    const {onSubmit: handleComplete, submitInProgress, onCancel, inputVariables} = props;
+
+    const items: DescriptionsProps["items"] = [
+        {
+            key: "date",
+            label: 'Visit Date',
+            children: <Typography>{dayjs(inputVariables.visitDate).format("DD/MM/YYYY HH:MM")}</Typography>,
+        },
+        {
+            key: "contact",
+            label: 'Contact',
+            children: <Typography>{inputVariables.contactName} ({inputVariables.contactEmail})</Typography>,
+        },
+    ];
+    return (
+        <>
+            <Space direction="vertical">
+                <Descriptions items={items} column={1}/>
+                <Form onFinish={handleComplete}>
+                    <Form.Item<CheckResultVariables> label="Approved" name="approved">
+                        <Switch/>
+                    </Form.Item>
+                    <Form.Item label={null}>
+                        <Flex gap="small">
+                            <Button type="primary" htmlType="submit" loading={submitInProgress}>
+                                Complete
+                            </Button>
+                            <Button onClick={onCancel}>
+                                Close
+                            </Button>
+                        </Flex>
+                    </Form.Item>
+                </Form>
+            </Space>
+
+        </>
+    );
+};
+----
+
+== Registering Custom Forms
+
+To make the form appear in the Tasklist interface, it must be registered in the configuration file.
+
+. Open the file:
++
+[source,shell]
+----
+src/features/custom-forms/config.ts
+----
+. Add an entry to the `customFormConfigs` array, specifying the form key (`formKey`) and the component:
++
+[source,typescript]
+----
+// src/features/custom-forms/config.ts
+
+import type {CustomFormConfig} from "./types.ts";
+import {NewVisitForm} from "../../custom-forms/NewVisitForm.tsx";
+import {CheckVisitDetailsForm} from "../../custom-forms/CheckVisitDetailsForm.tsx";
+
+// Configuration for custom task and start forms used in the business process diagrams
+export const customFormConfigs: CustomFormConfig[] = [
+    // added configuration for a custom start form
+    {
+        formKey: "newVisit",
+        component: NewVisitForm,
+    },
+
+    // added configuration for a custom user task form
+    {
+        formKey: "checkVIsitDetails",
+        component: CheckVisitDetailsForm,
+    }
+];
+----
+. After this, Tasklist will automatically display the form when opening a task or starting a process with a matching `formKey`.
+
+[NOTE]
+====
+The *Embedded* and *Generated* form types are not supported.
+For all user scenarios, custom or Camunda forms are recommended.
+====

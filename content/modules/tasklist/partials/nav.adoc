@@ -1,1 +1,6 @@
 * xref:tasklist:index.adoc[]
+** xref:tasklist:setup.adoc[]
+** xref:tasklist:usage.adoc[]
+** xref:tasklist:connecting-engine.adoc[]
+** xref:tasklist:custom-forms.adoc[]
+** xref:tasklist:theme.adoc[]
