@@ -22,11 +22,11 @@ java -version
 [[portable]]
 === Portable Distribution
 
-The portable distribution allows you to run OpenBPM Control without additional dependencies (except Java). Ideal for quick testing or local development.
+The portable distribution allows you to run Flowset Control without additional dependencies (except Java). Ideal for quick testing or local development.
 
 *Running Instructions*:
 
-. Download the portable archive from the provided https://openbpm.io/downloads#control[link^].
+. Download the portable archive from the provided https://flowset.io/downloads#control[link^].
 
 . Extract the archive to your preferred directory.
 
@@ -50,7 +50,7 @@ run.bat
 [[docker-compose]]
 === Docker Compose
 
-This method allows for quick startup of OpenBPM Control in containers, without manual database or environment configuration.
+This method allows for quick startup of Flowset Control in containers, without manual database or environment configuration.
 
 *Prerequisites*:
 
@@ -75,16 +75,16 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_DB: openbpm-control
+      POSTGRES_DB: flowset-control
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
     ports:
       - "5432:5432"
 
-  openbpm-control:
-    image: openbpm/openbpm-control:latest
+  flowset-control:
+    image: flowset/flowset-control:latest
     environment:
-      MAIN_DATASOURCE_URL: jdbc:postgresql://postgres:5432/openbpm-control
+      MAIN_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flowset-control
       MAIN_DATASOURCE_USERNAME: root
       MAIN_DATASOURCE_PASSWORD: root
       SERVER_PORT: 8081
@@ -133,9 +133,9 @@ git clone https://github.com/openbpm-platform/openbpm-control
 ----
 . Configure PostgreSQL database.
 +
-OpenBPM Control stores data, such as BPM engine connections, in a database. By default, OpenBPM Control requires a PostgreSQL database with the following parameters:
+Flowset Control stores data, such as BPM engine connections, in a database. By default, Flowset Control requires a PostgreSQL database with the following parameters:
 
-* Database name: `openbpm-control`
+* Database name: `flowset-control`
 * Username: `root`
 * Password: `root`
 
@@ -159,7 +159,7 @@ After successful installation:
 
 // == Docker Image
 //
-// This method allows running OpenBPM Control with a pre-built Docker image.
+// This method allows running Flowset Control with a pre-built Docker image.
 //
 // **Prerequisites:**
 //
@@ -172,7 +172,7 @@ After successful installation:
 //
 // [#_using_sources]
 // == Using Sources
-// This method allows building and running OpenBPM Control locally with Gradle.
+// This method allows building and running Flowset Control locally with Gradle.
 //
 // **Prerequisites:**
 //
@@ -193,10 +193,10 @@ After successful installation:
 //
 // . Configure a PostgreSQL database.
 // +
-// OpenBPM Control stores data such as connections to BPM engines in the database.
-// OpenBPM Control requires a PostgreSQL database by default:
+// Flowset Control stores data such as connections to BPM engines in the database.
+// Flowset Control requires a PostgreSQL database by default:
 //
-// ** Name: `openbpm-control`
+// ** Name: `flowset-control`
 // ** Connection username: `root`
 // ** Connection password: `root`
 //

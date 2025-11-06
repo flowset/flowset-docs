@@ -1,10 +1,10 @@
 = Dashboard
 
-When you log in to OpenBPM Control, the first view you'll see is the *Dashboard*. This is your main view for monitoring everything in the system. It shows important information through easy-to-read widgets that update in real time.
+When you log in to Flowset Control, the first view you'll see is the *Dashboard*. This is your main view for monitoring everything in the system. It shows important information through easy-to-read widgets that update in real time.
 
 image::dashboard.png[align="center", width="1440"]
 
-You can return to the *Dashboard* at any by clicking *OpenBPM Control* in the top-left corner or by selecting the *Dashboard* menu item.
+You can return to the *Dashboard* at any by clicking *Flowset Control* in the top-left corner or by selecting the *Dashboard* menu item.
 
 *Widgets*:
 
@@ -34,7 +34,7 @@ A dynamic chart showcases recent activity, specifically tracking the number of p
 
 [NOTE]
 ====
-* In the OpenBPM Control Dashboard, pie chart widgets let you switch to a table view for more detailed data. To do this, click the "..." (three-dot menu) within the widget.
+* In the Flowset Control Dashboard, pie chart widgets let you switch to a table view for more detailed data. To do this, click the "..." (three-dot menu) within the widget.
 +
 image::dashboard-pie-widget.png[align="center", width="888"]
 

@@ -1,6 +1,6 @@
 = User Form Designer
 
-Use the OpenBPM Form Designer to edit Camunda Forms in IntelliJ IDEA. The Form Designer will appear when you open an existing .form file. If you create a new form via OpenBPM Studio, it will open automatically in the Designer.
+Use the Flowset Form Designer to edit Camunda Forms in IntelliJ IDEA. The Form Designer will appear when you open an existing .form file. If you create a new form via Flowset Studio, it will open automatically in the Designer.
 
 image::form-designer.png[]
 
@@ -80,7 +80,7 @@ image::form-deployment-wizard.png[width=80%]
 | *Deploy changed only*
 | Filtering at the entire deployment package level. If no file in the deployment has changed, the operation is entirely ignored. Ensures idempotence, excluding unnecessary process version creations.
 | *Deployment source*
-| The source from which the deployment was initiated (e.g., 'OpenBPM Studio'). Used for auditing and tracking deployment origins.
+| The source from which the deployment was initiated (e.g., 'Flowset Studio'). Used for auditing and tracking deployment origins.
 | *Tenant ID*
 | The tenant identifier for a multi-tenant architecture. Allows isolating processes and data for different clients or departments within a single Camunda cluster.
 |====

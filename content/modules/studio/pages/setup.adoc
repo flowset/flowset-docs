@@ -1,2 +1,2 @@
-[[setup-openbpm-studio]]
+[[setup-flowset-studio]]
 = Setup

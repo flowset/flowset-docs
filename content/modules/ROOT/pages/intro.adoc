@@ -1,8 +1,8 @@
 = Introduction
 
-== What is OpenBPM?
+== What is Flowset?
 
-OpenBPM is a business process automation platform with its own execution engine and a set of tools covering the entire BPM solution lifecycle.
+Flowset is a business process automation platform with its own execution engine and a set of tools covering the entire BPM solution lifecycle.
 
 === Core Principles
 
@@ -14,10 +14,10 @@ OpenBPM is a business process automation platform with its own execution engine 
   Ensures transparency, predictability, and facilitates talent acquisition.
 
 * **Interoperability**
-  OpenBPM is compatible with popular modeling and development tools.
+  Flowset is compatible with popular modeling and development tools.
 
 * **Focus on Business Process Automation**
-  OpenBPM covers the full cycle of process automation—from design to execution and monitoring.
+  Flowset covers the full cycle of process automation—from design to execution and monitoring.
 
 * **Modularity and Openness**
   Each component of the platform works independently, and together they deliver maximum value.

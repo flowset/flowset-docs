@@ -1,6 +1,6 @@
 = Studio
 
-*OpenBPM Studio* allows developers to leverage the Java and Spring Boot ecosystem for development of enterprise applications following BPMN approach. OpenBPM Studio provides developers with an all-in-one tool from modeling to deployment.
+*Flowset Studio* allows developers to leverage the Java and Spring Boot ecosystem for development of enterprise applications following BPMN approach. Flowset Studio provides developers with an all-in-one tool from modeling to deployment.
 
 *Key features*
 

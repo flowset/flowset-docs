@@ -1,6 +1,6 @@
 = Deployments
 
-OpenBPM Control enables administrators to view and manage deployments containing xref:process.adoc[process definitions], xref:dmn-decisions.adoc[decision tables], and other resources. All deployments are displayed in a sortable, filterable list within the *Deployments* view.
+Flowset Control enables administrators to view and manage deployments containing xref:process.adoc[process definitions], xref:dmn-decisions.adoc[decision tables], and other resources. All deployments are displayed in a sortable, filterable list within the *Deployments* view.
 
 [[deployment-list]]
 == Deployment List
@@ -52,7 +52,7 @@ The left panel displays essential information about the deployment:
 * *Deployment time* - the exact date and timestamp when the deployment was created.
 * *Source* - indicates the origin of the deployment. For example:
 ** `process application` for deployments created during application startup.
-** `OpenBPM Control` for deployments uploaded directly through OpenBPM Control.
+** `Flowset Control` for deployments uploaded directly through Flowset Control.
 * *Tenant id* - the tenant identifier associated with the deployment.
 
 Below the metadata, the left panel also lists all deployment resources, including:

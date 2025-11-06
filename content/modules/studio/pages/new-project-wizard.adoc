@@ -1,11 +1,11 @@
 = New project wizard
 
-Use the OpenBPM project wizard to generate a new BPM-application project in IntelliJ IDEA.
+Use the Flowset project wizard to generate a new BPM-application project in IntelliJ IDEA.
 
 [TIP, caption="Create BPM-application project"]
 ====
 1. In the main menu, go to *File | New | Project*.
-2. In the *New Project* dialog, select *OpenBPM Project*.
+2. In the *New Project* dialog, select *Flowset Project*.
 ====
 
 == Basic project configuration

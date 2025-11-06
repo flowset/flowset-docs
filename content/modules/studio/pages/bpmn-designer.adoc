@@ -1,6 +1,6 @@
 = BPMN Designer
 
-Use the OpenBPM BPMN Designer to edit BPMN diagrams in IntelliJ IDEA. The BPMN Designer will appear when you open an existing .bpmn file. If you create a new diagram via OpenBPM Studio, it will open automatically in the Designer.
+Use the Flowset BPMN Designer to edit BPMN diagrams in IntelliJ IDEA. The BPMN Designer will appear when you open an existing .bpmn file. If you create a new diagram via Flowset Studio, it will open automatically in the Designer.
 
 image::bpmn-designer.png[]
 
@@ -36,7 +36,7 @@ The BPMN editor allows building processes directly in the IDE.
 ====
 The feature to run the JCEF browser in a separate process was implemented in IntelliJ IDEA 2025.1+ to improve stability (so that browser issues do not affect the main IDEA process). However, currently, there are a number of unresolved problems that interfere with the JCEF browser's operation.
 
-OpenBPM Studio disables this option by default. This is a necessary measure for stable JCEF operation until JetBrains releases an appropriate patch. This option is available for editing in Settings: Language & Frameworks | OpenBPM -> Enable JCEF in separate process.
+Flowset Studio disables this option by default. This is a necessary measure for stable JCEF operation until JetBrains releases an appropriate patch. This option is available for editing in Settings: Language & Frameworks | Flowset -> Enable JCEF in separate process.
 ====
 
 === Basic Operations
@@ -122,7 +122,7 @@ a| 1. Select a Service Task on the process diagram
 
 === Generating Task Listener / Execution Listener
 
-OpenBPM Studio allows generating Task Listener and Execution Listener class templates.
+Flowset Studio allows generating Task Listener and Execution Listener class templates.
 
 *Step 1.* Select an element on the process diagram
 
@@ -239,7 +239,7 @@ image::deployment-wizard.png[width=80%]
 | *Deploy changed only*
 | Filtering at the entire deployment package level. If no file in the deployment has changed, the operation is entirely ignored. Ensures idempotence, excluding unnecessary process version creations.
 | *Deployment source*
-| The source from which the deployment was initiated (e.g., 'OpenBPM Studio'). Used for auditing and tracking deployment origins.
+| The source from which the deployment was initiated (e.g., 'Flowset Studio'). Used for auditing and tracking deployment origins.
 | *Tenant ID*
 | The tenant identifier for a multi-tenant architecture. Allows isolating processes and data for different clients or departments within a single Camunda cluster.
 |====

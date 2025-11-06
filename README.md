@@ -1,8 +1,8 @@
-# OpenBPM Documentation
+# Flowset Documentation
 
-This is the main repository of [OpenBPM](https://openbpm.io) documentation. Guides are located in the repositories of the respective sample projects.  
+This is the main repository of [Flowset](https://flowset.io) documentation. Guides are located in the repositories of the respective sample projects.  
 
-The documentation is published at https://docs.openbpm.io.
+The documentation is published at https://docs.flowset.io.
 
 ## Development
 
@@ -15,25 +15,25 @@ Main documentation modules are located in the `content` folder. Guides are locat
 
 The AsciiDoc IntelliJ plugin correctly recognizes all modules by their `antora.yml` files and allows you to make cross-references.
 
-### Contributing a OpenBPM Guide
+### Contributing a Flowset Guide
 
-To add a new guide to the OpenBPM documentation, follow the steps outlined in [CONTRIBUTING.md](CONTRIBUTING.md). The guide explains how to:
+To add a new guide to the Flowset documentation, follow the steps outlined in [CONTRIBUTING.md](CONTRIBUTING.md). The guide explains how to:
 
-* Set up a new example project based on the OpenBPM template.
+* Set up a new example project based on the Flowset template.
 * Organize your documentation structure with Antora.
-* Submit your guide for review and integration into the OpenBPM Docs.
+* Submit your guide for review and integration into the Flowset Docs.
 
 ## Building
 
 * Install Node LTS release from https://nodejs.org
 
-* Open terminal in `openbpm-docs` root folder and run:
+* Open terminal in `flowset-docs` root folder and run:
   ```
   npm i
   npx antora antora-playbook.yml
   ```
 
-* Open `openbpm-docs/build/site/index.html` in a web browser.
+* Open `flowset-docs/build/site/index.html` in a web browser.
 
 The `antora-playbook.yml` file allows you to build a single version from the branch checked out locally. To build the entire site from the current state of remote repositories use `antora-playbook.ci.yml` and `--fetch` option:
 

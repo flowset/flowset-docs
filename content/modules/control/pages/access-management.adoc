@@ -1,11 +1,11 @@
 = Access Management
 
-OpenBPM Control utilizes https://www.jmix.io[Jmix's^] role-based access control to manage user permissions and secure access to application functionality. This section explains how to create users, assign roles, and configure permissions to ensure secure system operation.
+Flowset Control utilizes https://www.jmix.io[Jmix's^] role-based access control to manage user permissions and secure access to application functionality. This section explains how to create users, assign roles, and configure permissions to ensure secure system operation.
 
 [[user-management]]
 == User Management
 
-Users in the OpenBPM Control are defined by the https://docs.jmix.io/jmix/security/users.html#entity[User^] entity. Their information is stored in the `USER_` table within the configured database.
+Users in the Flowset Control are defined by the https://docs.jmix.io/jmix/security/users.html#entity[User^] entity. Their information is stored in the `USER_` table within the configured database.
 
 The system comes with a default administrator user with the credentials `admin`/`admin`, which has full access rights.
 
@@ -14,7 +14,7 @@ The system comes with a default administrator user with the credentials `admin`/
 
 To create a new user:
 
-. Log in to OpenBPM Control using administrator credentials (default: `admin`/`admin`).
+. Log in to Flowset Control using administrator credentials (default: `admin`/`admin`).
 
 . Navigate to the *Administration → Users* menu item and click the *Create* button.
 +

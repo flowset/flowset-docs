@@ -1,6 +1,6 @@
 = Control
 
-**OpenBPM Control** is a web application that provides administrative functionality for external BPM engines.
+**Flowset Control** is a web application that provides administrative functionality for external BPM engines.
 
 *Key Features*
 
@@ -15,4 +15,4 @@
 Currently, only Camunda 7 is supported.
 ====
 
-OpenBPM Control is built using the open-source https://www.jmix.io[Jmix] framework.
+Flowset Control is built using the open-source https://www.jmix.io[Jmix] framework.

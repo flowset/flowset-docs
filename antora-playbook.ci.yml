@@ -1,9 +1,9 @@
 site:
-  title: OpenBPM Documentation
-  start_page: openbpm:ROOT:intro.adoc
-  url: https://docs.openbpm.io/
+  title: Flowset Documentation
+  start_page: flowset:ROOT:intro.adoc
+  url: https://docs.flowset.io/
 content:
-  sources: 
+  sources:
   - url: https://github.com/openbpm-platform/openbpm-docs.git
     branches:
     - release_2_4

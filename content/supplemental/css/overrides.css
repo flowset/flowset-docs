@@ -24,7 +24,7 @@ a.live-demo-btn:active, a.live-demo-btn:focus {
 }
 
 .doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 {
-    color: #043278;
+    color: #104656;
 }
 
 .doc pre.highlight code {
@@ -33,10 +33,11 @@ a.live-demo-btn:active, a.live-demo-btn:focus {
 
 nav.navbar {
     background: rgba(255, 255, 255, 1);
+//    background: #104656;
 }
 
 a, .doc a, .doc a:hover {
-    color: #043278;
+    color: #104656;
 }
 
 a.vaadin-docs-btn {

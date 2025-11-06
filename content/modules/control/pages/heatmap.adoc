@@ -2,10 +2,10 @@
 
 [NOTE, caption="Enterprise Feature"]
 ====
-This feature is exclusively available in the Enterprise Edition of *OpenBPM Control*.
+This feature is exclusively available in the Enterprise Edition of *Flowset Control*.
 ====
 
-Heatmaps, a feature of OpenBPM Control Enterprise, provide a visual representation of the most frequently traversed paths in your business process executions. This allows for easy identification of performance bottlenecks and problem areas, leading to process optimization.
+Heatmaps, a feature of Flowset Control Enterprise, provide a visual representation of the most frequently traversed paths in your business process executions. This allows for easy identification of performance bottlenecks and problem areas, leading to process optimization.
 
 To use this feature, navigate to *Heatmap* in the main menu.
 

@@ -64,7 +64,7 @@ image::new-bpm-engine-view.png[align="center", width="752"]
 +
 * *Name* (required):
 +
-Enter a descriptive name for your BPM engine instance (for example, `"Production Camunda 7"`, `"QA OpenBPM"`).
+Enter a descriptive name for your BPM engine instance (for example, `"Production Camunda 7"`, `"QA Flowset"`).
 
 * *Base URL* (required):
 +
@@ -91,7 +91,7 @@ Select authentication method:
 [[managing-connections]]
 == Managing BPM Engine Connections
 
-The OpenBPM Control displays your currently connected BPM engine in the upper-right corner status badge. This shows:
+The Flowset Control displays your currently connected BPM engine in the upper-right corner status badge. This shows:
 
 * Active engine name
 * Connection status
@@ -111,10 +111,10 @@ The administrator can choose the BPM engine and specify authentication parameter
 
 [NOTE, caption="Enterprise Feature"]
 ====
-This feature is exclusively available in the Enterprise Edition of *OpenBPM Control*.
+This feature is exclusively available in the Enterprise Edition of *Flowset Control*.
 ====
 
-OpenBPM Control allows viewing the current state of business processes within the engine. However, for the system administrator, it is also useful to have information about the overall system status, such as the number of CPU cores, available RAM, disk space, etc. This information will allow the administrator to be proactively alerted to increasing load. In conjunction with automatic/manual system scaling, OpenBPM Control can solve the problem of fully managing business process engines.
+Flowset Control allows viewing the current state of business processes within the engine. However, for the system administrator, it is also useful to have information about the overall system status, such as the number of CPU cores, available RAM, disk space, etc. This information will allow the administrator to be proactively alerted to increasing load. In conjunction with automatic/manual system scaling, Flowset Control can solve the problem of fully managing business process engines.
 
 [[monitoring-configuration]]
 === Monitoring Configuration
@@ -127,13 +127,13 @@ image::bpm-engine-monitoring.png[align="center", width="1440"]
 
 * Specify the URL of an external monitoring dashboard (e.g., https://grafana.com/[Grafana^]).
 * Example: For Camunda, you can configure a Grafana dashboard and paste its URL here.
-* Provides one-click navigation from OpenBPM Control directly to the external dashboard:
+* Provides one-click navigation from Flowset Control directly to the external dashboard:
 +
 image::grafana-monitoring.png[align="center", width="1440"]
 
 ==== Integrated Metrics
 
-* Enable the *Enable* checkbox to activate metrics collection and display within OpenBPM Control.
+* Enable the *Enable* checkbox to activate metrics collection and display within Flowset Control.
 * *URL* field: Configure the endpoint URL sourcing the metrics (e.g., a Spring Boot Actuator endpoint).
 * Click *Generate* to fetch available metrics from the specified endpoint.
 +
@@ -154,7 +154,7 @@ image::actuator-metrics-tags.png[align="center", width="802"]
 [[viewing-metrics]]
 === Viewing Metrics
 
-. Navigate to the list of <<bpm-engines,BPM engines>> in OpenBPM Control.
+. Navigate to the list of <<bpm-engines,BPM engines>> in Flowset Control.
 . Click *View metrics* for the desired engine.
 +
 image::view-metrics.png[align="center", width="1254"]
