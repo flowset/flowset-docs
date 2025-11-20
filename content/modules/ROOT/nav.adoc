@@ -1,6 +1,6 @@
 * xref:ROOT:intro.adoc[]
 
 include::control:partial$nav.adoc[]
-// include::studio:partial$nav.adoc[]
+include::studio:partial$nav.adoc[]
 // include::tasklist:partial$nav.adoc[]
 // include::workspace:partial$nav.adoc[]
