@@ -26,16 +26,16 @@ Flowset is a business process automation platform with its own execution engine 
 
 ==== Engine
 A process execution engine, API-compatible with Camunda 7. Currently in the process of being added to the Ministry of Digital Development registry (application submitted).
-An open-source version is available on Gitflic.
+An open-source version is available on GitHub.
 
 ==== Control
 An open-source tool for monitoring business process execution. Similar to Camunda Cockpit but with extended functionality.
-Built on the open-source Jmix framework. Source code available on Gitflic.
+Built on the open-source Jmix framework. Source code available on GitHub.
 
 ==== Studio
 A plugin for IntelliJ IDEA/OpenIDE. Adds a BPMN/DMN editor directly into the development environment, along with additional capabilities for code generation, navigation, etc.
 
-==== Tasklist (in development)
+==== Tasklist
 A React-based application template for managing end-user tasks.
 
 ==== Workspace (in development)

@@ -8,4 +8,4 @@
 ** xref:control:dmn-decisions.adoc[]
 ** xref:control:deployments.adoc[]
 ** xref:control:access-management.adoc[]
-** xref:control:heatmap.adoc[]
+// ** xref:control:heatmap.adoc[]

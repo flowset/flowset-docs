@@ -82,7 +82,7 @@ services:
       - "5432:5432"
 
   flowset-control:
-    image: flowset/flowset-control:latest
+    image: flowset/flowset-control-community:latest
     environment:
       MAIN_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flowset-control
       MAIN_DATASOURCE_USERNAME: root
@@ -110,7 +110,7 @@ docker compose up -d
 docker compose down
 ----
 
-Detailed instructions are available at https://github.com/openbpm-platform/openbpm-control/tree/main/docker-compose[GitHub^].
+Detailed instructions are available at https://github.com/flowset/flowset-control-community/tree/main/docker-compose[GitHub^].
 
 [[source-code-build]]
 === Source Code Build
@@ -129,7 +129,7 @@ Build and run from source for development or custom deployments.
 +
 [source,shell]
 ----
-git clone https://github.com/openbpm-platform/openbpm-control
+git clone https://github.com/flowset/flowset-control-community
 ----
 . Configure PostgreSQL database.
 +
@@ -168,7 +168,7 @@ After successful installation:
 // . Docker
 // . Docker Compose
 //
-// Instructions can be found https://github.com/openbpm-platform/openbpm-control/tree/main/docker-compose[here].
+// Instructions can be found https://github.com/flowset/flowset-control-community/tree/main/docker-compose[here].
 //
 // [#_using_sources]
 // == Using Sources
@@ -188,7 +188,7 @@ After successful installation:
 // +
 // [source,shell]
 // ----
-// git clone https://github.com/openbpm-platform/openbpm-control
+// git clone https://github.com/flowset/flowset-control-community
 // ----
 //
 // . Configure a PostgreSQL database.
