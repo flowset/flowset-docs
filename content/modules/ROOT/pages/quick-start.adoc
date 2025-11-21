@@ -1,0 +1,218 @@
+= Quick Start
+
+In this guide, you will go through the entire path: from installation to process modeling.
+
+Let’s get acquainted with Flowset using the demo process **“Business Trip Request”**.
+
+== Prerequisites
+
+Before you begin, make sure you have the necessary tools installed (detailed instructions are provided in separate sections):
+
+* xref:studio:setup.adoc[Flowset Studio] — an environment for modeling BPMN diagrams and forms.
+* xref:control:setup.adoc[Flowset Control] — a web interface for process monitoring and administration.
+
+== Demo Process
+
+We will model a business trip request process consisting of three elements:
+
+* **Start Event** with a *start form* (Camunda Form) — the employee enters the data.
+* **Service Task** (`JavaDelegate`) — emulates notifying the accounting department (logs the data).
+* **End Event** — ends the process.
+
+image::quick-start-process.png[Demo process]
+
+== Step 1. Creating a diagram in *Flowset Studio*
+
+First, let’s create a simple Spring Boot application using the Flowset Studio plugin.
+
+[NOTE]
+You can find the installation instructions for Flowset Studio at xref:studio:setup.adoc[the link].
+
+1. Launch Studio and create a new application with an embedded BPM engine.
++
+image:studio-new-project.png[Creating a new application]
++
+[NOTE]
+You can currently choose between *Camunda* or *Operaton*.
+
+2. In the *Flowset Explorer*, select: *Processes → New → Blank diagram*.
++
+image:studio-new-process-1.png[Creating a new diagram]
+
+3. Specify the parameters:
+* *Process ID:* `business-trip-process`
+* *Process name:* `Business trip process`
++
+image:studio-new-process-2.png[Filling in process properties]
+
+4. Place the elements on the diagram: *Start Event → Service Task → End Event* and connect them.
++
+image:studio-new-process-3.png[Building the diagram]
+
+5. Configure the *Service Task* and generate a new class using the “+” icon in the *Class* field:
+* *Name:* Notify the accounting department
+* *Task type:* Java Class
++
+image:studio-new-process-4.png[Service Task configuration]
++
+Enter `NotifyJavaDelegate` as the new class name:
++
+image:studio-new-delegate-1.png[Creating a class for the Service Task]
+
+6. Add the following implementation to `NotifyJavaDelegate`:
++
+[source,java]
+----
+package com.example.workflow.delegate;
+
+import org.operaton.bpm.engine.delegate.DelegateExecution;
+import org.operaton.bpm.engine.delegate.JavaDelegate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class NotifyJavaDelegate implements JavaDelegate {
+
+    private static final Logger log = LoggerFactory.getLogger(NotifyJavaDelegate.class);
+
+    @Override
+    public void execute(DelegateExecution execution) {
+        String employee = (String) execution.getVariable("employeeName");
+        String destination = (String) execution.getVariable("destination");
+        String startDate = (String) execution.getVariable("startDate");
+        String endDate = (String) execution.getVariable("endDate");
+        String purpose = (String) execution.getVariable("purpose");
+
+        log.info("Business trip request: {} → {} ({} — {}). Purpose: {}",
+                 employee, destination, startDate, endDate, purpose);
+    }
+}
+----
++
+[NOTE]
+`NotifyJavaDelegate` emulates integration with an external accounting service.
+
+== Step 2. Creating the start form
+
+Now let’s create a user form for the business trip request.
+
+1. In the *Flowset Explorer*, select: *Forms → New → Blank form*.
++
+image:studio-new-form-1.png[Creating a new form]
+
+2. In the form creation dialog, fill in:
++
+* *Form ID:* `start-form`.
++
+image:studio-new-form-2.png[Filling in form properties]
+
+3. Using the visual editor, add the following fields:
++
+|===
+|Name |Key |Type |Required?
+
+|Name
+|employeeName
+|TextField
+|Yes
+
+|Destination
+|destination
+|TextField
+|Yes
+
+|Start date
+|startDate
+|Date
+|Yes
+
+|End date
+|endDate
+|Date
+|Yes
+
+|Purpose
+|purpose
+|TextArea
+|Yes
+|===
++
+image:studio-new-form-3.png[Form builder]
+
+4. Bind the form to the *Start Event*:
++
+* *Form type:* Camunda form
+* *Form reference:* start-form.form [start-form]
++
+image:studio-new-form-4.png[Form binding]
+
+Your process is ready!
+
+== Step 3. Running and testing
+
+1. Start your Spring Boot application.
++
+image::studio-start-project.png[]
++
+2. Open *Operaton Tasklist* at: http://localhost:8080
+[NOTE]
+The login credentials are specified in `application.properties`. Default: *admin/admin*.
++
+image::studio-application-properties.png[]
++
+Enter your login and password.
++
+image::tasklist-start-process-1.png[Operaton Tasklist]
+
+3. Go to Tasklist and start your process:
++
+image:tasklist-start-process-2.png[]
++
+image:tasklist-start-process-3.png[]
++
+Click *Start*.
++
+image:tasklist-start-process-4.png[Process form]
++
+After the process completes, a log entry will appear containing the submitted data.
++
+image::tasklist-start-process-6.png[]
+
+== Step 4. Monitoring in *Flowset Control*
+
+You can view the process execution using Flowset Control. To do this, launch Control and connect it to your application.
+
+[NOTE]
+Installation instructions for Flowset Control: xref:control:setup.adoc[link].
+
+1. Log into the application:
++
+* *Login:* admin
+* *Password:* admin
++
+image:control-login.png[]
+
+2. On the main screen, click *Add* and fill in the fields:
+* *Name:* `Operaton`
+* *Base URL:* `http://localhost:8080/engine-rest`
+* *Authentication:* `false`
++
+image:control-new-connection-1.png[]
++
+[WARNING]
+If Flowset Control is running in a Docker container, specify:
+`http://host.docker.internal:8080/engine-rest`
++
+Check the connection using the *Test connection* button.
++
+image:control-new-connection-3.png[]
+
+3. Go to *Process Instances → Completed*, find your process and click *View*.
++
+image:control-process-instance-1.png[]
++
+4. Make sure the execution passed through the *Service Task*.
+If successful, the process diagram will be highlighted in green.
++
+image:control-process-instance-2.png[]
+
+Now you can extend the scenario: add date validations, branching rules, integrations with external systems, and approval tasks.
