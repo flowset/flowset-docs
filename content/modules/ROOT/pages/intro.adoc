@@ -37,6 +37,3 @@ A plugin for IntelliJ IDEA/OpenIDE. Adds a BPMN/DMN editor directly into the dev
 
 ==== Tasklist
 A React-based application template for managing end-user tasks.
-
-==== Workspace (in development)
-A web application for prototyping BPMN diagrams and forms.
