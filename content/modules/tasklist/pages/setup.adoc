@@ -25,18 +25,18 @@ cd flowset-tasklist-react-community
 +
 [source,shell]
 ----
-cp env.example env.local
+cp .env.example .env.local
 ----
 . Edit `env.local`, specifying the connection parameters for your BPM engine:
 +
 [source,properties]
 ----
-VITE_APP_LOCALE=ru
+VITE_APP_LOCALE=en
 VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
 VITE_BPM_ENGINE_TYPE=OPERATON
 ----
 +
-* `VITE_APP_LOCALE` — interface language (`ru` or `en`);
+* `VITE_APP_LOCALE` — interface language;
 * `VITE_BPM_ENGINE_API_URL` — URL of the engine's REST API;
 * `VITE_BPM_ENGINE_TYPE` — engine type (`CAMUNDA`, `OPERATON`).
 
