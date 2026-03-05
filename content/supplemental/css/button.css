@@ -1,0 +1,18 @@
+a.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #368f52;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+
+a.primary-btn:hover,
+a.primary-btn:focus-visible {
+    background-color: #27683b;
+    color: #fff;
+}

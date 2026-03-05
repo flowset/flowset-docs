@@ -2,6 +2,13 @@
 
 **Flowset Control** is a web application that provides administrative functionality for external BPM engines.
 
++++
+<div class="card-block">
+  <p>Want to try Flowset Control immediately? Use the public demo stand and explore the interface in minutes.</p>
+  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Demo stand</a>
+</div>
++++
+
 *Key Features*
 
 - **Connection Management:** Easily set up connections to various BPM engines and switch between them as needed.
@@ -12,7 +19,7 @@
 
 [NOTE]
 ====
-Currently, only Camunda 7 is supported.
+Currently, only Camunda 7/Operaton is supported.
 ====
 
 Flowset Control is built using the open-source https://www.jmix.io[Jmix] framework.

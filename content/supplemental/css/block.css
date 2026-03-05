@@ -1,0 +1,22 @@
+.card-block {
+    margin: 1.2rem 0 1.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #d9e5e8;
+    border-radius: 8px;
+    background-color: #f8fbfc;
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.card-block p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .card-block {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

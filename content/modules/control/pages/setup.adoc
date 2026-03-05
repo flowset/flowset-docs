@@ -24,6 +24,13 @@ java -version
 
 The portable distribution allows you to run Flowset Control without additional dependencies (except Java). Ideal for quick testing or local development.
 
++++
+<div class="card-block">
+  <p>Get the latest Flowset Control distribution package from the official downloads page.</p>
+  <a class="primary-btn" href="https://flowset.io/downloads#control" target="_blank">Download</a>
+</div>
++++
+
 *Running Instructions*:
 
 . Download the portable archive from the provided https://flowset.io/downloads#control[link^].
