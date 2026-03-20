@@ -86,7 +86,7 @@ cd flowset-tasklist-react-community/docker-compose
 +
 [source,properties]
 ----
-VITE_APP_LOCALE=ru
+VITE_APP_LOCALE=en
 VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
 VITE_BPM_ENGINE_TYPE=OPERATON
 ----
