@@ -1,0 +1,143 @@
+= Databases
+
+The Flowset Control application supports connections to **PostgreSQL**, **MySQL**, and the built-in **HSQLDB**.
+Configuration is done via the *application.properties* file and environment variables in *Docker Compose*.
+
+[[db-configuration]]
+== General Configuration
+
+The main `application.properties` file is located in `src/main/resources` and contains the common connection parameters.
+
+[source,properties]
+----
+# Database connection settings
+main.datasource.url=jdbc:hsqldb:file:./data/flowset-control;shutdown=true
+main.datasource.driver-class-name=org.hsqldb.jdbc.JDBCDriver
+main.datasource.username=sa
+main.datasource.password=
+----
+
+[NOTE, caption=Note]
+====
+If no environment variables are set, the application uses the built-in HSQLDB.
+====
+
+[[docker-compose]]
+== Docker Compose Configuration
+
+To run Flowset Control in a container alongside the database of your choice, use the following environment variables:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Parameter | Description
+
+| `MAIN_DATASOURCE_URL`
+| JDBC connection URL for the database.
+
+| `MAIN_DATASOURCE_DRIVERCLASSNAME`
+| Driver class name.
+
+| `MAIN_DATASOURCE_USERNAME`, `MAIN_DATASOURCE_PASSWORD`
+| Database connection credentials.
+|===
+
+[[hsqldb]]
+=== HSQLDB (default mode)
+
+If the application is started without an external database, it automatically creates a local file in the `./data/flowset-control` directory.
+This option is convenient for development and testing.
+
+[WARNING, caption=WARNING]
+====
+HSQLDB is not recommended for production deployments,
+as it does not provide high performance or fault tolerance.
+====
+
+[[postgres]]
+=== PostgreSQL
+
+PostgreSQL is a modern open-source object-relational database management system.
+It is known for its reliability, SQL standards compliance, and active developer community.
+Due to its high compatibility and stability, PostgreSQL is the recommended choice for Flowset Control production environments.
+
+[source,yaml]
+----
+services:
+  flowset-control-database:
+    image: postgres:16.3
+    container_name: flowset-control-database
+    restart: "no"
+    ports:
+      - "5432:5432"
+    volumes:
+      - flowset-control-database_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: "flowset-control"
+
+  flowset-control:
+    image: flowset/flowset-control-community:latest
+    depends_on:
+      flowset-control-database:
+        condition: service_started
+    ports:
+      - "8081:8081"
+    environment:
+      MAIN_DATASOURCE_URL: jdbc:postgresql://flowset-control-database/flowset-control
+      MAIN_DATASOURCE_DRIVERCLASSNAME: org.postgresql.Driver
+      MAIN_DATASOURCE_USERNAME: root
+      MAIN_DATASOURCE_PASSWORD: root
+      SERVER_PORT: "8081"
+
+volumes:
+  flowset-control-database_data:
+----
+
+[[mysql]]
+=== MySQL
+
+MySQL is one of the most widely used database management systems, supported by many applications and cloud platforms.
+Using it with Flowset Control is suitable for both development and production environments where compatibility with existing infrastructure is required.
+
+MySQL provides stable performance, straightforward configuration, and broad JDBC driver support.
+However, when running in containers with newer versions of MySQL (8.x and above), it is important to account for authentication specifics and connection security parameters.
+
+
+[source,yaml]
+----
+services:
+  flowset-control-database:
+    image: mysql:latest
+    container_name: flowset-control-database
+    environment:
+      MYSQL_DATABASE: flowset-control
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - flowset-control-database_data:/var/lib/mysql
+
+  flowset-control:
+    image: flowset/flowset-control-community:latest
+    depends_on:
+      flowset-control-database:
+        condition: service_started
+    ports:
+      - "8081:8081"
+    environment:
+      MAIN_DATASOURCE_URL: jdbc:mysql://flowset-control-database/flowset-control?useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&serverTimezone=UTC
+      MAIN_DATASOURCE_DRIVERCLASSNAME: com.mysql.cj.jdbc.Driver
+      MAIN_DATASOURCE_USERNAME: root
+      MAIN_DATASOURCE_PASSWORD: root
+      SERVER_PORT: "8081"
+
+volumes:
+  flowset-control-database_data:
+----
+
+[IMPORTANT, caption=Important]
+====
+The `allowPublicKeyRetrieval=true` parameter is required for connections using `caching_sha2_password`,
+which is the default authentication plugin in newer versions of MySQL (8.x and above). Without it, the application will not be able to establish a connection.
+====
