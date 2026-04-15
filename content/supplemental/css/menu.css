@@ -1,0 +1,10 @@
+.paid::after {
+    content: "";
+    vertical-align: sub;
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-image: url("../img/enterprise.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
