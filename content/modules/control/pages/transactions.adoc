@@ -1,0 +1,70 @@
+= Transaction Boundaries
+
+[NOTE, caption=Enterprise Feature]
+====
+This feature is available exclusively in the *Flowset Control Enterprise* edition.
+====
+
+Transaction boundary visualization is a visual highlight of commit points and wait states of the BPM engine.
+The feature helps to:
+
+* understand where the process *saves* its state;
+* see where *new* transactions are created;
+* analyze the correctness of asynchronous continuations;
+* identify retry risks and potential bottlenecks.
+
+The feature is available on the following pages:
+
+* xref:control:process.adoc#viewing-process[Viewing a Process Definition] (process definition)
+* xref:control:process-instances.adoc#detailed-instance[Viewing a Process Instance] (process instance)
+
+== How to Enable the Display
+
+1. Navigate to *Processes* or *Process Instances*.
+2. Select the desired process.
+3. Open the diagram.
+4. Enable *Transaction Boundary Display*.
++
+image::transaction-1.png[align=”center”]
+
+Transaction boundaries will be shown directly on the BPMN diagram.
+
+image::transaction-2.png[align=”center”]
+
+== Diagram Legend
+
+Two types of dashed lines are used for the display:
+
+image::transaction-2.png[align=”center”]
+
+* *Blue dashed lines* — transaction commits performed by the BPM engine *by default*.
+* *Red dashed lines* — commits defined by a developer during process modeling.
+
+== BPM Engine Wait State
+
+Indicated by *blue markers* on the incoming or outgoing flows of an element.
+
+* Marks the point at which the process saves its state and enters a waiting mode.
+* After this point, execution continues within a *new* transaction.
+* Commonly corresponds to:
+** Service Task (External);
+** Receive Task;
+** User Task;
+** Message Catch Event;
+** Timer Event;
+** Signal Event;
+** Event Based Gateway;
+
+== Asynchronous Continuations (Async Before/After)
+
+Indicated by *red dashed markers* on the boundaries of an element.
+
+* Signal that a separate transaction is created before (async before) or after (async after) an activity is executed.
+* Allow the execution of an activity to be isolated.
+* Used to improve fault tolerance and process manageability.
+
+== Notes and Recommendations
+
+* If an element is marked as a *wait state*, its execution *always* starts in a new transaction.
+* Asynchronous continuations are useful for “breaking up” long synchronous segments.
+* Too many transaction boundaries can lead to increased transactional overhead.
