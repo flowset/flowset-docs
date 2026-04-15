@@ -2,33 +2,36 @@
 
 [NOTE, caption="Enterprise Feature"]
 ====
-This feature is exclusively available in the Enterprise Edition of *Flowset Control*.
+This feature is available exclusively in the *Flowset Control Enterprise* edition.
 ====
 
-Heatmaps, a feature of Flowset Control Enterprise, provide a visual representation of the most frequently traversed paths in your business process executions. This allows for easy identification of performance bottlenecks and problem areas, leading to process optimization.
+Heatmaps, a Flowset Control Enterprise feature, provide a visual representation of the most frequently used execution paths in business processes. This makes it easy to identify bottlenecks and problem areas, helping to optimize processes.
 
-To use this feature, navigate to *Heatmap* in the main menu.
+To use this feature, navigate to the *Heatmap* menu.
 
-Heatmaps are available for all versions of your processes. Use the dropdown list to select the process you want to analyze.
+Heatmaps are available for all versions of your processes. Use the drop-down list to select the process you want to analyze.
 
 image::heatmap.png[align="center", width="1552"]
 
-Heatmaps support two grouping modes to visualize process data:
+Heatmaps support two grouping modes for visualizing process data:
 
-* *By count*
+* *By Count*
 +
 image::heatmap-count.png[align="center", width="785"]
 +
-** Visualizes the frequency of token passes through each activity (task) in the process.
-** The numeric value displayed on the heatmap near an activity indicates how many times a token reached that activity.
+** Displays how frequently tokens pass through each activity (task) in the process.
+** The numeric value shown on the heatmap next to an activity indicates how many times a token reached that activity.
 +
-Example: A number 44 on a task means it was executed 44 times for the selected process version.
+Example: a value of 7 on a task means it was executed 7 times for the selected process version.
 
-* *By duration in minutes*
+* *By Duration in Minutes*
 +
 image::heatmap-duration.png[align="center", width="787"]
 +
-** Visualizes the average time (in minutes) required to complete each activity.
-** The numeric value displayed represents the mean execution time for that activity.
+** Displays the average time (in minutes) required to complete each activity.
+** The numeric value shows the average execution time for that activity.
 
-NOTE: For both grouping modes, you can use the *Hide connections* checkbox to remove connection arrows (sequence flows) between elements, focusing solely on the activities and their metrics.
+[NOTE, caption="Note"]
+====
+For both grouping modes, you can use the *Hide Connections* checkbox to remove the connector arrows (sequence flows) between elements and focus solely on activities and their metrics.
+====

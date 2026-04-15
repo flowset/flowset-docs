@@ -9,4 +9,4 @@
 ** xref:control:deployments.adoc[]
 ** xref:control:access-management.adoc[]
 ** xref:control:oidc.adoc[]
-// ** xref:control:heatmap.adoc[]
+** xref:control:heatmap.adoc[]
