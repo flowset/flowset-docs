@@ -5,6 +5,7 @@
 ** xref:control:engine-monitoring.adoc[]
 ** xref:control:process.adoc[]
 ** xref:control:process-instances.adoc[]
+** xref:control:process-documentation.adoc[]
 ** xref:control:user-tasks.adoc[]
 ** xref:control:dmn-decisions.adoc[]
 ** xref:control:deployments.adoc[]
