@@ -1,4 +1,5 @@
 * xref:ROOT:intro.adoc[]
+* xref:ROOT:whats-new.adoc[]
 * xref:ROOT:quick-start.adoc[]
 
 include::control:partial$nav.adoc[]

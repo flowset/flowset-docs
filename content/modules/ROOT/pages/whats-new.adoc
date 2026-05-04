@@ -1,0 +1,57 @@
+= What's New
+
+== Flowset Control
+
+=== Improvements
+
+Flowset Control has redesigned key screens for analyzing processes, tasks, decisions, and incidents.
+The main focus of this release is improved navigation, data readability, and everyday usability when working with BPM Engine.
+
+==== Decisions and DMN
+
+Working with decisions and decision tables has been improved. The interface now provides more convenient views for historic decision instances, updated detail screens, and redesigned navigation to decision tables. This makes it easier to analyze DMN executions and provides a more consistent experience when viewing related data.
+
+==== Processes and BPMN Diagrams
+
+Working with processes and BPMN diagrams is now more convenient. Additional parameters have been added for process instance operations, diagram scaling has been improved, and the visualization of technical states on the process diagram has been updated. The process detail screen has also become more convenient for regular monitoring.
+
+==== Tasks, Jobs, and Incidents
+
+Workflows for tasks, jobs, and incidents have been improved. Navigation between related objects is now more direct, and frequently used task actions are available faster from the interface.
+
+==== Interface and Navigation
+
+The interface is cleaner and more predictable. Tables now have more compact actions and links in cells, filters can be saved and shared through URLs, and long-running operations lock the interface while they are in progress. The dashboard, variable sorting, BPM Engine environment types, and information on the About page have also been updated.
+
+==== Technical Updates
+
+The Jmix platform has been updated to version 2.7.
+
+=== Bug Fixes
+
+This release fixes issues affecting stability and correct data display. Message handling for unnamed elements has been improved, error details for external tasks are displayed again, Task List behavior with manual tasks has been fixed, and deployment counts in lists have been corrected.
+
+== Flowset Studio
+
+Flowset Studio improves working with BPMN models, the properties inspector, external tasks, and project templates.
+This release also includes fixes that improve plugin stability in IntelliJ IDEA and the correctness of project generation.
+
+=== Improvements
+
+The inspector now supports collapsing and expanding property groups, making it easier to work with large BPMN models. Navigation between the model, Java code, external tasks, and related process elements has been improved.
+
+Support for external tasks has been added: Studio can generate external task handlers, navigate to them from the model, and create Spring Boot projects for scenarios with an external engine. Support has also been added for projects built around external tasks.
+
+BPMN project capabilities have been expanded: a business process deployment scenario has been added, project templates have been improved, and Operaton versions have been updated. IntelliJ IDEA 2026.1 is now supported.
+
+The plugin description has been optimized for better visibility in JetBrains Marketplace.
+
+=== Bug Fixes
+
+Issues in the BPMN element properties inspector have been fixed. Editing form properties, displaying lists of Task Listeners, Execution Listeners, and custom forms, and changing the Task Listener type now work correctly again. Problems with creating Task Listeners and configuring Call Activity have been fixed, including selecting the called element type and navigating to the related element.
+
+Project generation and configuration issues have been fixed. The run configuration is now created correctly for new projects and on Linux, the project selection wizard correctly selects the Java version, and web and security dependencies are no longer duplicated in `pom.xml` when creating a Maven project.
+
+Issues when changing connection parameters and engine configuration have been resolved. Studio no longer adds unnecessary dependencies through the wizard and no longer changes dependency order unnecessarily.
+
+Interface stability and polish have been improved. Fixed issues include a conflict with Jmix Studio, an IDE slowdown warning, unnecessary document opening, long text display in input fields, a missing plugin icon in window titles, and authentication data being saved in the applications file.
