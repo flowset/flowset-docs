@@ -6,11 +6,7 @@ content:
   sources:
   - url: https://github.com/flowset/flowset-docs.git
     branches:
-    - release_2_4
-    - release_2_3
-    - release_2_2
-    - release_2_1
-    - release_2_0
+      - release_2025.0
     start_path: content
 ui:
   bundle:
