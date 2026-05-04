@@ -5,3 +5,5 @@
 include::control:partial$nav.adoc[]
 include::studio:partial$nav.adoc[]
 include::tasklist:partial$nav.adoc[]
+
+* xref:ROOT:examples.adoc[]
