@@ -85,6 +85,7 @@ image::process-instance-history.png[align="center", width="1163"]
 ** Reloading the process instance.
 ** Suspending the instance.
 ** xref:process.adoc#process-migration[Migrating] the instance to a new process definition version.
+** xref:process-instance-modification.adoc#modify-single-instance[Modifying] the current running process instance by moving tokens between activities.
 ** Terminating the process instance.
 +
 image::process-instance-info.png[align="center", width="1166"]
