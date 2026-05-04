@@ -34,6 +34,9 @@ The following actions are available:
 
 | *View*
 | Displays detailed DMN table information. See <<view-desicion-details>>.
+
+| *Evaluate decision*
+| Opens a standalone evaluation view for the selected decision table. See xref:decision-evaluation.adoc[Evaluating Decisions].
 |===
 
 [[deploy-dmn-table]]
