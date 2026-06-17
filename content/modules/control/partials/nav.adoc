@@ -7,6 +7,7 @@
 ** xref:control:process-instances.adoc[]
 ** xref:control:jobs.adoc[]
 ** xref:control:process-instance-modification.adoc[]
+** xref:control:batch-operations.adoc[]
 ** xref:control:messages.adoc[]
 ** xref:control:process-documentation.adoc[]
 ** xref:control:user-tasks.adoc[]
