@@ -1,5 +1,19 @@
 = Introduction
 
+[.fl-hero]
+--
+Flowset is a business process automation platform — design, run, and monitor BPMN processes end to end.
+
+[.fl-hero-actions]
+* xref:ROOT:quick-start.adoc[Get started]
+* https://demo-control.flowset.io/login[Live demo]
+--
+
+[.fl-cards]
+* xref:control:index.adoc[Control]: Monitor and administer running processes.
+* xref:studio:index.adoc[Studio]: Model BPMN/DMN diagrams and forms in IntelliJ IDEA.
+* xref:tasklist:index.adoc[Tasklist]: Manage end-user tasks with a React app.
+
 == What is Flowset?
 
 Flowset is a business process automation platform with its own execution engine and a set of tools covering the entire BPM solution lifecycle.

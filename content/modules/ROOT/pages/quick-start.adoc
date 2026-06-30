@@ -68,6 +68,7 @@ image:studio-new-delegate-1.png[Creating a class for the Service Task]
 
 6. Add the following implementation to `NotifyJavaDelegate`:
 +
+.NotifyJavaDelegate.java
 [source,java]
 ----
 package com.example.workflow.delegate;

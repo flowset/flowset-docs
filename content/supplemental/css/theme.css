@@ -1,0 +1,954 @@
+/*
+ * Flowset docs — Phase 0 design layer (tokens + dark mode + components).
+ *
+ * Loaded LAST so it can override the Antora default UI and the other
+ * supplemental stylesheets. Everything here is expressed via CSS custom
+ * properties (design tokens) so it migrates 1:1 into the future `flowset-ui`
+ * bundle: move :root/[data-theme] into the bundle's token file and the rest
+ * into the bundle's component styles — no rewrite needed.
+ */
+
+/* ----------------------------------------------------------------------
+ * 1. Design tokens
+ * -------------------------------------------------------------------- */
+:root {
+    color-scheme: light;
+
+    --fl-brand: #104656;          /* links, headings accents (matches current brand) */
+    --fl-brand-accent: #368f52;   /* primary actions (matches current green button) */
+
+    --fl-bg: #ffffff;
+    --fl-bg-subtle: #f6f9fa;
+    --fl-surface: #ffffff;
+    --fl-text: #1f2328;
+    --fl-text-muted: #5f6b71;
+    --fl-border: #e1e6e8;
+    --fl-code-bg: #f4f7f8;
+
+    --fl-info: #185fa5;     --fl-info-bg: #e9f2fb;
+    --fl-success: #0f6e56;  --fl-success-bg: #e7f5ef;
+    --fl-warning: #8a5a00;  --fl-warning-bg: #fcf3e2;
+    --fl-danger: #a32d2d;   --fl-danger-bg: #fbeaea;
+
+    --fl-radius-sm: 6px;
+    --fl-radius-md: 8px;
+    --fl-radius-lg: 12px;
+
+    --fl-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --fl-font-mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
+    --fl-content-max: 820px;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --fl-brand: #5dcaa5;
+    --fl-brand-accent: #5dcaa5;
+
+    --fl-bg: #0f1216;
+    --fl-bg-subtle: #171b21;
+    --fl-surface: #13171d;
+    --fl-text: #e6e8eb;
+    --fl-text-muted: #9aa3af;
+    --fl-border: #2a2f37;
+    --fl-code-bg: #13171d;
+
+    --fl-info: #6cb0f5;     --fl-info-bg: #16263a;
+    --fl-success: #5dcaa5;  --fl-success-bg: #11241d;
+    --fl-warning: #e3b341;  --fl-warning-bg: #2a230f;
+    --fl-danger: #f08a8a;   --fl-danger-bg: #2a1515;
+}
+
+/* ----------------------------------------------------------------------
+ * 2. Typography
+ * -------------------------------------------------------------------- */
+html, body, .doc, button, input, select, textarea {
+    font-family: var(--fl-font-sans);
+}
+
+/* ----------------------------------------------------------------------
+ * 3. Dark-mode surfaces (override Antora default UI + existing overrides)
+ * -------------------------------------------------------------------- */
+[data-theme="dark"] body {
+    background-color: var(--fl-bg) !important;
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] nav.navbar,
+[data-theme="dark"] .navbar {
+    background: var(--fl-bg) !important;
+    border-bottom-color: var(--fl-border) !important;
+}
+
+[data-theme="dark"] .toolbar {
+    background-color: var(--fl-bg) !important;
+    color: var(--fl-text-muted);
+    box-shadow: inset 0 -1px 0 var(--fl-border);
+}
+
+[data-theme="dark"] .toolbar a,
+[data-theme="dark"] .breadcrumbs a,
+[data-theme="dark"] .toolbar .breadcrumbs li::after {
+    color: var(--fl-text-muted);
+}
+
+[data-theme="dark"] .nav {
+    background-color: var(--fl-bg) !important;
+    border-right-color: var(--fl-border) !important;
+}
+
+[data-theme="dark"] .nav-panel-menu,
+[data-theme="dark"] .nav .nav-list,
+[data-theme="dark"] .nav .nav-text,
+[data-theme="dark"] .nav a {
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .nav .nav-item.is-current-page > .nav-link,
+[data-theme="dark"] .nav a:hover {
+    color: var(--fl-brand);
+}
+
+[data-theme="dark"] .doc {
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .doc :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--fl-text) !important;
+}
+
+/* Only content links get the brand color in dark mode — not nav, toolbar, buttons */
+[data-theme="dark"] .doc a {
+    color: var(--fl-brand);
+}
+
+[data-theme="dark"] .doc :is(table.tableblock, th.tableblock, td.tableblock),
+[data-theme="dark"] .doc table.tableblock {
+    border-color: var(--fl-border) !important;
+}
+
+[data-theme="dark"] .doc thead th {
+    background-color: var(--fl-bg-subtle);
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .doc :not(pre) > code {
+    background-color: var(--fl-code-bg);
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .toc .toc-menu h3 {
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .toc .toc-menu a {
+    color: var(--fl-text-muted);
+}
+
+/* breadcrumb home icon (dark SVG) — make it match the text */
+[data-theme="dark"] .home-link {
+    filter: invert(1) brightness(1.7);
+}
+
+[data-theme="dark"] .toc .toc-menu a:hover,
+[data-theme="dark"] .toc .toc-menu li.is-active > a {
+    color: var(--fl-brand);
+}
+
+[data-theme="dark"] .pagination a {
+    color: var(--fl-brand) !important;
+}
+
+/* Code blocks — the base UI hardcodes #fafafa on pre / pre.highlight > code */
+[data-theme="dark"] .doc .listingblock pre,
+[data-theme="dark"] .doc .listingblock pre:not(.highlight),
+[data-theme="dark"] .doc .literalblock pre,
+[data-theme="dark"] .doc pre.highlight > code,
+[data-theme="dark"] .doc pre {
+    background: var(--fl-code-bg) !important;
+    box-shadow: inset 0 0 0 1px var(--fl-border);
+    color: var(--fl-text);
+}
+
+/* Version selector / explore panel — base UI hardcodes light greys */
+[data-theme="dark"] .nav-panel-explore { background: var(--fl-bg); }
+[data-theme="dark"] .nav-panel-explore .context { color: var(--fl-text); }
+
+[data-theme="dark"] .nav-panel-explore .components {
+    background: var(--fl-bg-subtle);
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .nav-panel-explore .component .version a {
+    background: var(--fl-bg-subtle);
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .nav-panel-explore .component .is-current a {
+    background: var(--fl-brand);
+    color: #08231b;
+}
+
+[data-theme="dark"] .page-versions .version-menu {
+    background: var(--fl-surface);
+    border: 1px solid var(--fl-border);
+}
+
+[data-theme="dark"] .page-versions .version-menu a,
+[data-theme="dark"] .page-versions .version-menu-toggle {
+    color: var(--fl-text);
+}
+
+/* dark backgrounds need light chevrons (pseudo-elements only, never the text) */
+[data-theme="dark"] .nav-panel-explore .context .version::after {
+    filter: invert(1) brightness(1.6);
+}
+
+/* ----------------------------------------------------------------------
+ * 4. Components (both themes, token-driven)
+ * -------------------------------------------------------------------- */
+
+/* Admonitions — modern callout card. The default UI renders the type label as
+ * an absolutely-positioned pill at the top-left of the table; we keep that
+ * mechanism (no overflow clipping, no width/position overrides) and only
+ * restyle the content box. */
+.doc .admonitionblock {
+    margin: 1.6rem 0;
+}
+
+.doc .admonitionblock > table {
+    position: relative;
+    table-layout: fixed;
+    width: 100%;
+    /* td border-radius is only honored with separate borders */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.doc .admonitionblock td.content {
+    background-color: var(--fl-bg-subtle);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-lg);
+    padding: 1.15rem 1.2rem 0.9rem;
+    color: var(--fl-text);
+}
+
+.doc .admonitionblock td.content > .title {
+    color: var(--fl-text-muted);
+    font-style: normal;
+}
+
+/* lift the label pill above the card border */
+.doc .admonitionblock td.icon {
+    z-index: 1;
+}
+
+/* Card block (used on quick-start) */
+.card-block {
+    border-color: var(--fl-border);
+    background-color: var(--fl-bg-subtle);
+    border-radius: var(--fl-radius-lg);
+    color: var(--fl-text);
+}
+
+/* Primary button — readable green with white text in both themes */
+a.primary-btn,
+[data-theme="dark"] .doc a.primary-btn {
+    background-color: #368f52;
+    color: #fff;
+    border-radius: var(--fl-radius-md);
+}
+
+/* Code blocks */
+.doc .listingblock pre,
+.doc pre.highlight,
+.doc pre {
+    background-color: var(--fl-code-bg);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-md);
+    overflow: hidden; /* clip the inner code block's square corners */
+}
+
+/* round the inner code/literal block so no square corner pokes out */
+.doc .listingblock pre.highlight > code,
+.doc .listingblock pre:not(.highlight),
+.doc .literalblock pre {
+    border-radius: var(--fl-radius-md);
+}
+
+/* Search input */
+#search-input {
+    background-color: var(--fl-surface);
+    border: 1px solid var(--fl-border);
+    color: var(--fl-text);
+    border-radius: var(--fl-radius-md);
+}
+
+#search-input::placeholder {
+    color: var(--fl-text-muted);
+}
+
+[data-theme="dark"] .search-result-dataset {
+    background: var(--fl-surface);
+    border-color: var(--fl-border);
+    color: var(--fl-text);
+}
+
+[data-theme="dark"] .search-result-document-hit > a {
+    color: var(--fl-text);
+}
+
+/* ----------------------------------------------------------------------
+ * 5. Theme toggle button
+ * -------------------------------------------------------------------- */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--fl-radius-md);
+    padding: 6px 8px;
+    cursor: pointer;
+    color: var(--fl-text);
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.theme-toggle:hover {
+    border-color: var(--fl-border);
+    background-color: var(--fl-bg-subtle);
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.theme-icon--sun { display: none; }
+[data-theme="dark"] .theme-icon--moon { display: none; }
+[data-theme="dark"] .theme-icon--sun { display: block; }
+
+/* ----------------------------------------------------------------------
+ * 6. Typography scale & vertical rhythm (Phase 2)
+ * -------------------------------------------------------------------- */
+.doc {
+    max-width: var(--fl-content-max);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.doc p,
+.doc li {
+    line-height: 1.7;
+}
+
+.doc :is(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.3;
+    scroll-margin-top: 5rem; /* clear the sticky toolbar when jumping to anchors */
+}
+
+.doc h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.6em;
+}
+
+.doc h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 2.2rem 0 1rem;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--fl-border);
+}
+
+.doc h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.8rem 0 0.7rem;
+}
+
+.doc h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.6rem;
+}
+
+.doc h5,
+.doc h6 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.2rem 0 0.5rem;
+}
+
+.doc a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.doc a:hover {
+    text-decoration: underline;
+}
+
+.doc :not(pre) > code {
+    font-family: var(--fl-font-mono);
+    font-size: 0.875em;
+    background-color: var(--fl-code-bg);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-sm);
+    padding: 0.1em 0.35em;
+}
+
+.doc blockquote {
+    border-left: 3px solid var(--fl-brand-accent);
+    background: var(--fl-bg-subtle);
+    margin: 1.25rem 0;
+    padding: 0.6rem 1rem;
+    color: var(--fl-text);
+    border-radius: 0 var(--fl-radius-md) var(--fl-radius-md) 0;
+}
+
+.doc hr {
+    border: 0;
+    border-top: 1px solid var(--fl-border);
+    margin: 2rem 0;
+}
+
+.doc kbd {
+    background: var(--fl-bg-subtle);
+    border: 1px solid var(--fl-border);
+    border-bottom-width: 2px;
+    border-radius: var(--fl-radius-sm);
+    padding: 0.1em 0.4em;
+    font-family: var(--fl-font-mono);
+    font-size: 0.8em;
+    color: var(--fl-text);
+}
+
+/* ----------------------------------------------------------------------
+ * 7. Command-palette search (Phase 3)
+ * -------------------------------------------------------------------- */
+.search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 220px;
+    background: var(--fl-bg-subtle);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-md);
+    padding: 7px 10px;
+    color: var(--fl-text-muted);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.search-trigger:hover {
+    border-color: var(--fl-text-muted);
+}
+
+.search-trigger svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.search-trigger__label {
+    flex: 1;
+    text-align: left;
+}
+
+.search-trigger__kbd {
+    border: 1px solid var(--fl-border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 11px;
+    font-family: var(--fl-font-mono);
+}
+
+.search-modal[hidden] { display: none; }
+
+.search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12vh 16px 16px;
+}
+
+.search-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.search-modal__panel {
+    position: relative;
+    width: min(640px, 100%);
+    background: var(--fl-surface);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-lg);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+}
+
+.search-modal__field {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 16px;
+    position: relative;
+}
+
+.search-modal__field > svg {
+    width: 18px;
+    height: 18px;
+    color: var(--fl-text-muted);
+    flex: none;
+}
+
+.search-modal__field #search-input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font-size: 16px;
+    color: var(--fl-text);
+    width: auto;
+    padding: 0;
+    outline: none;
+}
+
+.search-modal__field kbd {
+    border: 1px solid var(--fl-border);
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-size: 11px;
+    color: var(--fl-text-muted);
+    font-family: var(--fl-font-mono);
+    cursor: pointer;
+}
+
+/* Make the lunr results flow inside the panel */
+.search-modal .search-result-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    margin: 0;
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--fl-border);
+}
+
+.search-modal .search-result-dataset {
+    border: 0;
+    border-radius: 0 0 var(--fl-radius-lg) var(--fl-radius-lg);
+    background: var(--fl-surface);
+    color: var(--fl-text);
+    max-height: 60vh;
+}
+
+.search-modal .search-result-document-hit > a { color: var(--fl-text); }
+.search-modal .search-result-document-hit > a:hover { background-color: var(--fl-bg-subtle); }
+
+html.search-modal-open { overflow: hidden; }
+
+/* self-contained search results */
+.search-modal__results {
+    max-height: 60vh;
+    overflow-y: auto;
+    border-top: 1px solid var(--fl-border);
+}
+
+.search-modal__results:empty {
+    display: none;
+}
+
+.search-modal__result {
+    display: block;
+    padding: 10px 16px;
+    color: var(--fl-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--fl-border);
+}
+
+.search-modal__result:last-child {
+    border-bottom: 0;
+}
+
+.search-modal__result:hover,
+.search-modal__result.is-selected {
+    background: var(--fl-bg-subtle);
+}
+
+.search-modal__result-title {
+    display: block;
+    font-weight: 500;
+    color: var(--fl-text);
+}
+
+.search-modal__result:hover .search-modal__result-title,
+.search-modal__result.is-selected .search-modal__result-title {
+    color: var(--fl-brand);
+}
+
+.search-modal__result-snippet {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    color: var(--fl-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.search-modal__result mark {
+    background: transparent;
+    color: var(--fl-brand-accent);
+    font-weight: 600;
+}
+
+.search-modal__empty {
+    padding: 14px 16px;
+    color: var(--fl-text-muted);
+    font-size: 14px;
+}
+
+/* ----------------------------------------------------------------------
+ * 8. Navigation (Phase 3)
+ * -------------------------------------------------------------------- */
+/* More breathing room between items */
+.nav-menu { line-height: 1.5; }
+.nav-menu .nav-item { position: relative; margin-top: 0.55rem; }
+.nav-menu .nav-list { margin-left: 0.85rem; }
+.nav-link,
+.nav-text { padding: 3px 0; }
+
+.nav-link:hover,
+.nav-text:hover {
+    color: var(--fl-brand);
+}
+
+.nav-item.is-current-page > .nav-link,
+.nav-item.is-current-page > .nav-text {
+    color: var(--fl-brand);
+    font-weight: 600;
+}
+
+/* Move the expand caret from the left to the right edge */
+.nav-menu .nav-item-toggle {
+    left: auto !important;
+    right: 0 !important;
+    margin: 0 !important;
+    top: 0.2em;
+    color: var(--fl-text-muted);
+}
+
+.nav-item-toggle ~ .nav-link,
+.nav-item-toggle ~ .nav-text {
+    padding-right: 1.5em;
+}
+
+/* ----------------------------------------------------------------------
+ * 9. Landing page — hero + cards (Phase 4)
+ * -------------------------------------------------------------------- */
+.doc .fl-hero {
+    margin: 0.5rem 0 2rem;
+}
+
+.doc .fl-hero p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--fl-text-muted);
+    max-width: 42rem;
+    margin: 0;
+}
+
+.doc .fl-hero-actions ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 1.4rem 0 0;
+    padding: 0;
+}
+
+.doc .fl-hero-actions li {
+    margin: 0 !important;
+    padding: 0;
+    display: flex;
+}
+
+/* the buttons are wrapped in <p> — make it transparent to layout */
+.doc .fl-hero-actions li p {
+    display: contents;
+    margin: 0;
+    line-height: 1;
+}
+
+.doc .fl-hero-actions li a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 44px !important;
+    min-height: 0;
+    padding: 0 18px !important;
+    margin: 0 !important;
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--fl-text);
+}
+
+/* no external-link marker on the buttons (would change their height) */
+.doc .fl-hero-actions li a::after {
+    content: none !important;
+    display: none !important;
+}
+
+.doc .fl-hero-actions li:first-child a {
+    background: #368f52;
+    color: #fff;
+    border-color: transparent;
+}
+
+.doc .fl-hero-actions a:hover {
+    text-decoration: none;
+    border-color: var(--fl-text-muted);
+}
+
+.doc .fl-cards ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+    margin: 0 0 2.5rem;
+    padding: 0;
+}
+
+@media screen and (max-width: 700px) {
+    .doc .fl-cards ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.doc .fl-cards li {
+    margin: 0;
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-lg);
+    background: var(--fl-bg-subtle);
+    padding: 16px 18px;
+    color: var(--fl-text-muted);
+    line-height: 1.55;
+}
+
+.doc .fl-cards li:hover {
+    border-color: var(--fl-brand-accent);
+}
+
+.doc .fl-cards li a {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+}
+
+/* Alignment fixes: hero actions and cards share the content's left edge,
+   no stray indentation from the default open-block / list wrappers. */
+.doc .openblock.fl-hero,
+.doc .openblock.fl-hero > .content {
+    margin: 0;
+}
+
+.doc .openblock.fl-hero > .content > .paragraph {
+    margin: 0;
+}
+
+.doc .ulist.fl-hero-actions,
+.doc .ulist.fl-cards {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.doc .fl-cards ul {
+    align-items: stretch;
+}
+
+/* keep normal flow inside cards so text top-aligns uniformly across cards */
+.doc .fl-cards li {
+    display: block;
+}
+
+/* beat `.doc .ulist li+li { margin-top:.5rem }` which pushed cards 2/3 down */
+.doc .ulist.fl-cards li,
+.doc .ulist.fl-cards li + li {
+    margin-top: 0;
+}
+
+/* ----------------------------------------------------------------------
+ * 10. Code block file header (Phase 4)
+ * -------------------------------------------------------------------- */
+.doc .listingblock > .title {
+    margin: 0;
+    padding: 8px 14px;
+    background: var(--fl-bg-subtle);
+    border: 1px solid var(--fl-border);
+    border-bottom: 0;
+    border-radius: var(--fl-radius-md) var(--fl-radius-md) 0 0;
+    font-family: var(--fl-font-mono);
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fl-text-muted);
+}
+
+.doc .listingblock:has(> .title) pre {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* ----------------------------------------------------------------------
+ * 11. Tabbed content (Phase 4) — restyle @asciidoctor/tabs to our tokens.
+ *     Requires the @asciidoctor/tabs extension + its tabs.css/tabs.js
+ *     (see flowset-ui/TABS-SETUP.md). These rules are inert without it.
+ * -------------------------------------------------------------------- */
+.doc .tabs > .tablist > ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--fl-border);
+}
+
+.doc .tabs > .tablist li {
+    margin: 0;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--fl-text-muted);
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: var(--fl-radius-md) var(--fl-radius-md) 0 0;
+}
+
+.doc .tabs > .tablist li.is-selected {
+    color: var(--fl-text);
+    background: var(--fl-bg-subtle);
+    border-color: var(--fl-border);
+}
+
+.doc .tabs > .tabpanel {
+    border: 1px solid var(--fl-border);
+    border-top: 0;
+    padding: 1rem 1.1rem;
+    border-radius: 0 0 var(--fl-radius-md) var(--fl-radius-md);
+}
+
+/* ----------------------------------------------------------------------
+ * 12. Accessibility (Phase 5)
+ * -------------------------------------------------------------------- */
+:where(a, button, input, [tabindex], .nav-link, .search-trigger, .theme-toggle):focus-visible {
+    outline: 2px solid var(--fl-brand-accent);
+    outline-offset: 2px;
+    border-radius: var(--fl-radius-sm);
+}
+
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -48px;
+    z-index: 1100;
+    padding: 8px 14px;
+    background: var(--fl-surface);
+    color: var(--fl-brand);
+    border: 1px solid var(--fl-border);
+    border-radius: var(--fl-radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* ----------------------------------------------------------------------
+ * 13. Header brand + unified action buttons (fixes)
+ * -------------------------------------------------------------------- */
+.navbar-brand .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-mark {
+    height: 30px;
+    width: auto;
+    flex: none;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--fl-text);
+    white-space: nowrap;
+}
+
+/* Right-side icon buttons: same boxed format as the theme toggle */
+.header-btn {
+    gap: 4px;
+    align-items: center;
+}
+
+.header-btn a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: var(--fl-radius-md);
+    background: transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.header-btn a:hover {
+    border-color: var(--fl-border);
+    background-color: var(--fl-bg-subtle);
+}
+
+/* beat search.css `div.header-btn a img { margin-left: 8px }` */
+div.header-btn a img {
+    margin: 0;
+    filter: brightness(0);
+    opacity: 0.8;
+}
+
+.header-btn a:hover img {
+    opacity: 1;
+    transform: none;
+}
+
+[data-theme="dark"] .header-btn a img { filter: brightness(0) invert(1); opacity: 0.85; }
+[data-theme="dark"] .header-btn a:hover img { opacity: 1; }
+
+.theme-toggle .theme-icon { width: 20px; height: 20px; }

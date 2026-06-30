@@ -1,10 +1,14 @@
 {
   "devDependencies": {
     "@antora/cli": "3.0.3",
+    "@antora/lunr-extension": "^1.0.0-alpha.8",
     "@antora/site-generator-default": "3.0.3",
+    "@asciidoctor/tabs": "^1.0.0-beta.6",
     "asciidoctor-kroki": "^0.12.0"
   },
   "scripts": {
-    "build": "antora antora-playbook.yml"
+    "build": "antora antora-playbook.yml && node build-search-index.js",
+    "build:ci": "antora --fetch antora-playbook.ci.yml && node build-search-index.js",
+    "index": "node build-search-index.js"
   }
 }

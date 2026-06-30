@@ -1,0 +1,52 @@
+/*
+ * Flowset UI — design tokens.
+ * Single source of truth for colors, typography and geometry.
+ * Imported FIRST from site.css so every other stylesheet can use the variables.
+ */
+:root {
+    color-scheme: light;
+
+    --fl-brand: #104656;          /* links, heading accents */
+    --fl-brand-accent: #368f52;   /* primary actions */
+
+    --fl-bg: #ffffff;
+    --fl-bg-subtle: #f6f9fa;
+    --fl-surface: #ffffff;
+    --fl-text: #1f2328;
+    --fl-text-muted: #5f6b71;
+    --fl-border: #e1e6e8;
+    --fl-code-bg: #f4f7f8;
+
+    --fl-info: #185fa5;     --fl-info-bg: #e9f2fb;
+    --fl-success: #0f6e56;  --fl-success-bg: #e7f5ef;
+    --fl-warning: #8a5a00;  --fl-warning-bg: #fcf3e2;
+    --fl-danger: #a32d2d;   --fl-danger-bg: #fbeaea;
+
+    --fl-radius-sm: 6px;
+    --fl-radius-md: 8px;
+    --fl-radius-lg: 12px;
+
+    --fl-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --fl-font-mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
+    --fl-content-max: 820px;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --fl-brand: #5dcaa5;
+    --fl-brand-accent: #5dcaa5;
+
+    --fl-bg: #0f1216;
+    --fl-bg-subtle: #171b21;
+    --fl-surface: #13171d;
+    --fl-text: #e6e8eb;
+    --fl-text-muted: #9aa3af;
+    --fl-border: #2a2f37;
+    --fl-code-bg: #13171d;
+
+    --fl-info: #6cb0f5;     --fl-info-bg: #16263a;
+    --fl-success: #5dcaa5;  --fl-success-bg: #11241d;
+    --fl-warning: #e3b341;  --fl-warning-bg: #2a230f;
+    --fl-danger: #f08a8a;   --fl-danger-bg: #2a1515;
+}

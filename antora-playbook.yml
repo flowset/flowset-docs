@@ -9,9 +9,21 @@ content:
     start_path: content
 ui:
   bundle:
+    # Phase 1: switch to the Flowset UI bundle once it is built and published.
+    # url: https://github.com/flowset/flowset-ui/releases/latest/download/ui-bundle.zip
+    # For local UI development, point at the freshly built bundle instead:
+    # url: ../flowset-ui/build/ui-bundle.zip
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
+  # supplemental_files stays as a thin override layer; most styling moves into the bundle.
   supplemental_files: ./content/supplemental
+# Site search (lunr). Generates search-index.js + js/search-ui.js that the
+# header ⌘K modal uses. Enable after `npm install` (adds @antora/lunr-extension):
+# antora:
+#   extensions:
+#     - require: '@antora/lunr-extension'
+#       index_latest_only: true
 asciidoc:
   extensions:
     - asciidoctor-kroki
+    - '@asciidoctor/tabs'

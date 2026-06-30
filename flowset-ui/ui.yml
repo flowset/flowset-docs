@@ -1,0 +1,5 @@
+# Antora UI bundle descriptor.
+# output_dir must match what the playbook expects (default UI uses "_").
+output_dir: _
+static_files:
+  - .nojekyll
