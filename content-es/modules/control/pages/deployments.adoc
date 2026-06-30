@@ -1,0 +1,98 @@
+= Despliegues
+
+Flowset Control permite a los administradores ver y gestionar despliegues que contienen xref:process.adoc[definiciones de proceso], xref:dmn-decisions.adoc[tablas de decisión] y otros recursos. Todos los despliegues se muestran en una lista ordenable y filtrable dentro de la vista *Deployments*.
+
+[[deployment-list]]
+== Lista de despliegues
+
+La vista de lista de despliegues muestra todos los despliegues presentes actualmente en el sistema en formato de tabla:
+
+image::deployments.png[align="center", width="1428"]
+
+Utilice el campo de búsqueda para localizar despliegues por nombre o por fecha.
+
+Las siguientes acciones están disponibles:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Acción | Descripción
+
+| *Refresh*
+| Recarga la lista de despliegues actual desde el motor de BPM conectado.
+
+| *Remove*
+a| Elimina el despliegue seleccionado. Aparece un cuadro de diálogo de confirmación con las siguientes opciones:
+
+* *All instances*: Elimina las instancias de proceso en ejecución e históricas asociadas.
+
+* *Skip custom listeners*: Cuando está habilitado, solo se ejecutan los listeners integrados del motor durante la eliminación. Se omitirá la lógica de los listeners personalizados.
+
+* *Skip I/O mappings*: Cuando está habilitado, las asignaciones de variables de entrada/salida definidas para el despliegue se ignoran durante el proceso de eliminación.
+
+Una vez confirmado, el despliegue se elimina de forma permanente.
+
+| *View*
+| Muestra información detallada del despliegue. Consulte <<deployment-details>>.
+|===
+
+[[deployment-details]]
+== Visualización de los detalles del despliegue
+
+Para inspeccionar el contenido de un despliegue, seleccione la acción *View* de la lista de despliegues. Esto abre una vista de detalles dedicada organizada en dos paneles principales.
+
+image::deployment-details.png[align="center", width="1428"]
+
+[[metadata-panel]]
+=== Panel de metadatos
+
+El panel izquierdo muestra información esencial sobre el despliegue:
+
+* *Deployment id* - el identificador único asignado por el sistema.
+* *Name* - el nombre legible del despliegue.
+* *Deployment time* - la fecha y la marca de tiempo exactas en que se creó el despliegue.
+* *Source* - indica el origen del despliegue. Por ejemplo:
+** `process application` para despliegues creados durante el arranque de la aplicación.
+** `Flowset Control` para despliegues cargados directamente a través de Flowset Control.
+* *Tenant id* - el identificador de tenant asociado con el despliegue.
+
+Debajo de los metadatos, el panel izquierdo también enumera todos los recursos del despliegue, incluidos:
+
+* Definiciones de proceso
+* Tablas de decisión
+* Otros recursos compatibles
+
+[[resource-preview-panel]]
+=== Panel de vista previa de recursos
+
+El panel derecho muestra dinámicamente una vista previa del recurso seleccionado de la lista. Para archivos con componentes visuales, como diagramas de proceso BPMN o tablas de decisión DMN, el sistema renderiza una vista previa gráfica junto con los metadatos técnicos.
+
+Mediante el botón *Download*, puede recuperar archivos de recursos individuales (BPMN, DMN, etc.).
+
+Según el tipo de recurso, el panel contiene dos o tres pestañas.
+
+*Pestaña View*
+
+Esta pestaña proporciona una representación visual del recurso. Por ejemplo:
+
+* *Forms*: Renderiza el diseño de la interfaz del formulario tal y como aparecería a los usuarios.
++
+image::deployment-resource-form.png[align="center", width="1043"]
+
+* *DMN Decision Tables*: Muestra el DRD. Haga clic en cualquier nodo del DRD para abrir la tabla de decisión DMN correspondiente en una vista detallada.
++
+image::deployment-resource-drd.png[align="center", width="1041"]
+
+*Pestaña Raw*
+
+Muestra el código fuente sin procesar del recurso:
+
+* Para archivos DMN/BPMN: muestra el código fuente XML.
+* Para scripts/formularios: muestra el contenido original basado en texto.
+
+*Pestaña Running Instances (solo BPMN)*
+
+Para un recurso de proceso BPMN, esta pestaña muestra una tabla de instancias de proceso activas iniciadas a partir de esta definición.
+
+image::deployment-resource-bpmn.png[align="center", width="1293"]
+
+La columna *Process key* contiene enlaces a los xref:process-instances.adoc#detailed-instance[Detalles de la instancia de proceso].

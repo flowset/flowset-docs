@@ -1,0 +1,12 @@
+name: flowset-es
+title: Documentación de Flowset
+version: master
+display_version: "2026.0"
+start_page: ROOT:intro.adoc
+nav:
+  - modules/ROOT/nav.adoc
+asciidoc:
+  attributes:
+    locale: es
+    minimal-idea-version: '2024.1'
+    idea-download-site: 'https://www.jetbrains.com/idea/download/'

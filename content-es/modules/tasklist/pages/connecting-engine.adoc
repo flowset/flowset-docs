@@ -1,0 +1,61 @@
+= Conexión al motor BPM
+
+*Flowset Tasklist* utiliza la REST API de los motores BPM para trabajar con procesos y tareas de usuario.
+La aplicación no requiere su propio backend y se conecta directamente al motor BPM existente mediante la configuración del entorno.
+
+== Configuración de la conexión
+
+Para establecer una conexión con el motor, debe especificar variables de entorno.
+Se pueden definir en el archivo `.env`, `env.local`, o mediante los parámetros de ejecución del contenedor Docker.
+
+[cols="2,3,3", options="header"]
+|===
+| Variable
+| Descripción
+| Valor de ejemplo
+
+| `VITE_BPM_ENGINE_API_URL`
+| URL completa de la REST API del motor BPM
+| `http://localhost:8080/engine-rest`
+
+| `VITE_BPM_ENGINE_TYPE`
+| Tipo del motor conectado
+Valores admitidos: `CAMUNDA_7`, `OPERATON`
+| `OPERATON`
+|===
+
+[NOTE]
+====
+Para el desarrollo local, se recomienda crear un archivo `env.local` en la raíz del proyecto y copiar en él el contenido de `env.example`.
+Esto facilita la gestión de las variables de entorno sin modificar el código fuente.
+====
+
+== Configuración de usuarios
+
+Flowset Tasklist utiliza *Basic Authentication*, por lo que los usuarios y sus contraseñas se configuran en el lado del motor BPM.
+La aplicación no gestiona los usuarios por sí misma.
+
+=== Ejemplo de configuración de usuarios en Camunda 7
+
+. Abra las *Camunda WebApps* en su navegador
+. Inicie sesión como administrador
+. Vaya a *Admin → Users*
+. Haga clic en *Create New User* y complete el formulario
+. Tras crear el usuario, añádalo a un grupo con los siguientes permisos:
+* User
+* Process Definition
+* Process Instance
+* Task
+* Historic Task Instance
+
+[TIP]
+====
+Si utiliza *Operaton*, el procedimiento es similar.
+Lo importante es asegurarse de que el usuario tenga permisos para leer y ejecutar procesos y tareas.
+====
+
+== Verificación de la conexión
+
+Tras configurar y ejecutar la aplicación, vaya a  `http://localhost:3000`
+e inicie sesión utilizando las credenciales del motor BPM.
+Si la conexión está configurada correctamente, aparecerá una lista de tareas activas.

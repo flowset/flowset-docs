@@ -1,0 +1,203 @@
+= Formularios personalizados
+
+*Flowset Tasklist* admite el uso de componentes React personalizados como formularios para iniciar procesos y finalizar tareas de usuario.
+Esto le permite crear interfaces totalmente adaptadas a procesos de negocio específicos.
+
+== Conceptos fundamentales
+
+Cada formulario en *Flowset Tasklist* corresponde al valor `formKey` especificado en el diagrama BPMN.
+Si el `formKey` coincide con un componente registrado, Tasklist muestra automáticamente el formulario correspondiente.
+
+Se admiten dos tipos de formularios:
+
+* *Start Forms* — se muestran al iniciar un proceso
+* *Task Forms* — se muestran al finalizar tareas de usuario
+
+== Crear un formulario personalizado
+
+. En el editor BPMN, establezca el tipo de formulario en *Embedded or External Task Form* y defina un valor de *Form key* (por ejemplo, `newVisit`).
+. En el proyecto, cree un nuevo formulario en el directorio:
++
+[source,shell]
+----
+src/custom-forms/
+----
+. Defina un componente React que implemente una de las interfaces:
++
+* `CustomStartFormProps` — para formularios de inicio
+* `CustomTaskFormProps` — para formularios de tareas
+
+=== Ejemplo de formulario de inicio
+
+[source,typescript]
+----
+// src/custom-forms/NewVisitForm.tsx
+import {Button, DatePicker, Flex, Form, type FormProps, Input, Typography} from "antd";
+import type {CustomStartFormProps} from "@features/custom-forms/types.ts";
+import dayjs, {type Dayjs} from "dayjs";
+
+const {Title} = Typography;
+
+// a type with list of output process variables
+export interface NewVisitVariables {
+    visitDate: Dayjs; // will be automatically formatted to string
+    contactName: string;
+    contactEmail: string;
+}
+
+export const NewVisitForm = (props: CustomStartFormProps<NewVisitVariables>) => { //here the required type of props is used
+    const {onSubmit: startProcess, submitInProgress, onCancel} = props;
+
+    const handleSend: FormProps<NewVisitVariables>["onFinish"] = (formValues) => {
+        // generate a business key for a new process instance
+        const businessKey = "Visit by" + formValues.visitDate.format('DD/MM/YYYY HH:MM');
+
+        // start a process with variables and business key
+        startProcess(formValues, businessKey);
+    };
+    return (
+        <>
+            <Title level={4}>New visit</Title>
+            <Form onFinish={handleSend} layout="vertical">
+                <Form.Item<NewVisitVariables> label="Visit date"
+                                              name="visitDate"
+                                              rules={[{required: true, message: "Please input a date!"}]}>
+                    <DatePicker minDate={dayjs()} showTime showSecond={false}
+                                disabledHours={() => [...Array(9).keys(), 21, 22, 23]}
+                                format="MM/DD/YYYY HH:mm"
+                                maxDate={dayjs().add(2, "week")} minuteStep={30}/>
+                </Form.Item>
+
+                <Form.Item<NewVisitVariables>
+                    label="Contact name"
+                    name="contactName"
+                    rules={[{required: true, message: "Please input your name!"}]}
+                >
+                    <Input/>
+                </Form.Item>
+
+                <Form.Item<NewVisitVariables> label="Contact Email" name="contactEmail"
+                                              rules={[{required: true, message: "Please input your email!"},
+                                                  {type: "email", message: "The input is not valid E-mail!"}]}>
+                    <Input/>
+                </Form.Item>
+
+                <Form.Item label={null}>
+                    <Flex gap="small">
+                        <Button type="primary" htmlType="submit" loading={submitInProgress}>
+                            Send
+                        </Button>
+                        <Button onClick={onCancel}>
+                            Close
+                        </Button>
+                    </Flex>
+                </Form.Item>
+            </Form>
+        </>
+    );
+};
+
+----
+
+=== Ejemplo de formulario de tarea
+
+[source,typescript]
+----
+// src/custom-forms/CheckVisitForm.tsx
+import type {CustomTaskFormProps} from "@features/custom-forms/types.ts";
+import {Button, Descriptions, type DescriptionsProps, Flex, Form, Space, Switch, Typography} from "antd";
+import dayjs from "dayjs";
+
+export interface VisitInputVariables {
+    visitDate: string;
+    contactName: string;
+    contactEmail: string;
+}
+
+export interface CheckResultVariables {
+    approved: boolean;
+}
+
+export const CheckVisitDetailsForm = (props: CustomTaskFormProps<VisitInputVariables, CheckResultVariables>) => {
+    const {onSubmit: handleComplete, submitInProgress, onCancel, inputVariables} = props;
+
+    const items: DescriptionsProps["items"] = [
+        {
+            key: "date",
+            label: 'Visit Date',
+            children: <Typography>{dayjs(inputVariables.visitDate).format("DD/MM/YYYY HH:MM")}</Typography>,
+        },
+        {
+            key: "contact",
+            label: 'Contact',
+            children: <Typography>{inputVariables.contactName} ({inputVariables.contactEmail})</Typography>,
+        },
+    ];
+    return (
+        <>
+            <Space direction="vertical">
+                <Descriptions items={items} column={1}/>
+                <Form onFinish={handleComplete}>
+                    <Form.Item<CheckResultVariables> label="Approved" name="approved">
+                        <Switch/>
+                    </Form.Item>
+                    <Form.Item label={null}>
+                        <Flex gap="small">
+                            <Button type="primary" htmlType="submit" loading={submitInProgress}>
+                                Complete
+                            </Button>
+                            <Button onClick={onCancel}>
+                                Close
+                            </Button>
+                        </Flex>
+                    </Form.Item>
+                </Form>
+            </Space>
+
+        </>
+    );
+};
+----
+
+== Registrar formularios personalizados
+
+Para que el formulario aparezca en la interfaz de Tasklist, debe registrarse en el archivo de configuración.
+
+. Abra el archivo:
++
+[source,shell]
+----
+src/features/custom-forms/config.ts
+----
+. Añada una entrada al array `customFormConfigs`, especificando la clave del formulario (`formKey`) y el componente:
++
+[source,typescript]
+----
+// src/features/custom-forms/config.ts
+
+import type {CustomFormConfig} from "./types.ts";
+import {NewVisitForm} from "../../custom-forms/NewVisitForm.tsx";
+import {CheckVisitDetailsForm} from "../../custom-forms/CheckVisitDetailsForm.tsx";
+
+// Configuration for custom task and start forms used in the business process diagrams
+export const customFormConfigs: CustomFormConfig[] = [
+    // added configuration for a custom start form
+    {
+        formKey: "newVisit",
+        component: NewVisitForm,
+    },
+
+    // added configuration for a custom user task form
+    {
+        formKey: "checkVIsitDetails",
+        component: CheckVisitDetailsForm,
+    }
+];
+----
+. Tras esto, Tasklist mostrará automáticamente el formulario al abrir una tarea o iniciar un proceso con un `formKey` coincidente.
+
+[NOTE]
+====
+Los tipos de formulario *Embedded* y *Generated* no son compatibles.
+Para todos los escenarios de usuario, se recomiendan los formularios personalizados o de Camunda.
+====

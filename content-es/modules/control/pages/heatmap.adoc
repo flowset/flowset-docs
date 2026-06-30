@@ -1,0 +1,37 @@
+= Mapa de calor
+
+[NOTE, caption="Enterprise Feature"]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+Los mapas de calor, una funcionalidad de Flowset Control Enterprise, proporcionan una representación visual de las rutas de ejecución más utilizadas en los procesos de negocio. Esto facilita la identificación de cuellos de botella y áreas problemáticas, ayudando a optimizar los procesos.
+
+Para utilizar esta funcionalidad, navegue al menú *Heatmap*.
+
+Los mapas de calor están disponibles para todas las versiones de sus procesos. Utilice la lista desplegable para seleccionar el proceso que desea analizar.
+
+image::heatmap.png[align="center", width="1552"]
+
+Los mapas de calor admiten dos modos de agrupación para visualizar los datos del proceso:
+
+* *By Count*
++
+image::heatmap-count.png[align="center", width="785"]
++
+** Muestra con qué frecuencia los tokens pasan por cada actividad (tarea) del proceso.
+** El valor numérico mostrado en el mapa de calor junto a una actividad indica cuántas veces un token llegó a esa actividad.
++
+Ejemplo: un valor de 7 en una tarea significa que se ejecutó 7 veces para la versión de proceso seleccionada.
+
+* *By Duration in Minutes*
++
+image::heatmap-duration.png[align="center", width="787"]
++
+** Muestra el tiempo medio (en minutos) necesario para completar cada actividad.
+** El valor numérico muestra el tiempo medio de ejecución de esa actividad.
+
+[NOTE, caption="Note"]
+====
+Para ambos modos de agrupación, puede utilizar la casilla *Hide Connections* para eliminar las flechas conectoras (flujos de secuencia) entre elementos y centrarse únicamente en las actividades y sus métricas.
+====

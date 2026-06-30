@@ -1,0 +1,172 @@
+= Instalación
+
+== Ejecución desde el código fuente
+
+La ejecución desde el código fuente permite a los desarrolladores desplegar rápidamente *Flowset Tasklist* en un entorno de desarrollo y adaptar la aplicación a sus necesidades de forma flexible.
+
+=== Requisitos
+
+Antes de la instalación, asegúrese de que los siguientes componentes estén instalados:
+
+* *Node.js* versión 20.19 o superior (se recomienda LTS)
+* *npm* versión 8 o superior
+* *Git* para clonar el repositorio
+
+=== Instalación y ejecución
+
+. Clone el repositorio del proyecto:
++
+[source,shell]
+----
+git clone https://github.com/flowset/flowset-tasklist-react-community
+cd flowset-tasklist-react-community
+----
+. Cree un archivo de configuración de entorno:
++
+[source,shell]
+----
+cp .env.example .env.local
+----
+. Edite `env.local`, especificando los parámetros de conexión de su motor BPM:
++
+[source,properties]
+----
+VITE_APP_LOCALE=en
+VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
+VITE_BPM_ENGINE_TYPE=OPERATON
+----
++
+* `VITE_APP_LOCALE` — idioma de la interfaz;
+* `VITE_BPM_ENGINE_API_URL` — URL de la REST API del motor;
+* `VITE_BPM_ENGINE_TYPE` — tipo de motor (`CAMUNDA`, `OPERATON`).
+
+. Instale las dependencias:
++
+[source,shell]
+----
+npm install
+----
+. Ejecute la aplicación en modo de desarrollo:
++
+[source,shell]
+----
+npm run dev
+----
+. Tras una ejecución exitosa, la interfaz estará disponible en: http://localhost:3000
+
+[NOTE]
+====
+Para una compilación de producción, puede utilizar los siguientes comandos:
+[source,shell]
+----
+npm run build
+npm run preview
+----
+====
+
+== Docker
+
+Para ejecutar rápidamente *Flowset Tasklist* sin instalar Node.js, puede utilizar la imagen Docker lista para usar.
+
+=== Requisitos
+
+* Docker
+* Docker Compose (recomendado para despliegues complejos)
+
+=== Ejecución mediante Docker
+
+. Clone el repositorio del proyecto:
++
+[source,shell]
+----
+git clone https://github.com/flowset/flowset-tasklist-react-community
+cd flowset-tasklist-react-community/docker-compose
+----
+. Edite el archivo `.env`, especificando los parámetros de conexión del motor BPM:
++
+[source,properties]
+----
+VITE_APP_LOCALE=en
+VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest
+VITE_BPM_ENGINE_TYPE=OPERATON
+----
+. Inicie el contenedor:
++
+[source,shell]
+----
+docker-compose up -d
+----
+. Compruebe que el contenedor esté en ejecución:
++
+[source,shell]
+----
+docker ps
+----
+. Tras la ejecución, la interfaz estará disponible en: http://localhost:3000
+
+[WARNING, caption=Advertencia]
+====
+Si ejecuta *Tasklist* en un contenedor mientras el motor BPM se ejecuta localmente, debe permitir las solicitudes CORS.
+
+Para *Tomcat*, añada el siguiente filtro a `web.xml`:
+[source,xml]
+----
+<filter>
+  <filter-name>CorsFilter</filter-name>
+  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+  <init-param>
+    <param-name>cors.allowed.origins</param-name>
+    <param-value>http://localhost:3000</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.allowed.methods</param-name>
+    <param-value>GET,POST,HEAD,OPTIONS,PUT,DELETE</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.allowed.headers</param-name>
+    <param-value>Content-Type,Accept,X-Requested-With,Authorization,Origin</param-value>
+  </init-param>
+  <init-param>
+    <param-name>cors.exposed.headers</param-name>
+    <param-value>Location</param-value>
+  </init-param>
+</filter>
+
+<filter-mapping>
+  <filter-name>CorsFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+----
+
+Para *Run*, añada la siguiente configuración a `default.yml`:
+
+[source, yml]
+----
+operaton.bpm:
+  run:
+# https://docs.operaton.org/docs/documentation/user-guide/operaton-bpm-run/#cross-origin-resource-sharing
+    cors:
+      enabled: true
+      allowed-origins: "http://localhost:3000"
+----
+====
+
+=== Detención del contenedor
+
+Para detenerlo, utilice el comando:
+[source,shell]
+----
+docker-compose down
+----
+
+[NOTE]
+====
+Si desea ejecutar el contenedor directamente sin Docker Compose, utilice:
+[source,shell]
+----
+docker run -d --name flowset-tasklist -p 3000:3000 \
+  -e VITE_BPM_ENGINE_API_URL=http://localhost:8080/engine-rest \
+  -e VITE_BPM_ENGINE_TYPE=OPERATON \
+  flowset/flowset-tasklist-react-community:latest
+----
+====

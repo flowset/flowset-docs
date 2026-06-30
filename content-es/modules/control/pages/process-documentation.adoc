@@ -1,0 +1,61 @@
+[[process-documentation]]
+= Documentación de elementos de proceso
+
+[NOTE, caption="Enterprise Feature"]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+Flowset Control puede mostrar la documentación de elementos BPMN individuales directamente en el diagrama del proceso.
+Cuando un desarrollador de procesos añade una entrada `Documentation` a un elemento en el BPMN XML, ese texto queda accesible para operadores y analistas en Flowset Control, sin necesidad de abrir el modelo de origen.
+
+Esto facilita la comprensión del propósito de una tarea, compuerta o evento en su propio contexto, mientras se monitoriza o analiza un proceso en ejecución.
+
+La funcionalidad está disponible en las siguientes páginas:
+
+* xref:control:process.adoc#viewing-process[Visualización de una definición de proceso] (definición de proceso)
+* xref:control:process-instances.adoc#detailed-instance[Visualización de una instancia de proceso] (instancia de proceso)
+
+[[reading-documentation]]
+== Visualización de la documentación de un elemento
+
+Los elementos que tienen documentación adjunta se indican mediante un *icono de signo de interrogación* (?) mostrado sobre el elemento en el diagrama BPMN.
+
+image::process-documentation-1.png[align="center"]
+
+image::process-documentation-2.png[align="center"]
+
+Para ver la documentación de un elemento:
+
+1. Navegue a *Processes* o *Process Instances*.
+2. Seleccione el proceso deseado y abra su diagrama.
+3. Haga clic en el icono *?* de cualquier elemento BPMN que tenga documentación adjunta.
+4. Se abrirá el diálogo *Element documentation*.
++
+image::process-documentation-3.png[align="center"]
+
+El diálogo muestra:
+
+* *Type* — el tipo de elemento BPMN (por ejemplo, `bpmn:UserTask`, `bpmn:ServiceTask`).
+* *Id* — el identificador único del elemento tal como se define en el BPMN XML.
+* *Documentation text* — la descripción escrita por el desarrollador del proceso.
+
+[[xml-source]]
+== Documentación en el BPMN XML
+
+La documentación de un elemento se define en el origen BPMN mediante la etiqueta estándar `<documentation>` dentro de cualquier elemento de flujo:
+
+[source,xml]
+----
+<bpmn:userTask id="approveInvoice" name="Approve Invoice">
+  <bpmn:documentation>Approve the invoice (or not).</bpmn:documentation>
+  ...
+</bpmn:userTask>
+----
+
+Flowset Control lee este valor automáticamente cuando se despliega el proceso, sin necesidad de configuración adicional.
+
+[NOTE]
+====
+La documentación puede añadirse a cualquier elemento BPMN que la admita: tareas, compuertas, eventos, subprocesos y flujos de secuencia.
+====

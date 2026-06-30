@@ -7,5 +7,6 @@ nav:
   - modules/ROOT/nav.adoc
 asciidoc:
   attributes:
+    locale: en
     minimal-idea-version: '2024.1'
     idea-download-site: 'https://www.jetbrains.com/idea/download/'

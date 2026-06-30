@@ -1,0 +1,34 @@
+= Introducción
+
+== ¿Qué es Flowset?
+
+Flowset es una plataforma de automatización de procesos de negocio con su propio motor de ejecución y un conjunto de herramientas que cubren todo el ciclo de vida de una solución BPM.
+
+=== Principios fundamentales
+
+* **Compatibilidad con Camunda**
+  Creemos que esta tecnología, que se ha convertido en un estándar de la industria, perdurará durante mucho tiempo.
+
+* **Cumplimiento del estándar BPMN 2.0**
+  Garantiza transparencia, previsibilidad y facilita la incorporación de talento.
+
+* **Interoperabilidad**
+  Flowset es compatible con las herramientas de modelado y desarrollo más populares.
+
+* **Enfoque en la automatización de procesos de negocio**
+  Flowset cubre el ciclo completo de la automatización de procesos: desde el diseño hasta la ejecución y la monitorización.
+
+* **Modularidad y apertura**
+  Cada componente de la plataforma funciona de forma independiente y, en conjunto, aportan el máximo valor.
+
+=== Componentes de la plataforma
+
+==== Control
+Una herramienta de código abierto para monitorizar la ejecución de procesos de negocio. Similar a Camunda Cockpit, pero con funcionalidad ampliada.
+Construida sobre el framework de código abierto Jmix. Código fuente disponible en https://github.com/flowset/flowset-control-community[GitHub].
+
+==== Studio
+Un complemento para https://www.jetbrains.com/idea/[IntelliJ IDEA]. Añade un editor BPMN/DMN directamente en el entorno de desarrollo, junto con capacidades adicionales para la generación de código, la navegación, etc.
+
+==== Tasklist
+Una plantilla de aplicación basada en React para gestionar las tareas de los usuarios finales. Código fuente disponible en https://github.com/flowset/flowset-tasklist-react-community[GitHub].

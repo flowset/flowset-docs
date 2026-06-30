@@ -1,0 +1,80 @@
+= Gestión de accesos
+
+Flowset Control utiliza el control de acceso basado en roles de https://www.jmix.io[Jmix^] para gestionar los permisos de usuario y asegurar el acceso a la funcionalidad de la aplicación. Esta sección explica cómo crear usuarios, asignar roles y configurar permisos para garantizar un funcionamiento seguro del sistema.
+
+[[user-management]]
+== Gestión de usuarios
+
+Los usuarios de Flowset Control se definen mediante la entidad https://docs.jmix.io/jmix/security/users.html#entity[User^]. Su información se almacena en la tabla `USER_` dentro de la base de datos configurada.
+
+El sistema incluye un usuario administrador predeterminado con las credenciales `admin`/`admin`, que dispone de todos los derechos de acceso.
+
+[[adding-users]]
+=== Adición de usuarios
+
+Para crear un nuevo usuario:
+
+. Inicie sesión en Flowset Control con credenciales de administrador (predeterminadas: `admin`/`admin`).
+
+. Vaya al elemento de menú *Administration → Users* y haga clic en el botón *Create*.
++
+image::add-user-1.png[align="center", width="1428"]
+. En la vista *User*, rellene los campos requeridos:
+
+* *Username*: Debe ser único.
+* *Password* y *Confirm Password*.
+
+. Haga clic en *OK* para guardar el usuario.
++
+image::add-user-2.png[align="center", width="1428"]
+
+[[granting-permissions]]
+=== Concesión de permisos
+
+Los usuarios recién creados no tienen permisos de forma predeterminada y no pueden iniciar sesión ni utilizar ninguna funcionalidad.
+
+Para asignar el <<role-management,rol de recurso>> predeterminado de acceso completo:
+
+. Seleccione el usuario de la lista y haga clic en *Role assignments*.
++
+image::role-assignment.png[align="center", width="1048"]
+. En la sección *Resource roles*, haga clic en *Add*.
++
+image::role-assignment-2.png[align="center", width="1051"]
+. Seleccione la fila etiquetada como `Full Access` y haga clic en *Select*.
++
+image::role-assignment-3.png[align="center", width="802"]
+. Haga clic en *OK* para guardar la asignación de rol.
+
+El usuario ya puede iniciar sesión y acceder a toda la funcionalidad de la aplicación.
+
+[[role-management]]
+== Gestión de roles
+
+Los https://docs.jmix.io/jmix/security/resource-roles.html[roles de recurso^] definen los permisos de los usuarios para acceder a objetos y operaciones específicos dentro del sistema, incluidas las operaciones CRUD sobre entidades, atributos de entidad, pantallas de la interfaz y más.
+
+Un administrador del sistema puede crear nuevos roles personalizados para implementar un modelo de seguridad granular adaptado a necesidades organizativas específicas.
+
+[[creating-roles]]
+=== Creación de roles
+
+Para definir un nuevo rol con un conjunto específico de permisos:
+
+. Vaya al elemento de menú *Administration → Roles*.
+. Haga clic en *Create* para definir un nuevo rol.
++
+image::add-role-1.png[align="center", width="1428"]
+. Especifique un *Name* descriptivo y un *Code* único.
+. Configure los permisos del rol definiendo las siguientes políticas:
++
+--
+* *Menu policy*: Especifica qué elementos del menú principal son visibles para los usuarios con este rol asignado.
+* *View policy*: Concede permiso para acceder a vistas específicas de la aplicación. Por ejemplo, la vista `Deployments` o la vista `Decisions`.
+* *Entity policy*: Define las operaciones de creación, lectura, actualización y eliminación (CRUD) permitidas para una entidad de datos. Ejemplo: Conceder permiso de _Create_ y _Read_ para la entidad `Deployment`, pero denegar explícitamente el permiso de _Delete_.
+* *Entity attribute policy*: Controla el acceso de lectura o escritura a atributos específicos dentro de una entidad.
+Ejemplo: Hacer que el campo `email` de la entidad `User` sea de solo lectura para este rol.
+* *Specific policy*: Define permisos para funcionalidad arbitraria y nombrada dentro de la aplicación.
+--
++
+image::add-role-2.png[align="center", width="1163"]
+. Haga clic en *OK* para guardar el nuevo rol.

@@ -1,0 +1,48 @@
+= Panel de control
+
+Cuando inicia sesión en Flowset Control, la primera vista que verá es el *Dashboard*. Esta es su vista principal para monitorizar todo en el sistema. Muestra información importante mediante widgets fáciles de leer que se actualizan en tiempo real.
+
+image::dashboard.png[align="center", width="1440"]
+
+Puede volver al *Dashboard* en cualquier momento haciendo clic en *Flowset Control* en la esquina superior izquierda o seleccionando el elemento de menú *Dashboard*.
+
+*Widgets*:
+
+* *Deployed processes*
++
+Este widget muestra el número total de procesos de negocio activos.
+
+* *Process instances*
++
+Este widget muestra el número de instancias de proceso en ejecución, categorizadas como activas o suspendidas.
+
+* *User tasks*
++
+Presenta el número total de tareas de usuario que están actualmente activas y a la espera de ser completadas.
+
+* *Running processes*
++
+Este widget proporciona un gráfico circular de todas las instancias de proceso actualmente en ejecución, organizadas por su clave de definición de proceso.
+
+* *Incidents*
++
+El widget *Incidents* destaca el número de procesos en los que se han producido errores o excepciones durante la ejecución.
+
+* *Recent activity*
++
+Un gráfico dinámico muestra la actividad reciente, registrando específicamente el número de procesos iniciados y completados durante la última semana.
+
+[NOTE]
+====
+* En el Dashboard de Flowset Control, los widgets de gráfico circular le permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haga clic en el menú "..." (menú de tres puntos) dentro del widget.
++
+image::dashboard-pie-widget.png[align="center", width="888"]
+
+* Al hacer clic en el icono de flecha (→) se le redirige a las vistas relacionadas del sistema.
++
+image::dashboard-widget.png[align="center", width="835"]
++
+** Flecha del widget *Deployed processes* → La vista xref:process.adoc[Procesos].
+** Flecha del widget *Process instances* → La vista xref:process-instances.adoc[Instancias de proceso].
+** Flecha del widget *User tasks* → La vista xref:user-tasks.adoc[Tareas de usuario].
+====

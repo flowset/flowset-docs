@@ -1,0 +1,109 @@
+= Evaluación de decisiones
+
+[NOTE, caption=Enterprise Feature]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+Flowset Control le permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
+
+Utilice este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico únicamente para la ejecución de DMN.
+
+Para obtener información general sobre DMN y las expresiones FEEL, consulte:
+
+* https://docs.camunda.org/manual/7.24/reference/dmn/decision-table/[Documentación de tablas de decisión DMN de Camunda]
+* https://docs.camunda.io/docs/components/modeler/feel/what-is-feel/[Documentación de expresiones FEEL]
+* https://nikku.github.io/feel-playground[FEEL playground]
+
+[[opening-evaluate-decision]]
+== Abrir el modo de evaluación
+
+Puede abrir el modo de evaluación desde la lista *DMN -> Decisions* o desde una vista de detalle de una decisión.
+
+En la lista *Decisions*, haga clic en la acción *Evaluate decision* para la definición de decisión requerida.
+
+image::decision-evaluate-list-action.png[align="center", width="1552"]
+
+Flowset Control abre la vista *Evaluate decision* para la definición de decisión y la versión seleccionadas.
+
+image::decision-evaluate-list.png[align="center", width="1552"]
+
+La vista contiene:
+
+* *Input variables* - variables pasadas a la evaluación de la decisión.
+* *Output variables* - valores devueltos por las reglas de decisión coincidentes.
+* *Decision table* - tabla DMN renderizada para el análisis visual.
+* *XML* - definición DMN XML en bruto.
+* *Decision history* - instancias de decisión anteriores para la definición de decisión seleccionada.
+
+[[input-variables]]
+== Variables de entrada
+
+Antes de la evaluación, añada las variables que espera la tabla de decisión.
+
+Puede añadir variables manualmente con *Add* o detectar variables a partir del DMN XML con *Add from DMN*.
+
+image::decision-evaluate-add-from-dmn.png[align="center", width="1552"]
+
+El cuadro de diálogo *Add variables from DMN XML* lista las variables de entrada detectadas. Seleccione las variables que desea añadir y confirme con *Add*.
+
+image::decision-evaluate-add-from-dmn-dialog.png[align="center", width="1552"]
+
+Cuando las variables se añaden desde el DMN XML, Flowset Control detecta las variables de entrada a partir de:
+
+* Las expresiones FEEL utilizadas en la expresión de entrada de cada entrada de la tabla de decisión.
+* El atributo `camunda:inputVariable` cuando la expresión de entrada está vacía.
+* Las expresiones de las entradas de cada regla.
+
+Si solo se detecta una variable a partir de una expresión de entrada, Flowset Control utiliza el tipo de entrada del DMN XML como tipo de variable.
+
+Si el tipo de variable no se puede detectar a partir del DMN XML, se utiliza *String* como tipo predeterminado en el cuadro de diálogo.
+
+NOTE: Las variables con nombres coincidentes se reemplazan cuando se añaden variables desde el DMN XML.
+
+Solo se admiten tipos de variables simples en la vista de evaluación y en el cuadro de diálogo *Add variables from DMN XML*. Las variables *File*, *Object* y *Bytes* no están disponibles.
+
+[[editing-input-values]]
+== Edición de los valores de entrada
+
+Después de añadir las variables, introduzca los valores de prueba en la columna *Value*.
+
+image::decision-evaluate-edit-inputs.png[align="center", width="1552"]
+
+El formato del valor debe coincidir con el tipo de variable seleccionado. Por ejemplo, se pueden introducir valores numéricos para las variables *Double*, y texto sin formato para las variables *String*.
+
+Si cambia las variables de entrada después de una evaluación exitosa sin volver a ejecutar la evaluación, Flowset Control marca la salida actual como *Outdated*. Vuelva a ejecutar la evaluación para actualizar las variables de salida y el historial de decisiones.
+
+[[running-evaluation]]
+== Ejecución de la evaluación
+
+Haga clic en *Evaluate* para ejecutar la tabla de decisión con las variables de entrada actuales.
+
+image::decision-evaluate-run.png[align="center", width="1552"]
+
+Flowset Control envía las variables de entrada al motor BPM conectado y muestra el resultado de la evaluación en el panel *Output variables*.
+
+Para cada regla aplicable, el árbol de salida contiene un nodo raíz. Los valores de salida de esa regla se muestran como nodos secundarios.
+
+image::decision-evaluate-results-history.png[align="center", width="1552"]
+
+Después de cada evaluación:
+
+* La pestaña *Decision history* se abre automáticamente.
+* La lista de instancias de decisión se actualiza.
+* La instancia de decisión más reciente aparece en la tabla del historial.
+
+[[analyzing-decision-result]]
+== Análisis de los resultados de la evaluación
+
+Abra una instancia de decisión para inspeccionar los valores de entrada y salida evaluados junto con la tabla de decisión.
+
+La pestaña *Inputs* muestra las variables utilizadas para la evaluación y resalta la regla coincidente en la tabla.
+
+image::decision-evaluate-instance-inputs.png[align="center", width="1552"]
+
+La pestaña *Outputs* muestra los valores devueltos por la evaluación.
+
+image::decision-evaluate-instance-outputs.png[align="center", width="1552"]
+
+Utilice esta vista para verificar qué regla coincidió, qué valores de entrada se utilizaron y qué valores de salida se produjeron.

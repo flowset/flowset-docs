@@ -8,17 +8,26 @@
     {{/if}}
     {{#if ./url}}
     <a class="nav-link
-      {{~! mark paid (Enterprise) pages by title so it survives version/path changes in the URL ~}}
+      {{~! mark paid (Enterprise) pages by page path (works for the en `flowset` and es `flowset-es` components) ~}}
       {{#if (or
-        (eq ./content "BPM Engine Monitoring")
-        (eq ./content "Jobs")
-        (eq ./content "Process Instance Modification")
-        (eq ./content "Batch Operations")
-        (eq ./content "Sending a Message")
-        (eq ./content "Process Element Documentation")
-        (eq ./content "Evaluating Decisions")
-        (eq ./content "Transaction Boundaries")
-        (eq ./content "Heatmap")
+        (eq ./url "/flowset/control/engine-monitoring.html")
+        (eq ./url "/flowset/control/jobs.html")
+        (eq ./url "/flowset/control/process-instance-modification.html")
+        (eq ./url "/flowset/control/batch-operations.html")
+        (eq ./url "/flowset/control/messages.html")
+        (eq ./url "/flowset/control/process-documentation.html")
+        (eq ./url "/flowset/control/decision-evaluation.html")
+        (eq ./url "/flowset/control/transactions.html")
+        (eq ./url "/flowset/control/heatmap.html")
+        (eq ./url "/flowset-es/control/engine-monitoring.html")
+        (eq ./url "/flowset-es/control/jobs.html")
+        (eq ./url "/flowset-es/control/process-instance-modification.html")
+        (eq ./url "/flowset-es/control/batch-operations.html")
+        (eq ./url "/flowset-es/control/messages.html")
+        (eq ./url "/flowset-es/control/process-documentation.html")
+        (eq ./url "/flowset-es/control/decision-evaluation.html")
+        (eq ./url "/flowset-es/control/transactions.html")
+        (eq ./url "/flowset-es/control/heatmap.html")
       )}}
         paid
       {{/if}}" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}"

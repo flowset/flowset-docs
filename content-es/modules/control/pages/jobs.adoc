@@ -1,0 +1,185 @@
+= Trabajos
+
+[NOTE, caption="Enterprise feature"]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+La sección *Trabajos* se utiliza para ver y gestionar los trabajos asíncronos del motor BPM.
+
+Un trabajo es un elemento de ejecución interno que el motor crea para el trabajo diferido o asíncrono: disparar temporizadores, ejecutar actividades de forma asíncrona y otras operaciones realizadas en segundo plano por el Job Executor. En la sección https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor] se ofrece una descripción detallada de este mecanismo.
+
+Los trabajos se pueden gestionar en tres lugares de la aplicación:
+
+* en la pantalla dedicada <<jobs-list-view,Trabajos>> — sobre todos los trabajos del motor;
+* en la pestaña <<jobs-tab,Trabajos>> de la vista detallada de una instancia de proceso — para los trabajos de una instancia específica;
+* en la pestaña <<job-definitions,Definiciones de trabajos>> de la vista detallada de una definición de proceso — para las definiciones de trabajos.
+
+[[jobs-list-view]]
+== Pantalla de trabajos
+
+La pantalla *Trabajos* está disponible como un elemento independiente del menú de la aplicación y muestra todos los trabajos del motor BPM conectado, independientemente de la instancia de proceso.
+
+image::jobs-screen.png[align="center", width="1552"]
+
+La tabla admite ordenación y filtrado; para cada trabajo se muestra lo siguiente:
+
+* *Id* — el identificador del trabajo (con la opción de abrir la <<job-details,vista detallada>>).
+* *Instancia de proceso* — la instancia de proceso a la que pertenece el trabajo.
+* *Proceso* — la definición de proceso y su versión.
+* *Fecha de creación* — la fecha y hora en que se creó el trabajo.
+* *Fecha de vencimiento* — la fecha de vencimiento (para trabajos de temporizador).
+* *Reintentos* — el número restante de intentos de ejecución (un valor de `0` significa que los intentos se han agotado).
+* *Estado* — el estado del trabajo (*Activo* / *Suspendido*).
+* *Prioridad* — la prioridad del trabajo.
+* *Actividad fallida* — la actividad donde ocurrió el error.
+
+Encima de la tabla hay filtros por tipo de trabajo disponibles — *Trabajos ejecutables* (listos para ejecutarse) y *Temporizadores* (trabajos de temporizador). Los valores de filtro se almacenan en los parámetros de consulta de la URL, por lo que una lista filtrada se puede guardar como marcador o compartir como enlace.
+
+NOTE: Los datos de la pantalla se cargan de forma diferida, como en las demás pantallas de lista de la aplicación.
+
+[[jobs-list-actions]]
+=== Operaciones en la pantalla de trabajos
+
+Las operaciones *Reintentar*, *Activar* y *Suspender* se pueden aplicar a varios trabajos a la vez seleccionándolos en la tabla (operaciones masivas). Para un trabajo individual, están disponibles las acciones *Ver* (abrir la vista detallada), *Establecer prioridad del trabajo* (<<job-set-priority,cambiar la prioridad>>) y *Actualizar fecha de vencimiento* (<<job-update-due-date,cambiar la fecha de vencimiento>>).
+
+[[jobs-executor-state]]
+=== Estado del ejecutor de trabajos
+
+En la parte superior de la pantalla hay un panel *Estado del ejecutor de trabajos* que refleja el estado actual del Job Executor del motor:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Métrica | Descripción
+
+| *Hilos activos*
+| El número de hilos que actualmente procesan trabajos ejecutables. También se muestra como porcentaje la proporción de hilos activos con respecto al tamaño del grupo. El color del valor depende de su magnitud: hasta el 50 % — verde, del 50 % al 80 % — amarillo, más del 80 % — rojo.
+
+| *Tamaño del grupo de hilos*
+| El número máximo de hilos que pueden procesar trabajos. Se establece en una propiedad de la aplicación cuyo nombre depende del motor: `camunda.bpm.job-execution.max-pool-size` (Camunda 7) o `operaton.bpm.job-execution.max-pool-size` (Operaton). El valor real puede cambiar según la carga del motor.
+
+| *Trabajos ejecutables*
+| El número de trabajos listos para ejecutarse.
+|===
+
+El panel *Estado del ejecutor de trabajos* se muestra únicamente cuando se cumplen las siguientes condiciones:
+
+. El Actuator está configurado tanto en el lado del motor BPM como en el lado de Flowset Control.
+. Las métricas `executor.active` y `executor.pool.size` están habilitadas para el motor BPM, y se añade una etiqueta con el nombre `name` y el valor `camundaTaskExecutor` (para Camunda 7) o `operatonTaskExecutor` (para Operaton).
+
+[[jobs-tab]]
+== Pestaña de trabajos en una instancia de proceso
+
+La pestaña *Trabajos* está disponible en la pantalla xref:process-instances.adoc#detailed-instance[vista detallada de la instancia de proceso] (el bloque *Runtime*) y muestra los trabajos de la instancia seleccionada.
+
+image::jobs-tab.png[align="center", width="1552"]
+
+Para cada trabajo se muestran las columnas *Trabajo*, *Actividad fallida*, *Hora de creación*, *Reintentos*, *Prioridad* y *Estado*; están disponibles las acciones *Reintentar*, *Activar* y *Suspender*.
+
+TIP: Al hacer clic en el valor de la columna *Actividad fallida* se resalta el elemento correspondiente en el diagrama de la instancia de proceso, lo que ayuda a localizar rápidamente dónde ocurrió el error.
+
+[[jobs-actions]]
+== Operaciones sobre trabajos
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Acción | Descripción
+
+| *Reintentar*
+| Establece un nuevo número de intentos de ejecución, tras lo cual el Job Executor podrá tomar y ejecutar el trabajo de nuevo. Disponible solo para trabajos cuyo número de intentos es `0`.
+
+| *Activar*
+| Reanuda la ejecución de un trabajo previamente suspendido. Disponible solo para trabajos en estado *Suspendido*.
+
+| *Suspender*
+| Suspende la ejecución de un trabajo activo. Disponible solo para trabajos en estado *Activo*.
+
+| *Establecer prioridad del trabajo*
+| <<job-set-priority,Cambia la prioridad>> de ejecución del trabajo.
+
+| *Actualizar fecha de vencimiento*
+| <<job-update-due-date,Cambia la fecha de vencimiento>> del trabajo.
+|===
+
+[[jobs-retry]]
+=== Reintentar un trabajo
+
+Para reintentar un trabajo que finalizó con un error:
+
+. Seleccione un trabajo con un valor de *Reintentos* de `0` y haga clic en *Reintentar*.
+. En el cuadro de diálogo que se abre, especifique el número de intentos de ejecución en el campo *Reintentos* (el valor predeterminado es `1`; el valor debe ser positivo).
++
+image::job-retry-dialog.png[align="center", width="720"]
+. Haga clic en *Reintentar* para aplicar el nuevo número de intentos.
+
+[[job-details]]
+== Vista detallada del trabajo
+
+Para abrir información detallada sobre un trabajo, haga clic en su identificador o utilice la acción *Ver*.
+
+image::job-details.png[align="center", width="1100"]
+
+La pantalla contiene información detallada sobre el trabajo:
+
+* *Job Id* — el identificador del trabajo, con la opción de copiarlo.
+* *Tipo de trabajo* — el tipo de trabajo, por ejemplo `timer-intermediate-transition` (un evento de temporizador) o `async-continuation` (continuación asíncrona). Para el campo se muestra una información sobre herramientas localizada que explica el tipo.
+* *Estado* — el estado actual del trabajo (*Activo* / *Suspendido*).
+* *Fecha de creación* y *Fecha de vencimiento* — la hora de creación y la fecha de vencimiento del trabajo.
+* *Prioridad* — la prioridad del trabajo.
+* *Reintentos* — el número restante de intentos de ejecución.
+* *Actividad* y *Actividad fallida* — la actividad del trabajo y la actividad donde ocurrió el error.
+* *Proceso* — la definición de proceso; el botón de navegación abre la xref:process.adoc[definición de proceso].
+* *Instancia de proceso* — la instancia de proceso; el botón de navegación abre la xref:process-instances.adoc#detailed-instance[vista detallada de la instancia].
+* *Mensaje de excepción* y traza de la pila — el texto y la pila de llamadas completa del error de ejecución.
+
+Para un trabajo que finalizó con un error (*Reintentos* = `0`), los campos *Mensaje de excepción* y traza de la pila muestran la causa del fallo, y la acción *Reintentar* permite volver a ejecutar el trabajo.
+
+image::job-details-failed.png[align="center", width="1100"]
+
+[[job-details-actions]]
+=== Acciones en la vista detallada
+
+En la parte inferior de la pantalla están disponibles las acciones *Reintentar*, *Activar* / *Suspender*, *Copiar traza de la pila* (copiar la pila de llamadas) y *Copiar mensaje de error* (copiar el texto del error). El botón *...* abre acciones adicionales — *Establecer prioridad* y *Actualizar fecha de vencimiento*.
+
+image::job-actions-menu.png[align="center", width="1100"]
+
+[[job-set-priority]]
+==== Cambiar la prioridad
+
+La acción *Establecer prioridad* le permite establecer una nueva prioridad de ejecución para el trabajo en el campo *Nueva prioridad*. La prioridad afecta al orden en que el Job Executor toma los trabajos.
+
+image::job-set-priority.png[align="center", width="720"]
+
+[[job-update-due-date]]
+==== Cambiar la fecha de vencimiento
+
+La acción *Actualizar fecha de vencimiento* cambia la fecha de vencimiento (*Fecha de vencimiento*) del trabajo. El conjunto de parámetros depende del tipo de trabajo.
+
+Para un trabajo de *temporizador*, puede elegir la operación (*Operación*):
+
+* *Establecer* — establecer la fecha de vencimiento en una fecha y hora especificadas por el usuario. Cuando se selecciona esta operación, aparece una casilla *Actualizar temporizadores recurrentes*; si está marcada, la fecha de vencimiento también se actualiza para los temporizadores recurrentes.
+* *Recalcular* — recalcular la fecha de vencimiento utilizando el motor. Cuando se selecciona esta operación, puede especificar la fecha base para el recálculo — la *hora actual* o la *hora de creación* del trabajo.
+
+image::job-change-due-date.png[align="center", width="720"]
+
+Para trabajos que *no son de temporizador*, basta con especificar la nueva fecha y hora de ejecución sin parámetros adicionales.
+
+[WARNING]
+====
+Para los trabajos del sistema de tipo `batch-monitor-job` o `batch-seed-job`, las acciones adicionales no están disponibles — cuando se seleccionan, se muestra una advertencia que indica que se trata de un trabajo del sistema.
+
+Si el trabajo ya se ha completado en el momento en que se realiza la acción, se muestra una advertencia correspondiente.
+====
+
+[[job-definitions]]
+== Pestaña de definiciones de trabajos en una definición de proceso
+
+La pestaña *Definiciones de trabajos* está disponible en la pantalla xref:process.adoc[vista detallada de la definición de proceso] y muestra las Job Definitions de la versión de proceso seleccionada.
+
+image::job-definitions-tab.png[align="center", width="1552"]
+
+Características de la pestaña:
+
+* los datos se actualizan cuando cambia la versión de la definición de proceso seleccionada;
+* al hacer clic en el valor de la columna *Actividad* se resalta el elemento correspondiente en el diagrama del proceso;
+* para una definición de trabajo, están disponibles las acciones de activación y suspensión (según el estado actual), así como el cambio de la prioridad de sobrescritura.

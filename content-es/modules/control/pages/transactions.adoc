@@ -1,0 +1,70 @@
+= Límites de transacción
+
+[NOTE, caption=Enterprise Feature]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+La visualización de los límites de transacción es un resaltado visual de los puntos de confirmación (commit) y los estados de espera del motor BPM.
+La funcionalidad ayuda a:
+
+* comprender dónde el proceso *guarda* su estado;
+* ver dónde se crean *nuevas* transacciones;
+* analizar la corrección de las continuaciones asíncronas;
+* identificar riesgos de reintentos y posibles cuellos de botella.
+
+La funcionalidad está disponible en las siguientes páginas:
+
+* xref:control:process.adoc#viewing-process[Visualización de una definición de proceso] (definición de proceso)
+* xref:control:process-instances.adoc#detailed-instance[Visualización de una instancia de proceso] (instancia de proceso)
+
+== Cómo habilitar la visualización
+
+1. Navegue a *Processes* o *Process Instances*.
+2. Seleccione el proceso deseado.
+3. Abra el diagrama.
+4. Habilite *Transaction Boundary Display*.
++
+image::transaction-1.png[align=”center”]
+
+Los límites de transacción se mostrarán directamente en el diagrama BPMN.
+
+image::transaction-2.png[align=”center”]
+
+== Leyenda del diagrama
+
+Para la visualización se utilizan dos tipos de líneas discontinuas:
+
+image::transaction-2.png[align=”center”]
+
+* *Líneas discontinuas azules* — confirmaciones de transacción realizadas por el motor BPM *de forma predeterminada*.
+* *Líneas discontinuas rojas* — confirmaciones definidas por un desarrollador durante el modelado del proceso.
+
+== Estado de espera del motor BPM
+
+Se indica mediante *marcadores azules* en los flujos entrantes o salientes de un elemento.
+
+* Marca el punto en el que el proceso guarda su estado y entra en modo de espera.
+* Tras este punto, la ejecución continúa dentro de una *nueva* transacción.
+* Suele corresponder a:
+** Service Task (External);
+** Receive Task;
+** User Task;
+** Message Catch Event;
+** Timer Event;
+** Signal Event;
+** Event Based Gateway;
+
+== Continuaciones asíncronas (Async Before/After)
+
+Se indican mediante *marcadores discontinuos rojos* en los límites de un elemento.
+
+* Señalan que se crea una transacción independiente antes (async before) o después (async after) de que se ejecute una actividad.
+* Permiten aislar la ejecución de una actividad.
+* Se utilizan para mejorar la tolerancia a fallos y la manejabilidad del proceso.
+
+== Notas y recomendaciones
+
+* Si un elemento está marcado como *estado de espera*, su ejecución *siempre* comienza en una nueva transacción.
+* Las continuaciones asíncronas son útiles para "fragmentar" segmentos síncronos largos.
+* Un número excesivo de límites de transacción puede provocar un aumento de la sobrecarga transaccional.

@@ -1,0 +1,143 @@
+= Operaciones por lotes
+
+[NOTE, caption="Enterprise feature"]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+Flowset Control le permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, usted selecciona una operación, elige las instancias de proceso de destino con un filtro, proporciona los parámetros de la operación e inicia un único lote asíncrono.
+
+Un lote es ejecutado de forma asíncrona por el motor BPM: se divide en trabajos más pequeños que el Job Executor procesa en segundo plano, de modo que la aplicación permanece receptiva mientras se procesan grandes cantidades de instancias.
+
+Para obtener información general sobre las operaciones por lotes, consulte:
+
+* https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch-operations[Documentación de operaciones por lotes de Operaton]
+* https://docs.operaton.org/reference/latest/rest-api/#tag/Batch[API REST de lotes de Operaton]
+
+[WARNING]
+====
+Una operación por lotes cambia el estado en tiempo de ejecución de todas las instancias de proceso seleccionadas. Revise el tipo de operación, los parámetros y la lista de instancias coincidentes en el paso de confirmación antes de iniciar el lote.
+====
+
+[[supported-operations]]
+== Operaciones admitidas
+
+El asistente *Execute batch* admite cuatro tipos de operación:
+
+* *Update process variables* - crea o actualiza variables en las instancias de proceso seleccionadas.
+* *Send message* - correlaciona un mensaje con las instancias de proceso seleccionadas, opcionalmente pasando variables.
+* *Update retries (external tasks)* - establece el número de reintentos para las tareas externas de las instancias de proceso seleccionadas.
+* *Update retries (jobs)* - establece el número de reintentos para los trabajos de las instancias de proceso seleccionadas, opcionalmente con una fecha de vencimiento del trabajo.
+
+[[opening-wizard]]
+== Abrir el asistente
+
+Puede iniciar un nuevo lote desde dos lugares:
+
+* Vista *Batches* -> pestaña *Active* -> *Execute new*.
+* Vista *Process instances* -> botón desplegable -> *Execute batch*.
+
+image::batch-operation-1.png[align="center", width="1552"]
+
+El asistente *Execute batch* tiene tres pasos:
+
+* *Operation & process instances* - seleccione el tipo de operación y las instancias de proceso a las que se debe aplicar el lote.
+* *Batch options* - proporcione los parámetros requeridos para la operación seleccionada.
+* *Confirmation* - revise los parámetros y la solicitud generada, luego inicie el lote.
+
+[[step-operation-instances]]
+== Paso 1: Operación e instancias de proceso
+
+Seleccione la operación en la lista *Batch operation type*.
+
+image::batch-operation-2.png[align="center", width="1552"]
+
+De forma predeterminada, no se aplica ningún filtro y se buscan todas las instancias de proceso. Utilice el cuadro de diálogo de filtro para acotar las instancias a las que se debe aplicar el lote.
+
+image::batch-operation-3.png[align="center", width="1552"]
+
+Los siguientes filtros están disponibles en el asistente:
+
+* *Process key*
+* *Process version*
+* *Business key*
+* *With open incidents*
+* *Incident message*
+* *Activities*
+* Condiciones de variables de proceso, con coincidencia opcional sin distinción entre mayúsculas y minúsculas para los nombres y valores de las variables
+
+[NOTE]
+====
+Los filtros *Process key*, *Process version* y *Activities* están disponibles en el nuevo asistente de lotes. No se muestran cuando el filtro de instancias de proceso se abre desde el asistente de modificación de instancias de proceso.
+====
+
+El número de instancias coincidentes se muestra encima de la tabla como *Found instances*, y las instancias se listan a continuación.
+
+image::batch-operation-4.png[align="center", width="1552"]
+
+El número máximo de instancias a las que se puede aplicar un lote se controla mediante *Max modified instances count* en *Administration* -> *Application settings* -> *Bulk operation settings*. Si el filtro coincide con más instancias de las permitidas, se muestra una advertencia.
+
+No puede continuar al siguiente paso hasta que se seleccione un tipo de operación y se encuentre al menos una instancia de proceso. Haga clic en *Next* para continuar.
+
+[[step-batch-options]]
+== Paso 2: Opciones del lote
+
+Los campos de este paso dependen de la operación seleccionada en el primer paso:
+
+[cols="2,3,1", options="header"]
+|===
+| Parámetro | Operaciones admitidas | Requerido
+
+| Variables (cuadrícula)
+| Update process variables, Send message
+| Requerido para *Update process variables*, opcional para *Send message*
+
+| Message name (campo de texto)
+| Send message
+| Requerido
+
+| Retries
+| Update retries (jobs), Update retries (external tasks)
+| Requerido
+
+| Job due date
+| Update retries (jobs)
+| Opcional
+|===
+
+Para las operaciones que utilizan variables, haga clic en *Add* para abrir el cuadro de diálogo *Variable instance detail* y proporcionar un nombre, tipo y valor de variable. Utilice *Edit* y *Remove* para administrar las variables existentes.
+
+image::batch-operation-5.png[align="center", width="1552"]
+
+image::batch-operation-6.png[align="center", width="1552"]
+
+Las variables añadidas se muestran en la cuadrícula de variables.
+
+image::batch-operation-7.png[align="center", width="1552"]
+
+No puede continuar al siguiente paso hasta que se establezcan los parámetros requeridos para la operación seleccionada. Por ejemplo, *Update process variables* requiere al menos una variable, *Send message* requiere un nombre de mensaje, y las operaciones de reintentos requieren un valor de reintentos. Haga clic en *Next* para continuar.
+
+[[step-confirmation]]
+== Paso 3: Confirmación
+
+El paso de confirmación resume el tipo de operación seleccionado, las opciones del lote y el número de instancias de proceso.
+
+Haga clic en *Generate request* para generar y revisar la solicitud JSON que se enviará al motor BPM.
+
+image::batch-operation-8.png[align="center", width="1552"]
+
+Haga clic en *View* junto a *Process instances* para previsualizar la lista completa de instancias a las que se aplicará el lote.
+
+image::batch-operation-9.png[align="center", width="1552"]
+
+[WARNING]
+====
+Se puede mostrar una advertencia si el lote puede no tener efecto para algunas instancias; por ejemplo, al establecer reintentos para instancias de proceso que no tienen trabajos ni tareas externas activas.
+====
+
+Haga clic en *OK* para iniciar el lote. Después de que se acepte la solicitud, se muestra una notificación con un botón *Batch details*. Utilice *Batch details* para abrir el lote y seguir su progreso, o abra la vista *Batches* para monitorear los lotes activos y completados.
+
+image::batch-operation-10.png[align="center", width="1552"]
+
+
+image::batch-operation-11.png[align="center", width="1552"]

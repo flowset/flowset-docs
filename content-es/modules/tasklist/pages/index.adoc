@@ -1,0 +1,28 @@
+= Tasklist
+
+*Flowset Tasklist* es una aplicación web para trabajar con tareas de usuario dentro de procesos de negocio ejecutados en motores BPM.
+Tasklist ofrece a los usuarios finales una interfaz cómoda para interactuar con tareas y procesos, desde su inicio hasta su finalización.
+
+== Características principales
+
+* *Gestión de tareas* – visualización, filtrado y finalización de las tareas asignadas al usuario
+* *Gestión de procesos* – visualización de los procesos disponibles e inicio de nuevas instancias
+* *Integración flexible* – compatibilidad con la REST API de los motores BPM más populares (Camunda 7, Operaton)
+* *Compatibilidad con formularios personalizados* – posibilidad de conectar componentes React para formularios personalizados
+* *Interfaz moderna* – desarrollada con React y Ant Design, con diseño adaptable
+* *Configuración sencilla* – configuración basada en el entorno e imágenes Docker listas para usar
+
+== Tecnologías utilizadas
+
+Flowset Tasklist está construido utilizando las siguientes bibliotecas y frameworks:
+
+. https://react.dev/[React]
+. https://ant.design/[Ant Design]
+. https://tanstack.com/query/latest[react-query]
+. https://bpmn.io/toolkit/form-js/[form-js]
+. http://vite.dev/[Vite]
+
+[NOTE]
+====
+*Flowset Tasklist* no incluye un componente backend, pero es totalmente compatible con la REST API de los motores BPM (Camunda 7, Operaton).
+====

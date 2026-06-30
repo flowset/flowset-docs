@@ -1,0 +1,96 @@
+= Envío de un mensaje
+
+
+[NOTE, caption="Enterprise Feature"]
+====
+Esta función está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+
+Flowset Control le permite enviar un mensaje a un motor de BPM conectado directamente desde el diagrama de la instancia de proceso.
+Esto resulta útil cuando un proceso está esperando un evento externo y un administrador necesita continuar la ejecución sin llamar manualmente a la REST API a través de Postman o `curl`.
+
+Un mensaje se puede utilizar para continuar la ejecución de un proceso que está esperando en un *Intermediate Message Catch Event* o en un *Boundary Message Event*.
+Si un proceso se inicia mediante un *Message Start Event*, el mensaje también puede crear una nueva instancia de proceso.
+
+[[when-to-use]]
+== Cuándo utilizar un mensaje
+
+Utilice un mensaje cuando un evento deba entregarse a una instancia de proceso específica o a un punto de espera concreto en el diagrama.
+Por ejemplo, un proceso puede estar esperando un pago, la confirmación de un sistema externo o un evento operativo manual.
+
+A diferencia de un mensaje, una señal está pensada para difundir un evento a todos los procesos que están esperando la señal correspondiente.
+Para escenarios en los que necesita "impulsar hacia delante esta instancia de proceso concreta", normalmente se utiliza un mensaje.
+
+[[send-message-from-diagram]]
+== Envío de un mensaje desde el diagrama
+
+Si una instancia de proceso activa está esperando un mensaje, Control muestra una superposición de envío junto al Message Event en el diagrama.
+
+Para enviar un mensaje:
+
+. Abra la pantalla *Process instances*.
+. Localice la instancia de proceso requerida y haga clic en *View*.
+. En el diagrama, localice el Message Event activo.
+. Haga clic en el icono de envío de mensaje en la superposición.
++
+image::send-message-overlay.png[align="center", width="1552"]
+
+. En el cuadro de diálogo *Send message*, compruebe los parámetros del mensaje.
++
+image::send-message-dialog.png[align="center", width="1552"]
+
+. Si es necesario, agregue variables a la tabla *Process Variables*.
+. Haga clic en *Send*.
+
+Una vez que el mensaje se envía correctamente, Control muestra una notificación y actualiza el estado de la instancia de proceso.
+
+image::send-message-success.png[align="center", width="1552"]
+
+[[dialog-fields]]
+== Campos del cuadro de diálogo
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Campo | Descripción
+
+| *Message*
+| El nombre del mensaje que se enviará al motor.
+Control completa este valor a partir del Message Event seleccionado.
+
+| *Element*
+| El elemento BPMN desde el que se abrió el cuadro de diálogo.
+Este campo le ayuda a verificar que el mensaje se está enviando al lugar correcto del diagrama.
+
+| *Business key*
+| La clave de negocio de la instancia de proceso de destino, si está establecida.
+La clave de negocio puede utilizarse para localizar y verificar el proceso requerido.
+
+| *Id*
+| El identificador de la instancia de proceso de destino.
+Al enviar desde el diagrama, Control completa automáticamente el identificador de la instancia actual.
+
+| *Process Variables*
+| Variables que se pasarán al proceso junto con el mensaje.
+Las variables se pueden agregar, cambiar o eliminar antes del envío.
+|===
+
+[[variables]]
+== Variables de proceso
+
+Las variables de la tabla *Process Variables* se pasan en el cuerpo de la solicitud como `processVariables`.
+Para cada variable, especifique:
+
+* nombre;
+* tipo;
+* valor.
+
+Se admiten todos los tipos de datos principales.
+Los escenarios típicos utilizan `String`, `Boolean`, `Integer`, `Double` y `Date`.
+
+image::send-message-variables.png[align="center", width="1552"]
+
+[[result]]
+== Resultado del envío
+
+Cuando el mensaje se envía correctamente, Control muestra una notificación de éxito y actualiza los datos de la instancia de proceso.

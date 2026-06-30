@@ -1,0 +1,25 @@
+= Control
+
+**Flowset Control** es una aplicación web que proporciona funcionalidad administrativa para motores BPM externos.
+
++++
+<div class="card-block">
+  <p>¿Quieres probar Flowset Control ahora mismo? Usa el entorno de demostración público y explora la interfaz en cuestión de minutos.</p>
+  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Entorno de demostración</a>
+</div>
++++
+
+*Características principales*
+
+- **Gestión de conexiones:** Configure fácilmente conexiones a diversos motores BPM y cambie entre ellos según sea necesario.
+- **Exploración de procesos:** Navegue por los procesos desplegados en el motor.
+- **Despliegue de procesos:** Despliegue una nueva versión de un proceso de negocio con una cómoda vista previa del diagrama.
+- **Gestión de instancias:** Gestione las instancias de proceso que se están ejecutando actualmente en el motor BPM.
+- **Gestión de tareas de usuario:** Visualice las tareas de usuario con la posibilidad de reasignarlas.
+
+[NOTE]
+====
+Actualmente, solo se admite Camunda 7/Operaton.
+====
+
+Flowset Control está construido utilizando el framework de código abierto https://www.jmix.io[Jmix].

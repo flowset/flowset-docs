@@ -1,0 +1,185 @@
+= Conexión del motor BPM
+
+La aplicación permite a los administradores establecer y gestionar múltiples conexiones a motores BPM. Esta sección explica cómo añadir, configurar y probar estas conexiones.
+
+[[empty-dashboard]]
+Al iniciar la aplicación, se abre la vista xref:dashboard.adoc[Dashboard]. Si no hay ningún motor BPM conectado, la vista aparece de la siguiente manera:
+
+image::empty-dashboard.png[align="center", width="1552"]
+
+Para configurar un nuevo motor BPM:
+
+. Haga clic en el botón *Añadir* para abrir el cuadro de diálogo *New BPM engine*.
+. Alternativamente, navegue a la vista *BPM engines* a través del menú principal de la aplicación. Una vez allí, seleccione el botón *Crear*.
+
+Una vez abierta la vista *New BPM engine*, complete todos los campos requeridos como se describe en <<adding-new-engine,Añadir un nuevo motor>>.
+
+[NOTE, caption="Key Features"]
+====
+* *Conexiones múltiples*: Configure tantas conexiones de motores como sea necesario para diferentes entornos.
+
+* *Activación inmediata*: Los cambios surten efecto sin necesidad de reiniciar la aplicación.
+
+* *Validación de la conexión*: La funcionalidad de prueba garantiza una configuración correcta antes de guardar.
+
+* *Motor predeterminado*: Un motor debe designarse como predeterminado.
+
+* *Edición de conexiones existentes*: Modifique cualquier parámetro más adelante seleccionando la conexión y haciendo clic en *Editar*.
+====
+
+[[bpm-engines]]
+== Motores BPM
+
+La vista *BPM engines* muestra una lista de motores BPM conectados a la aplicación de procesos. Los administradores pueden realizar las siguientes acciones:
+
+* Crear o eliminar un motor.
+* Editar la configuración de un motor existente.
+
+image::bpm-engine-view.png[align="center", width="1548"]
+
+Los motores se muestran en una tabla con las siguientes columnas:
+
+* *Nombre*: El nombre para mostrar del motor.
+* *URL base*: La URL del endpoint del motor.
+* *Tipo*: El tipo de motor.
+* *Motor predeterminado*: Una marca que indica el motor predeterminado (solo un motor puede marcarse como predeterminado).
+
+NOTE: El primer motor añadido se establece automáticamente como predeterminado. Para cambiar el motor predeterminado, marque manualmente como predeterminado otro motor de la lista.
+
+[[adding-new-engine]]
+== Añadir un nuevo motor
+
+Para conectarse a un motor BPM en ejecución:
+
+. Acceda a la vista de configuración *New BPM engine*. Hay dos métodos para comenzar a configurar una nueva conexión de motor BPM:
++
+--
+* Desde el dashboard de la aplicación, si <<empty-dashboard,no hay motores BPM>> configurados.
+* A través de la vista <<bpm-engines,Motores BPM>>, haciendo clic en el botón *Crear*.
+--
++
+image::new-bpm-engine-view.png[align="center", width="752"]
+
+. Configure los parámetros de conexión:
++
+* *Nombre* (requerido):
++
+Introduzca un nombre descriptivo para su instancia de motor BPM (por ejemplo, `"Production Camunda 7"`, `"QA Flowset"`).
+
+* *URL base* (requerido):
++
+Especifique la URL completa del endpoint (por ejemplo, `++https://bpm-server.example.com:8080/engine-rest++`)
+
+* *Tipo*:
++
+Seleccione entre los tipos de motor admitidos:
++
+** Operation
+** Camunda 7
+
+. Si el motor BPM de destino requiere acceso autenticado, seleccione la casilla *Enabled* en el grupo *Authentication*.
++
+Seleccione el método de autenticación:
++
+* *HTTP Basic Authentication*. Proporcione un nombre de usuario y una contraseña.
+* *HTTP Headers Authentication*. Configure encabezados personalizados.
+
+. Antes de guardar cualquier cambio, haga clic en *Test connection* para asegurar la exactitud de la configuración de la conexión. Esta acción inicia un intento de conexión al motor seleccionado. A continuación, el sistema mostrará un mensaje que indica si la conexión fue exitosa o si se encontraron errores.
+
+. Haga clic en *OK* para guardar la conexión.
+
+[[managing-connections]]
+== Gestión de las conexiones del motor BPM
+
+Flowset Control muestra el motor BPM actualmente conectado en la insignia de estado de la esquina superior derecha. Esto muestra:
+
+* El nombre del motor activo
+* El estado de la conexión
+
+image::bpm-engine-managing.png[align="center", width="1300"]
+
+Para cambiar el motor BPM activo, localice la insignia de estado del motor en la esquina superior derecha y haga clic en el botón *Editar* junto a la insignia de estado del motor.
+
+Aparecerá el cuadro de diálogo *Select BPM engine*:
+
+image::select-bpm-engine.png[align="center", width="642"]
+
+El administrador puede elegir el motor BPM y especificar los parámetros de autenticación, incluidos el nombre del encabezado y el valor del parámetro. Antes de cambiar de motor BPM, hay disponible una prueba de conexión.
+
+// [[monitoring]]
+// == BPM Engine Monitoring
+//
+// [NOTE, caption="Enterprise Feature"]
+// ====
+// This feature is exclusively available in the Enterprise Edition of *Flowset Control*.
+// ====
+//
+// Flowset Control allows viewing the current state of business processes within the engine. However, for the system administrator, it is also useful to have information about the overall system status, such as the number of CPU cores, available RAM, disk space, etc. This information will allow the administrator to be proactively alerted to increasing load. In conjunction with automatic/manual system scaling, Flowset Control can solve the problem of fully managing business process engines.
+//
+// [[monitoring-configuration]]
+// === Monitoring Configuration
+//
+// The Enterprise Edition enhances the BPM engine detail view with a dedicated *Monitoring* section:
+//
+// image::bpm-engine-monitoring.png[align="center", width="1440"]
+//
+// ==== External Dashboard URL
+//
+// * Specify the URL of an external monitoring dashboard (e.g., https://grafana.com/[Grafana^]).
+// * Example: For Camunda, you can configure a Grafana dashboard and paste its URL here.
+// * Provides one-click navigation from Flowset Control directly to the external dashboard:
+// +
+// image::grafana-monitoring.png[align="center", width="1440"]
+//
+// ==== Integrated Metrics
+//
+// * Enable the *Enable* checkbox to activate metrics collection and display within Flowset Control.
+// * *URL* field: Configure the endpoint URL sourcing the metrics (e.g., a Spring Boot Actuator endpoint).
+// * Click *Generate* to fetch available metrics from the specified endpoint.
+// +
+// image::actuator-metrics.png[align="center", width="776"]
+//
+// ==== Metric Selection
+//
+// * Select relevant metrics by checking the boxes next to their names.
+// +
+// image::actuator-metrics-select.png[align="center", width="779"]
+//
+// * Hover over the question mark icon (?) for a brief description of each metric.
+//
+// * You can configure tags for each metric to enable more detailed monitoring focused on specific areas:
+// +
+// image::actuator-metrics-tags.png[align="center", width="802"]
+//
+// [[viewing-metrics]]
+// === Viewing Metrics
+//
+// . Navigate to the list of <<bpm-engines,BPM engines>> in Flowset Control.
+// . Click *View metrics* for the desired engine.
+// +
+// image::view-metrics.png[align="center", width="1254"]
+// . A dialog displays:
+// +
+// image::metrics.png[align="center", width="962"]
+// * All configured metrics and their tags.
+// * Current metric values.
+// * A *Refresh* button to update values in real-time.
+//
+// [NOTE]
+// ====
+// Use the *External dashboard* button for quick access to the configured Grafana (or other) dashboard.
+//
+// image::external-dashboard.png[align="center", width="855"]
+// ====
+//
+// [[quick-access-toolbar]]
+// === Quick Access Toolbar
+//
+// For rapid monitoring, use the engine selection panel at the top of the view.
+//
+// image::quick-access-monitoring.png[align="center", width="876"]
+//
+// This allows you to:
+//
+// * Quickly view metrics for the currently selected engine.
+// * Navigate directly to its external dashboard.

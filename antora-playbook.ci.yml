@@ -9,6 +9,12 @@ content:
       - release_2026.0
       - release_2025.0
     start_path: content
+  # Spanish docs (flowset-es). Resolves once content-es/ is merged into the release branches.
+  - url: https://github.com/flowset/flowset-docs.git
+    branches:
+      - release_2026.0
+      - release_2025.0
+    start_path: content-es
 ui:
   bundle:
     # Phase 1: production builds use the published Flowset UI bundle.

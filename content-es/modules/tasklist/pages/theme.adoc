@@ -1,0 +1,46 @@
+= Tema
+
+*Flowset Tasklist* utiliza la biblioteca https://ant.design/[Ant Design] como base de su interfaz.
+Esto proporciona un diseño de aplicación moderno, adaptable y personalizable.
+
+Puede modificar la apariencia de Tasklist ajustando el tema para que coincida con la marca y el estilo de su organización.
+
+== General
+
+Ant Design admite los denominados *Design Tokens*: variables que definen colores, fuentes, espaciado y otros parámetros de estilo.
+En Flowset Tasklist, todos los ajustes del tema se concentran en un único lugar: en el archivo:
+
+[source,shell]
+----
+src/features/theme/flowsetTheme.ts
+----
+
+== Modificar el tema
+
+. Abra el archivo:
++
+[source,shell]
+----
+src/features/theme/flowsetTheme.ts
+----
+. Localice el objeto que contiene los design tokens (por ejemplo, `colorPrimary`, `borderRadius`, `fontFamily`).
+. Cambie los valores de los parámetros según sus preferencias.
+
+=== Ejemplo de modificación del esquema de color principal
+
+[source,typescript]
+----
+export const flowsetTheme = {
+  token: {
+    colorPrimary: '#0A84FF',     // primary interface color
+    colorBgBase: '#FFFFFF',      // background color
+    colorTextBase: '#1F1F1F',    // main text color
+    borderRadius: 8,             // border radius
+  },
+};
+----
+
+Después de guardar los cambios, reinicie la aplicación: Tasklist aplicará automáticamente el nuevo esquema de color.
+
+Para más detalles, consulte la documentación oficial de Ant Design:
+https://ant.design/docs/react/customize-theme

@@ -1,0 +1,91 @@
+= Instancias de proceso
+
+Para ver las instancias de proceso almacenadas en el motor de BPM, seleccione *Process instances* en el menú de la aplicación.
+
+[[instance-list]]
+== Funciones de la lista de instancias
+
+La vista *Process instances* presenta todas las ejecuciones de proceso actualmente en curso recuperadas del xref:connecting-engine.adoc[motor de BPM conectado].
+
+Cada xref:process.adoc#starting-processes[inicio de proceso] genera una nueva instancia que es visible en esta vista. El sistema presenta las instancias en formato tabular, mostrando los detalles esenciales de ejecución.
+
+image::process-instances.png[align="center", width="1552"]
+
+La tabla de instancias de proceso proporciona capacidades de filtrado y ordenación, lo que permite a los usuarios organizar las instancias según diversos criterios, como:
+
+* Estado: en ejecución, suspendida, completada o con error
+* Clave de negocio: utilizada para iniciar y ejecutar la instancia
+* Hora de inicio/Hora de finalización
+* Y así sucesivamente.
+
+De forma predeterminada, la tabla de instancias de proceso muestra exclusivamente las instancias activas para centrar la atención en los flujos de trabajo que se están ejecutando actualmente.
+
+[[actions]]
+Las siguientes operaciones están disponibles:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Acción | Descripción
+
+| *Refresh*
+| Actualiza la lista de instancias de proceso actual, sincronizándola con el estado más reciente del motor de BPM.
+
+| *Terminate*
+| Detiene de inmediato la ejecución de las instancias de proceso seleccionadas.
+
+| *Suspend*
+| Pausa la ejecución de las instancias de proceso en ejecución.
+
+| *Activate*
+| Reanuda las instancias de proceso previamente suspendidas.
+|===
+
+NOTE: Estas acciones son aplicables a un conjunto de instancias de proceso seleccionadas por el usuario.
+
+[WARNING]
+====
+Las instancias de proceso que encuentran errores (incidentes) durante la ejecución se marcan con un icono especial: un triángulo rojo.
+
+image::process-with-incident.png[align="center", width="1165"]
+====
+
+[[detailed-instance]]
+== Detalles de la instancia de proceso
+
+Para ver los detalles de ejecución de una instancia de proceso concreta, utilice la acción *View*.
+
+Esta acción abre la vista detallada de la instancia, que contiene:
+
+* *Diagrama de proceso* con visualización del progreso de ejecución:
++
+image::process-instance-detail.png[align="center", width="1549"]
+** Nodos resaltados en verde - actividades completadas
+** Nodo resaltado en azul - elemento actualmente activo
+** Bordes rojos - ubicaciones de error (con detalles en información sobre herramientas)
+
+* La pestaña *Runtime* solo es accesible para las instancias de proceso activas y proporciona información sobre el estado actual del proceso. Esta pestaña incluye:
+** Árbol de *Execution*. Al seleccionar elementos en el árbol de ejecución se actualiza el contenido de las pestañas *Variables* y *Tasks*. Cuando selecciona una ejecución específica, solo se muestran los objetos relacionados con esa ejecución.
+** *Variables*. Vea y modifique las variables de proceso:
++
+image::process-instance-variable.png[align="center", width="1168"]
+** *User tasks*. Vea una lista de tareas activas y reasigne tareas a otros usuarios:
++
+image::process-instance-user-task.png[align="center", width="1168"]
+** *Jobs*
+** *External tasks*
+** *Incidents*
+
+* La pestaña *History* muestra una lista de todas las tareas de usuario (tanto completadas como activas), una lista completa de las actividades completadas y los últimos valores de las variables de proceso. La pestaña *History* está disponible tanto para instancias de proceso activas como completadas.
++
+image::process-instance-history.png[align="center", width="1163"]
+
+* El panel derecho muestra las <<actions,acciones>> disponibles para la instancia de proceso, incluidas:
+
+** Ver información de la instancia.
+** Recargar la instancia de proceso.
+** Suspender la instancia.
+** xref:process.adoc#process-migration[Migrar] la instancia a una nueva versión de definición de proceso.
+** xref:process-instance-modification.adoc#modify-single-instance[Modificar] la instancia de proceso en ejecución actual moviendo tokens entre actividades.
+** Terminar la instancia de proceso.
++
+image::process-instance-info.png[align="center", width="1166"]

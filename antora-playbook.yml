@@ -7,6 +7,9 @@ content:
   - url: ./
     branches: HEAD
     start_path: content
+  - url: ./
+    branches: HEAD
+    start_path: content-es
 ui:
   bundle:
     # Phase 1: switch to the Flowset UI bundle once it is built and published.

@@ -1,0 +1,280 @@
+= Inicio de sesión único (SSO)
+
+Flowset Control admite el mecanismo de *inicio de sesión único (SSO)*, que permite a los usuarios iniciar sesión en el sistema utilizando un proveedor de autenticación externo mediante el protocolo *OpenID Connect (OIDC)*.
+El SSO proporciona una gestión centralizada de usuarios y roles, así como la capacidad de utilizar un inicio de sesión unificado en todas las aplicaciones de la infraestructura de la organización.
+
+Como ejemplo de configuración de SSO, a continuación se muestra una integración con el sistema de gestión de identidades **Keycloak**.
+
+[[application-properties]]
+== Configuración de Flowset Control
+
+=== Habilitar el modo SSO
+
+Para reemplazar el formulario de inicio de sesión estándar con la autenticación basada en SSO, debe habilitar el uso de OIDC y establecer el parámetro `Login Mode` en `oidc`:
+
+[source,properties]
+----
+# Enable OIDC support
+jmix.oidc.use-default-configuration=true
+
+# Switch login mode
+flowset.control.security.login-mode=oidc
+----
+
+=== Configuración del cliente OIDC
+
+A continuación, debe configurar un cliente para conectarse a su proveedor de SSO.
+La configuración se realiza utilizando los mecanismos estándar de Spring Security mediante el archivo `application.properties`:
+
+[source,properties]
+----
+# Keycloak OIDC configuration
+spring.security.oauth2.client.registration.keycloak.client-id=<client-id>
+spring.security.oauth2.client.registration.keycloak.client-secret=<client_secret>
+spring.security.oauth2.client.registration.keycloak.scope=openid, profile, roles
+
+spring.security.oauth2.client.provider.keycloak.issuer-uri=http://localhost:8180/realms/<realm>
+spring.security.oauth2.client.provider.keycloak.user-name-attribute=preferred_username
+
+spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:8180/realms/<realm>
+
+jmix.oidc.jwt-authentication-converter.username-claim=preferred_username
+
+jmix.oidc.default-claims-roles-mapper.roles-claim-name=roles
+----
+
+**Notas:**
+
+- `keycloak` es el identificador del proveedor (se puede cambiar, por ejemplo, a okta).
+- Los parámetros `client-id` y `client-secret` son emitidos por su proveedor de OpenID.
+- `issuer-uri` apunta al OpenID Configuration Endpoint, por ejemplo:
+`http://localhost:8180/realms/flowset/.well-known/openid-configuration`.
+- De forma predeterminada, el claim `sub` se utiliza como nombre de usuario. Para cambiarlo, utilice:
++
+[source]
+----
+spring.security.oauth2.client.provider.keycloak.user-name-attribute=preferred_username
+----
+
+Flowset Control implementa la compatibilidad con OIDC utilizando el Jmix OIDC Add-on.
+Puede obtener más información sobre la configuración aquí: https://docs.jmix.ru/jmix/oidc/index.html#client-configuration[documentación oficial].
+
+=== Configuración del contenedor (Docker)
+
+Si Flowset Control se despliega en un contenedor, los parámetros de OIDC se pueden pasar mediante variables de entorno en el archivo `docker-compose.yml`:
+
+[source,yaml]
+----
+services:
+  flowset-control-app:
+    image: flowset/flowset-control-community:latest
+    container_name: flowset-control-app
+    restart: "no"
+    environment:
+      MAIN_DATASOURCE_URL: "jdbc:postgresql://flowset-control-database/flowset-control"
+      MAIN_DATASOURCE_USERNAME: "root"
+      MAIN_DATASOURCE_PASSWORD: "root"
+      SERVER_PORT: "8081"
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KEYCLOAK_CLIENTID: "<client-id>"
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KEYCLOAK_CLIENTSECRET: "<client-secret>"
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUERURI: "http://localhost:8180/realms/<realm>"
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI: "http://localhost:8180/realms/<realm>"
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_USERNAMEATTRIBUTE: "preferred_username"
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KEYCLOAK_SCOPE: "openid, profile, roles"
+      JMIX_OIDC_JWTAUTHENTICATIONCONVERTER_USERNAMECLAIM: "preferred_username"
+      JMIX_OIDC_DEFAULTCLAIMSROLESMAPPER_ROLESCLAIMNAME: "roles"
+      JMIX_OIDC_USEDEFAULTCONFIGURATION: "true"
+      FLOWSET_CONTROL_SECURITY_LOGINMODE: "oidc"
+    ports:
+      - "8081:8081"
+    depends_on:
+      flowset-control-database:
+        condition: service_started
+    networks:
+      - flowset-control-net
+
+  flowset-control-database:
+    image: postgres:16.3
+    container_name: flowset-control-database
+    restart: "no"
+    environment:
+      POSTGRES_DB: "flowset-control"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+    volumes:
+      - flowset-control-database_data:/var/lib/postgresql/data
+    networks:
+      - flowset-control-net
+
+volumes:
+  flowset-control-database_data:
+
+networks:
+  flowset-control-net:
+    driver: bridge
+----
+
+[[keycloak-setup]]
+== Configuración de una instancia local de Keycloak
+
+Uno de los proveedores de OpenID más populares es Keycloak.
+Para explorar el complemento Jmix OIDC, puede ejecutar Keycloak localmente utilizando Docker.
+
+=== Ejecución de Keycloak con Docker
+
+Utilice el siguiente comando para ejecutar una instancia de Keycloak mediante Docker en el puerto 8180:
+
+[source]
+----
+docker run -p 8180:8080 \
+    -e KEYCLOAK_ADMIN=admin \
+    -e KEYCLOAK_ADMIN_PASSWORD=admin \
+    --name keycloak \
+    quay.io/keycloak/keycloak:22.0 start-dev
+----
+
+Consulte la https://www.keycloak.org/getting-started/getting-started-docker[documentación de Keycloak] para obtener más detalles.
+
+URL de Keycloak: http://localhost:8180
+
+Credenciales de administrador:
+
+[source]
+----
+Username: admin
+Password: admin
+----
+
+Puede leer sobre la configuración de una instancia de Keycloak en la https://www.keycloak.org/docs/latest/server_admin/[Guía de administración del servidor].
+
+== Configuración de Keycloak para Flowset Control
+
+[[keycloak-realm]]
+=== Creación de un realm
+
+Inicie sesión en la consola de administración de Keycloak y complete los siguientes pasos:
+
+1. En el panel izquierdo, haga clic en *Add Realm*.
++
+image::create-realm-1.png[align="center", width="1000"]
++
+2. Introduzca un nombre de realm, por ejemplo `flowset`.
+3. Haga clic en *Create*.
++
+image::create-realm-2.png[align="center", width="1000"]
+
+[[keycloak-client]]
+=== Creación de un cliente
+
+Un cliente representa la aplicación Flowset Control que utilizará Keycloak para la autenticación.
+
+1. Abra *Clients* y haga clic en *Create*.
+2. Especifique los parámetros:
++
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Parámetro | Valor
+
+| *Client ID*
+| `flowset-control`
+
+| *Client Protocol*
+| `openid-connect`
+|===
++
+image::create-client-1.png[align="center", width="900"]
++
+3. En la sección *Capability config*:
++
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Parámetro | Valor
+
+| *Client authentication*
+| `ON`
+|===
++
+image::create-client-2.png[align="center", width="900"]
++
+4. En la sección *Login Settings*, establezca:
++
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Parámetro | Valor
+
+| *Valid Redirect URIs*
+| `*` (solo para desarrollo)
+
+| *Valid post logout redirect URIs*
+| `*` (solo para desarrollo)
+
+| *Web Origins*
+| `*` (solo para desarrollo)
+|===
++
+image::create-client-3.png[align="center", width="900"]
++
+Después de guardar el cliente, vaya a la pestaña *Credentials* y copie el *Client Secret*.
+Este secreto se utilizará en la configuración de Flowset Control.
++
+image::client-credentials.png[align="center", width="900"]
+
+[[keycloak-roles]]
+=== Creación de roles
+
+Los roles en Keycloak deben coincidir con los códigos de rol utilizados en Jmix/Flowset Control.
+
+1. Abra *Realm roles* → *Add Role*.
+2. Introduzca un nombre de rol, por ejemplo `system-full-access`.
+3. Guarde los cambios.
++
+image::create-role.png[align="center", width="800"]
+
+[[keycloak-users]]
+=== Creación de un usuario
+
+1. Abra *Users* → *Add User*.
+2. Introduzca un nombre de usuario, por ejemplo `johndoe`.
+3. Guarde.
++
+image::create-user.png[align="center", width="800"]
++
+Después de guardar:
+
+* En la pestaña *Credentials*, establezca una contraseña para el usuario.
+* En la pestaña *Role Mappings*, asigne el rol `system-full-access`.
++
+image::create-user-credentials.png[align="center", width="800"]
++
+image::assign-role.png[align="center", width="800"]
+
+[[keycloak-mapper]]
+=== Configuración de un asignador de roles
+
+Para asegurarse de que los roles se incluyan en el ID Token, cree un asignador:
+
+1. Vaya a *Client scopes* → `roles` → *Mappers* → `realm roles`.
+2. Haga clic en *Create* y complete los campos:
++
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Campo | Valor
+
+| *Mapper Type* | `User Realm Role`
+| *Token Claim Name* | `realm roles`
+| *Claim JSON Type* | `String`
+| *Add to ID token* | `ON`
+| *Add to access token* | `ON`
+| *Add to userinfo* | `ON`
+
+|===
++
+image::create-mapper-1.png[align="center", width="900"]
++
+image::create-mapper-2.png[align="center", width="900"]
+
+=== Comprobación de la autenticación
+
+Tras la configuración correcta de Keycloak y Flowset Control, el formulario de inicio de sesión estándar se reemplazará con el formulario de inicio de sesión de Keycloak:
+
+image::keycloak-login.png[align="center", width="900"]

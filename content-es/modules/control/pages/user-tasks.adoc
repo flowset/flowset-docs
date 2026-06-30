@@ -1,0 +1,68 @@
+= Tareas de usuario
+
+La vista *User tasks* permite a los administradores monitorizar y gestionar todas las tareas asociadas al motor BPM seleccionado.
+
+[[task-list]]
+== Lista de tareas de usuario
+
+Para ver las tareas de usuario activas, seleccione *User tasks* en el menú de la aplicación.
+
+image::user-tasks.png[align="center", width="1552"]
+
+El sistema muestra las tareas en una tabla ordenable y filtrable con la siguiente información para cada tarea:
+
+* *Key* - identificador único del sistema
+* *Name* - descripción legible para las personas
+* *Process* - información del *proceso* principal
+* *Creation time* - marca de tiempo de creación de la tarea
+* *Assignee* - usuario actualmente responsable
+
+*Capacidades avanzadas de filtrado*
+
+Los administradores pueden refinar la lista de tareas utilizando múltiples criterios de filtro:
+
+* Por clave de negocio
+* Por nombre de tarea
+* Por definición de proceso
+* Por estado de la tarea (activas, suspendidas o todas)
+* Por asignatario actual
+* Por rango de fechas de creación
+
+== Operaciones sobre tareas
+
+Para las tareas que no están suspendidas, tiene la opción de completarlas o reasignarlas.
+
+[[task-completion]]
+=== Completar tareas
+
+Los administradores pueden completar tareas manualmente cuando sea necesario:
+
+. Seleccione la tarea deseada de la lista.
+. Haga clic en el botón de acción *Complete*.
+. Proporcione las variables de proceso requeridas.
++
+image::user-task-complete.png[align="center", width="1163"]
+. Confirme la finalización.
+
+[[task-reassignment]]
+=== Reasignar tareas
+
+El sistema permite una reasignación de tareas sencilla:
+
+. Seleccione la tarea deseada de la lista.
+. Haga clic en el botón de acción *Reassign*.
+. Introduzca el nombre de usuario exacto del nuevo asignatario.
++
+image::user-task-reassign.png[align="center", width="1164"]
++
+NOTE: El sistema requiere la introducción precisa del nombre de usuario, sin sugerencias de autocompletado.
+. Confirme la reasignación.
+
+[[detailed-user-task]]
+== Visualización de los detalles de una tarea
+
+Para ver los detalles de una tarea de usuario concreta, utilice la acción *View* en la lista de tareas de usuario.
+
+Esta acción abre la vista detallada de la tarea de usuario:
+
+image::user-task-details.png[align="center", width="860"]

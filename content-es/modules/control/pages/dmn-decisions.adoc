@@ -1,0 +1,108 @@
+= Decisiones DMN
+
+La aplicación proporciona soporte integral para tablas de decisión DMN (Decision Model and Notation) a través del elemento de menú *DMN → Decisions*.
+
+Al seleccionar este elemento de menú se muestra una lista completa de todas las tablas de decisión desplegadas actualmente en su motor de BPM activo.
+
+NOTE: Las definiciones e instancias de decisión se muestran utilizando datos históricos.
+
+[[decision-table-list]]
+== Lista de tablas de decisión
+
+La vista *Decisions* muestra todas las tablas de decisión DMN desplegadas en su motor de BPM activo en un formato de tabla ordenable y filtrable.
+
+image::dmn-table-list.png[align="center", width="1537"]
+
+En la parte superior de la tabla aparece un filtro simplificado con el siguiente comportamiento:
+
+* Admite búsqueda básica por nombre y por clave
+* Incluye la opción de casilla de verificación *Latest version only*
+
+WARNING: La búsqueda por nombre y el filtro *Latest version only* son mutuamente excluyentes. Cuando se especifica un nombre, la casilla de verificación *Latest version only* se desactiva automáticamente para garantizar resultados precisos.
+
+Las siguientes acciones están disponibles:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Acción | Descripción
+
+| *Refresh*
+| Recarga la lista de decisiones DMN actual desde el motor de BPM conectado.
+
+| *Deploy*
+| Carga y despliega nuevos archivos DMN. Consulte <<deploy-dmn-table>>.
+
+| *View*
+| Muestra información detallada de la tabla DMN. Consulte <<view-desicion-details>>.
+
+| *Evaluate decision*
+| Abre una vista de evaluación independiente para la tabla de decisión seleccionada. Consulte xref:decision-evaluation.adoc[Evaluación de decisiones].
+|===
+
+[[deploy-dmn-table]]
+== Despliegue de una tabla DMN
+
+Para desplegar una tabla DMN:
+
+. En la vista *Decisions*, haga clic en *Deploy*
+. En la vista *New decision deployment*, haga clic en *Upload* y seleccione su archivo DMN 1.1 (.dmn o .dmn11.xml).
++
+image::deploy-decision.png[align="center", width="1186"]
+. Haga clic en *OK* para completar el despliegue.
+
+[[view-desicion-details]]
+== Visualización de los detalles de la decisión
+
+La acción *View* proporciona una visión integral de la definición de decisión desplegada.
+
+Seleccione una definición de decisión desplegada y haga clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
+
+image::dmn-details.png[align="center", width="1186"]
+
+. La pestaña *General* - información básica de la tabla de decisión.
++
+El panel izquierdo contiene:
++
+--
+* *Name* - identificador legible de la tabla de decisión.
+* *Key* - clave de negocio única para referencia.
+* *Version* - la versión de la definición de decisión.
+* *Id* - identificador único generado por el sistema.
+* *Deployment Id* - incluye un enlace directo para navegar al despliegue principal.
+--
++
+El panel derecho muestra instancias de ejecución concretas en formato tabular con:
++
+* Filtros de columna integrados en la cabecera de la tabla.
+* Capacidad de profundizar en instancias específicas.
+
+. La pestaña *Schema* - un diagrama de la definición de decisión desplegada.
++
+image::dmn-details-diagram.png[align="center", width="1186"]
+. La pestaña *XML* - definición DMN 1.1 sin procesar
++
+image::dmn-details-xml.png[align="center", width="1186"]
+
+[[view-dmn-table-instance]]
+== Análisis de instancias de decisión
+
+La vista de instancia de tabla de decisión incluye la información básica sobre esta instancia y funciones especializadas para analizar las ejecuciones.
+
+image::dmn-details-instance.png[align="center", width="1186"]
+
+*Parámetros de entrada/salida*
+
+* Representación tabular clara de todos los parámetros.
+* Organizados por flujo de ejecución.
+
+*Reglas resaltadas*
+
+* Las reglas aplicadas se destacan visualmente.
+* La codificación por colores indica qué expresiones se evaluaron y activaron.
+
+*Vista DRD*
+
+El botón *View DRD* proporciona acceso al Decision Requirements Diagram completo, con las siguientes consideraciones:
+
+* Al navegar a la vista DRD se borran los resaltados de ejecución actuales.
+* El diagrama muestra la red completa de dependencias de decisión.

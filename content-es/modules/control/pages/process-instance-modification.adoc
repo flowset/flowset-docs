@@ -1,0 +1,188 @@
+= Modificación de instancias de proceso
+
+[NOTE, caption=Enterprise Feature]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+Flowset Control proporciona herramientas para mover tokens de procesos en ejecución de una actividad a otra.
+
+Use la modificación cuando necesite recuperar procesos en ejecución, volver a probar una parte específica de un proceso grande o sincronizar la ejecución del proceso después de que se hayan recibido datos incorrectos de un sistema externo. Puede modificar varias instancias de proceso a la vez desde la vista *Modificación*, o modificar una única instancia en ejecución directamente desde la vista de detalle de la instancia de proceso.
+
+Para más información sobre la modificación de instancias de proceso de Camunda, consulte:
+
+* https://docs.camunda.org/manual/latest/user-guide/process-engine/process-instance-modification/[documentación de modificación de instancias de proceso de Camunda 7]
+* https://docs.camunda.org/rest/camunda-bpm-platform/7.24-SNAPSHOT/#tag/Modification[API REST de modificación de Camunda 7]
+
+[WARNING]
+====
+La modificación de instancias de proceso cambia el estado en tiempo de ejecución de las instancias de proceso seleccionadas. Úsela solo cuando comprenda el impacto comercial y técnico de cancelar la actividad de origen e iniciar la ejecución en la actividad de destino.
+====
+
+NOTE: La funcionalidad de modificación se puede deshabilitar con la propiedad de la aplicación `flowset.control.features.modification-enabled`.
+
+[[modify-multiple-instances]]
+== Modificación de múltiples instancias
+
+Use la vista *Modificación* cuando el mismo movimiento de token deba aplicarse a varias instancias de proceso en ejecución.
+
+[[open-mass-modification]]
+=== Apertura de la modificación masiva
+
+Seleccione *Modificación* en el menú de la aplicación para abrir el asistente de modificación de instancias de proceso.
+
+El asistente tiene tres pasos:
+
+* *Proceso y actividades* - seleccione el proceso, la versión, la actividad de origen y la actividad de destino.
+* *Filtrado de instancias* - seleccione las instancias de proceso en ejecución que deben modificarse.
+* *Confirmación* - revise la solicitud de modificación generada e inicie la ejecución.
+
+image::process-instance-modification-1.png[align="center", width="1552"]
+
+[[select-process-and-version]]
+=== Selección del proceso y la versión
+
+En el primer paso, seleccione un proceso de la lista *Proceso*.
+
+La lista de procesos está ordenada para facilitar la búsqueda de procesos.
+
+Después de seleccionar el proceso, elija la versión de definición de proceso requerida.
+
+image::process-instance-modification-2.png[align="center", width="1552"]
+
+Flowset Control carga el diagrama BPMN y habilita la selección de las actividades de origen y destino.
+
+[[select-source-and-target]]
+=== Selección de las actividades de origen y destino
+
+El asistente de modificación construye un movimiento de token desde una actividad de origen hasta una actividad de destino:
+
+* *Actividad de origen* - la actividad actualmente activa que debe cancelarse.
+* *Actividad de destino* - la actividad donde debe iniciarse un nuevo token.
+
+Puede seleccionar actividades desde la lista desplegable ordenada.
+
+image::process-instance-modification-3.png[align="center", width="1552"]
+
+También puede seleccionar una actividad directamente en el diagrama BPMN. Haga clic en el botón de selección del diagrama junto al campo de origen o destino, seleccione el elemento BPMN requerido y confirme con *OK*.
+
+image::process-instance-modification-4.png[align="center", width="1552"]
+
+image::process-instance-modification-5.png[align="center", width="1552"]
+
+Para la actividad de destino, elija cómo debe crearse el nuevo token:
+
+* *Iniciar antes* - inicia la ejecución antes de la actividad seleccionada.
+* *Iniciar después* - inicia la ejecución después de la actividad seleccionada.
+
+Cuando se hayan seleccionado las actividades de origen y destino, haga clic en *Siguiente*.
+
+image::process-instance-modification-6.png[align="center", width="1552"]
+
+[[filter-instances]]
+=== Filtrado de instancias
+
+El segundo paso muestra las instancias de proceso en ejecución que coinciden con la definición de proceso y la actividad de origen seleccionadas.
+
+image::process-instance-modification-7.png[align="center", width="1552"]
+
+Use el cuadro de diálogo de filtro para reducir el conjunto de instancias antes de aplicar la modificación.
+
+image::process-instance-modification-8.png[align="center", width="1552"]
+
+Los filtros disponibles incluyen:
+
+* *Clave de negocio*
+* *Con incidentes abiertos*
+* *Mensaje de incidente*
+* Condiciones de variables de proceso
+* Coincidencia sin distinción entre mayúsculas y minúsculas para nombres y valores de variables
+
+El número de instancias seleccionadas para la modificación se muestra encima de la tabla. Revise esta lista cuidadosamente, porque la modificación se aplicará a todas las instancias coincidentes.
+
+[[confirm-modification]]
+=== Confirmación de la modificación masiva
+
+El paso de confirmación resume el proceso, las actividades y el número de instancias de proceso seleccionados.
+
+Opcionalmente, puede añadir un comentario antes de iniciar la modificación.
+
+Haga clic en *Solicitud general* para generar y revisar la solicitud de modificación que se enviará al motor BPM.
+
+image::process-instance-modification-9.png[align="center", width="1552"]
+
+La solicitud generada incluye:
+
+* `processDefinitionId`
+* `processInstanceIds`
+* Una instrucción `cancel` para la actividad de origen
+* Una instrucción `startBeforeActivity` o `startAfterActivity` para la actividad de destino
+
+Haga clic en *Modificar* para iniciar la modificación.
+
+[[track-modification]]
+=== Seguimiento del progreso de la modificación masiva
+
+Para la modificación masiva, Flowset Control inicia el procesamiento y muestra una notificación después de que se acepta la solicitud.
+
+image::process-instance-modification-10.png[align="center", width="1552"]
+
+Use *Detalles del lote* desde la notificación para ver el progreso de la ejecución, o actualice los datos relacionados para verificar el estado actualizado del proceso.
+
+[[modify-single-instance]]
+== Modificación de una única instancia
+
+Use la acción *Modificar instancia* cuando necesite mover un token para una sola instancia de proceso en ejecución.
+
+La acción está disponible en el panel de acciones de detalle de la instancia de proceso cuando:
+
+* La instancia de proceso no está completada.
+* La propiedad `flowset.control.features.modification-enabled` está establecida en `true`.
+
+image::single-process-instance-modification-1.png[align="center", width="1552"]
+
+[[single-instance-interactive-mode]]
+=== Modo interactivo del diagrama
+
+Haga clic en *Modificar instancia* para cambiar el diagrama de proceso al modo interactivo. En este modo, el diagrama se puede usar para seleccionar las actividades de origen y destino, y los botones *OK* y *Cancelar* aparecen debajo del diagrama.
+
+image::single-process-instance-modification-2.png[align="center", width="1552"]
+
+El modo interactivo sigue estas reglas:
+
+* Si solo una actividad, no una instancia de actividad, está activa en la instancia de proceso, se selecciona automáticamente como actividad de origen. Solo necesita seleccionar la actividad de destino, pero la actividad de origen aún se puede cambiar.
+* Si varias actividades están activas, seleccione primero la actividad o actividades de origen y luego seleccione la actividad de destino.
+* Con varias actividades activas, la selección funciona en orden origen-destino: después de seleccionar una actividad de origen, el siguiente clic selecciona una actividad de destino. Después de seleccionar una actividad de destino, el siguiente clic selecciona de nuevo una actividad de origen.
+* Para seleccionar varias actividades de origen, mantenga pulsada *Ctrl* en Windows o Linux, o *Cmd* en macOS, y haga clic en los elementos del diagrama requeridos. Después de soltar la tecla, la siguiente selección de actividad se trata como destino.
+* En el modo de selección de *Origen*, solo se puede hacer clic en las actividades en ejecución de la instancia de proceso.
+* En el modo de selección de *Destino*, se puede hacer clic en todos los elementos excepto en las actividades en ejecución de la instancia de proceso.
+* Las actividades de origen y destino deben seleccionarse antes de hacer clic en *OK*.
+
+Los elementos seleccionados se muestran con un borde de selección en el diagrama.
+
+Puede cerrar el modo interactivo de cualquiera de estas maneras:
+
+* Haga clic en *Cancelar* debajo del diagrama.
+* Haga clic de nuevo en *Modificar instancia* en el panel de acciones.
+
+[[single-instance-dialog]]
+=== Confirmación de la modificación de una única instancia
+
+Haga clic en *OK* debajo del diagrama para abrir el cuadro de diálogo *Modificación de instancia de proceso*.
+
+image::single-process-instance-modification-3.png[align="center", width="1552"]
+
+En este cuadro de diálogo, revise las actividades de origen y la actividad de destino seleccionadas, elija *Iniciar antes* o *Iniciar después* y, opcionalmente, añada un comentario.
+
+También puede configurar variables de proceso que se añadirán o actualizarán durante la modificación:
+
+* *Crear* abre un cuadro de diálogo para crear una nueva variable.
+* *Añadir* abre un cuadro de diálogo para seleccionar una variable de instancia de proceso existente.
+* *Editar* actualiza una variable seleccionada antes de la modificación.
+* *Eliminar* elimina una variable seleccionada de la solicitud de modificación.
+
+NOTE: El campo *Local* solo es visible al añadir o editar una variable para la modificación de instancias. No se muestra al añadir una variable directamente a la instancia de proceso desde la vista de variables normal.
+
+Haga clic en *Modificar* para aplicar la modificación a la instancia de proceso actual.
+
+image::single-process-instance-modification-4.png[align="center", width="1552"]
