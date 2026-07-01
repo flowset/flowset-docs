@@ -23,11 +23,10 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./content/supplemental
-# Site search (lunr). Enable after `npm install` (adds @antora/lunr-extension):
-# antora:
-#   extensions:
-#     - require: '@antora/lunr-extension'
-#       index_latest_only: true
+antora:
+  extensions:
+    # Builds the full-text search index during the build (runs in CI too).
+    - ./search-index-extension.js
 asciidoc:
   extensions:
     - asciidoctor-kroki

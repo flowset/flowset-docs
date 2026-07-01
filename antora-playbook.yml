@@ -26,6 +26,10 @@ ui:
 #   extensions:
 #     - require: '@antora/lunr-extension'
 #       index_latest_only: true
+antora:
+  extensions:
+    # Builds the full-text search index during the build (any antora invocation).
+    - ./search-index-extension.js
 asciidoc:
   extensions:
     - asciidoctor-kroki
