@@ -1,0 +1,91 @@
+= Prozessinstanzen
+
+Um die in der BPM-Engine gespeicherten Prozessinstanzen anzuzeigen, wählen Sie *Process instances* im Anwendungsmenü.
+
+[[instance-list]]
+== Merkmale der Instanzliste
+
+Die Ansicht *Process instances* zeigt alle aktuell laufenden Prozessausführungen an, die von der xref:connecting-engine.adoc[verbundenen BPM-Engine] abgerufen werden.
+
+Jede xref:process.adoc#starting-processes[Prozessinitiierung] erzeugt eine neue Instanz, die in dieser Ansicht sichtbar ist. Das System zeigt die Instanzen in einem tabellarischen Format an und stellt wesentliche Ausführungsdetails dar.
+
+image::process-instances.png[align="center", width="1552"]
+
+Die Tabelle der Prozessinstanzen bietet Filter- und Sortiermöglichkeiten, mit denen Benutzer die Instanzen nach verschiedenen Kriterien organisieren können, wie zum Beispiel:
+
+* Zustand: laufend, angehalten, abgeschlossen oder Fehler
+* Business Key: dient zum Initiieren und Ausführen der Instanz
+* Startzeit/Endzeit
+* Und so weiter.
+
+Standardmäßig zeigt die Tabelle der Prozessinstanzen ausschließlich aktive Instanzen an, um die Aufmerksamkeit auf die aktuell ausgeführten Workflows zu lenken.
+
+[[actions]]
+Die folgenden Vorgänge stehen zur Verfügung:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Aktion | Beschreibung
+
+| *Refresh*
+| Aktualisiert die aktuelle Liste der Prozessinstanzen und synchronisiert sie mit dem neuesten Zustand aus der BPM-Engine.
+
+| *Terminate*
+| Stoppt die Ausführung ausgewählter Prozessinstanzen sofort.
+
+| *Suspend*
+| Pausiert die Ausführung laufender Prozessinstanzen.
+
+| *Activate*
+| Setzt zuvor angehaltene Prozessinstanzen fort.
+|===
+
+NOTE: Diese Aktionen gelten für eine Menge von Prozessinstanzen, die vom Benutzer ausgewählt wurden.
+
+[WARNING]
+====
+Prozessinstanzen, bei denen während der Ausführung Fehler (Incidents) auftreten, werden mit einem speziellen Symbol gekennzeichnet: einem roten Dreieck.
+
+image::process-with-incident.png[align="center", width="1165"]
+====
+
+[[detailed-instance]]
+== Details einer Prozessinstanz
+
+Um die Ausführungsdetails einer bestimmten Prozessinstanz anzuzeigen, verwenden Sie die Aktion *View*.
+
+Diese Aktion öffnet die Detailansicht der Instanz, die Folgendes enthält:
+
+* *Prozessdiagramm* mit Visualisierung des Ausführungsfortschritts:
++
+image::process-instance-detail.png[align="center", width="1549"]
+** Grün hervorgehobene Knoten - abgeschlossene Aktivitäten
+** Blau hervorgehobener Knoten - derzeit aktives Element
+** Rote Umrandungen - Fehlerstellen (mit Tooltip-Details)
+
+* Der Tab *Runtime* ist nur für aktive Prozessinstanzen zugänglich und bietet Informationen über den aktuellen Prozesszustand. Dieser Tab umfasst:
+** *Execution*-Baum. Die Auswahl von Elementen im Ausführungsbaum aktualisiert den Inhalt der Tabs *Variables* und *Tasks*. Wenn Sie eine bestimmte Ausführung auswählen, werden nur Objekte angezeigt, die zu dieser Ausführung gehören.
+** *Variables*. Prozessvariablen anzeigen und ändern:
++
+image::process-instance-variable.png[align="center", width="1168"]
+** *User tasks*. Eine Liste aktiver Aufgaben anzeigen und Aufgaben anderen Benutzern neu zuweisen:
++
+image::process-instance-user-task.png[align="center", width="1168"]
+** *Jobs*
+** *External tasks*
+** *Incidents*
+
+* Der Tab *History* zeigt eine Liste aller Benutzeraufgaben (sowohl abgeschlossene als auch aktive), eine umfassende Liste abgeschlossener Aktivitäten und die letzten Werte der Prozessvariablen an. Der Tab *History* ist sowohl für aktive als auch für abgeschlossene Prozessinstanzen verfügbar.
++
+image::process-instance-history.png[align="center", width="1163"]
+
+* Das rechte Panel zeigt die für die Prozessinstanz verfügbaren <<actions,Aktionen>> an, darunter:
+
+** Anzeigen von Instanzinformationen.
+** Neuladen der Prozessinstanz.
+** Anhalten der Instanz.
+** xref:process.adoc#process-migration[Migrieren] der Instanz auf eine neue Version der Prozessdefinition.
+** xref:process-instance-modification.adoc#modify-single-instance[Modifizieren] der aktuell laufenden Prozessinstanz durch Verschieben von Tokens zwischen Aktivitäten.
+** Beenden der Prozessinstanz.
++
+image::process-instance-info.png[align="center", width="1166"]

@@ -1,0 +1,37 @@
+= Heatmap
+
+[NOTE, caption="Enterprise-Funktion"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Heatmaps, eine Funktion von Flowset Control Enterprise, bieten eine visuelle Darstellung der am häufigsten genutzten Ausführungspfade in Geschäftsprozessen. Dadurch lassen sich Engpässe und Problembereiche leicht erkennen, was zur Optimierung von Prozessen beiträgt.
+
+Um diese Funktion zu nutzen, navigieren Sie zum Menü *Heatmap*.
+
+Heatmaps sind für alle Versionen Ihrer Prozesse verfügbar. Verwenden Sie die Dropdown-Liste, um den Prozess auszuwählen, den Sie analysieren möchten.
+
+image::heatmap.png[align="center", width="1552"]
+
+Heatmaps unterstützen zwei Gruppierungsmodi zur Visualisierung von Prozessdaten:
+
+* *By Count*
++
+image::heatmap-count.png[align="center", width="785"]
++
+** Zeigt an, wie häufig Tokens jede Aktivität (Aufgabe) im Prozess durchlaufen.
+** Der auf der Heatmap neben einer Aktivität angezeigte numerische Wert gibt an, wie oft ein Token diese Aktivität erreicht hat.
++
+Beispiel: Ein Wert von 7 bei einer Aufgabe bedeutet, dass sie für die ausgewählte Prozessversion 7-mal ausgeführt wurde.
+
+* *By Duration in Minutes*
++
+image::heatmap-duration.png[align="center", width="787"]
++
+** Zeigt die durchschnittliche Zeit (in Minuten) an, die zum Abschluss jeder Aktivität benötigt wird.
+** Der numerische Wert zeigt die durchschnittliche Ausführungszeit für diese Aktivität an.
+
+[NOTE, caption="Hinweis"]
+====
+Für beide Gruppierungsmodi können Sie das Kontrollkästchen *Hide Connections* verwenden, um die Verbindungspfeile (Sequenzflüsse) zwischen den Elementen zu entfernen und sich ausschließlich auf die Aktivitäten und ihre Metriken zu konzentrieren.
+====

@@ -1,0 +1,185 @@
+= Jobs
+
+[NOTE, caption="Enterprise-Funktion"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Der Bereich *Jobs* dient dem Anzeigen und Verwalten der asynchronen Jobs der BPM-Engine.
+
+Ein Job ist ein internes Ausführungselement, das die Engine für aufgeschobene oder asynchrone Arbeit erstellt: das Auslösen von Timern, das asynchrone Ausführen von Aktivitäten und weitere Vorgänge, die im Hintergrund vom Job Executor ausgeführt werden. Eine ausführliche Beschreibung dieses Mechanismus finden Sie im Abschnitt https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor].
+
+Jobs können an drei Stellen in der Anwendung verwaltet werden:
+
+* auf dem eigenen Bildschirm <<jobs-list-view,Jobs>> — über alle Jobs der Engine hinweg;
+* auf dem Tab <<jobs-tab,Jobs>> in der Detailansicht einer Prozessinstanz — für die Jobs einer bestimmten Instanz;
+* auf dem Tab <<job-definitions,Job-Definitionen>> in der Detailansicht einer Prozessdefinition — für Job-Definitionen.
+
+[[jobs-list-view]]
+== Jobs-Bildschirm
+
+Der Bildschirm *Jobs* ist als eigener Menüpunkt der Anwendung verfügbar und zeigt alle Jobs der verbundenen BPM-Engine unabhängig von der Prozessinstanz an.
+
+image::jobs-screen.png[align="center", width="1552"]
+
+Die Tabelle unterstützt Sortierung und Filterung; für jeden Job wird Folgendes angezeigt:
+
+* *Id* — der Job-Bezeichner (mit der Möglichkeit, die <<job-details,Detailansicht>> zu öffnen).
+* *Process instance* — die Prozessinstanz, zu der der Job gehört.
+* *Process* — die Prozessdefinition und deren Version.
+* *Creation date* — Datum und Uhrzeit der Erstellung des Jobs.
+* *Due date* — das Fälligkeitsdatum (für Timer-Jobs).
+* *Retries* — die verbleibende Anzahl an Ausführungsversuchen (der Wert `0` bedeutet, dass die Versuche aufgebraucht sind).
+* *State* — der Job-Status (*Active* / *Suspended*).
+* *Priority* — die Priorität des Jobs.
+* *Failed activity* — die Aktivität, bei der der Fehler aufgetreten ist.
+
+Oberhalb der Tabelle stehen Filter nach Job-Typ zur Verfügung — *Executable jobs* (ausführbereit) und *Timers* (Timer-Jobs). Die Filterwerte werden in den Query-Parametern der URL gespeichert, sodass eine gefilterte Liste als Lesezeichen gespeichert oder als Link geteilt werden kann.
+
+NOTE: Die Bildschirmdaten werden verzögert (lazy) geladen, wie auf den übrigen Listenbildschirmen der Anwendung.
+
+[[jobs-list-actions]]
+=== Vorgänge auf dem Jobs-Bildschirm
+
+Die Vorgänge *Retry*, *Activate* und *Suspend* können auf mehrere Jobs gleichzeitig angewendet werden, indem sie in der Tabelle ausgewählt werden (Massenvorgänge). Für einen einzelnen Job stehen die Aktionen *View* (Detailansicht öffnen), *Set job priority* (<<job-set-priority,Priorität ändern>>) und *Update due date* (<<job-update-due-date,Fälligkeitsdatum ändern>>) zur Verfügung.
+
+[[jobs-executor-state]]
+=== Zustand des Job Executors
+
+Am oberen Rand des Bildschirms befindet sich ein Panel *Job executor state*, das den aktuellen Zustand des Job Executors der Engine widerspiegelt:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Metrik | Beschreibung
+
+| *Active threads*
+| Die Anzahl der Threads, die derzeit ausführbare Jobs verarbeiten. Der Anteil der aktiven Threads relativ zur Pool-Größe wird zusätzlich als Prozentwert angezeigt. Die Farbe des Wertes hängt von dessen Höhe ab: bis 50 % — grün, 50 % bis 80 % — gelb, über 80 % — rot.
+
+| *Thread pool size*
+| Die maximale Anzahl an Threads, die Jobs verarbeiten können. Sie wird in einer Anwendungseigenschaft festgelegt, deren Name von der Engine abhängt: `camunda.bpm.job-execution.max-pool-size` (Camunda 7) oder `operaton.bpm.job-execution.max-pool-size` (Operaton). Der tatsächliche Wert kann sich je nach Auslastung der Engine ändern.
+
+| *Executable jobs*
+| Die Anzahl der ausführbereiten Jobs.
+|===
+
+Das Panel *Job executor state* wird nur angezeigt, wenn die folgenden Bedingungen erfüllt sind:
+
+. Der Actuator ist sowohl auf Seite der BPM-Engine als auch auf Seite von Flowset Control konfiguriert.
+. Die Metriken `executor.active` und `executor.pool.size` sind für die BPM-Engine aktiviert und es ist ein Tag mit dem Namen `name` und dem Wert `camundaTaskExecutor` (für Camunda 7) oder `operatonTaskExecutor` (für Operaton) hinzugefügt.
+
+[[jobs-tab]]
+== Jobs-Tab in einer Prozessinstanz
+
+Der Tab *Jobs* ist auf dem Bildschirm der xref:process-instances.adoc#detailed-instance[Detailansicht einer Prozessinstanz] (Block *Runtime*) verfügbar und zeigt die Jobs der ausgewählten Instanz an.
+
+image::jobs-tab.png[align="center", width="1552"]
+
+Für jeden Job werden die Spalten *Job*, *Failed activity*, *Create time*, *Retries*, *Priority* und *State* angezeigt; die Aktionen *Retry*, *Activate* und *Suspend* stehen zur Verfügung.
+
+TIP: Ein Klick auf den Wert in der Spalte *Failed activity* hebt das entsprechende Element im Diagramm der Prozessinstanz hervor, was hilft, die Fehlerstelle schnell zu lokalisieren.
+
+[[jobs-actions]]
+== Job-Vorgänge
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Aktion | Beschreibung
+
+| *Retry*
+| Legt eine neue Anzahl an Ausführungsversuchen fest, woraufhin der Job Executor den Job erneut aufnehmen und ausführen kann. Nur für Jobs verfügbar, deren Anzahl der Versuche `0` ist.
+
+| *Activate*
+| Setzt die Ausführung eines zuvor angehaltenen Jobs fort. Nur für Jobs im Status *Suspended* verfügbar.
+
+| *Suspend*
+| Hält die Ausführung eines aktiven Jobs an. Nur für Jobs im Status *Active* verfügbar.
+
+| *Set job priority*
+| <<job-set-priority,Ändert die Priorität>> der Job-Ausführung.
+
+| *Update due date*
+| <<job-update-due-date,Ändert das Fälligkeitsdatum>> des Jobs.
+|===
+
+[[jobs-retry]]
+=== Erneutes Ausführen eines Jobs
+
+So führen Sie einen mit Fehler beendeten Job erneut aus:
+
+. Wählen Sie einen Job mit dem *Retries*-Wert `0` aus und klicken Sie auf *Retry*.
+. Geben Sie im geöffneten Dialog im Feld *Retries* die Anzahl der Ausführungsversuche an (Standard ist `1`; der Wert muss positiv sein).
++
+image::job-retry-dialog.png[align="center", width="720"]
+. Klicken Sie auf *Retry*, um die neue Anzahl an Versuchen anzuwenden.
+
+[[job-details]]
+== Detailansicht eines Jobs
+
+Um detaillierte Informationen zu einem Job zu öffnen, klicken Sie auf dessen Bezeichner oder verwenden Sie die Aktion *View*.
+
+image::job-details.png[align="center", width="1100"]
+
+Der Bildschirm enthält detaillierte Informationen über den Job:
+
+* *Job Id* — der Job-Bezeichner, mit der Möglichkeit, ihn zu kopieren.
+* *Job type* — der Job-Typ, zum Beispiel `timer-intermediate-transition` (ein Timer-Ereignis) oder `async-continuation` (asynchrone Fortsetzung). Für das Feld wird ein lokalisierter Tooltip angezeigt, der den Typ erläutert.
+* *State* — der aktuelle Job-Status (*Active* / *Suspended*).
+* *Creation date* und *Due date* — der Erstellungszeitpunkt und das Fälligkeitsdatum des Jobs.
+* *Priority* — die Priorität des Jobs.
+* *Retries* — die verbleibende Anzahl an Ausführungsversuchen.
+* *Activity* und *Failed activity* — die Aktivität des Jobs und die Aktivität, bei der der Fehler aufgetreten ist.
+* *Process* — die Prozessdefinition; die Navigationsschaltfläche öffnet die xref:process.adoc[Prozessdefinition].
+* *Process instance* — die Prozessinstanz; die Navigationsschaltfläche öffnet die xref:process-instances.adoc#detailed-instance[Detailansicht der Instanz].
+* *Exception message* und Stacktrace — der Text und der vollständige Aufrufstapel des Ausführungsfehlers.
+
+Für einen mit Fehler beendeten Job (*Retries* = `0`) zeigen die Felder *Exception message* und Stacktrace die Ursache des Fehlers an, und die Aktion *Retry* ermöglicht die erneute Ausführung des Jobs.
+
+image::job-details-failed.png[align="center", width="1100"]
+
+[[job-details-actions]]
+=== Aktionen in der Detailansicht
+
+Am unteren Rand des Bildschirms stehen die Aktionen *Retry*, *Activate* / *Suspend*, *Copy stacktrace* (Aufrufstapel kopieren) und *Copy error message* (Fehlertext kopieren) zur Verfügung. Die Schaltfläche *...* öffnet weitere Aktionen — *Set priority* und *Update due date*.
+
+image::job-actions-menu.png[align="center", width="1100"]
+
+[[job-set-priority]]
+==== Ändern der Priorität
+
+Mit der Aktion *Set priority* können Sie im Feld *New priority* eine neue Ausführungspriorität für den Job festlegen. Die Priorität beeinflusst die Reihenfolge, in der Jobs vom Job Executor aufgenommen werden.
+
+image::job-set-priority.png[align="center", width="720"]
+
+[[job-update-due-date]]
+==== Ändern des Fälligkeitsdatums
+
+Die Aktion *Update due date* ändert das Fälligkeitsdatum (*Due date*) des Jobs. Der Satz an Parametern hängt vom Job-Typ ab.
+
+Für einen *Timer*-Job können Sie den Vorgang (*Operation*) auswählen:
+
+* *Set* — das Fälligkeitsdatum auf ein vom Benutzer angegebenes Datum und eine Uhrzeit setzen. Bei Auswahl dieses Vorgangs erscheint ein Kontrollkästchen *Update recurring timers*; ist es aktiviert, wird das Fälligkeitsdatum auch für wiederkehrende Timer aktualisiert.
+* *Recalculate* — das Fälligkeitsdatum mithilfe der Engine neu berechnen. Bei Auswahl dieses Vorgangs können Sie das Basisdatum für die Neuberechnung angeben — die *current time* oder die *creation time* des Jobs.
+
+image::job-change-due-date.png[align="center", width="720"]
+
+Für *Nicht-Timer*-Jobs genügt es, das neue Ausführungsdatum und die Uhrzeit ohne zusätzliche Parameter anzugeben.
+
+[WARNING]
+====
+Für Systemjobs vom Typ `batch-monitor-job` oder `batch-seed-job` sind zusätzliche Aktionen nicht verfügbar — bei deren Auswahl wird eine Warnung angezeigt, die darauf hinweist, dass es sich um einen Systemjob handelt.
+
+Wenn der Job zum Zeitpunkt der Aktion bereits abgeschlossen ist, wird eine entsprechende Warnung angezeigt.
+====
+
+[[job-definitions]]
+== Job-Definitionen-Tab in einer Prozessdefinition
+
+Der Tab *Job definitions* ist auf dem Bildschirm der xref:process.adoc[Detailansicht einer Prozessdefinition] verfügbar und zeigt die Job Definitions der ausgewählten Prozessversion an.
+
+image::job-definitions-tab.png[align="center", width="1552"]
+
+Merkmale des Tabs:
+
+* die Daten werden aktualisiert, wenn die ausgewählte Version der Prozessdefinition wechselt;
+* ein Klick auf den Wert in der Spalte *Activity* hebt das entsprechende Element im Prozessdiagramm hervor;
+* für eine Job-Definition stehen Aktivierungs- und Anhalte-Aktionen zur Verfügung (abhängig vom aktuellen Zustand) sowie das Ändern der übersteuernden Priorität.

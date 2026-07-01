@@ -1,0 +1,218 @@
+= Setup
+
+[[check-system-requirements]]
+== Systemanforderungen
+
+Stellen Sie vor der Installation sicher, dass Ihr System die folgenden Mindestanforderungen erfüllt:
+
+* Betriebssystem: 64-Bit-Windows, Linux oder macOS
+* RAM: Mindestens 8 GB (16 GB empfohlen)
+* Speicherplatz: Mindestens 10 GB freier Speicherplatz
+* Java: JDK oder JRE Version 21
+
+Überprüfen Sie Ihre Java-Installation, indem Sie Folgendes ausführen:
+
+[source,shell]
+----
+java -version
+----
+
+== Installationsmethoden
+
+[[portable]]
+=== Portable Distribution
+
+Die portable Distribution ermöglicht es Ihnen, Flowset Control ohne zusätzliche Abhängigkeiten (außer Java) auszuführen. Ideal für schnelle Tests oder die lokale Entwicklung.
+
++++
+<div class="card-block">
+  <p>Beziehen Sie das neueste Flowset Control Distributionspaket von der offiziellen Downloadseite.</p>
+  <a class="primary-btn" href="https://flowset.io/downloads#control" target="_blank">Download</a>
+</div>
++++
+
+*Ausführungsanweisungen*:
+
+. Laden Sie das portable Archiv über den angegebenen https://flowset.io/downloads#control[Link^] herunter.
+
+. Entpacken Sie das Archiv in ein Verzeichnis Ihrer Wahl.
+
+. Führen Sie das Startskript für Ihr Betriebssystem aus:
++
+*Linux/macOS*:
++
+[source,shell]
+----
+./run.sh
+----
++
+Windows:
++
+[source,bash]
+----
+run.bat
+----
+. Greifen Sie auf die Anwendung zu unter: `++http://localhost:8081++`.
+
+[[docker-compose]]
+=== Docker Compose
+
+Diese Methode ermöglicht einen schnellen Start von Flowset Control in Containern, ohne manuelle Datenbank- oder Umgebungskonfiguration.
+
+*Voraussetzungen*:
+
+* *Docker* und *Docker Compose*
+* Überprüfen Sie die Installationen:
++
+[source,shell]
+----
+docker --version
+docker compose version
+----
+
+*Ausführungsanweisungen*:
+
+. Erstellen Sie eine Datei `docker-compose.yml` mit folgendem Inhalt:
++
+[source,yaml]
+----
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: flowset-control
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+
+  flowset-control:
+    image: flowset/flowset-control-community:latest
+    environment:
+      MAIN_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flowset-control
+      MAIN_DATASOURCE_USERNAME: root
+      MAIN_DATASOURCE_PASSWORD: root
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+----
+
+. Starten Sie die Container:
++
+[source,shell]
+----
+docker compose up -d
+----
+
+. Greifen Sie auf die Anwendung zu unter: `++http://localhost:8081++`.
+
+. So stoppen Sie die Container:
++
+[source,shell]
+----
+docker compose down
+----
+
+Ausführliche Anweisungen finden Sie auf https://github.com/flowset/flowset-control-community/tree/main/docker-compose[GitHub^].
+
+[[source-code-build]]
+=== Build aus dem Quellcode
+
+Erstellen und führen Sie die Anwendung aus dem Quellcode aus, für die Entwicklung oder benutzerdefinierte Bereitstellungen.
+
+*Voraussetzungen*:
+
+* Git
+* Java 21 JDK
+* PostgreSQL-Datenbank
+
+*Ausführungsanweisungen*:
+
+. Klonen Sie das Repository:
++
+[source,shell]
+----
+git clone https://github.com/flowset/flowset-control-community
+----
+. Konfigurieren Sie die PostgreSQL-Datenbank.
++
+Flowset Control speichert Daten, wie zum Beispiel BPM-Engine-Verbindungen, in einer Datenbank. Standardmäßig benötigt Flowset Control eine PostgreSQL-Datenbank mit den folgenden Parametern:
+
+* Datenbankname: `flowset-control`
+* Benutzername: `root`
+* Passwort: `root`
+
+. Navigieren Sie in das Projektverzeichnis und führen Sie aus:
++
+[source,shell]
+----
+./gradlew bootRun
+----
+
+. Greifen Sie auf die Anwendung zu unter: `++http://localhost:8081++`.
+
+[[post-installation]]
+== Nach der Installation
+
+Nach erfolgreicher Installation:
+
+. Öffnen Sie Ihren Webbrowser und navigieren Sie zu `++http://localhost:8081++`.
+. Verwenden Sie die Standard-Administrator-Anmeldedaten (`admin`/`admin`).
+. Konfigurieren Sie Ihre xref:connecting-engine.adoc[BPM-Engine]-Verbindungen.
+
+// == Docker Image
+//
+// This method allows running Flowset Control with a pre-built Docker image.
+//
+// **Prerequisites:**
+//
+// You must have the following installed:
+//
+// . Docker
+// . Docker Compose
+//
+// Instructions can be found https://github.com/flowset/flowset-control-community/tree/main/docker-compose[here].
+//
+// [#_using_sources]
+// == Using Sources
+// This method allows building and running Flowset Control locally with Gradle.
+//
+// **Prerequisites:**
+//
+// You must have the following installed:
+//
+// . Git
+// . Java 21 (JDK and JRE)
+// . PostgreSQL
+//
+// **Instructions:**
+//
+// . Clone the repository:
+// +
+// [source,shell]
+// ----
+// git clone https://github.com/flowset/flowset-control-community
+// ----
+//
+// . Configure a PostgreSQL database.
+// +
+// Flowset Control stores data such as connections to BPM engines in the database.
+// Flowset Control requires a PostgreSQL database by default:
+//
+// ** Name: `flowset-control`
+// ** Connection username: `root`
+// ** Connection password: `root`
+//
+// . Navigate to the cloned project directory and open a terminal.
+// . Run the following command:
+// +
+// [source,shell]
+// ----
+// .\gradlew bootRun
+// ----
+//
+// The application is now running at http://localhost:8081 in the browser.

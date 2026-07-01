@@ -1,0 +1,143 @@
+= Batch-Operationen
+
+[NOTE, caption="Enterprise-Funktion"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Mit Flowset Control können Sie eine neue Batch-Operation erstellen und ausführen, die dieselbe Aktion gleichzeitig auf viele laufende Prozessinstanzen anwendet. Anstatt dieselbe Änderung Instanz für Instanz zu wiederholen, wählen Sie eine Operation aus, bestimmen die Ziel-Prozessinstanzen über einen Filter, geben die Operationsparameter an und starten einen einzigen asynchronen Batch.
+
+Ein Batch wird von der BPM-Engine asynchron ausgeführt: Er wird in kleinere Jobs aufgeteilt, die der Job Executor im Hintergrund verarbeitet, sodass die Anwendung reaktionsfähig bleibt, während eine große Anzahl von Instanzen verarbeitet wird.
+
+Hintergrundinformationen zu Batch-Operationen finden Sie unter:
+
+* https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch-operations[Operaton-Dokumentation zu Batch-Operationen]
+* https://docs.operaton.org/reference/latest/rest-api/#tag/Batch[Operaton Batch REST API]
+
+[WARNING]
+====
+Eine Batch-Operation ändert den Laufzeitzustand aller ausgewählten Prozessinstanzen. Überprüfen Sie den Operationstyp, die Parameter und die Liste der passenden Instanzen im Bestätigungsschritt, bevor Sie den Batch starten.
+====
+
+[[supported-operations]]
+== Unterstützte Operationen
+
+Der Assistent *Execute batch* unterstützt vier Operationstypen:
+
+* *Update process variables* - erstellt oder aktualisiert Variablen in den ausgewählten Prozessinstanzen.
+* *Send message* - korreliert eine Nachricht mit den ausgewählten Prozessinstanzen, optional unter Übergabe von Variablen.
+* *Update retries (external tasks)* - legt die Anzahl der Wiederholungsversuche für die External Tasks der ausgewählten Prozessinstanzen fest.
+* *Update retries (jobs)* - legt die Anzahl der Wiederholungsversuche für die Jobs der ausgewählten Prozessinstanzen fest, optional mit einem Fälligkeitsdatum für den Job.
+
+[[opening-wizard]]
+== Öffnen des Assistenten
+
+Sie können einen neuen Batch an zwei Stellen starten:
+
+* Ansicht *Batches* -> Registerkarte *Active* -> *Execute new*.
+* Ansicht *Process instances* -> Dropdown-Schaltfläche -> *Execute batch*.
+
+image::batch-operation-1.png[align="center", width="1552"]
+
+Der Assistent *Execute batch* umfasst drei Schritte:
+
+* *Operation & process instances* - Auswahl des Operationstyps und der Prozessinstanzen, auf die der Batch angewendet werden soll.
+* *Batch options* - Angabe der für die ausgewählte Operation erforderlichen Parameter.
+* *Confirmation* - Überprüfung der Parameter und der generierten Anfrage, anschließend Start des Batches.
+
+[[step-operation-instances]]
+== Schritt 1: Operation und Prozessinstanzen
+
+Wählen Sie die Operation in der Liste *Batch operation type* aus.
+
+image::batch-operation-2.png[align="center", width="1552"]
+
+Standardmäßig wird kein Filter angewendet und alle Prozessinstanzen werden durchsucht. Verwenden Sie den Filterdialog, um die Instanzen einzugrenzen, auf die der Batch angewendet werden soll.
+
+image::batch-operation-3.png[align="center", width="1552"]
+
+Im Assistenten stehen die folgenden Filter zur Verfügung:
+
+* *Process key*
+* *Process version*
+* *Business key*
+* *With open incidents*
+* *Incident message*
+* *Activities*
+* Bedingungen für Prozessvariablen, mit optionaler Übereinstimmung ohne Berücksichtigung der Groß-/Kleinschreibung für Variablennamen und -werte
+
+[NOTE]
+====
+Die Filter *Process key*, *Process version* und *Activities* sind im neuen Batch-Assistenten verfügbar. Sie werden nicht angezeigt, wenn der Prozessinstanzfilter aus dem Assistenten zur Prozessinstanzmodifikation geöffnet wird.
+====
+
+Die Anzahl der passenden Instanzen wird oberhalb der Tabelle als *Found instances* angezeigt, und die Instanzen sind darunter aufgelistet.
+
+image::batch-operation-4.png[align="center", width="1552"]
+
+Die maximale Anzahl von Instanzen, auf die ein Batch angewendet werden kann, wird über *Max modified instances count* unter *Administration* -> *Application settings* -> *Bulk operation settings* gesteuert. Wenn der Filter mehr Instanzen findet als zulässig, wird eine Warnung angezeigt.
+
+Sie können erst zum nächsten Schritt fortfahren, wenn ein Operationstyp ausgewählt und mindestens eine Prozessinstanz gefunden wurde. Klicken Sie auf *Next*, um fortzufahren.
+
+[[step-batch-options]]
+== Schritt 2: Batch-Optionen
+
+Die Felder in diesem Schritt hängen von der im ersten Schritt ausgewählten Operation ab:
+
+[cols="2,3,1", options="header"]
+|===
+| Parameter | Unterstützte Operationen | Erforderlich
+
+| Variables (Raster)
+| Update process variables, Send message
+| Erforderlich für *Update process variables*, optional für *Send message*
+
+| Message name (Textfeld)
+| Send message
+| Erforderlich
+
+| Retries
+| Update retries (jobs), Update retries (external tasks)
+| Erforderlich
+
+| Job due date
+| Update retries (jobs)
+| Optional
+|===
+
+Für Operationen, die Variablen verwenden, klicken Sie auf *Add*, um den Dialog *Variable instance detail* zu öffnen und einen Variablennamen, -typ und -wert anzugeben. Verwenden Sie *Edit* und *Remove*, um vorhandene Variablen zu verwalten.
+
+image::batch-operation-5.png[align="center", width="1552"]
+
+image::batch-operation-6.png[align="center", width="1552"]
+
+Hinzugefügte Variablen werden im Variablenraster angezeigt.
+
+image::batch-operation-7.png[align="center", width="1552"]
+
+Sie können erst zum nächsten Schritt fortfahren, wenn die für die ausgewählte Operation erforderlichen Parameter festgelegt sind. Beispielsweise erfordert *Update process variables* mindestens eine Variable, *Send message* erfordert einen Nachrichtennamen und die Retries-Operationen erfordern einen Retries-Wert. Klicken Sie auf *Next*, um fortzufahren.
+
+[[step-confirmation]]
+== Schritt 3: Bestätigung
+
+Der Bestätigungsschritt fasst den ausgewählten Operationstyp, die Batch-Optionen und die Anzahl der Prozessinstanzen zusammen.
+
+Klicken Sie auf *Generate request*, um die JSON-Anfrage zu generieren und zu überprüfen, die an die BPM-Engine gesendet wird.
+
+image::batch-operation-8.png[align="center", width="1552"]
+
+Klicken Sie neben *Process instances* auf *View*, um die vollständige Liste der Instanzen anzuzeigen, auf die der Batch angewendet wird.
+
+image::batch-operation-9.png[align="center", width="1552"]
+
+[WARNING]
+====
+Es kann eine Warnung angezeigt werden, wenn der Batch für einige Instanzen möglicherweise keine Wirkung hat - zum Beispiel, wenn Retries für Prozessinstanzen festgelegt werden, die keine aktiven Jobs oder External Tasks haben.
+====
+
+Klicken Sie auf *OK*, um den Batch zu starten. Nachdem die Anfrage akzeptiert wurde, wird eine Benachrichtigung mit einer Schaltfläche *Batch details* angezeigt. Verwenden Sie *Batch details*, um den Batch zu öffnen und seinen Fortschritt zu verfolgen, oder öffnen Sie die Ansicht *Batches*, um aktive und abgeschlossene Batches zu überwachen.
+
+image::batch-operation-10.png[align="center", width="1552"]
+
+
+image::batch-operation-11.png[align="center", width="1552"]

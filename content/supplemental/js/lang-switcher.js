@@ -12,7 +12,8 @@
 (function () {
   var LANGS = [
     { code: 'en', label: 'English', short: 'EN', component: 'flowset' },
-    { code: 'es', label: 'Español', short: 'ES', component: 'flowset-es' }
+    { code: 'es', label: 'Español', short: 'ES', component: 'flowset-es' },
+    { code: 'de', label: 'Deutsch', short: 'DE', component: 'flowset-de' }
   ];
   // Every component starts on this page (antora.yml: start_page ROOT:intro.adoc),
   // used as the fallback when a page isn't translated yet.

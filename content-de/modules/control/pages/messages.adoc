@@ -1,0 +1,96 @@
+= Senden einer Message
+
+
+[NOTE, caption="Enterprise Feature"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+
+Mit Flowset Control können Sie eine Message direkt aus dem Prozessinstanz-Diagramm an eine verbundene BPM-Engine senden.
+Dies ist nützlich, wenn ein Prozess auf ein externes Ereignis wartet und ein Administrator die Ausführung fortsetzen muss, ohne die REST-API manuell über Postman oder `curl` aufzurufen.
+
+Eine Message kann verwendet werden, um die Ausführung eines Prozesses fortzusetzen, der an einem *Intermediate Message Catch Event* oder einem *Boundary Message Event* wartet.
+Wenn ein Prozess durch ein *Message Start Event* gestartet wird, kann die Message auch eine neue Prozessinstanz erzeugen.
+
+[[when-to-use]]
+== Wann eine Message zu verwenden ist
+
+Verwenden Sie eine Message, wenn ein Ereignis an eine bestimmte Prozessinstanz oder einen bestimmten Wartepunkt im Diagramm zugestellt werden muss.
+Beispielsweise kann ein Prozess auf eine Zahlung, eine Bestätigung von einem externen System oder ein manuelles betriebliches Ereignis warten.
+
+Anders als eine Message ist ein Signal dazu gedacht, ein Ereignis an alle Prozesse zu senden, die auf das entsprechende Signal warten.
+Für Szenarien, in denen Sie "diese spezifische Prozessinstanz voranbringen" müssen, wird üblicherweise eine Message verwendet.
+
+[[send-message-from-diagram]]
+== Senden einer Message aus dem Diagramm
+
+Wenn eine aktive Prozessinstanz auf eine Message wartet, zeigt Control neben dem Message Event im Diagramm ein Sende-Overlay an.
+
+So senden Sie eine Message:
+
+. Öffnen Sie den Bildschirm *Process instances*.
+. Suchen Sie die gewünschte Prozessinstanz und klicken Sie auf *View*.
+. Suchen Sie im Diagramm das aktive Message Event.
+. Klicken Sie im Overlay auf das Symbol zum Senden der Message.
++
+image::send-message-overlay.png[align="center", width="1552"]
+
+. Prüfen Sie im Dialog *Send message* die Parameter der Message.
++
+image::send-message-dialog.png[align="center", width="1552"]
+
+. Fügen Sie bei Bedarf Variablen zur Tabelle *Process Variables* hinzu.
+. Klicken Sie auf *Send*.
+
+Nachdem die Message erfolgreich gesendet wurde, zeigt Control eine Benachrichtigung an und aktualisiert den Zustand der Prozessinstanz.
+
+image::send-message-success.png[align="center", width="1552"]
+
+[[dialog-fields]]
+== Dialogfelder
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Feld | Beschreibung
+
+| *Message*
+| Der Name der Message, die an die Engine gesendet wird.
+Control füllt diesen Wert aus dem ausgewählten Message Event.
+
+| *Element*
+| Das BPMN-Element, aus dem der Dialog geöffnet wurde.
+Dieses Feld hilft Ihnen zu überprüfen, dass die Message an die richtige Stelle im Diagramm gesendet wird.
+
+| *Business key*
+| Der Business Key der Ziel-Prozessinstanz, sofern gesetzt.
+Der Business Key kann verwendet werden, um den gewünschten Prozess zu finden und zu überprüfen.
+
+| *Id*
+| Der Bezeichner der Ziel-Prozessinstanz.
+Beim Senden aus dem Diagramm füllt Control den Bezeichner der aktuellen Instanz automatisch aus.
+
+| *Process Variables*
+| Variablen, die zusammen mit der Message an den Prozess übergeben werden.
+Variablen können vor dem Senden hinzugefügt, geändert oder entfernt werden.
+|===
+
+[[variables]]
+== Process Variables
+
+Variablen in der Tabelle *Process Variables* werden im Anfragetext als `processVariables` übergeben.
+Geben Sie für jede Variable an:
+
+* Name;
+* Typ;
+* Wert.
+
+Alle wichtigen Datentypen werden unterstützt.
+Typische Szenarien verwenden `String`, `Boolean`, `Integer`, `Double` und `Date`.
+
+image::send-message-variables.png[align="center", width="1552"]
+
+[[result]]
+== Sendeergebnis
+
+Wenn die Message erfolgreich gesendet wurde, zeigt Control eine Erfolgsbenachrichtigung an und aktualisiert die Daten der Prozessinstanz.

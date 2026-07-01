@@ -1,0 +1,57 @@
+= Was ist neu
+
+== Flowset Control
+
+=== Verbesserungen
+
+Flowset Control hat zentrale Bildschirme zur Analyse von Prozessen, Aufgaben, Entscheidungen und Vorfällen neu gestaltet.
+Der Schwerpunkt dieser Version liegt auf verbesserter Navigation, besserer Lesbarkeit der Daten und alltäglicher Benutzerfreundlichkeit bei der Arbeit mit der BPM Engine.
+
+==== Entscheidungen und DMN
+
+Die Arbeit mit Entscheidungen und Entscheidungstabellen wurde verbessert. Die Oberfläche bietet nun komfortablere Ansichten für historische Entscheidungsinstanzen, aktualisierte Detailbildschirme und eine neu gestaltete Navigation zu Entscheidungstabellen. Dadurch lassen sich DMN-Ausführungen leichter analysieren, und die Anzeige zugehöriger Daten wird konsistenter.
+
+==== Prozesse und BPMN-Diagramme
+
+Die Arbeit mit Prozessen und BPMN-Diagrammen ist nun komfortabler. Für Prozessinstanz-Operationen wurden zusätzliche Parameter hinzugefügt, die Diagrammskalierung wurde verbessert und die Visualisierung technischer Zustände im Prozessdiagramm wurde aktualisiert. Auch der Detailbildschirm eines Prozesses ist nun für die regelmäßige Überwachung komfortabler geworden.
+
+==== Aufgaben, Jobs und Vorfälle
+
+Die Abläufe für Aufgaben, Jobs und Vorfälle wurden verbessert. Die Navigation zwischen zusammengehörigen Objekten ist nun direkter, und häufig verwendete Aufgabenaktionen sind über die Oberfläche schneller verfügbar.
+
+==== Oberfläche und Navigation
+
+Die Oberfläche ist übersichtlicher und vorhersehbarer. Tabellen verfügen nun über kompaktere Aktionen und Links in Zellen, Filter können gespeichert und über URLs geteilt werden, und lang laufende Operationen sperren die Oberfläche, während sie ausgeführt werden. Auch das Dashboard, die Variablensortierung, die Umgebungstypen der BPM Engine und die Informationen auf der Seite „Über“ wurden aktualisiert.
+
+==== Technische Aktualisierungen
+
+Die Jmix-Plattform wurde auf Version 2.7 aktualisiert.
+
+=== Fehlerbehebungen
+
+Diese Version behebt Probleme, die die Stabilität und die korrekte Datenanzeige betreffen. Die Nachrichtenverarbeitung für unbenannte Elemente wurde verbessert, Fehlerdetails für externe Tasks werden wieder angezeigt, das Verhalten der Task List bei manuellen Aufgaben wurde korrigiert, und die Anzahl der Deployments in Listen wurde korrigiert.
+
+== Flowset Studio
+
+Flowset Studio verbessert die Arbeit mit BPMN-Modellen, dem Eigenschafteninspektor, externen Tasks und Projektvorlagen.
+Diese Version enthält außerdem Korrekturen, die die Stabilität des Plugins in IntelliJ IDEA und die Korrektheit der Projektgenerierung verbessern.
+
+=== Verbesserungen
+
+Der Inspektor unterstützt nun das Ein- und Ausklappen von Eigenschaftsgruppen, was die Arbeit mit großen BPMN-Modellen erleichtert. Die Navigation zwischen dem Modell, dem Java-Code, externen Tasks und zugehörigen Prozesselementen wurde verbessert.
+
+Die Unterstützung für externe Tasks wurde hinzugefügt: Studio kann Handler für externe Tasks generieren, aus dem Modell zu ihnen navigieren und Spring Boot-Projekte für Szenarien mit einer externen Engine erstellen. Ebenso wurde die Unterstützung für Projekte hinzugefügt, die um externe Tasks herum aufgebaut sind.
+
+Die Möglichkeiten für BPMN-Projekte wurden erweitert: Ein Szenario zum Deployment von Geschäftsprozessen wurde hinzugefügt, Projektvorlagen wurden verbessert und Operaton-Versionen wurden aktualisiert. IntelliJ IDEA 2026.1 wird nun unterstützt.
+
+Die Plugin-Beschreibung wurde für eine bessere Sichtbarkeit im JetBrains Marketplace optimiert.
+
+=== Fehlerbehebungen
+
+Probleme im Eigenschafteninspektor für BPMN-Elemente wurden behoben. Das Bearbeiten von Formulareigenschaften, die Anzeige von Listen von Task Listeners, Execution Listeners und benutzerdefinierten Formularen sowie das Ändern des Task-Listener-Typs funktionieren nun wieder korrekt. Probleme beim Erstellen von Task Listeners und beim Konfigurieren von Call Activity wurden behoben, einschließlich der Auswahl des Typs des aufgerufenen Elements und der Navigation zum zugehörigen Element.
+
+Probleme bei der Projektgenerierung und -konfiguration wurden behoben. Die Run-Konfiguration wird nun für neue Projekte und unter Linux korrekt erstellt, der Projektauswahl-Assistent wählt die Java-Version korrekt aus, und Web- und Security-Abhängigkeiten werden beim Erstellen eines Maven-Projekts nicht mehr in der `pom.xml` dupliziert.
+
+Probleme beim Ändern von Verbindungsparametern und der Engine-Konfiguration wurden behoben. Studio fügt über den Assistenten keine unnötigen Abhängigkeiten mehr hinzu und ändert die Reihenfolge der Abhängigkeiten nicht mehr unnötig.
+
+Die Stabilität und der Feinschliff der Oberfläche wurden verbessert. Zu den behobenen Problemen gehören ein Konflikt mit Jmix Studio, eine Warnung über eine IDE-Verlangsamung, das unnötige Öffnen von Dokumenten, die Anzeige langer Texte in Eingabefeldern, ein fehlendes Plugin-Symbol in Fenstertiteln und das Speichern von Authentifizierungsdaten in der Anwendungsdatei.

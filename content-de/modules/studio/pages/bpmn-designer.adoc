@@ -1,0 +1,245 @@
+= BPMN Designer
+
+Verwenden Sie den Flowset BPMN Designer, um BPMN-Diagramme in IntelliJ IDEA zu bearbeiten. Der BPMN Designer erscheint, wenn Sie eine vorhandene .bpmn-Datei öffnen. Wenn Sie ein neues Diagramm über Flowset Studio erstellen, wird es automatisch im Designer geöffnet.
+
+image::bpmn-designer.png[]
+
+Die Oberfläche des BPMN Designer besteht aus:
+
+[cols="3,1,11", frame=none, grid=rows]
+|===
+| *Canvas*
+|
+| Arbeitsbereich zum Erstellen eines Prozessdiagramms.
+| *BPMN Palette*
+|(1)
+| Die BPMN Palette bietet einen vollständigen Satz von Elementen zum Erstellen von BPMN-Diagrammen.
+| *Process Actions*
+| (2)
+| Bereich der verfügbaren Aktionen für den Prozess.
+| *Editor Modes*
+| (3)
+| Bereich zur Auswahl des Anzeigemodus. Es stehen drei Anzeigemodi zur Verfügung: nur XML, XML und Modell, nur Modell.
+| *BPMN Inspector*
+| (4)
+| Der Inspector-Bereich zeigt die Attribute des ausgewählten Elements an und ermöglicht deren Bearbeitung.
+| *Visibility Button*
+| (5)
+| Sichtbarkeitsschalter für den Inspector.
+|===
+
+== BPMN-Editor
+
+Der BPMN-Editor ermöglicht das Erstellen von Prozessen direkt in der IDE.
+
+[TIP, caption="JCEF out-of-process in InteliJ IDEA 2025.1+"]
+====
+Die Funktion, den JCEF-Browser in einem separaten Prozess auszuführen, wurde in IntelliJ IDEA 2025.1+ implementiert, um die Stabilität zu verbessern (sodass Browser-Probleme den Hauptprozess von IDEA nicht beeinträchtigen). Derzeit gibt es jedoch eine Reihe ungelöster Probleme, die den Betrieb des JCEF-Browsers stören.
+
+Flowset Studio deaktiviert diese Option standardmäßig. Dies ist eine notwendige Maßnahme für einen stabilen JCEF-Betrieb, bis JetBrains einen entsprechenden Patch veröffentlicht. Diese Option kann in den Einstellungen bearbeitet werden: Language & Frameworks | Flowset -> Enable JCEF in separate process.
+====
+
+=== Grundlegende Operationen
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Element hinzufügen*
+a| Zwei Methoden:
+
+   * Ziehen Sie ein neues Element per Drag-and-drop aus der Palette auf den Canvas
+   * Fügen Sie ein Element nach einem bestehenden über das Pop-up-Menü hinzu
+| *Elementtyp ändern*
+a| 1. Wählen Sie das Element im Diagramm aus (klicken Sie auf das Element)
+
+2. Klicken Sie im Pop-up-Menü auf das Schraubenschlüssel-Symbol
+
+3. Wählen Sie den neuen Elementtyp im Pop-up-Menü aus
+
+| *Füllfarbe des Elements ändern*
+a| 1. Wählen Sie das Element im Diagramm aus (klicken Sie auf das Element)
+
+2. Klicken Sie im Pop-up-Menü auf das Pinsel-Symbol
+
+3. Wählen Sie die Füllfarbe aus
+
+| *Element löschen*
+a| 1. Wählen Sie das Element im Diagramm aus (klicken Sie auf das Element)
+
+2. Klicken Sie im Pop-up-Menü auf das Papierkorb-Symbol
+|====
+
+== Eigenschaftenbereich (BPMN Inspector)
+
+image::bpmn-designer-inspector.png[width=450px]
+
+Der Eigenschaftenbereich ermöglicht das Ändern der Parameter des ausgewählten Diagrammelements. Wenn kein Element ausgewählt ist, werden die Prozesseigenschaften angezeigt.
+
+[cols="6,3,20", frame="none", grid="rows"]
+|====
+| *Search*
+| (1)
+| Suche nach einem Attribut anhand des Namens; ein Klick auf das Symbol zeigt eine Dropdown-Suchhistorie an.
+| *<empty> link*
+| (2)
+| Öffnet einen Dialog zum Bearbeiten von mehrzeiligem Text. Wenn bereits Text festgelegt ist, wird die erste Zeile als Link angezeigt.
+| *`v` (Chevron nach unten)*
+| (3)
+| Öffnet eine Dropdown-Liste der verfügbaren Optionen.
+| *`+` (Plus)*
+| (3), (4)
+| Öffnet einen Dialog zum Festlegen einer Eigenschaft (Inputs, Outputs, Field injection usw.) oder einen Assistenten zum Generieren eines Elements (Java Delegate, Execution Listeners usw.)
+| *`>` (Chevron nach rechts)*
+| (3)
+|  Navigation zum Code.
+|====
+
+
+=== Auswahl von User Form / DMN / Java Delegate aus der Dropdown-Liste
+
+Der BPMN Inspector ermöglicht die Auswahl vorhandener Projektformulare, -tabellen und -klassen aus den entsprechenden Dropdown-Listen in den Eigenschaften.
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *User Form*
+a| 1. Wählen Sie ein Element aus (z. B. ein Start-Ereignis)
+2. Setzen Sie _Form_ -> _Form type_ auf _Camunda form_
+3. Klicken Sie in das Feld _Form_ -> _Form reference_
+4. Wählen Sie ein Formular aus der Dropdown-Liste aus
+
+| *DMN*
+a| 1. Wählen Sie eine Business Rule Task im Diagramm aus
+2. Setzen Sie _Implementation_ -> _Task Type_ auf _DMN_
+3. Klicken Sie in das Feld __Implementatio__n -> _Decision reference_
+4. Wählen Sie eine DMN-Tabelle aus der Dropdown-Liste aus
+
+| *Java Delegate*
+a| 1. Wählen Sie eine Service Task im Prozessdiagramm aus
+2. Setzen Sie _Implementation_ -> _Task Type_ auf _Java Class_
+3. Klicken Sie in das Feld _Implementation_ -> _Class_
+4. Wählen Sie ein Java Delegate aus der Dropdown-Liste aus
+|====
+
+
+=== Generieren von Task Listener / Execution Listener
+
+Flowset Studio ermöglicht das Generieren von Klassenvorlagen für Task Listener und Execution Listener.
+
+*Schritt 1.* Wählen Sie ein Element im Prozessdiagramm aus
+
+*Schritt 2.* Klicken Sie auf das `+`-Symbol im Feld Execution Listeners oder Task Listeners (bei User Task)
+
+
+
+[cols=2, frame="none", grid="none"]
+|====
+| *Task Listener*
+| *Execution Listener*
+| image:new-task-listener-wizard.png[width=500px]
+| image:new-execution-listener-wizard.png[width=500px]
+|====
+
+*Schritt 3.* Geben Sie den Wert für den Parameter Event an:
+
+[cols="1, 1,3", frame="none", grid="rows"]
+|====
+| *Task Listener*
+| *Assignment*
+| Das Ereignis tritt auf, wenn eine Aufgabe einem Benutzer oder einer Gruppe zugewiesen wird. Wird zum Versenden von Benachrichtigungen oder zum Protokollieren der Zuweisung verwendet.
+|
+| *Create*
+| Wird nach dem Erstellen einer Aufgabeninstanz generiert. Wird zum Initialisieren von Variablen, Festlegen von Fristen oder Vorbereiten von Daten verwendet.
+|
+| *Complete*
+| Wird aufgerufen, wenn ein Benutzer eine Aufgabe abschließt. Vorgesehen für die Nachbearbeitung: Aktualisieren von Daten, Starten der nächsten Prozessschritte oder Protokollieren von Ergebnissen.
+|
+| *Delete*
+| Tritt auf, wenn eine Aufgabe gelöscht wird (z. B. wenn ein Prozess unterbrochen wird). Wird zum Freigeben von Ressourcen oder zum Abbrechen zugehöriger Aktionen verwendet.
+| *Execution Listener*
+| *Start*
+| Tritt auf, wenn ein Prozesselement startet (z. B. Prozessstart, Aktivität oder Übergang). Der Listener führt die Initialisierung von Variablen durch oder protokolliert den Beginn der Operation.
+|
+| *End*
+| Tritt auf, wenn ein Prozesselement endet (z. B. Aktivität oder Prozessende). Wird zum Aufräumen von Ressourcen, Festschreiben von Ergebnissen oder Aktualisieren von Status verwendet.
+|
+| *Take*
+| Wird beim Durchlaufen eines Sequenzflusses (Übergang) aktiviert. Wird zum Nachverfolgen des Prozessausführungspfads oder zum Validieren von Übergangsbedingungen verwendet.
+|====
+
+*Schritt 4.* Geben Sie den zu generierenden Typ des Task Listener / Event Listener an:
+
+[cols="1,3", frame=none, grid=rows]
+|====
+| *Java class*
+| Direkte Angabe einer Klasse, die das Interface ExecutionListener implementiert. Der vollständige Klassenname muss im Classpath verfügbar sein. Wird für komplexe Logik verwendet, die vollständigen Java-Code erfordert.
+| *Expression*
+| Ein Ausdruck, der beim Eintreten des Ereignisses ausgeführt wird. Ein DelegateTask-Objekt und der Ereignisname (über `task.eventName`) können als Parameter an das aufgerufene Objekt übergeben werden. Ermöglicht das Aufrufen einer Bean-Methode oder den Zugriff auf Kontextdaten der Ausführung, ohne eine separate Klasse zu erstellen. Beispiel: `${myObject.callMethod(task, task.eventName)}`
+| *Delegate expression*
+| Eine Referenz auf eine Bean (z. B. eine Spring Bean), die das Interface ExecutionListener implementiert. Angegeben im Format `${beanName}`. Bietet einfache Dependency Injection und Wiederverwendung von Logik.
+|====
+
+Wenn der Typ Expression ausgewählt wird, wird ein Feld zur Eingabe des Ausdrucks verfügbar.
+
+Wenn der Typ Java class oder Delegate expression ausgewählt wird, stehen die folgenden Aktionen zur Verfügung:
+
+* Auswahl einer vorhandenen Klasse aus der Dropdown-Liste (`v`-Symbol)
+* Erstellen einer neuen Klasse (`+`-Symbol)
+
+Ein Klick auf das `+`-Symbol ruft den Assistenten zum Erstellen eines neuen Execution Listener / Task Listener auf:
+
+image::create-execution-listener-wizard.png[width=500px]
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Class Name*
+| Name der generierten Klasse
+| *Package*
+| Package, in dem die generierte Klasse abgelegt wird
+|====
+
+Ein Klick auf die Schaltfläche OK erstellt die Klasse im angegebenen Package, und das Feld Listener Class des Dialogs New Execution Listener (oder New Task Listener) wird ausgefüllt.
+
+=== Generieren eines Java Delegate
+
+Der BPMN Inspector ermöglicht das Aufrufen des Assistenten zum Generieren einer Java-Delegate-Klasse.
+
+1. Wählen Sie eine Service Task im Diagramm aus
+
+2. Setzen Sie _Implementation_ -> _Task Type_ auf _Java Class_
+
+3. Klicken Sie in das Feld _Class_, um die Bedienelemente anzuzeigen
+
+4. Klicken Sie im Feld auf das `+`-Symbol, um den Dialog zum Generieren einer Java-Delegate-Klasse aufzurufen
+
+image::new-java-delegate-class-wizard.png[width=500px]
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Class Name*
+| Name der generierten Klasse
+| *Package*
+| Package, in dem die generierte Klasse abgelegt wird
+|====
+
+Ein Klick auf die Schaltfläche OK öffnet die generierte Klasse im Code-Editor.
+
+== Deployment
+
+Der BPMN-Editor ermöglicht das Deployment des Prozesses auf eine entfernte Camunda-/Operaton-Engine.
+Um den Deployment-Assistenten aufzurufen, klicken Sie auf das Raketen-Symbol in der Editor Toolbar.
+Eine korrekt konfigurierte Verbindung zu einer externen Engine ist erforderlich.
+
+image::deployment-wizard.png[width=80%]
+
+[cols="1,3", frame=none, grid=rows]
+|====
+| *Deployment name*
+| Ein eindeutiger Name zur Identifikation des Deployment-Pakets. Ermöglicht das einfache Auffinden und Verwalten einer bestimmten Prozessversion im System.
+| *Enable duplicate filtering*
+| Filterung auf Ebene einzelner Dateien. Überspringt das erneute Deployment unveränderter Ressourcen (z. B. BPMN-Diagramme) innerhalb eines Deployments. Spart Datenbankplatz, indem die Erstellung von Duplikaten verhindert wird.
+| *Deploy changed only*
+| Filterung auf Ebene des gesamten Deployment-Pakets. Wenn sich keine Datei im Deployment geändert hat, wird der Vorgang vollständig ignoriert. Stellt Idempotenz sicher und schließt unnötige Erstellungen von Prozessversionen aus.
+| *Deployment source*
+| Die Quelle, von der aus das Deployment initiiert wurde (z. B. 'Flowset Studio'). Wird für die Auditierung und Nachverfolgung der Deployment-Herkunft verwendet.
+| *Tenant ID*
+| Der Mandantenbezeichner für eine mandantenfähige Architektur. Ermöglicht die Isolierung von Prozessen und Daten für verschiedene Kunden oder Abteilungen innerhalb eines einzelnen Camunda-Clusters.
+|====

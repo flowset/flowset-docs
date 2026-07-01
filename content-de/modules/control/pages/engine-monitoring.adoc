@@ -1,0 +1,77 @@
+[[monitoring]]
+= Überwachung der BPM-Engine
+
+[NOTE, caption="Enterprise-Funktion"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Mit Flowset Control können Sie den aktuellen Zustand der in der Engine laufenden Geschäftsprozesse einsehen. Für einen Systemadministrator ist es jedoch ebenso hilfreich, Informationen über den allgemeinen Systemzustand zu erhalten – etwa über die Anzahl der CPU-Kerne, den verfügbaren Arbeitsspeicher, den Speicherplatz und so weiter. Diese Informationen ermöglichen es Administratoren, frühzeitig vor einer steigenden Last gewarnt zu werden. In Kombination mit einer automatischen oder manuellen Systemskalierung bietet Flowset Control eine vollständige Lösung für die Verwaltung von Geschäftsprozess-Engines.
+
+[[monitoring-configuration]]
+== Überwachungskonfiguration
+
+In der Enterprise-Edition wird die Detailansicht der BPM-Engine um einen eigenen Bereich *Monitoring* erweitert:
+
+image::bpm-engine-monitoring.png[align="center", width="1440"]
+
+=== Externes Dashboard (URL)
+
+* Geben Sie die URL eines externen Überwachungs-Dashboards an (z. B. https://grafana.com/[Grafana^]).
+* Beispiel: Für Camunda können Sie ein Grafana-Dashboard konfigurieren und dessen URL hier einfügen.
+* Ermöglicht die Navigation mit einem Klick von Flowset Control direkt zum externen Dashboard:
++
+image::grafana-monitoring.png[align="center", width="1440"]
+
+== Integrierte Metriken
+
+* Aktivieren Sie das Kontrollkästchen *Enable*, um die Erfassung und Anzeige von Metriken in Flowset Control zu aktivieren.
+* Feld *URL*: Geben Sie den Endpunkt an, von dem die Metriken abgerufen werden (z. B. einen Spring Boot Actuator-Endpunkt).
+* Klicken Sie auf *Generate*, um die verfügbaren Metriken vom angegebenen Endpunkt zu laden.
++
+image::actuator-metrics.png[align="center", width="776"]
+
+== Auswahl von Metriken
+
+* Wählen Sie die gewünschten Metriken aus, indem Sie die Kontrollkästchen neben ihren Namen aktivieren.
++
+image::actuator-metrics-select.png[align="center", width="779"]
+
+* Bewegen Sie den Mauszeiger über das Fragezeichen-Symbol (?), um eine kurze Beschreibung der jeweiligen Metrik anzuzeigen.
+
+* Sie können für jede Metrik Tags konfigurieren, um eine feinere Überwachung bestimmter Bereiche zu ermöglichen:
++
+image::actuator-metrics-tags.png[align="center", width="802"]
+
+[[viewing-metrics]]
+== Metriken anzeigen
+
+. Navigieren Sie zur Liste xref:connecting-engine.adoc#bpm-engines[BPM-Engines] in Flowset Control.
+. Klicken Sie für die gewünschte Engine auf *View metrics*.
++
+image::view-metrics.png[align="center", width="1254"]
+. Ein Dialogfenster wird geöffnet:
++
+image::metrics.png[align="center", width="962"]
+* Alle konfigurierten Metriken und deren Tags.
+* Aktuelle Metrikwerte.
+* Eine Schaltfläche *Refresh*, um die Werte in Echtzeit zu aktualisieren.
+
+[NOTE]
+====
+Verwenden Sie die Schaltfläche *External dashboard* für den schnellen Zugriff auf das konfigurierte Grafana-Dashboard (oder ein anderes).
+
+image::external-dashboard.png[align="center", width="855"]
+====
+
+[[quick-access-toolbar]]
+== Schnellzugriffsleiste
+
+Für eine schnelle Überwachung verwenden Sie das Engine-Auswahlfeld am oberen Bildschirmrand.
+
+image::quick-access-monitoring.png[align="center", width="876"]
+
+Dies ermöglicht Ihnen:
+
+* Schnelles Anzeigen der Metriken für die ausgewählte Engine.
+* Direkte Navigation zum externen Dashboard.

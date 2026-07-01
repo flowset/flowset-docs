@@ -1,0 +1,48 @@
+= Einführung
+
+[.fl-hero]
+--
+Flowset ist eine Plattform zur Automatisierung von Geschäftsprozessen — entwerfen, ausführen und überwachen Sie BPMN-Prozesse durchgängig.
+
+[.fl-hero-actions]
+* xref:ROOT:quick-start.adoc[Erste Schritte]
+* https://demo-control.flowset.io/login[Live-Demo]
+--
+
+[.fl-cards]
+* xref:control:index.adoc[Control]: Überwachen und verwalten Sie laufende Prozesse.
+* xref:studio:index.adoc[Studio]: Modellieren Sie BPMN/DMN-Diagramme und Formulare in IntelliJ IDEA.
+* xref:tasklist:index.adoc[Tasklist]: Verwalten Sie Endbenutzeraufgaben mit einer React-App.
+
+== Was ist Flowset?
+
+Flowset ist eine Plattform zur Automatisierung von Geschäftsprozessen mit einer eigenen Ausführungs-Engine und einer Reihe von Werkzeugen, die den gesamten Lebenszyklus einer BPM-Lösung abdecken.
+
+=== Grundprinzipien
+
+* **Kompatibilität mit Camunda**
+  Wir sind überzeugt, dass diese Technologie, die zu einem Industriestandard geworden ist, noch lange Bestand haben wird.
+
+* **Einhaltung des BPMN-2.0-Standards**
+  Sorgt für Transparenz, Vorhersehbarkeit und erleichtert die Personalgewinnung.
+
+* **Interoperabilität**
+  Flowset ist mit gängigen Modellierungs- und Entwicklungswerkzeugen kompatibel.
+
+* **Fokus auf die Automatisierung von Geschäftsprozessen**
+  Flowset deckt den gesamten Zyklus der Prozessautomatisierung ab — vom Entwurf über die Ausführung bis zur Überwachung.
+
+* **Modularität und Offenheit**
+  Jede Komponente der Plattform arbeitet eigenständig, und zusammen liefern sie den größten Nutzen.
+
+=== Plattformkomponenten
+
+==== Control
+Ein Open-Source-Werkzeug zur Überwachung der Ausführung von Geschäftsprozessen. Ähnlich wie Camunda Cockpit, jedoch mit erweiterter Funktionalität.
+Basiert auf dem Open-Source-Framework Jmix. Der Quellcode ist auf https://github.com/flowset/flowset-control-community[GitHub] verfügbar.
+
+==== Studio
+Ein Plugin für https://www.jetbrains.com/idea/[IntelliJ IDEA]. Fügt einen BPMN/DMN-Editor direkt in die Entwicklungsumgebung ein, zusammen mit zusätzlichen Möglichkeiten zur Codegenerierung, Navigation usw.
+
+==== Tasklist
+Eine React-basierte Anwendungsvorlage zur Verwaltung von Endbenutzeraufgaben. Der Quellcode ist auf https://github.com/flowset/flowset-tasklist-react-community[GitHub] verfügbar.

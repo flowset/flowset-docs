@@ -1,0 +1,70 @@
+= Transaktionsgrenzen
+
+[NOTE, caption=Enterprise-Funktion]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Die Visualisierung von Transaktionsgrenzen ist eine visuelle Hervorhebung der Commit-Punkte und Wartezustände der BPM-Engine.
+Die Funktion hilft dabei:
+
+* zu verstehen, an welcher Stelle der Prozess seinen Zustand *speichert*;
+* zu erkennen, an welcher Stelle *neue* Transaktionen erstellt werden;
+* die Korrektheit asynchroner Fortsetzungen zu analysieren;
+* Wiederholungsrisiken und potenzielle Engpässe zu identifizieren.
+
+Die Funktion ist auf den folgenden Seiten verfügbar:
+
+* xref:control:process.adoc#viewing-process[Anzeigen einer Prozessdefinition] (Prozessdefinition)
+* xref:control:process-instances.adoc#detailed-instance[Anzeigen einer Prozessinstanz] (Prozessinstanz)
+
+== So aktivieren Sie die Anzeige
+
+1. Navigieren Sie zu *Processes* oder *Process Instances*.
+2. Wählen Sie den gewünschten Prozess aus.
+3. Öffnen Sie das Diagramm.
+4. Aktivieren Sie *Transaction Boundary Display*.
++
+image::transaction-1.png[align=”center”]
+
+Die Transaktionsgrenzen werden direkt auf dem BPMN-Diagramm angezeigt.
+
+image::transaction-2.png[align=”center”]
+
+== Diagrammlegende
+
+Für die Anzeige werden zwei Arten gestrichelter Linien verwendet:
+
+image::transaction-2.png[align=”center”]
+
+* *Blaue gestrichelte Linien* – Transaktions-Commits, die von der BPM-Engine *standardmäßig* ausgeführt werden.
+* *Rote gestrichelte Linien* – Commits, die von einem Entwickler während der Prozessmodellierung definiert wurden.
+
+== Wartezustand der BPM-Engine
+
+Gekennzeichnet durch *blaue Markierungen* an den ein- oder ausgehenden Flüssen eines Elements.
+
+* Markiert den Punkt, an dem der Prozess seinen Zustand speichert und in einen Wartemodus übergeht.
+* Nach diesem Punkt wird die Ausführung innerhalb einer *neuen* Transaktion fortgesetzt.
+* Entspricht üblicherweise:
+** Service Task (External);
+** Receive Task;
+** User Task;
+** Message Catch Event;
+** Timer Event;
+** Signal Event;
+** Event Based Gateway;
+
+== Asynchrone Fortsetzungen (Async Before/After)
+
+Gekennzeichnet durch *rote gestrichelte Markierungen* an den Grenzen eines Elements.
+
+* Signalisieren, dass vor (async before) oder nach (async after) der Ausführung einer Aktivität eine separate Transaktion erstellt wird.
+* Ermöglichen die Isolierung der Ausführung einer Aktivität.
+* Werden verwendet, um die Fehlertoleranz und die Handhabbarkeit des Prozesses zu verbessern.
+
+== Hinweise und Empfehlungen
+
+* Wenn ein Element als *Wartezustand* markiert ist, beginnt seine Ausführung *immer* in einer neuen Transaktion.
+* Asynchrone Fortsetzungen sind nützlich, um lange synchrone Abschnitte „aufzubrechen“.
+* Zu viele Transaktionsgrenzen können zu einem erhöhten transaktionalen Mehraufwand führen.

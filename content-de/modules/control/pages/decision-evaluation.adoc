@@ -1,0 +1,109 @@
+= Entscheidungen auswerten
+
+[NOTE, caption=Enterprise-Funktion]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Mit Flowset Control können Sie eine DMN-Entscheidungstabelle direkt über die Benutzeroberfläche auswerten, ohne einen BPM-Prozess zu starten.
+
+Verwenden Sie diesen Modus, um Geschäftsregeln mit Beispieleingabedaten zu testen, das Produktionsverhalten zu validieren oder die Entscheidungslogik zu untersuchen, ohne einen technischen Prozess ausschließlich für die DMN-Ausführung zu erstellen.
+
+Hintergrundinformationen zu DMN und FEEL-Ausdrücken finden Sie unter:
+
+* https://docs.camunda.org/manual/7.24/reference/dmn/decision-table/[Camunda-Dokumentation zur DMN-Entscheidungstabelle]
+* https://docs.camunda.io/docs/components/modeler/feel/what-is-feel/[Dokumentation zu FEEL-Ausdrücken]
+* https://nikku.github.io/feel-playground[FEEL Playground]
+
+[[opening-evaluate-decision]]
+== Öffnen des Auswertungsmodus
+
+Sie können den Auswertungsmodus über die Liste *DMN -> Decisions* oder über eine Entscheidungsdetailansicht öffnen.
+
+Klicken Sie in der Liste *Decisions* für die gewünschte Entscheidungsdefinition auf die Aktion *Evaluate decision*.
+
+image::decision-evaluate-list-action.png[align="center", width="1552"]
+
+Flowset Control öffnet die Ansicht *Evaluate decision* für die ausgewählte Entscheidungsdefinition und -version.
+
+image::decision-evaluate-list.png[align="center", width="1552"]
+
+Die Ansicht enthält:
+
+* *Input variables* - Variablen, die an die Entscheidungsauswertung übergeben werden.
+* *Output variables* - Werte, die von den übereinstimmenden Entscheidungsregeln zurückgegeben werden.
+* *Decision table* - gerenderte DMN-Tabelle zur visuellen Analyse.
+* *XML* - rohe DMN-XML-Definition.
+* *Decision history* - vorherige Entscheidungsinstanzen für die ausgewählte Entscheidungsdefinition.
+
+[[input-variables]]
+== Eingabevariablen
+
+Fügen Sie vor der Auswertung die Variablen hinzu, die die Entscheidungstabelle erwartet.
+
+Sie können Variablen manuell mit *Add* hinzufügen oder Variablen aus der DMN-XML mit *Add from DMN* erkennen lassen.
+
+image::decision-evaluate-add-from-dmn.png[align="center", width="1552"]
+
+Der Dialog *Add variables from DMN XML* listet die erkannten Eingabevariablen auf. Wählen Sie die Variablen aus, die Sie hinzufügen möchten, und bestätigen Sie mit *Add*.
+
+image::decision-evaluate-add-from-dmn-dialog.png[align="center", width="1552"]
+
+Wenn Variablen aus der DMN-XML hinzugefügt werden, erkennt Flowset Control Eingabevariablen aus:
+
+* FEEL-Ausdrücken, die im Eingabeausdruck jeder Eingabe der Entscheidungstabelle verwendet werden.
+* Dem Attribut `camunda:inputVariable`, wenn der Eingabeausdruck leer ist.
+* Eingabeeintragsausdrücken aus jeder Regel.
+
+Wenn aus einem Eingabeausdruck nur eine Variable erkannt wird, verwendet Flowset Control den Eingabetyp aus der DMN-XML als Variablentyp.
+
+Wenn der Variablentyp nicht aus der DMN-XML erkannt werden kann, wird *String* als Standardtyp im Dialog verwendet.
+
+NOTE: Variablen mit übereinstimmenden Namen werden ersetzt, wenn Variablen aus der DMN-XML hinzugefügt werden.
+
+In der Auswertungsansicht und im Dialog *Add variables from DMN XML* werden nur einfache Variablentypen unterstützt. Variablen vom Typ *File*, *Object* und *Bytes* sind nicht verfügbar.
+
+[[editing-input-values]]
+== Bearbeiten von Eingabewerten
+
+Nachdem Sie Variablen hinzugefügt haben, geben Sie Testwerte in der Spalte *Value* ein.
+
+image::decision-evaluate-edit-inputs.png[align="center", width="1552"]
+
+Das Wertformat muss dem ausgewählten Variablentyp entsprechen. Beispielsweise können für *Double*-Variablen numerische Werte und für *String*-Variablen reiner Text eingegeben werden.
+
+Wenn Sie Eingabevariablen nach einer erfolgreichen Auswertung ändern, ohne die Auswertung erneut auszuführen, markiert Flowset Control die aktuelle Ausgabe als *Outdated*. Führen Sie die Auswertung erneut aus, um die Ausgabevariablen und den Entscheidungsverlauf zu aktualisieren.
+
+[[running-evaluation]]
+== Ausführen der Auswertung
+
+Klicken Sie auf *Evaluate*, um die Entscheidungstabelle mit den aktuellen Eingabevariablen auszuführen.
+
+image::decision-evaluate-run.png[align="center", width="1552"]
+
+Flowset Control sendet die Eingabevariablen an die verbundene BPM-Engine und zeigt das Auswertungsergebnis im Bereich *Output variables* an.
+
+Für jede zutreffende Regel enthält der Ausgabebaum einen Wurzelknoten. Die Ausgabewerte für diese Regel werden als untergeordnete Knoten angezeigt.
+
+image::decision-evaluate-results-history.png[align="center", width="1552"]
+
+Nach jeder Auswertung:
+
+* Die Registerkarte *Decision history* wird automatisch geöffnet.
+* Die Liste der Entscheidungsinstanzen wird aktualisiert.
+* Die neueste Entscheidungsinstanz erscheint in der Verlaufstabelle.
+
+[[analyzing-decision-result]]
+== Analysieren der Auswertungsergebnisse
+
+Öffnen Sie eine Entscheidungsinstanz, um die ausgewerteten Eingabe- und Ausgabewerte zusammen mit der Entscheidungstabelle zu untersuchen.
+
+Die Registerkarte *Inputs* zeigt die für die Auswertung verwendeten Variablen und hebt die übereinstimmende Regel in der Tabelle hervor.
+
+image::decision-evaluate-instance-inputs.png[align="center", width="1552"]
+
+Die Registerkarte *Outputs* zeigt die von der Auswertung zurückgegebenen Werte.
+
+image::decision-evaluate-instance-outputs.png[align="center", width="1552"]
+
+Verwenden Sie diese Ansicht, um zu überprüfen, welche Regel übereingestimmt hat, welche Eingabewerte verwendet wurden und welche Ausgabewerte erzeugt wurden.

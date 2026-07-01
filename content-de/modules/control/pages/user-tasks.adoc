@@ -1,0 +1,68 @@
+= Benutzeraufgaben
+
+Die Ansicht *User tasks* ermöglicht es Administratoren, alle mit der ausgewählten BPM-Engine verbundenen Aufgaben zu überwachen und zu verwalten.
+
+[[task-list]]
+== Liste der Benutzeraufgaben
+
+Um aktive Benutzeraufgaben anzuzeigen, wählen Sie *User tasks* aus dem Anwendungsmenü.
+
+image::user-tasks.png[align="center", width="1552"]
+
+Das System zeigt die Aufgaben in einer sortier- und filterbaren Tabelle mit den folgenden Informationen für jede Aufgabe an:
+
+* *Key* – eindeutiger Systembezeichner
+* *Name* – für Menschen lesbare Beschreibung
+* *Process* – Informationen zum übergeordneten *Prozess*
+* *Creation time* – Zeitstempel der Aufgabenerstellung
+* *Assignee* – aktuell verantwortlicher Benutzer
+
+*Erweiterte Filtermöglichkeiten*
+
+Administratoren können die Aufgabenliste anhand mehrerer Filterkriterien eingrenzen:
+
+* nach Business Key
+* nach Aufgabenname
+* nach Prozessdefinition
+* nach Aufgabenstatus (aktiv, ausgesetzt oder alle Aufgaben)
+* nach aktuellem Bearbeiter
+* nach Erstellungszeitraum
+
+== Aufgabenoperationen
+
+Für Aufgaben, die nicht ausgesetzt sind, haben Sie die Möglichkeit, sie abzuschließen oder neu zuzuweisen.
+
+[[task-completion]]
+=== Aufgaben abschließen
+
+Administratoren können Aufgaben bei Bedarf manuell abschließen:
+
+. Wählen Sie die gewünschte Aufgabe aus der Liste aus.
+. Klicken Sie auf die Aktionsschaltfläche *Complete*.
+. Geben Sie alle erforderlichen Prozessvariablen an.
++
+image::user-task-complete.png[align="center", width="1163"]
+. Bestätigen Sie den Abschluss.
+
+[[task-reassignment]]
+=== Aufgaben neu zuweisen
+
+Das System ermöglicht eine unkomplizierte Neuzuweisung von Aufgaben:
+
+. Wählen Sie die gewünschte Aufgabe aus der Liste aus.
+. Klicken Sie auf die Aktionsschaltfläche *Reassign*.
+. Geben Sie den exakten Benutzernamen des neuen Bearbeiters ein.
++
+image::user-task-reassign.png[align="center", width="1164"]
++
+NOTE: Das System erfordert die genaue Eingabe des Benutzernamens ohne Autovervollständigungsvorschläge.
+. Bestätigen Sie die Neuzuweisung.
+
+[[detailed-user-task]]
+== Aufgabendetails anzeigen
+
+Um die Details einer bestimmten Benutzeraufgabe anzuzeigen, verwenden Sie die Aktion *View* in der Liste der Benutzeraufgaben.
+
+Diese Aktion öffnet die detaillierte Ansicht der Benutzeraufgabe:
+
+image::user-task-details.png[align="center", width="860"]

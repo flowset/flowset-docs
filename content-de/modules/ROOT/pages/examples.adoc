@@ -1,0 +1,8 @@
+= Beispiele
+
+Diese Seite enthält Links zu praktischen Beispielen rund um Flowset.
+
+== Beispiele (GitHub)
+
+* https://github.com/flowset/flowset-operaton-demo[Kreditscoring mit Operaton & KI-Betrugsprüfung]
+* https://github.com/flowset/flowset-spring-boot-sample[Prozess-Engine für Kreditanträge]

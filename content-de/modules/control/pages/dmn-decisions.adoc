@@ -1,0 +1,108 @@
+= DMN Decisions
+
+Die Anwendung bietet über den Menüpunkt *DMN → Decisions* umfassende Unterstützung für DMN-Entscheidungstabellen (Decision Model and Notation).
+
+Die Auswahl dieses Menüpunkts zeigt eine umfassende Liste aller derzeit auf Ihrer aktiven BPM-Engine bereitgestellten Entscheidungstabellen an.
+
+NOTE: Entscheidungsdefinitionen und -instanzen werden anhand historischer Daten angezeigt.
+
+[[decision-table-list]]
+== Liste der Entscheidungstabellen
+
+Die Ansicht *Decisions* zeigt alle auf Ihrer aktiven BPM-Engine bereitgestellten DMN-Entscheidungstabellen in einer sortier- und filterbaren Tabellenform an.
+
+image::dmn-table-list.png[align="center", width="1537"]
+
+Oberhalb der Tabelle erscheint ein vereinfachter Filter mit folgendem Verhalten:
+
+* Unterstützt grundlegende Suche nach Name und Key
+* Enthält die Kontrollkästchen-Option *Latest version only*
+
+WARNING: Die Namenssuche und der Filter *Latest version only* schließen sich gegenseitig aus. Wenn ein Name angegeben wird, wird das Kontrollkästchen *Latest version only* automatisch geleert, um genaue Ergebnisse sicherzustellen.
+
+Die folgenden Aktionen stehen zur Verfügung:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Aktion | Beschreibung
+
+| *Refresh*
+| Lädt die aktuelle DMN-Entscheidungsliste aus der verbundenen BPM-Engine neu.
+
+| *Deploy*
+| Lädt neue DMN-Dateien hoch und stellt sie bereit. Siehe <<deploy-dmn-table>>.
+
+| *View*
+| Zeigt detaillierte DMN-Tabelleninformationen an. Siehe <<view-desicion-details>>.
+
+| *Evaluate decision*
+| Öffnet eine eigenständige Auswertungsansicht für die ausgewählte Entscheidungstabelle. Siehe xref:decision-evaluation.adoc[Entscheidungen auswerten].
+|===
+
+[[deploy-dmn-table]]
+== DMN-Tabelle bereitstellen
+
+So stellen Sie eine DMN-Tabelle bereit:
+
+. Klicken Sie in der Ansicht *Decisions* auf *Deploy*
+. Klicken Sie in der Ansicht *New decision deployment* auf *Upload* und wählen Sie Ihre DMN-1.1-Datei (.dmn oder .dmn11.xml) aus.
++
+image::deploy-decision.png[align="center", width="1186"]
+. Klicken Sie auf *OK*, um das Deployment abzuschließen.
+
+[[view-desicion-details]]
+== Entscheidungsdetails anzeigen
+
+Die Aktion *View* bietet umfassende Einblicke in die bereitgestellte Entscheidungsdefinition.
+
+Wählen Sie eine bereitgestellte Entscheidungsdefinition aus und klicken Sie in der Aktionsspalte auf *View*. Die Anwendung öffnet eine Ansicht mit mehreren Registerkarten:
+
+image::dmn-details.png[align="center", width="1186"]
+
+. Die Registerkarte *General* - grundlegende Informationen zur Entscheidungstabelle.
++
+Der linke Bereich enthält:
++
+--
+* *Name* - für Menschen lesbarer Bezeichner der Entscheidungstabelle.
+* *Key* - eindeutiger Business Key als Referenz.
+* *Version* - die Version der Entscheidungsdefinition.
+* *Id* - vom System generierter eindeutiger Bezeichner.
+* *Deployment Id* - enthält einen direkten Link zur Navigation zum übergeordneten Deployment.
+--
++
+Der rechte Bereich zeigt konkrete Ausführungsinstanzen in Tabellenform mit:
++
+* Integrierten Spaltenfiltern in der Tabellenüberschrift.
+* Der Möglichkeit, bestimmte Instanzen im Detail zu betrachten.
+
+. Die Registerkarte *Schema* - ein Diagramm der bereitgestellten Entscheidungsdefinition.
++
+image::dmn-details-diagram.png[align="center", width="1186"]
+. Die Registerkarte *XML* - Roh-Definition in DMN 1.1
++
+image::dmn-details-xml.png[align="center", width="1186"]
+
+[[view-dmn-table-instance]]
+== Entscheidungsinstanzen analysieren
+
+Die Ansicht der Entscheidungstabellen-Instanz enthält die grundlegenden Informationen zu dieser Instanz sowie spezialisierte Funktionen zur Analyse von Ausführungen.
+
+image::dmn-details-instance.png[align="center", width="1186"]
+
+*Input/Output Parameters*
+
+* Übersichtliche tabellarische Darstellung aller Parameter.
+* Nach Ausführungsfluss organisiert.
+
+*Highlighted Rules*
+
+* Angewendete Regeln werden visuell hervorgehoben.
+* Farbcodierung zeigt an, welche Ausdrücke ausgewertet und ausgelöst wurden.
+
+*DRD View*
+
+Die Schaltfläche *View DRD* bietet Zugriff auf das vollständige Decision Requirements Diagram unter Berücksichtigung folgender Punkte:
+
+* Die Navigation zur DRD-Ansicht entfernt die aktuellen Ausführungshervorhebungen.
+* Das Diagramm zeigt das vollständige Abhängigkeitsnetzwerk der Entscheidung.

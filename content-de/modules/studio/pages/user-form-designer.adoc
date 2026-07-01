@@ -1,0 +1,86 @@
+= User Form Designer
+
+Verwenden Sie den Flowset Form Designer, um Camunda Forms in IntelliJ IDEA zu bearbeiten. Der Form Designer erscheint, wenn Sie eine vorhandene .form-Datei öffnen. Wenn Sie ein neues Formular über Flowset Studio erstellen, wird es automatisch im Designer geöffnet.
+
+image::form-designer.png[]
+
+Die Oberfläche des User Form Designer besteht aus:
+
+[cols="3,1,11", frame=none, grid=rows]
+|===
+| *Form Actions*
+| (1)
+| Bereich der verfügbaren Aktionen für das Formular.
+| *Components Palette*
+| (2)
+| Die Components Palette bietet einen vollständigen Satz von Elementen zum Erstellen von Formularen.
+| *Editor Modes*
+| (3)
+| Bereich zur Auswahl des Anzeigemodus. Es stehen drei Anzeigemodi zur Verfügung: nur JSON, JSON und Formular, nur Formular.
+| *Canvas*
+| (4)
+| Arbeitsbereich zum Erstellen eines Formulars.
+| *Form Inspector*
+| (5)
+| Der Inspector-Bereich zeigt die Attribute des ausgewählten Elements an und ermöglicht deren Bearbeitung.
+| *Visibility Button*
+| (6)
+| Sichtbarkeitsschalter für den Inspector.
+|===
+
+== Form-Editor
+
+Der Form-Editor ermöglicht das Erstellen von Formularen direkt in der IDE.
+
+=== Grundlegende Operationen
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Element hinzufügen*
+| Ziehen Sie ein neues Element per Drag-and-drop aus der Components Palette auf den Canvas
+| *Elementreihenfolge ändern*
+| Ziehen Sie das Element per Drag-and-drop an eine neue Stelle im Formular
+| *Element löschen*
+| Wählen Sie das Element auf dem Canvas aus (klicken Sie auf das Element) und klicken Sie auf das Papierkorb-Symbol
+|====
+
+== Eigenschaftenbereich (Form Inspector)
+
+image::form-designer-inspector.png[width=450px]
+
+Der Eigenschaftenbereich ermöglicht das Ändern der Parameter des ausgewählten Formularelements. Wenn kein Element ausgewählt ist, werden die Formulareigenschaften angezeigt.
+
+[cols="6,3,20", frame="none", grid="rows"]
+|====
+| *Search*
+| (1)
+| Suche nach einem Attribut anhand des Namens; ein Klick auf das Symbol zeigt eine Dropdown-Suchhistorie an.
+| *<empty> link*
+| (2)
+| Öffnet einen Dialog zum Bearbeiten von mehrzeiligem Text. Wenn bereits Text festgelegt ist, wird die erste Zeile als Link angezeigt.
+| *`+` (Plus)*
+| (3)
+| Öffnet einen Dialog zum Festlegen einer Eigenschaft oder einen Assistenten zum Generieren eines Elements
+|====
+
+== Deployment
+
+Der Form Editor ermöglicht das Deployment des Formulars auf eine entfernte Camunda-/Operaton-Engine.
+Um den Deployment-Assistenten aufzurufen, klicken Sie auf das Raketen-Symbol in der Editor Toolbar (Form-Actions-Bereich).
+Eine korrekt konfigurierte Verbindung zu einer externen Engine ist erforderlich.
+
+image::form-deployment-wizard.png[width=80%]
+
+[cols="1,3", frame=none, grid=rows]
+|====
+| *Deployment name*
+| Ein eindeutiger Name zur Identifikation des Deployment-Pakets. Ermöglicht das einfache Auffinden und Verwalten einer bestimmten Prozessversion im System.
+| *Enable duplicate filtering*
+| Filterung auf Ebene einzelner Dateien. Überspringt das erneute Deployment unveränderter Ressourcen (z. B. BPMN-Diagramme) innerhalb eines Deployments. Spart Datenbankplatz, indem die Erstellung von Duplikaten verhindert wird.
+| *Deploy changed only*
+| Filterung auf Ebene des gesamten Deployment-Pakets. Wenn sich keine Datei im Deployment geändert hat, wird der Vorgang vollständig ignoriert. Stellt Idempotenz sicher und schließt unnötige Erstellungen von Prozessversionen aus.
+| *Deployment source*
+| Die Quelle, von der aus das Deployment initiiert wurde (z. B. 'Flowset Studio'). Wird für die Auditierung und Nachverfolgung der Deployment-Herkunft verwendet.
+| *Tenant ID*
+| Der Mandantenbezeichner für eine mandantenfähige Architektur. Ermöglicht die Isolierung von Prozessen und Daten für verschiedene Kunden oder Abteilungen innerhalb eines einzelnen Camunda-Clusters.
+|====

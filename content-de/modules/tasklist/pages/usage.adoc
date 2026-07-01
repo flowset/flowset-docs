@@ -1,0 +1,89 @@
+= Verwendung
+
+*Flowset Tasklist* bietet eine komfortable Oberfläche für die Arbeit mit Geschäftsprozessen und Benutzeraufgaben, die in der verbundenen BPM-Engine ausgeführt werden.
+
+Tasklist erfordert eine Authentifizierung — jeder Benutzer sieht nur seine eigenen aktiven Aufgaben und die Prozesse, die er starten darf.
+
+== Arbeiten mit Prozessen
+
+Um die verfügbaren Geschäftsprozesse anzuzeigen, öffnen Sie den Menüpunkt *Processes*.
+Die Seite zeigt eine Tabelle mit den neuesten Versionen aller in der verbundenen BPM-Engine bereitgestellten Prozesse.
+
+Verfügbare Aktionen auf der Seite:
+
+* *Refresh* — die neueste Liste der Prozesse aus der Engine laden
+* *Sort* — Prozesse nach Name oder Bereitstellungszeitpunkt sortieren
+* *Filter* — Prozesse nach Name, Schlüssel oder Beschreibung filtern
+* *Start Process* — eine neue Instanz des ausgewählten Prozesses starten
+
+image::process-view.png[Prozesslisten-Bildschirm]
+
+=== Starten eines Prozesses
+
+Um einen Prozess zu starten, klicken Sie neben der gewünschten Zeile auf *Start Process*.
+Ein Dialogfenster wird geöffnet; dessen Inhalt hängt vom Typ des Formulars ab, das mit dem Startereignis des Prozesses verknüpft ist:
+
+* Wenn kein Formular angegeben ist — wird nur das Feld *Business Key* angezeigt
+* Wenn ein Camunda-Formular verwendet wird — wird das veröffentlichte Camunda-Formular angezeigt
+* Wenn ein benutzerdefiniertes Formular verwendet wird — zeigt Tasklist die für den jeweiligen `formKey` registrierte Komponente an
+
+image::start-process.png[Starten eines Prozesses]
+
+[NOTE]
+====
+Die Formulartypen *Embedded* und *Generated* werden in Flowset Tasklist nicht unterstützt.
+====
+
+Nach dem Ausfüllen des Formulars und dem Klicken auf *Start* erstellt Tasklist eine neue Prozessinstanz mit den angegebenen Variablen und dem Business Key.
+
+== Arbeiten mit Benutzeraufgaben
+
+Um aktive Benutzeraufgaben anzuzeigen, öffnen Sie den Menüpunkt *Tasks*.
+Es wird eine Seite mit einer Tabelle der dem aktuellen Benutzer zugewiesenen Aufgaben geöffnet.
+
+Verfügbare Aktionen:
+
+* Filtern und Sortieren von Aufgaben
+* Anzeigen von Aufgabendetails
+* Abschließen einer Aufgabe
+
+image::task-view.png[Aufgabenlisten-Bildschirm]
+
+=== Anzeigen einer Aufgabe
+
+Um eine Aufgabe zu öffnen, klicken Sie neben der entsprechenden Zeile auf *Edit*.
+Auf der rechten Seite des Bildschirms erscheint ein Bereich mit den Aufgabendetails und dem zugehörigen Formular.
+
+Abhängig vom Formulartyp zeigt Tasklist:
+
+* Nur eine Schaltfläche *Complete*, wenn kein Formular verknüpft ist
+* Ein vollständiges Camunda-Formular, wenn ein Camunda-Formular verwendet wird
+* Ein benutzerdefiniertes Formular, wenn eine Komponente für den `formKey` registriert ist
+
+image::task-instance-view-1.png[Benutzeraufgabe mit benutzerdefiniertem Formular]
+
+=== Abschließen einer Aufgabe
+
+Um eine Aufgabe abzuschließen, füllen Sie die erforderlichen Felder im Formular aus und klicken Sie auf *Complete* (oder eine ähnlich benannte Schaltfläche).
+Tasklist sendet die Formulardaten an die BPM-Engine, woraufhin die Aufgabe geschlossen wird und der Prozess entsprechend dem Modell fortgesetzt wird.
+
+image::task-instance-view-2.png[Bildschirm zum Abschließen einer Aufgabe]
+
+[NOTE]
+====
+Unterstützte Formulartypen: *Camunda form* und *Custom form*.
+*Embedded*- und *Generated*-Formulare werden nicht unterstützt.
+====
+
+== Autorisierung und Benutzer
+
+Der Zugriff auf Tasklist erfolgt über Basic Authentication.
+Die Liste der Benutzer und ihre Berechtigungen werden auf Seiten der BPM-Engine definiert.
+
+Stellen Sie für einen ordnungsgemäßen Betrieb sicher, dass die Gruppe des Benutzers die folgenden Autorisierungen aktiviert hat:
+
+* User
+* Process Definition
+* Process Instance
+* Task
+* Historic Task Instance

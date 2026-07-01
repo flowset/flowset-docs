@@ -16,6 +16,11 @@ content:
     branches:
       - release_2026.0
     start_path: content-es
+  # German docs (flowset-de). Only built for release_2026.0 (older branches lack content-de/).
+  - url: https://github.com/flowset/flowset-docs.git
+    branches:
+      - release_2026.0
+    start_path: content-de
 ui:
   bundle:
     # Phase 1: production builds use the published Flowset UI bundle.

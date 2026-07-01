@@ -1,0 +1,185 @@
+= Verbindung zur BPM-Engine
+
+Die Anwendung ermöglicht Administratoren, mehrere Verbindungen zu BPM-Engines herzustellen und zu verwalten. Dieser Abschnitt erläutert, wie diese Verbindungen hinzugefügt, konfiguriert und getestet werden.
+
+[[empty-dashboard]]
+Beim Start der Anwendung öffnet sich die Ansicht xref:dashboard.adoc[Dashboard]. Wenn keine BPM-Engine verbunden ist, erscheint die Ansicht wie folgt:
+
+image::empty-dashboard.png[align="center", width="1552"]
+
+So konfigurieren Sie eine neue BPM-Engine:
+
+. Klicken Sie auf die Schaltfläche *Add*, um den Dialog *New BPM engine* zu öffnen.
+. Alternativ navigieren Sie über das Hauptmenü der Anwendung zur Ansicht *BPM engines*. Wählen Sie dort die Schaltfläche *Create*.
+
+Sobald die Ansicht *New BPM engine* geöffnet ist, füllen Sie alle erforderlichen Felder aus, wie unter <<adding-new-engine,Eine neue Engine hinzufügen>> beschrieben.
+
+[NOTE, caption="Wichtige Funktionen"]
+====
+* *Multiple Connections*: Konfigurieren Sie so viele Engine-Verbindungen, wie für verschiedene Umgebungen benötigt werden.
+
+* *Immediate Activation*: Änderungen werden wirksam, ohne dass ein Neustart der Anwendung erforderlich ist.
+
+* *Connection Validation*: Die Testfunktion stellt eine korrekte Konfiguration vor dem Speichern sicher.
+
+* *Default Engine*: Eine Engine muss als Standard festgelegt werden.
+
+* *Edit Existing Connections*: Ändern Sie jeden Parameter später, indem Sie die Verbindung auswählen und auf *Edit* klicken.
+====
+
+[[bpm-engines]]
+== BPM-Engines
+
+Die Ansicht *BPM engines* zeigt eine Liste der mit der Prozessanwendung verbundenen BPM-Engines an. Administratoren können die folgenden Aktionen durchführen:
+
+* Eine Engine erstellen oder entfernen.
+* Die Konfiguration einer vorhandenen Engine bearbeiten.
+
+image::bpm-engine-view.png[align="center", width="1548"]
+
+Die Engines werden in einer Tabelle mit den folgenden Spalten angezeigt:
+
+* *Name*: Der Anzeigename der Engine.
+* *Base URL*: Die Endpunkt-URL der Engine.
+* *Type*: Der Engine-Typ.
+* *Default Engine*: Ein Kennzeichen, das die Standard-Engine angibt (nur eine Engine kann als Standard markiert werden).
+
+NOTE: Die zuerst hinzugefügte Engine wird automatisch als Standard festgelegt. Um die Standard-Engine zu ändern, markieren Sie manuell eine andere Engine aus der Liste als Standard.
+
+[[adding-new-engine]]
+== Eine neue Engine hinzufügen
+
+So verbinden Sie sich mit einer laufenden BPM-Engine:
+
+. Rufen Sie die Konfigurationsansicht *New BPM engine* auf. Es gibt zwei Möglichkeiten, mit der Konfiguration einer neuen BPM-Engine-Verbindung zu beginnen:
++
+--
+* Über das Anwendungs-Dashboard, wenn <<empty-dashboard,keine BPM-Engines>> konfiguriert sind.
+* Über die Ansicht <<bpm-engines,BPM Engines>>, indem Sie auf die Schaltfläche *Create* klicken.
+--
++
+image::new-bpm-engine-view.png[align="center", width="752"]
+
+. Konfigurieren Sie die Verbindungsparameter:
++
+* *Name* (erforderlich):
++
+Geben Sie einen aussagekräftigen Namen für Ihre BPM-Engine-Instanz ein (zum Beispiel `"Production Camunda 7"`, `"QA Flowset"`).
+
+* *Base URL* (erforderlich):
++
+Geben Sie die vollständige Endpunkt-URL an (zum Beispiel `++https://bpm-server.example.com:8080/engine-rest++`)
+
+* *Type*:
++
+Wählen Sie aus den unterstützten Engine-Typen:
++
+** Operation
+** Camunda 7
+
+. Wenn die Ziel-BPM-Engine authentifizierten Zugriff erfordert, aktivieren Sie das Kontrollkästchen *Enabled* in der Gruppe *Authentication*.
++
+Wählen Sie die Authentifizierungsmethode:
++
+* *HTTP Basic Authentication*. Geben Sie Benutzername und Passwort an.
+* *HTTP Headers Authentication*. Konfigurieren Sie benutzerdefinierte Header.
+
+. Bevor Sie Änderungen speichern, klicken Sie auf *Test connection*, um die Richtigkeit der Verbindungseinstellungen sicherzustellen. Diese Aktion leitet einen Verbindungsversuch zur ausgewählten Engine ein. Das System zeigt anschließend eine Meldung an, die angibt, ob die Verbindung erfolgreich war oder ob Fehler aufgetreten sind.
+
+. Klicken Sie auf *OK*, um die Verbindung zu speichern.
+
+[[managing-connections]]
+== BPM-Engine-Verbindungen verwalten
+
+Flowset Control zeigt Ihre aktuell verbundene BPM-Engine in einem Status-Badge in der oberen rechten Ecke an. Dieses zeigt:
+
+* Name der aktiven Engine
+* Verbindungsstatus
+
+image::bpm-engine-managing.png[align="center", width="1300"]
+
+Um die aktive BPM-Engine zu wechseln, suchen Sie den Engine-Status-Badge in der oberen rechten Ecke und klicken Sie auf die Schaltfläche *Edit* neben dem Engine-Status-Badge.
+
+Der Dialog *Select BPM engine* erscheint:
+
+image::select-bpm-engine.png[align="center", width="642"]
+
+Der Administrator kann die BPM-Engine auswählen und Authentifizierungsparameter angeben, einschließlich des Header-Namens und des Parameterwerts. Vor dem Wechsel der BPM-Engine steht ein Verbindungstest zur Verfügung.
+
+// [[monitoring]]
+// == BPM Engine Monitoring
+//
+// [NOTE, caption="Enterprise Feature"]
+// ====
+// This feature is exclusively available in the Enterprise Edition of *Flowset Control*.
+// ====
+//
+// Flowset Control allows viewing the current state of business processes within the engine. However, for the system administrator, it is also useful to have information about the overall system status, such as the number of CPU cores, available RAM, disk space, etc. This information will allow the administrator to be proactively alerted to increasing load. In conjunction with automatic/manual system scaling, Flowset Control can solve the problem of fully managing business process engines.
+//
+// [[monitoring-configuration]]
+// === Monitoring Configuration
+//
+// The Enterprise Edition enhances the BPM engine detail view with a dedicated *Monitoring* section:
+//
+// image::bpm-engine-monitoring.png[align="center", width="1440"]
+//
+// ==== External Dashboard URL
+//
+// * Specify the URL of an external monitoring dashboard (e.g., https://grafana.com/[Grafana^]).
+// * Example: For Camunda, you can configure a Grafana dashboard and paste its URL here.
+// * Provides one-click navigation from Flowset Control directly to the external dashboard:
+// +
+// image::grafana-monitoring.png[align="center", width="1440"]
+//
+// ==== Integrated Metrics
+//
+// * Enable the *Enable* checkbox to activate metrics collection and display within Flowset Control.
+// * *URL* field: Configure the endpoint URL sourcing the metrics (e.g., a Spring Boot Actuator endpoint).
+// * Click *Generate* to fetch available metrics from the specified endpoint.
+// +
+// image::actuator-metrics.png[align="center", width="776"]
+//
+// ==== Metric Selection
+//
+// * Select relevant metrics by checking the boxes next to their names.
+// +
+// image::actuator-metrics-select.png[align="center", width="779"]
+//
+// * Hover over the question mark icon (?) for a brief description of each metric.
+//
+// * You can configure tags for each metric to enable more detailed monitoring focused on specific areas:
+// +
+// image::actuator-metrics-tags.png[align="center", width="802"]
+//
+// [[viewing-metrics]]
+// === Viewing Metrics
+//
+// . Navigate to the list of <<bpm-engines,BPM engines>> in Flowset Control.
+// . Click *View metrics* for the desired engine.
+// +
+// image::view-metrics.png[align="center", width="1254"]
+// . A dialog displays:
+// +
+// image::metrics.png[align="center", width="962"]
+// * All configured metrics and their tags.
+// * Current metric values.
+// * A *Refresh* button to update values in real-time.
+//
+// [NOTE]
+// ====
+// Use the *External dashboard* button for quick access to the configured Grafana (or other) dashboard.
+//
+// image::external-dashboard.png[align="center", width="855"]
+// ====
+//
+// [[quick-access-toolbar]]
+// === Quick Access Toolbar
+//
+// For rapid monitoring, use the engine selection panel at the top of the view.
+//
+// image::quick-access-monitoring.png[align="center", width="876"]
+//
+// This allows you to:
+//
+// * Quickly view metrics for the currently selected engine.
+// * Navigate directly to its external dashboard.

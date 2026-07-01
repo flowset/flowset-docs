@@ -1,0 +1,80 @@
+= Access Management
+
+Flowset Control nutzt die rollenbasierte Zugriffssteuerung von https://www.jmix.io[Jmix^], um Benutzerberechtigungen zu verwalten und den Zugriff auf Anwendungsfunktionen abzusichern. Dieser Abschnitt erläutert, wie Sie Benutzer anlegen, Rollen zuweisen und Berechtigungen konfigurieren, um einen sicheren Systembetrieb zu gewährleisten.
+
+[[user-management]]
+== Benutzerverwaltung
+
+Benutzer in Flowset Control werden durch die Entität https://docs.jmix.io/jmix/security/users.html#entity[User^] definiert. Ihre Informationen werden in der Tabelle `USER_` innerhalb der konfigurierten Datenbank gespeichert.
+
+Das System wird mit einem standardmäßigen Administrator-Benutzer mit den Anmeldedaten `admin`/`admin` ausgeliefert, der über vollständige Zugriffsrechte verfügt.
+
+[[adding-users]]
+=== Benutzer hinzufügen
+
+So legen Sie einen neuen Benutzer an:
+
+. Melden Sie sich mit Administrator-Anmeldedaten bei Flowset Control an (Standard: `admin`/`admin`).
+
+. Navigieren Sie zum Menüpunkt *Administration → Users* und klicken Sie auf die Schaltfläche *Create*.
++
+image::add-user-1.png[align="center", width="1428"]
+. Füllen Sie in der Ansicht *User* die erforderlichen Felder aus:
+
+* *Username*: Muss eindeutig sein.
+* *Password* und *Confirm Password*.
+
+. Klicken Sie auf *OK*, um den Benutzer zu speichern.
++
+image::add-user-2.png[align="center", width="1428"]
+
+[[granting-permissions]]
+=== Berechtigungen erteilen
+
+Neu angelegte Benutzer haben standardmäßig keine Berechtigungen und können sich nicht anmelden oder Funktionen nutzen.
+
+So weisen Sie die standardmäßige <<role-management,Ressourcenrolle>> mit Vollzugriff zu:
+
+. Wählen Sie den Benutzer aus der Liste aus und klicken Sie auf *Role assignments*.
++
+image::role-assignment.png[align="center", width="1048"]
+. Klicken Sie im Abschnitt *Resource roles* auf *Add*.
++
+image::role-assignment-2.png[align="center", width="1051"]
+. Wählen Sie die Zeile mit der Bezeichnung `Full Access` aus und klicken Sie auf *Select*.
++
+image::role-assignment-3.png[align="center", width="802"]
+. Klicken Sie auf *OK*, um die Rollenzuweisung zu speichern.
+
+Der Benutzer kann sich nun anmelden und auf alle Anwendungsfunktionen zugreifen.
+
+[[role-management]]
+== Rollenverwaltung
+
+https://docs.jmix.io/jmix/security/resource-roles.html[Ressourcenrollen^] definieren Berechtigungen für Benutzer, um auf bestimmte Objekte und Operationen innerhalb des Systems zuzugreifen, einschließlich CRUD-Operationen auf Entitäten, Entitätsattributen, UI-Bildschirmen und mehr.
+
+Ein Systemadministrator kann neue benutzerdefinierte Rollen erstellen, um ein granulares Sicherheitsmodell umzusetzen, das auf spezifische organisatorische Anforderungen zugeschnitten ist.
+
+[[creating-roles]]
+=== Rollen erstellen
+
+So definieren Sie eine neue Rolle mit einem bestimmten Satz von Berechtigungen:
+
+. Navigieren Sie zum Menüpunkt *Administration → Roles*.
+. Klicken Sie auf *Create*, um eine neue Rolle zu definieren.
++
+image::add-role-1.png[align="center", width="1428"]
+. Geben Sie einen aussagekräftigen *Name* und einen eindeutigen *Code* an.
+. Konfigurieren Sie die Berechtigungen der Rolle, indem Sie die folgenden Richtlinien definieren:
++
+--
+* *Menu policy*: Legt fest, welche Einträge im Hauptmenü für Benutzer sichtbar sind, denen diese Rolle zugewiesen ist.
+* *View policy*: Erteilt die Berechtigung, auf bestimmte Anwendungsansichten zuzugreifen. Beispielsweise die Ansicht `Deployments` oder die Ansicht `Decisions`.
+* *Entity policy*: Definiert die für eine Datenentität zulässigen Operationen Create, Read, Update, Delete (CRUD). Beispiel: Erteilen Sie die Berechtigung _Create_ und _Read_ für die Entität `Deployment`, verweigern Sie jedoch ausdrücklich die Berechtigung _Delete_.
+* *Entity attribute policy*: Steuert den Lese- oder Schreibzugriff auf bestimmte Attribute innerhalb einer Entität.
+Beispiel: Machen Sie das Feld `email` der Entität `User` für diese Rolle schreibgeschützt.
+* *Specific policy*: Definiert Berechtigungen für beliebige, benannte Funktionen innerhalb der Anwendung.
+--
++
+image::add-role-2.png[align="center", width="1163"]
+. Klicken Sie auf *OK*, um die neue Rolle zu speichern.

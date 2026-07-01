@@ -1,0 +1,48 @@
+= Dashboard
+
+Wenn Sie sich bei Flowset Control anmelden, ist die erste Ansicht, die Sie sehen, das *Dashboard*. Dies ist Ihre Hauptansicht zur Überwachung aller Vorgänge im System. Es zeigt wichtige Informationen über leicht verständliche Widgets an, die in Echtzeit aktualisiert werden.
+
+image::dashboard.png[align="center", width="1440"]
+
+Sie können jederzeit zum *Dashboard* zurückkehren, indem Sie oben links auf *Flowset Control* klicken oder den Menüpunkt *Dashboard* auswählen.
+
+*Widgets*:
+
+* *Deployed processes*
++
+Dieses Widget zeigt die Gesamtzahl der aktiven Geschäftsprozesse an.
+
+* *Process instances*
++
+Dieses Widget zeigt die Anzahl der laufenden Prozessinstanzen an, kategorisiert als aktiv oder ausgesetzt.
+
+* *User tasks*
++
+Zeigt die Gesamtzahl der Benutzeraufgaben an, die derzeit aktiv sind und auf ihren Abschluss warten.
+
+* *Running processes*
++
+Dieses Widget stellt ein Tortendiagramm aller derzeit laufenden Prozessinstanzen bereit, geordnet nach ihrem Prozessdefinitionsschlüssel.
+
+* *Incidents*
++
+Das Widget *Incidents* hebt die Anzahl der Prozesse hervor, bei denen während der Ausführung Fehler oder Ausnahmen aufgetreten sind.
+
+* *Recent activity*
++
+Ein dynamisches Diagramm zeigt die letzte Aktivität an und verfolgt insbesondere die Anzahl der in der vergangenen Woche gestarteten und abgeschlossenen Prozesse.
+
+[NOTE]
+====
+* Im Flowset Control Dashboard ermöglichen Ihnen Tortendiagramm-Widgets, für detailliertere Daten zu einer Tabellenansicht zu wechseln. Klicken Sie dazu auf das „...“ (Drei-Punkte-Menü) innerhalb des Widgets.
++
+image::dashboard-pie-widget.png[align="center", width="888"]
+
+* Durch Klicken auf das Pfeilsymbol (→) werden Sie zu den zugehörigen Systemansichten weitergeleitet.
++
+image::dashboard-widget.png[align="center", width="835"]
++
+** Pfeil des Widgets *Deployed processes* → Ansicht xref:process.adoc[Processes].
+** Pfeil des Widgets *Process instances* → Ansicht xref:process-instances.adoc[Process instances].
+** Pfeil des Widgets *User tasks* → Ansicht xref:user-tasks.adoc[User tasks].
+====

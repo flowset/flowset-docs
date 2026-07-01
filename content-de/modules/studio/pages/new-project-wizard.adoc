@@ -1,0 +1,121 @@
+= Assistent für neue Projekte
+
+Verwenden Sie den Flowset-Projektassistenten, um ein neues BPM-Anwendungsprojekt in IntelliJ IDEA zu erzeugen.
+
+[TIP, caption="BPM-Anwendungsprojekt erstellen"]
+====
+1. Gehen Sie im Hauptmenü zu *File | New | Project*.
+2. Wählen Sie im Dialog *New Project* die Option *Flowset Project*.
+====
+
+== Grundlegende Projektkonfiguration
+
+image::new-project-wizard.png[alt="Assistent für neue Projekte"]
+
+
+[cols="1,3", frame=none, grid=rows]
+|===
+| *Project Name:*
+| Geben Sie einen Namen für Ihr Projekt an.
+
+| *Project Path:*
+| Geben Sie den Dateisystempfad für Ihr Projekt an.
+
+| *Build System:*
+| Wählen Sie das Build-System **Gradle** oder **Maven**.
+
+| *Group:*
+| Geben Sie den eindeutigen Gruppenbezeichner an (vorzugsweise ein von Ihnen kontrollierter umgekehrter Domainname, z. B. `com.example`).
+
+| *Artifact:*
+| Geben Sie den Artefaktnamen innerhalb der Gruppe an (entspricht in der Regel dem Projektnamen).
+
+| *SDK:*
+| Wählen Sie das Java SDK für das Projekt aus.
+
+| *Java Version:*
+| Geben Sie das Java-Sprachniveau an.
+
+| *Engine:*
+| Wählen Sie die Process Engine: **Camunda** oder **Operaton**.
+
+| *H2 Database:*
+| Wählen Sie den H2-Datenbanktyp: **On-Disk** (persistent) oder **In-Memory** (flüchtig).
+
+| *Camunda (Operaton) Version:*
+| Wählen Sie die Version der Process Engine aus (für Camunda oder Operaton).
+
+| *Admin Username:*
+a|
+Geben Sie den Benutzernamen für die automatische Admin-Erstellung an.
+Beim ersten Start prüft Camunda, ob bereits Benutzer mit dieser ID vorhanden sind.
+Falls nicht gefunden, wird ein neues administratives Konto erstellt.
+
+*Berechtigungen:*
+
+* Mitgliedschaft in der Gruppe `camunda-admin`
+* `ALL`-Berechtigungen
+
+| *Admin Password:*
+| Geben Sie das Passwort für den Admin-Benutzer an.
+|===
+
+[WARNING]
+====
+
+Das automatische Erstellen von Benutzern ist ausschließlich eine Funktion für die Entwicklung. Nicht für den Produktiveinsatz! In Produktionsumgebungen:
+
+* Erstellen Sie Benutzer über LDAP/Keycloak
+* Fügen Sie Konten über Datenbankmigrationen hinzu
+
+*Warnung vor Sicherheitslücke:* Das Speichern von Passwörtern in `application.properties` legt diese in der Versionskontrolle (Git) offen. Verwenden Sie stets:
+
+* `.env`-Dateien
+* Kubernetes Secrets
+====
+
+
+== Module
+
+[cols="1, 3", frame=none, grid=rows]
+|===
+| *REST API*
+| Bietet Zugriff auf alle relevanten Engine-Schnittstellen.
+Ermöglicht die Interaktion mit der Engine über HTTP-Anfragen.
+
+| *Webapps*
+a| Umfasst die Standard-Camunda-Module:
+
+* Cockpit – Überwachung und Verwaltung laufender Prozesse
+* Tasklist – Oberfläche zur Bearbeitung von Benutzeraufgaben
+* Admin – administrative Oberfläche zur Systemkonfiguration und -verwaltung
+
+| *Spin (XML & JSON)*
+| Camunda Spin ist eine JVM-Bibliothek zur vereinfachten Verarbeitung von XML und JSON in Java und JVM-basierten Sprachen (z. B. Groovy, JavaScript).
+Sie bietet eine Fluent-API mit leichtgewichtigen Wrappern für Datenformate.
+
+| *Assert*
+a| Umfasst Testbibliotheken:
+
+* Camunda Assert – automatisiertes Testen von Geschäftsprozessen
+* JUnit/Mockito – Integration mit Test-Frameworks
+
+| *Security*
+| Spring Boot Security stellt Authentifizierung und Autorisierung für Camunda-7-Projekte bereit.
+Es sichert den Zugriff auf die Oberflächen von Cockpit, Tasklist und Admin und stellt sicher, dass nur autorisierte Benutzer Prozesse verwalten können.
+
+| *Web*
+a| Das Spring-Boot-Web-Modul ergänzt:
+
+* Eingebetteten Webserver (standardmäßig Tomcat)
+* Spring MVC zur Verarbeitung von HTTP-Anfragen
+* Unterstützung für REST-Controller und JSON-Serialisierung
+
+Wird automatisch mit camunda-bpm-spring-boot-starter integriert.
+|===
+
+
+[WARNING]
+====
+Beim Hinzufügen von Spring Boot Security öffnet die generierte Standard-WebSecurityConfiguration den Zugriff auf alle Endpunkte vollständig ohne Authentifizierung. Verwenden Sie sie niemals in der Produktion ohne Anpassungen. Konfigurieren Sie stets Authentifizierung, Autorisierung und CORS-Richtlinien entsprechend den Sicherheitsanforderungen.
+====

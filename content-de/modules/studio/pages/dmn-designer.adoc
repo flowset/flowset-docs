@@ -1,0 +1,133 @@
+= DMN Designer
+
+Verwenden Sie den Flowset DMN Designer, um Entscheidungsanforderungsdiagramme (DRD), Entscheidungstabellen und literale Ausdrücke in IntelliJ IDEA zu bearbeiten. Der DMN Designer erscheint, wenn Sie eine vorhandene .dmn-Datei öffnen. Wenn Sie eine neue Entscheidungstabelle über Flowset Studio erstellen, wird sie automatisch im Designer geöffnet.
+
+== DRD-Editor
+
+Der DRD-Editor ermöglicht das Erstellen von Diagrammen direkt in der IDE.
+
+image::drd-editor-interface.png[]
+
+Die Oberfläche des DRD-Editors besteht aus:
+
+[cols="3,1,11", frame=none, grid=rows]
+|===
+| *Canvas*
+|
+| Arbeitsbereich zum Erstellen eines DRD.
+| *DMN Actions*
+| (1)
+| Bereich der verfügbaren Aktionen für das DRD.
+| *Components Palette*
+| (2)
+| Die Components Palette bietet einen vollständigen Satz von Elementen zum Erstellen von Diagrammen.
+| *Editor Modes*
+| (3)
+| Bereich zur Auswahl des Anzeigemodus. Es stehen drei Anzeigemodi zur Verfügung: nur XML, XML und Diagramm, nur Diagramm.
+| *DMN Inspector*
+| (4)
+| Der Inspector-Bereich zeigt die Attribute des ausgewählten Elements an und ermöglicht deren Bearbeitung.
+| *Visibility Button*
+| (5)
+| Sichtbarkeitsschalter für den Inspector.
+|===
+
+=== Grundlegende Operationen
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Element hinzufügen*
+| Ziehen Sie ein neues Element per Drag-and-drop aus der Components Palette auf den Canvas.
+| *Element auswählen*
+| Klicken Sie auf das Element.
+| *Elementtyp ändern*
+| Wählen Sie das Element auf dem Canvas aus und klicken Sie auf das Schraubenschlüssel-Symbol.
+| *Neue Input Data hinzufügen*
+| Klicken Sie in der Palette auf das Werkzeug Input Data und klicken Sie anschließend auf den Canvas.
+| *Zwei Elemente verbinden*
+| Klicken Sie auf das Quellelement, wählen Sie ein Pfeilwerkzeug aus und ziehen Sie den Pfeil auf ein Zielelement.
+| *Element verschieben*
+| Klicken Sie auf das Element und ziehen Sie es an eine neue Position auf dem Canvas.
+| *Element löschen*
+| Wählen Sie das Element aus und drücken Sie die Entf-Taste oder klicken Sie auf das Papierkorb-Symbol.
+| *Den Decision Table Editor öffnen*
+| Klicken Sie auf das blaue Symbol in der oberen linken Ecke des Elements.
+|====
+
+
+== Decision Table Editor
+
+Der Decision-Table-Editor ermöglicht Ihnen, direkt in der IDE mit Entscheidungstabellen zu arbeiten. Seine Oberfläche ähnelt der des DRD-Editors.
+
+image::dmn-table-editor-interface.png[]
+
+=== Grundlegende Operationen
+
+[cols="1,3", frame="none", grid="rows"]
+|===
+| *Neue Rule (Zeile) hinzufügen*
+| Klicken Sie auf die Plus-Schaltfläche (+) unten links in der Tabelle.
+| *Eine Rule oberhalb einfügen*
+| Klicken Sie mit der rechten Maustaste auf eine Regelnummer und wählen Sie _Add rule above_.
+| *Eine Rule unterhalb einfügen*
+| Klicken Sie mit der rechten Maustaste auf eine Regelnummer und wählen Sie _Add rule below_.
+| *Eine Rule löschen*
+| Klicken Sie mit der rechten Maustaste auf die Regelnummer und wählen Sie _Remove rule_.
+| *Ein neues Input/Output hinzufügen*
+| Klicken Sie auf die Plus-Schaltfläche (+) in der Spaltenüberschrift _Input_ oder _Output_.
+| *Ein Input/Output löschen*
+| Klicken Sie mit der rechten Maustaste in die entsprechende Spaltenüberschrift und wählen Sie _Remove input column_.
+| *Eine Zelle bearbeiten*
+| Doppelklicken Sie auf die Zelle oder wählen Sie sie aus und beginnen Sie mit der Eingabe.
+| *Änderungen in einer Zelle übernehmen*
+| Drücken Sie Enter oder klicken Sie außerhalb der Zelle.
+| *Ein Input/Output umbenennen*
+| Doppelklicken Sie auf den Namen in der Spaltenüberschrift.
+| *Die Hit Policy ändern*
+| Klicken Sie auf den Hit-Policy-Indikator (z. B. `UNIQUE`, `FIRST`) in der oberen linken Ecke der Tabelle und wählen Sie eine neue Policy aus der Dropdown-Liste aus.
+| *Zwischen Zellen navigieren*
+| Drücken Sie Tab, um zur nächsten Zelle zu wechseln, oder Shift+Tab, um zur vorherigen Zelle zu wechseln.
+|===
+
+
+== Literal Expression Editor
+
+Der Literal-Expression-Editor ermöglicht Ihnen, direkt in der IDE mit literalen Ausdrücken zu arbeiten. Seine Oberfläche ähnelt der des DRD- und des Decision-Table-Editors.
+
+image::literal-expression-editor-interface.png[]
+
+=== Grundlegende Operationen
+
+[cols="1,3", frame="none", grid="rows"]
+|====
+| *Auf den Editor zugreifen*
+| Klicken Sie in der Ansicht des Decision Requirements Diagram (DRD) auf das blaue Symbol eines Entscheidungselements, das in einen literalen Ausdruck umgewandelt wurde.
+| *Den Ausdruck bearbeiten*
+| Klicken Sie in den Ausdruckseditor und geben Sie die Logik ein.
+| *Variablennamen definieren/bearbeiten*
+| Bearbeiten Sie das Attribut `name` des Elements `variable` über das Feld Variable name.
+| *Variablentyp definieren/bearbeiten*
+| Geben Sie das Attribut `type Ref` des Elements `variable` an (z. B. `string`, `number`) über die Dropdown-Liste 'Variable type'.
+|====
+
+== Deployment
+
+Der DMN Editor ermöglicht das Deployment des DMN auf eine entfernte Camunda-/Operaton-Engine.
+Um den Deployment-Assistenten aufzurufen, klicken Sie auf das Raketen-Symbol in der Editor Toolbar (DMN-Actions-Bereich).
+Eine korrekt konfigurierte Verbindung zu einer externen Engine ist erforderlich.
+
+image::dmn-deployment-wizard.png[width=80%]
+
+[cols="1,3", frame=none, grid=rows]
+|====
+| *Deployment name*
+| Ein eindeutiger Name zur Identifikation des Deployment-Pakets. Ermöglicht das einfache Auffinden und Verwalten einer bestimmten Prozessversion im System.
+| *Enable duplicate filtering*
+| Filterung auf Ebene einzelner Dateien. Überspringt das erneute Deployment unveränderter Ressourcen (z. B. BPMN-Diagramme) innerhalb eines Deployments. Spart Datenbankplatz, indem die Erstellung von Duplikaten verhindert wird.
+| *Deploy changed only*
+| Filterung auf Ebene des gesamten Deployment-Pakets. Wenn sich keine Datei im Deployment geändert hat, wird der Vorgang vollständig ignoriert. Stellt Idempotenz sicher und schließt unnötige Erstellungen von Prozessversionen aus.
+| *Deployment source*
+| Die Quelle, von der aus das Deployment initiiert wurde (z. B. 'Flowset Studio'). Wird für die Auditierung und Nachverfolgung der Deployment-Herkunft verwendet.
+| *Tenant ID*
+| Der Mandantenbezeichner für eine mandantenfähige Architektur. Ermöglicht die Isolierung von Prozessen und Daten für verschiedene Kunden oder Abteilungen innerhalb eines einzelnen Camunda-Clusters.
+|====

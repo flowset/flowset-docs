@@ -1,0 +1,188 @@
+= Prozessinstanz-Modifikation
+
+[NOTE, caption=Enterprise-Funktion]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Flowset Control bietet Werkzeuge, um laufende Prozess-Tokens von einer Aktivität zu einer anderen zu verschieben.
+
+Verwenden Sie die Modifikation, wenn Sie laufende Prozesse wiederherstellen, einen bestimmten Teil eines großen Prozesses erneut testen oder die Prozessausführung synchronisieren müssen, nachdem fehlerhafte Daten von einem externen System empfangen wurden. Sie können mehrere Prozessinstanzen gleichzeitig über die Ansicht *Modification* modifizieren oder eine einzelne laufende Instanz direkt aus der Detailansicht der Prozessinstanz modifizieren.
+
+Hintergrundinformationen zur Camunda-Prozessinstanz-Modifikation finden Sie hier:
+
+* https://docs.camunda.org/manual/latest/user-guide/process-engine/process-instance-modification/[Dokumentation zur Camunda 7 Prozessinstanz-Modifikation]
+* https://docs.camunda.org/rest/camunda-bpm-platform/7.24-SNAPSHOT/#tag/Modification[Camunda 7 Modification REST API]
+
+[WARNING]
+====
+Die Prozessinstanz-Modifikation ändert den Laufzeitzustand ausgewählter Prozessinstanzen. Verwenden Sie sie nur, wenn Sie die geschäftlichen und technischen Auswirkungen des Abbrechens der Quellaktivität und des Startens der Ausführung an der Zielaktivität verstehen.
+====
+
+NOTE: Die Modifikationsfunktion kann mit der Anwendungseigenschaft `flowset.control.features.modification-enabled` deaktiviert werden.
+
+[[modify-multiple-instances]]
+== Mehrere Instanzen modifizieren
+
+Verwenden Sie die Ansicht *Modification*, wenn dieselbe Token-Verschiebung auf mehrere laufende Prozessinstanzen angewendet werden muss.
+
+[[open-mass-modification]]
+=== Massenmodifikation öffnen
+
+Wählen Sie *Modification* im Anwendungsmenü, um den Assistenten für die Prozessinstanz-Modifikation zu öffnen.
+
+Der Assistent umfasst drei Schritte:
+
+* *Process & activities* - Auswahl des Prozesses, der Version, der Quellaktivität und der Zielaktivität.
+* *Filtering instances* - Auswahl der laufenden Prozessinstanzen, die modifiziert werden sollen.
+* *Confirmation* - Überprüfung der generierten Modifikationsanfrage und Start der Ausführung.
+
+image::process-instance-modification-1.png[align="center", width="1552"]
+
+[[select-process-and-version]]
+=== Prozess und Version auswählen
+
+Wählen Sie im ersten Schritt einen Prozess aus der Liste *Process*.
+
+Die Prozessliste ist sortiert, um das Auffinden von Prozessen zu erleichtern.
+
+Nachdem der Prozess ausgewählt wurde, wählen Sie die erforderliche Version der Prozessdefinition.
+
+image::process-instance-modification-2.png[align="center", width="1552"]
+
+Flowset Control lädt das BPMN-Diagramm und ermöglicht die Auswahl der Quell- und Zielaktivität.
+
+[[select-source-and-target]]
+=== Quell- und Zielaktivitäten auswählen
+
+Der Modifikationsassistent erstellt eine Token-Verschiebung von einer Quellaktivität zu einer Zielaktivität:
+
+* *Source activity* - die aktuell aktive Aktivität, die abgebrochen werden soll.
+* *Target activity* - die Aktivität, an der ein neues Token gestartet werden soll.
+
+Sie können Aktivitäten aus der sortierten Dropdown-Liste auswählen.
+
+image::process-instance-modification-3.png[align="center", width="1552"]
+
+Sie können eine Aktivität auch direkt im BPMN-Diagramm auswählen. Klicken Sie auf die Diagramm-Auswahlschaltfläche neben dem Quell- oder Zielfeld, wählen Sie das gewünschte BPMN-Element und bestätigen Sie mit *OK*.
+
+image::process-instance-modification-4.png[align="center", width="1552"]
+
+image::process-instance-modification-5.png[align="center", width="1552"]
+
+Wählen Sie für die Zielaktivität, wie das neue Token erstellt werden soll:
+
+* *Start before* - startet die Ausführung vor der ausgewählten Aktivität.
+* *Start after* - startet die Ausführung nach der ausgewählten Aktivität.
+
+Wenn die Quell- und Zielaktivitäten ausgewählt sind, klicken Sie auf *Next*.
+
+image::process-instance-modification-6.png[align="center", width="1552"]
+
+[[filter-instances]]
+=== Instanzen filtern
+
+Der zweite Schritt zeigt laufende Prozessinstanzen an, die der ausgewählten Prozessdefinition und Quellaktivität entsprechen.
+
+image::process-instance-modification-7.png[align="center", width="1552"]
+
+Verwenden Sie den Filterdialog, um die Menge der Instanzen einzugrenzen, bevor Sie die Modifikation anwenden.
+
+image::process-instance-modification-8.png[align="center", width="1552"]
+
+Zu den verfügbaren Filtern gehören:
+
+* *Business key*
+* *With open incidents*
+* *Incident message*
+* Bedingungen für Prozessvariablen
+* Groß-/Kleinschreibung-unabhängiger Abgleich für Variablennamen und -werte
+
+Die Anzahl der zur Modifikation ausgewählten Instanzen wird über der Tabelle angezeigt. Überprüfen Sie diese Liste sorgfältig, da die Modifikation auf alle übereinstimmenden Instanzen angewendet wird.
+
+[[confirm-modification]]
+=== Massenmodifikation bestätigen
+
+Der Bestätigungsschritt fasst den ausgewählten Prozess, die Aktivitäten und die Anzahl der Prozessinstanzen zusammen.
+
+Sie können optional einen Kommentar hinzufügen, bevor Sie die Modifikation starten.
+
+Klicken Sie auf *General request*, um die Modifikationsanfrage zu generieren und zu überprüfen, die an die BPM-Engine gesendet wird.
+
+image::process-instance-modification-9.png[align="center", width="1552"]
+
+Die generierte Anfrage enthält:
+
+* `processDefinitionId`
+* `processInstanceIds`
+* Eine `cancel`-Anweisung für die Quellaktivität
+* Eine `startBeforeActivity`- oder `startAfterActivity`-Anweisung für die Zielaktivität
+
+Klicken Sie auf *Modify*, um die Modifikation zu starten.
+
+[[track-modification]]
+=== Fortschritt der Massenmodifikation verfolgen
+
+Bei einer Massenmodifikation startet Flowset Control die Verarbeitung und zeigt nach Annahme der Anfrage eine Benachrichtigung an.
+
+image::process-instance-modification-10.png[align="center", width="1552"]
+
+Verwenden Sie *Batch details* aus der Benachrichtigung, um den Ausführungsfortschritt anzuzeigen, oder aktualisieren Sie die zugehörigen Daten, um den aktualisierten Prozesszustand zu überprüfen.
+
+[[modify-single-instance]]
+== Eine einzelne Instanz modifizieren
+
+Verwenden Sie die Aktion *Modify instance*, wenn Sie ein Token nur für eine einzelne laufende Prozessinstanz verschieben müssen.
+
+Die Aktion ist im Aktionspanel der Prozessinstanz-Detailansicht verfügbar, wenn:
+
+* Die Prozessinstanz nicht abgeschlossen ist.
+* Die Eigenschaft `flowset.control.features.modification-enabled` auf `true` gesetzt ist.
+
+image::single-process-instance-modification-1.png[align="center", width="1552"]
+
+[[single-instance-interactive-mode]]
+=== Interaktiver Diagrammmodus
+
+Klicken Sie auf *Modify instance*, um das Prozessdiagramm in den interaktiven Modus zu schalten. In diesem Modus kann das Diagramm zur Auswahl von Quell- und Zielaktivitäten verwendet werden, und die Schaltflächen *OK* und *Cancel* erscheinen unterhalb des Diagramms.
+
+image::single-process-instance-modification-2.png[align="center", width="1552"]
+
+Der interaktive Modus folgt diesen Regeln:
+
+* Wenn nur eine Aktivität (nicht Aktivitätsinstanz) in der Prozessinstanz aktiv ist, wird sie automatisch als Quellaktivität ausgewählt. Sie müssen nur die Zielaktivität auswählen, die Quellaktivität kann jedoch weiterhin geändert werden.
+* Wenn mehrere Aktivitäten aktiv sind, wählen Sie zuerst die Quellaktivität bzw. -aktivitäten und anschließend die Zielaktivität aus.
+* Bei mehreren aktiven Aktivitäten funktioniert die Auswahl in der Reihenfolge Quelle-Ziel: Nach Auswahl einer Quellaktivität wählt der nächste Klick eine Zielaktivität aus. Nach Auswahl einer Zielaktivität wählt der nächste Klick wieder eine Quellaktivität aus.
+* Um mehrere Quellaktivitäten auszuwählen, halten Sie *Ctrl* unter Windows oder Linux bzw. *Cmd* unter macOS gedrückt und klicken Sie auf die gewünschten Diagrammelemente. Nach dem Loslassen der Taste wird die nächste Aktivitätsauswahl als Ziel behandelt.
+* Im Auswahlmodus *Source* sind nur laufende Aktivitäten der Prozessinstanz anklickbar.
+* Im Auswahlmodus *Target* sind alle Elemente außer laufenden Aktivitäten der Prozessinstanz anklickbar.
+* Quell- und Zielaktivitäten müssen ausgewählt sein, bevor Sie auf *OK* klicken.
+
+Ausgewählte Elemente werden im Diagramm mit einem ausgewählten Rahmen dargestellt.
+
+Sie können den interaktiven Modus auf eine der folgenden Arten schließen:
+
+* Klicken Sie auf *Cancel* unterhalb des Diagramms.
+* Klicken Sie erneut auf *Modify instance* im Aktionspanel.
+
+[[single-instance-dialog]]
+=== Modifikation einer einzelnen Instanz bestätigen
+
+Klicken Sie auf *OK* unterhalb des Diagramms, um den Dialog *Process instance modification* zu öffnen.
+
+image::single-process-instance-modification-3.png[align="center", width="1552"]
+
+Überprüfen Sie in diesem Dialog die ausgewählten Quellaktivitäten und die Zielaktivität, wählen Sie *Start before* oder *Start after* und fügen Sie optional einen Kommentar hinzu.
+
+Sie können auch Prozessvariablen konfigurieren, die während der Modifikation hinzugefügt oder aktualisiert werden:
+
+* *Create* öffnet einen Dialog zum Erstellen einer neuen Variable.
+* *Add* öffnet einen Dialog zur Auswahl einer vorhandenen Prozessinstanzvariable.
+* *Edit* aktualisiert eine ausgewählte Variable vor der Modifikation.
+* *Remove* entfernt eine ausgewählte Variable aus der Modifikationsanfrage.
+
+NOTE: Das Feld *Local* ist nur beim Hinzufügen oder Bearbeiten einer Variable für die Instanzmodifikation sichtbar. Es wird nicht angezeigt, wenn eine Variable direkt aus der regulären Variablenansicht zur Prozessinstanz hinzugefügt wird.
+
+Klicken Sie auf *Modify*, um die Modifikation auf die aktuelle Prozessinstanz anzuwenden.
+
+image::single-process-instance-modification-4.png[align="center", width="1552"]

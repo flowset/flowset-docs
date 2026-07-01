@@ -1,0 +1,98 @@
+= Deployments
+
+Flowset Control ermöglicht Administratoren die Anzeige und Verwaltung von Deployments, die xref:process.adoc[Prozessdefinitionen], xref:dmn-decisions.adoc[Entscheidungstabellen] und andere Ressourcen enthalten. Alle Deployments werden in einer sortier- und filterbaren Liste in der Ansicht *Deployments* angezeigt.
+
+[[deployment-list]]
+== Deployment-Liste
+
+Die Deployment-Listenansicht zeigt alle derzeit im System vorhandenen Deployments in Tabellenform an:
+
+image::deployments.png[align="center", width="1428"]
+
+Verwenden Sie das Suchfeld, um Deployments nach Name oder Datum zu finden.
+
+Die folgenden Aktionen stehen zur Verfügung:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Aktion | Beschreibung
+
+| *Refresh*
+| Lädt die aktuelle Deployment-Liste aus der verbundenen BPM-Engine neu.
+
+| *Remove*
+a| Löscht das ausgewählte Deployment. Ein Bestätigungsdialog erscheint mit den folgenden Optionen:
+
+* *All instances*: Entfernt zugehörige laufende und historische Prozessinstanzen.
+
+* *Skip custom listeners*: Wenn aktiviert, werden während des Löschvorgangs nur die integrierten Listener der Engine ausgeführt. Benutzerdefinierte Listener-Logik wird umgangen.
+
+* *Skip I/O mappings*: Wenn aktiviert, werden die für das Deployment definierten Ein-/Ausgabe-Variablenzuordnungen während des Löschvorgangs ignoriert.
+
+Nach der Bestätigung wird das Deployment dauerhaft entfernt.
+
+| *View*
+| Zeigt detaillierte Deployment-Informationen an. Siehe <<deployment-details>>.
+|===
+
+[[deployment-details]]
+== Deployment-Details anzeigen
+
+Um den Inhalt eines Deployments zu untersuchen, wählen Sie die Aktion *View* aus der Deployment-Liste. Dadurch wird eine eigene Detailansicht geöffnet, die in zwei Hauptbereiche gegliedert ist.
+
+image::deployment-details.png[align="center", width="1428"]
+
+[[metadata-panel]]
+=== Metadaten-Bereich
+
+Der linke Bereich zeigt wesentliche Informationen zum Deployment an:
+
+* *Deployment id* - der eindeutige, vom System vergebene Bezeichner.
+* *Name* - der für Menschen lesbare Name des Deployments.
+* *Deployment time* - das genaue Datum und der Zeitstempel, zu dem das Deployment erstellt wurde.
+* *Source* - gibt den Ursprung des Deployments an. Beispielsweise:
+** `process application` für Deployments, die beim Anwendungsstart erstellt wurden.
+** `Flowset Control` für Deployments, die direkt über Flowset Control hochgeladen wurden.
+* *Tenant id* - der dem Deployment zugeordnete Tenant-Bezeichner.
+
+Unterhalb der Metadaten listet der linke Bereich außerdem alle Deployment-Ressourcen auf, darunter:
+
+* Prozessdefinitionen
+* Entscheidungstabellen
+* Weitere unterstützte Ressourcen
+
+[[resource-preview-panel]]
+=== Ressourcen-Vorschaubereich
+
+Der rechte Bereich zeigt dynamisch eine Vorschau der aus der Liste ausgewählten Ressource an. Für Dateien mit visuellen Komponenten, wie BPMN-Prozessdiagramme oder DMN-Entscheidungstabellen, rendert das System eine grafische Vorschau zusammen mit den technischen Metadaten.
+
+Über die Schaltfläche *Download* können Sie einzelne Ressourcendateien (BPMN, DMN usw.) abrufen.
+
+Je nach Ressourcentyp enthält der Bereich entweder zwei oder drei Registerkarten.
+
+*Registerkarte View*
+
+Diese Registerkarte bietet eine visuelle Darstellung der Ressource. Beispielsweise:
+
+* *Forms*: Rendert das UI-Layout des Formulars so, wie es Benutzern angezeigt würde.
++
+image::deployment-resource-form.png[align="center", width="1043"]
+
+* *DMN Decision Tables*: Zeigt das DRD an. Klicken Sie auf einen beliebigen Knoten im DRD, um die entsprechende DMN-Entscheidungstabelle in einer Detailansicht zu öffnen.
++
+image::deployment-resource-drd.png[align="center", width="1041"]
+
+*Registerkarte Raw*
+
+Zeigt den Rohquellcode der Ressource an:
+
+* Für DMN-/BPMN-Dateien: zeigt den XML-Quellcode an.
+* Für Skripte/Formulare: zeigt den ursprünglichen textbasierten Inhalt an.
+
+*Registerkarte Running Instances (nur BPMN)*
+
+Für eine BPMN-Prozessressource zeigt diese Registerkarte eine Tabelle der aktiven Prozessinstanzen an, die aus dieser Definition gestartet wurden.
+
+image::deployment-resource-bpmn.png[align="center", width="1293"]
+
+Die Spalte *Process key* enthält Links zu xref:process-instances.adoc#detailed-instance[Process Instance Details].

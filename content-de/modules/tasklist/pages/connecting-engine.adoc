@@ -1,0 +1,61 @@
+= Verbindung mit der BPM-Engine
+
+*Flowset Tasklist* verwendet die REST API von BPM-Engines, um mit Prozessen und Benutzeraufgaben zu arbeiten.
+Die Anwendung benötigt kein eigenes Backend und verbindet sich über die Umgebungskonfiguration direkt mit der vorhandenen BPM-Engine.
+
+== Verbindungskonfiguration
+
+Um eine Verbindung zur Engine herzustellen, müssen Sie Umgebungsvariablen angeben.
+Diese können in der Datei `.env`, in `env.local` oder über die Startparameter des Docker-Containers definiert werden.
+
+[cols="2,3,3", options="header"]
+|===
+| Variable
+| Beschreibung
+| Beispielwert
+
+| `VITE_BPM_ENGINE_API_URL`
+| Vollständige URL der REST API der BPM-Engine
+| `http://localhost:8080/engine-rest`
+
+| `VITE_BPM_ENGINE_TYPE`
+| Typ der verbundenen Engine
+Unterstützte Werte: `CAMUNDA_7`, `OPERATON`
+| `OPERATON`
+|===
+
+[NOTE]
+====
+Für die lokale Entwicklung wird empfohlen, im Stammverzeichnis des Projekts eine Datei `env.local` zu erstellen und den Inhalt von `env.example` hineinzukopieren.
+Dies erleichtert die Verwaltung der Umgebungsvariablen, ohne den Quellcode zu ändern.
+====
+
+== Benutzerkonfiguration
+
+Flowset Tasklist verwendet *Basic Authentication*, daher werden Benutzer und ihre Passwörter auf Seiten der BPM-Engine konfiguriert.
+Die Anwendung verwaltet Benutzer nicht selbst.
+
+=== Beispiel für die Benutzerkonfiguration in Camunda 7
+
+. Öffnen Sie die *Camunda WebApps* in Ihrem Browser
+. Melden Sie sich als Administrator an
+. Gehen Sie zu *Admin → Users*
+. Klicken Sie auf *Create New User* und füllen Sie das Formular aus
+. Fügen Sie den Benutzer nach dem Erstellen einer Gruppe mit den folgenden Berechtigungen hinzu:
+* User
+* Process Definition
+* Process Instance
+* Task
+* Historic Task Instance
+
+[TIP]
+====
+Wenn Sie *Operaton* verwenden, ist das Vorgehen ähnlich.
+Wichtig ist, dass der Benutzer über Berechtigungen zum Lesen und Ausführen von Prozessen und Aufgaben verfügt.
+====
+
+== Verbindungsprüfung
+
+Nachdem Sie die Anwendung konfiguriert und gestartet haben, öffnen Sie  `http://localhost:3000`
+und melden Sie sich mit den Anmeldedaten der BPM-Engine an.
+Wenn die Verbindung korrekt konfiguriert ist, wird eine Liste der aktiven Aufgaben angezeigt.
