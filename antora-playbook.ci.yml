@@ -9,11 +9,12 @@ content:
       - release_2026.0
       - release_2025.0
     start_path: content
-  # Spanish docs (flowset-es). Resolves once content-es/ is merged into the release branches.
+  # Spanish docs (flowset-es). Only built for versions that actually contain content-es/.
+  # content-es/ exists on release_2026.0; older branches (release_2025.0) do not have it,
+  # so listing them here would fail the build with "the start path 'content-es' does not exist".
   - url: https://github.com/flowset/flowset-docs.git
     branches:
       - release_2026.0
-      - release_2025.0
     start_path: content-es
 ui:
   bundle:
