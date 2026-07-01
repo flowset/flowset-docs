@@ -9,22 +9,22 @@ image::empty-dashboard.png[align="center", width="1552"]
 
 Para configurar un nuevo motor BPM:
 
-. Haga clic en el botón *Añadir* para abrir el cuadro de diálogo *New BPM engine*.
-. Alternativamente, navegue a la vista *BPM engines* a través del menú principal de la aplicación. Una vez allí, seleccione el botón *Crear*.
+. Haga clic en el botón *Add* para abrir el cuadro de diálogo *New BPM engine*.
+. Alternativamente, navegue a la vista *BPM engines* a través del menú principal de la aplicación. Una vez allí, seleccione el botón *Create*.
 
 Una vez abierta la vista *New BPM engine*, complete todos los campos requeridos como se describe en <<adding-new-engine,Añadir un nuevo motor>>.
 
 [NOTE, caption="Key Features"]
 ====
-* *Conexiones múltiples*: Configure tantas conexiones de motores como sea necesario para diferentes entornos.
+* *Multiple Connections*: Configure tantas conexiones de motores como sea necesario para diferentes entornos.
 
-* *Activación inmediata*: Los cambios surten efecto sin necesidad de reiniciar la aplicación.
+* *Immediate Activation*: Los cambios surten efecto sin necesidad de reiniciar la aplicación.
 
-* *Validación de la conexión*: La funcionalidad de prueba garantiza una configuración correcta antes de guardar.
+* *Connection Validation*: La funcionalidad de prueba garantiza una configuración correcta antes de guardar.
 
-* *Motor predeterminado*: Un motor debe designarse como predeterminado.
+* *Default Engine*: Un motor debe designarse como predeterminado.
 
-* *Edición de conexiones existentes*: Modifique cualquier parámetro más adelante seleccionando la conexión y haciendo clic en *Editar*.
+* *Edit Existing Connections*: Modifique cualquier parámetro más adelante seleccionando la conexión y haciendo clic en *Edit*.
 ====
 
 [[bpm-engines]]
@@ -39,10 +39,10 @@ image::bpm-engine-view.png[align="center", width="1548"]
 
 Los motores se muestran en una tabla con las siguientes columnas:
 
-* *Nombre*: El nombre para mostrar del motor.
-* *URL base*: La URL del endpoint del motor.
-* *Tipo*: El tipo de motor.
-* *Motor predeterminado*: Una marca que indica el motor predeterminado (solo un motor puede marcarse como predeterminado).
+* *Name*: El nombre para mostrar del motor.
+* *Base URL*: La URL del endpoint del motor.
+* *Type*: El tipo de motor.
+* *Default Engine*: Una marca que indica el motor predeterminado (solo un motor puede marcarse como predeterminado).
 
 NOTE: El primer motor añadido se establece automáticamente como predeterminado. Para cambiar el motor predeterminado, marque manualmente como predeterminado otro motor de la lista.
 
@@ -55,22 +55,22 @@ Para conectarse a un motor BPM en ejecución:
 +
 --
 * Desde el dashboard de la aplicación, si <<empty-dashboard,no hay motores BPM>> configurados.
-* A través de la vista <<bpm-engines,Motores BPM>>, haciendo clic en el botón *Crear*.
+* A través de la vista <<bpm-engines,BPM Engines>>, haciendo clic en el botón *Create*.
 --
 +
 image::new-bpm-engine-view.png[align="center", width="752"]
 
 . Configure los parámetros de conexión:
 +
-* *Nombre* (requerido):
+* *Name* (requerido):
 +
 Introduzca un nombre descriptivo para su instancia de motor BPM (por ejemplo, `"Production Camunda 7"`, `"QA Flowset"`).
 
-* *URL base* (requerido):
+* *Base URL* (requerido):
 +
 Especifique la URL completa del endpoint (por ejemplo, `++https://bpm-server.example.com:8080/engine-rest++`)
 
-* *Tipo*:
+* *Type*:
 +
 Seleccione entre los tipos de motor admitidos:
 +
@@ -98,7 +98,7 @@ Flowset Control muestra el motor BPM actualmente conectado en la insignia de est
 
 image::bpm-engine-managing.png[align="center", width="1300"]
 
-Para cambiar el motor BPM activo, localice la insignia de estado del motor en la esquina superior derecha y haga clic en el botón *Editar* junto a la insignia de estado del motor.
+Para cambiar el motor BPM activo, localice la insignia de estado del motor en la esquina superior derecha y haga clic en el botón *Edit* junto a la insignia de estado del motor.
 
 Aparecerá el cuadro de diálogo *Select BPM engine*:
 

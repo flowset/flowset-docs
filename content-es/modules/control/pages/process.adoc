@@ -1,6 +1,6 @@
 = Procesos
 
-La vista *Processes* proporciona gestión centralizada de todos los procesos de negocio desplegados en su motor de BPM activo. Acceda a esta vista seleccionando *Processes* en el menú de la aplicación.
+La vista *Processes* proporciona gestión centralizada de todos los procesos de negocio desplegados en su motor BPM activo. Acceda a esta vista seleccionando *Processes* en el menú de la aplicación.
 
 [[process-list]]
 == Funciones de la lista de procesos
@@ -20,7 +20,7 @@ Las siguientes acciones están disponibles:
 | Acción | Descripción
 
 | *Refresh*
-| Recarga la lista de procesos actual desde el motor de BPM conectado.
+| Recarga la lista de procesos actual desde el motor BPM conectado.
 
 | *Deploy*
 | Carga y despliega nuevas definiciones de proceso BPMN 2.0. Consulte <<deploying-processes>>.

@@ -95,4 +95,4 @@ Para un recurso de proceso BPMN, esta pestaña muestra una tabla de instancias d
 
 image::deployment-resource-bpmn.png[align="center", width="1293"]
 
-La columna *Process key* contiene enlaces a los xref:process-instances.adoc#detailed-instance[Detalles de la instancia de proceso].
+La columna *Process key* contiene enlaces a los xref:process-instances.adoc#detailed-instance[Process Instance Details].

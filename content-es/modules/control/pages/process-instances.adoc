@@ -56,7 +56,7 @@ Para ver los detalles de ejecución de una instancia de proceso concreta, utilic
 
 Esta acción abre la vista detallada de la instancia, que contiene:
 
-* *Diagrama de proceso* con visualización del progreso de ejecución:
+* *Process diagram* con visualización del progreso de ejecución:
 +
 image::process-instance-detail.png[align="center", width="1549"]
 ** Nodos resaltados en verde - actividades completadas

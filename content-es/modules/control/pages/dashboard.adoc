@@ -42,7 +42,7 @@ image::dashboard-pie-widget.png[align="center", width="888"]
 +
 image::dashboard-widget.png[align="center", width="835"]
 +
-** Flecha del widget *Deployed processes* → La vista xref:process.adoc[Procesos].
-** Flecha del widget *Process instances* → La vista xref:process-instances.adoc[Instancias de proceso].
-** Flecha del widget *User tasks* → La vista xref:user-tasks.adoc[Tareas de usuario].
+** Flecha del widget *Deployed processes* → La vista xref:process.adoc[Processes].
+** Flecha del widget *Process instances* → La vista xref:process-instances.adoc[Process instances].
+** Flecha del widget *User tasks* → La vista xref:user-tasks.adoc[User tasks].
 ====
