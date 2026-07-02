@@ -7,7 +7,7 @@ Esta función está disponible exclusivamente en la edición *Flowset Control En
 ====
 
 
-Flowset Control le permite enviar un mensaje directamente a un motor BPM conectado desde el diagrama de la instancia de proceso.
+Flowset Control te permite enviar un mensaje directamente a un motor BPM conectado desde el diagrama de la instancia de proceso.
 Esto resulta útil cuando un proceso está esperando un evento externo y un administrador necesita continuar la ejecución sin llamar manualmente a la API REST con Postman o `curl`.
 
 Un mensaje se puedes utilizar para continuar la ejecución de un proceso que está esperando en un *Intermediate Message Catch Event* o en un *Boundary Message Event*.
@@ -36,11 +36,11 @@ Para enviar un mensaje:
 +
 image::send-message-overlay.png[align="center", width="1552"]
 
-. En el cuadro de diálogo *Send message*, compruebe los parámetros del mensaje.
+. En el cuadro de diálogo *Send message*, comprueba los parámetros del mensaje.
 +
 image::send-message-dialog.png[align="center", width="1552"]
 
-. Si es necesario, agregue variables a la tabla *Process Variables*.
+. Si es necesario, agrega variables a la tabla *Process Variables*.
 . Haz clic en *Send*.
 
 Una vez que el mensaje se envía correctamente, Control muestra una notificación y actualiza el estado de la instancia de proceso.
@@ -60,7 +60,7 @@ Control completa este valor a partir del Message Event seleccionado.
 
 | *Element*
 | El elemento BPMN desde el que se abrió el cuadro de diálogo.
-Este campo le ayuda a verificar que el mensaje se está enviando al lugar correcto del diagrama.
+Este campo te ayuda a verificar que el mensaje se está enviando al lugar correcto del diagrama.
 
 | *Business key*
 | La clave de negocio de la instancia de proceso de destino, si está establecida.

@@ -6,7 +6,7 @@
 Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
 ====
 
-Flowset Control le permite ver el estado actual de los procesos de negocio en ejecución dentro del motor. Sin embargo, también resulta útil para un administrador de sistemas disponer de información sobre el estado general del sistema, como el número de núcleos de CPU, la memoria RAM disponible, el espacio en disco, etc. Esta información permite a los administradores recibir advertencias tempranas sobre el aumento de la carga. Combinado con el escalado automático o manual del sistema, Flowset Control proporciona una solución completa para gestionar motores de procesos de negocio.
+Flowset Control te permite ver el estado actual de los procesos de negocio en ejecución dentro del motor. Sin embargo, también resulta útil para un administrador de sistemas disponer de información sobre el estado general del sistema, como el número de núcleos de CPU, la memoria RAM disponible, el espacio en disco, etc. Esta información permite a los administradores recibir advertencias tempranas sobre el aumento de la carga. Combinado con el escalado automático o manual del sistema, Flowset Control proporciona una solución completa para gestionar motores de procesos de negocio.
 
 [[monitoring-configuration]]
 == Configuración del monitoreo
@@ -46,7 +46,7 @@ image::actuator-metrics-tags.png[align="center", width="802"]
 [[viewing-metrics]]
 == Visualización de métricas
 
-. Navegue hasta la lista de xref:connecting-engine.adoc#bpm-engines[Motores BPM] en Flowset Control.
+. Navega hasta la lista de xref:connecting-engine.adoc#bpm-engines[Motores BPM] en Flowset Control.
 . Haz clic en *View metrics* para el motor deseado.
 +
 image::view-metrics.png[align="center", width="1254"]
@@ -71,7 +71,7 @@ Para un monitoreo ágil, utiliza el selector de motores situado en la parte supe
 
 image::quick-access-monitoring.png[align="center", width="876"]
 
-Esto le permite:
+Esto te permite:
 
 * Ver rápidamente las métricas del motor seleccionado.
 * Navegar directamente al panel externo.

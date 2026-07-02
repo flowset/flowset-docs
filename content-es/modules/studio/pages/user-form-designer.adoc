@@ -1,6 +1,6 @@
 = Diseñador de formularios de usuario
 
-Usa el Diseñador de formularios de Flowset para editar Camunda Forms en IntelliJ IDEA. El Diseñador de formularios se abrirá cuando abras un archivo .form existente. Si creas un nuevo formulario con Flowset Studio, se abrirá automáticamente en el Diseñador.
+Usa el Diseñador de formularios de Flowset para editar Camunda Forms en IntelliJ IDEA. El Diseñador de formularios se abre cuando abres un archivo .form existente. Si creas un nuevo formulario con Flowset Studio, se abre automáticamente en el Diseñador.
 
 image::form-designer.png[]
 
@@ -16,7 +16,7 @@ La interfaz del Diseñador de formularios consta de:
 | La paleta de componentes proporciona un conjunto completo de elementos para crear formularios.
 | *Modos del editor*
 | (3)
-| Panel para seleccionar el modo de vista. Hay tres modos disponibles: solo JSON, JSON y formulario, o solo formulario.
+| Panel para seleccionar el modo de visualización. Hay tres modos disponibles: solo JSON, JSON y formulario, o solo formulario.
 | *Lienzo*
 | (4)
 | Espacio de trabajo para crear un formulario.
@@ -54,7 +54,7 @@ El panel de propiedades permite modificar los parámetros del elemento de formul
 |====
 | *Búsqueda*
 | (1)
-| Busca un atributo por su nombre; al hacer clic en el icono se muestra un historial de búsqueda desplegable.
+| Busca un atributo por su nombre; al hacer clic en el icono, se muestra un historial de búsqueda desplegable.
 | *Enlace <empty>*
 | (2)
 | Abre un cuadro de diálogo para editar texto de varias líneas. Si el texto ya está definido, la primera línea se muestra como un enlace.
@@ -74,13 +74,13 @@ image::form-deployment-wizard.png[width=80%]
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Deployment name*
-| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del recurso en el sistema.
+| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión específica del recurso en el sistema.
 | *Enable duplicate filtering*
-| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios (p. ej., diagramas BPMN) dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
+| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
 | *Deploy changed only*
 | Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia y evita la creación innecesaria de versiones del recurso.
 | *Deployment source*
-| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para la auditoría y el seguimiento del origen de los despliegues.
+| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para auditoría y seguimiento del origen de los despliegues.
 | *Tenant ID*
 | El identificador de tenant para una arquitectura multitenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
 |====

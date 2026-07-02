@@ -1,6 +1,6 @@
 = Studio
 
-*Flowset Studio* permite a los desarrolladores aprovechar el ecosistema de Java y Spring Boot para crear aplicaciones empresariales con un enfoque BPMN. Flowset Studio ofrece una herramienta todo en uno para cubrir el ciclo completo, desde el modelado hasta el despliegue.
+*Flowset Studio* permite a los desarrolladores aprovechar el ecosistema de Java y Spring Boot para crear aplicaciones empresariales con un enfoque BPMN. Es una herramienta todo en uno que cubre el ciclo completo, desde el modelado hasta el despliegue.
 
 *Funciones principales*
 

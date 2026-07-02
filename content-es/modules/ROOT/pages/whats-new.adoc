@@ -44,7 +44,7 @@ Se ha añadido soporte para tareas externas: Studio puede generar handlers de ta
 
 Se han ampliado las funciones de los proyectos BPMN: se ha añadido un escenario para desplegar procesos de negocio, se han mejorado las plantillas de proyecto y se han actualizado las versiones de Operaton. Ahora se admite IntelliJ IDEA 2026.1.
 
-Se ha optimizado la descripción del complemento para mejorar su visibilidad en JetBrains Marketplace.
+Se ha optimizado la descripción del plugin para mejorar su visibilidad en JetBrains Marketplace.
 
 === Correcciones de errores
 

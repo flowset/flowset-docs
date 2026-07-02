@@ -1,6 +1,6 @@
 = Diseñador de DMN
 
-Usa el Diseñador de DMN de Flowset para editar diagramas de requisitos de decisión (DRD), tablas de decisión y expresionas literales en IntelliJ IDEA. El Diseñador de DMN se abrirá cuando abras un archivo .dmn existente. Si creas una nueva tabla de decisión con Flowset Studio, se abrirá automáticamente en el Diseñador.
+Usa el Diseñador de DMN de Flowset para editar diagramas de requisitos de decisión (DRD), tablas de decisión y expresiones literales en IntelliJ IDEA. El Diseñador de DMN se abre cuando abres un archivo .dmn existente. Si creas una nueva tabla de decisión con Flowset Studio, se abre automáticamente en el Diseñador.
 
 == Editor de DRD
 
@@ -23,7 +23,7 @@ La interfaz del editor de DRD consta de:
 | La paleta de componentes proporciona un conjunto completo de elementos para crear el diagrama.
 | *Modos del editor*
 | (3)
-| Panel para seleccionar el modo de vista. Hay tres modos disponibles: solo XML, XML y diagrama, o solo diagrama.
+| Panel para seleccionar el modo de visualización. Hay tres modos disponibles: solo XML, XML y diagrama, o solo diagrama.
 | *Inspector de DMN*
 | (4)
 | El panel del inspector muestra los atributos del elemento seleccionado y permite editarlos.
@@ -90,9 +90,9 @@ image::dmn-table-editor-interface.png[]
 |===
 
 
-== Editor de expresionas literales
+== Editor de expresiones literales
 
-El editor de expresionas literales permite trabajar con expresionas literales directamente en el IDE. Su interfaz es similar a las de los editores de DRD y de tablas de decisión.
+El editor de expresiones literales permite trabajar con expresiones literales directamente en el IDE. Su interfaz es similar a la de los editores de DRD y de tablas de decisión.
 
 image::literal-expression-editor-interface.png[]
 
@@ -103,7 +103,7 @@ image::literal-expression-editor-interface.png[]
 | *Acceder al editor*
 | En la vista del diagrama de requisitos de decisión (DRD), haz clic en el icono azul de un elemento de decisión que se haya convertido en una expresión literal.
 | *Editar la expresión*
-| Haz clic dentro del editor de expresionas y escribe la lógica de la expresión.
+| Haz clic dentro del editor de expresiones y escribe la lógica de la expresión.
 | *Definir o editar el nombre de la variable*
 | Edita el atributo `name` del elemento `variable` mediante el campo _Variable name_.
 | *Definir o editar el tipo de la variable*
@@ -121,13 +121,13 @@ image::dmn-deployment-wizard.png[width=80%]
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Deployment name*
-| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del recurso en el sistema.
+| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión específica del recurso en el sistema.
 | *Enable duplicate filtering*
-| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios (p. ej., diagramas BPMN) dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
+| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
 | *Deploy changed only*
 | Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia y evita la creación innecesaria de versiones del recurso.
 | *Deployment source*
-| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para la auditoría y el seguimiento del origen de los despliegues.
+| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para auditoría y seguimiento del origen de los despliegues.
 | *Tenant ID*
 | El identificador de tenant para una arquitectura multitenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
 |====

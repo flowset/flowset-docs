@@ -19,7 +19,7 @@ image::new-project-wizard.png[alt="Asistente de nuevo proyecto"]
 | Especifica un nombre para tu proyecto.
 
 | *Project Path:*
-| Especifica la ruta del sistema de archivos para tu proyecto.
+| Especifica la ruta del sistema de archivos de tu proyecto.
 
 | *Build System:*
 | Selecciona el sistema de compilación **Gradle** o **Maven**.
@@ -31,7 +31,7 @@ image::new-project-wizard.png[alt="Asistente de nuevo proyecto"]
 | Especifica el nombre del artefacto dentro del grupo (normalmente coincide con el nombre del proyecto).
 
 | *SDK:*
-| Selecciona el SDK de Java para el proyecto.
+| Selecciona el SDK de Java para tu proyecto.
 
 | *Java Version:*
 | Especifica el nivel de lenguaje de Java.
@@ -80,8 +80,8 @@ La creación automática de usuarios es una función exclusiva para desarrollo. 
 [cols="1, 3", frame=none, grid=rows]
 |===
 | *REST API*
-| Proporciona acceso a todas las interfaces principales del motor.
-Permite la interacción con el motor mediante solicitudes HTTP.
+| Proporciona acceso a todas las API principales del motor.
+Permite interactuar con el motor mediante solicitudes HTTP.
 
 | *Webapps*
 a| Incluye los módulos estándar de Camunda:
@@ -111,7 +111,7 @@ a| El módulo Spring Boot Web añade:
 * Spring MVC para la gestión de solicitudes HTTP
 * Compatibilidad con controladores REST y serialización JSON
 
-Se integra automáticamente con camunda-bpm-spring-boot-starter.
+Se integra automáticamente con `camunda-bpm-spring-boot-starter`.
 |===
 
 

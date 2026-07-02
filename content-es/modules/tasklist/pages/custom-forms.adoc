@@ -15,14 +15,14 @@ Se admiten dos tipos de formularios:
 
 == Crear un formulario personalizado
 
-. En el editor BPMN, defina el tipo de formulario en *Embedded or External Task Form* y especifique un valor de *Form key* (por ejemplo, `newVisit`).
+. En el editor BPMN, define el tipo de formulario en *Embedded or External Task Form* y especifica un valor de *Form key* (por ejemplo, `newVisit`).
 . En el proyecto, crea un nuevo formulario en el siguiente directorio:
 +
 [source,shell]
 ----
 src/custom-forms/
 ----
-. Defina un componente React que implemente una de las interfaces:
+. Define un componente React que implemente una de las interfaces:
 +
 * `CustomStartFormProps` — para formularios de inicio
 * `CustomTaskFormProps` — para formularios de tarea

@@ -4,7 +4,7 @@
 [[install-intellij]]
 == Instalación en IntelliJ IDEA
 
-El plugin **Flowset Studio** amplía la funcionalidad de IntelliJ IDEA añadiendo soporte para desarrollar y probar procesos BPM.
+El plugin **Flowset Studio** amplía la funcionalidad de IntelliJ IDEA y añade soporte para desarrollar y probar procesos BPM.
 
 === Método 1 (recomendado): instalación a través del Marketplace
 
@@ -25,6 +25,6 @@ image::marketplace-search.png[Búsqueda del plugin Flowset]
 +
 image::install-from-disk.png[Instalación del plugin desde un archivo]
 . Selecciona el archivo del plugin descargado.
-. Confirma la instalación y reinicie el IDE.
+. Confirma la instalación y reinicia el IDE.
 
 Tras una instalación correcta, aparecerá la sección **Flowset Studio** en el IDE. Desde allí podrás crear, editar y ejecutar procesos.

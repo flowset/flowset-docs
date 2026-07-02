@@ -196,7 +196,7 @@ image::create-client-1.png[align="center", width="900"]
 +
 image::create-client-2.png[align="center", width="900"]
 +
-4. En la sección *Login Settings*, establezca:
+4. En la sección *Login Settings*, establece:
 +
 [cols="1,3", options="header", frame=none, grid=rows]
 |===
@@ -214,7 +214,7 @@ image::create-client-2.png[align="center", width="900"]
 +
 image::create-client-3.png[align="center", width="900"]
 +
-Después de guardar el cliente, ve a la pestaña *Credentials* y copie el *Client Secret*.
+Después de guardar el cliente, ve a la pestaña *Credentials* y copia el *Client Secret*.
 Este secreto se utilizará en la configuración de Flowset Control.
 +
 image::client-credentials.png[align="center", width="900"]
@@ -241,8 +241,8 @@ image::create-user.png[align="center", width="800"]
 +
 Después de guardar:
 
-* En la pestaña *Credentials*, establezca una contraseña para el usuario.
-* En la pestaña *Role Mappings*, asigne el rol `system-full-access`.
+* En la pestaña *Credentials*, establece una contraseña para el usuario.
+* En la pestaña *Role Mappings*, asigna el rol `system-full-access`.
 +
 image::create-user-credentials.png[align="center", width="800"]
 +
@@ -251,7 +251,7 @@ image::assign-role.png[align="center", width="800"]
 [[keycloak-mapper]]
 === Configuración de un asignador de roles
 
-Para asegurarse de que los roles se incluyan en el ID Token, crea un asignador:
+Para asegurarte de que los roles se incluyan en el ID Token, crea un asignador:
 
 1. Ve a *Client scopes* → `roles` → *Mappers* → `realm roles`.
 2. Haz clic en *Create* y completa los campos:

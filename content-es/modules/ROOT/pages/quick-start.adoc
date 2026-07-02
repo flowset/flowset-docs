@@ -54,7 +54,7 @@ image:flowset:ROOT:studio-new-process-2.png[Completar las propiedades del proces
 
 4. Coloca los elementos en el diagrama: *Start Event → Service Task → End Event* y conéctalos.
 +
-image:flowset:ROOT:studio-new-process-3.png[Construcción del diagrama]
+image:flowset:ROOT:studio-new-process-3.png[Creación del diagrama]
 
 5. Configura el *Service Task* y genera una nueva clase con el icono «+» del campo *Class*:
 * *Name:* Notificar al departamento de contabilidad
@@ -96,7 +96,7 @@ public class NotifyJavaDelegate implements JavaDelegate {
 ----
 +
 [NOTE]
-`NotifyJavaDelegate` emula la integración con un servicio externo de contabilidad.
+`NotifyJavaDelegate` simula la integración con un servicio externo de contabilidad.
 
 == Paso 2. Crear el formulario de inicio
 
@@ -112,7 +112,7 @@ image:flowset:ROOT:studio-new-form-1.png[Creación de un nuevo formulario]
 +
 image:flowset:ROOT:studio-new-form-2.png[Completar las propiedades del formulario]
 
-3. Mediante el editor visual, añade los siguientes campos:
+3. Con el editor visual, añade los siguientes campos:
 +
 |===
 |Nombre |Clave |Tipo |¿Obligatorio?
@@ -218,7 +218,7 @@ image:flowset:ROOT:control-new-connection-3.png[]
 image:flowset:ROOT:control-process-instance-1.png[]
 +
 4. Asegúrate de que la ejecución haya pasado por el *Service Task*.
-Si tiene éxito, el diagrama del proceso aparecerá resaltado en verde.
+Si la ejecución se completó correctamente, el diagrama del proceso aparecerá resaltado en verde.
 +
 image:flowset:ROOT:control-process-instance-2.png[]
 

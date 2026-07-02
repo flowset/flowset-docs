@@ -22,7 +22,7 @@ java -version
 [[portable]]
 === Distribución portátil
 
-La distribución portátil le permite ejecutar Flowset Control sin dependencias adicionales (excepto Java). Ideal para pruebas rápidas o desarrollo local.
+La distribución portátil te permite ejecutar Flowset Control sin dependencias adicionales (excepto Java). Ideal para pruebas rápidas o desarrollo local.
 
 +++
 <div class="card-block">
@@ -33,9 +33,9 @@ La distribución portátil le permite ejecutar Flowset Control sin dependencias 
 
 *Instrucciones de ejecución*:
 
-. Descargue el archivo portátil desde el https://flowset.io/downloads#control[enlace^] proporcionado.
+. Descarga el archivo portátil desde el https://flowset.io/downloads#control[enlace^] proporcionado.
 
-. Extraiga el archivo en el directorio de tu preferencia.
+. Extrae el archivo en el directorio de tu preferencia.
 
 . Ejecuta el script de lanzamiento según tu sistema operativo:
 +
@@ -52,7 +52,7 @@ Windows:
 ----
 run.bat
 ----
-. Acceda a la aplicación en: `++http://localhost:8081++`.
+. Accede a la aplicación en: `++http://localhost:8081++`.
 
 [[docker-compose]]
 === Docker Compose
@@ -101,14 +101,14 @@ services:
       - postgres
 ----
 
-. Inicie los contenedores:
+. Inicia los contenedores:
 +
 [source,shell]
 ----
 docker compose up -d
 ----
 
-. Acceda a la aplicación en: `++http://localhost:8081++`.
+. Accede a la aplicación en: `++http://localhost:8081++`.
 
 . Para detener los contenedores:
 +
@@ -117,12 +117,12 @@ docker compose up -d
 docker compose down
 ----
 
-Encontrará instrucciones detalladas en https://github.com/flowset/flowset-control-community/tree/main/docker-compose[GitHub^].
+Encontrarás instrucciones detalladas en https://github.com/flowset/flowset-control-community/tree/main/docker-compose[GitHub^].
 
 [[source-code-build]]
 === Compilación desde el código fuente
 
-Compile y ejecuta desde el código fuente para desarrollo o despliegues personalizados.
+Compila y ejecuta desde el código fuente para desarrollo o despliegues personalizados.
 
 *Requisitos previos*:
 
@@ -132,7 +132,7 @@ Compile y ejecuta desde el código fuente para desarrollo o despliegues personal
 
 *Instrucciones de ejecución*:
 
-. Clone el repositorio:
+. Clona el repositorio:
 +
 [source,shell]
 ----
@@ -153,7 +153,7 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 ./gradlew bootRun
 ----
 
-. Acceda a la aplicación en: `++http://localhost:8081++`.
+. Accede a la aplicación en: `++http://localhost:8081++`.
 
 [[post-installation]]
 == Postinstalación

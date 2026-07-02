@@ -2,7 +2,7 @@
 
 [.fl-hero]
 --
-Flowset es una plataforma de automatización de procesos de negocio: diseña, ejecuta y monitoriza procesos BPMN de principio a fin.
+Flowset es una plataforma de automatización de procesos de negocio para diseñar, ejecutar y monitorear procesos BPMN de principio a fin.
 
 [.fl-hero-actions]
 * xref:ROOT:quick-start.adoc[Comenzar]
@@ -10,19 +10,19 @@ Flowset es una plataforma de automatización de procesos de negocio: diseña, ej
 --
 
 [.fl-cards]
-* xref:control:index.adoc[Control]: Monitoriza y administra los procesos en ejecución.
-* xref:studio:index.adoc[Studio]: Modela diagramas BPMN/DMN y formularios en IntelliJ IDEA.
-* xref:tasklist:index.adoc[Tasklist]: Gestiona las tareas de los usuarios finales con una aplicación React.
+* xref:control:index.adoc[Control]: monitorea y administra los procesos en ejecución.
+* xref:studio:index.adoc[Studio]: modela diagramas BPMN/DMN y formularios en IntelliJ IDEA.
+* xref:tasklist:index.adoc[Tasklist]: gestiona tareas de usuarios finales con una aplicación React.
 
 
 == ¿Qué es Flowset?
 
-Flowset es una plataforma de automatización de procesos de negocio y un conjunto de herramientas que cubren todo el ciclo de vida de una solución BPM.
+Flowset es una plataforma de automatización de procesos de negocio con un motor de ejecución propio y un conjunto de herramientas que cubren todo el ciclo de vida de una solución BPM.
 
 === Principios fundamentales
 
 * **Compatibilidad con Camunda**
-  Creemos que esta tecnología, que se ha convertido en un estándar de la industria, perdurará durante mucho tiempo.
+  Creemos que esta tecnología, que se ha convertido en un estándar de la industria, seguirá siendo relevante durante mucho tiempo.
 
 * **Cumplimiento del estándar BPMN 2.0**
   Garantiza transparencia, previsibilidad y facilita la incorporación de nuevos especialistas.
@@ -39,7 +39,7 @@ Flowset es una plataforma de automatización de procesos de negocio y un conjunt
 === Componentes de la plataforma
 
 ==== Control
-Una herramienta de código abierto para monitorizar la ejecución de procesos de negocio. Es similar a Camunda Cockpit, pero ofrece funcionalidad ampliada..
+Una herramienta de código abierto para monitorear la ejecución de procesos de negocio. Es similar a Camunda Cockpit, pero ofrece funcionalidad ampliada.
 Está construida sobre Jmix, un framework de código abierto. El código fuente está disponible en https://github.com/flowset/flowset-control-community[GitHub].
 
 ==== Studio

@@ -39,7 +39,7 @@ Los administradores pueden completar tareas manualmente cuando sea necesario:
 
 . Selecciona la tarea deseada de la lista.
 . Haz clic en el botón de acción *Complete*.
-. Proporcione las variables de proceso requeridas.
+. Proporciona las variables de proceso requeridas.
 +
 image::user-task-complete.png[align="center", width="1163"]
 . Confirme la finalización.

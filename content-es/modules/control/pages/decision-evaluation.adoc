@@ -5,7 +5,7 @@
 Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
 ====
 
-Flowset Control le permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
+Flowset Control te permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
 
 Utiliza este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico solo para ejecutar DMN.
 

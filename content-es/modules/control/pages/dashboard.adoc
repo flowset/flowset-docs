@@ -34,11 +34,11 @@ Un gráfico dinámico muestra la actividad reciente, registrando específicament
 
 [NOTE]
 ====
-* En el Dashboard de Flowset Control, los widgets de gráfico circular le permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haz clic en el menú "..." (menú de tres puntos) dentro del widget.
+* En el Dashboard de Flowset Control, los widgets de gráfico circular te permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haz clic en el menú "..." (menú de tres puntos) dentro del widget.
 +
 image::dashboard-pie-widget.png[align="center", width="888"]
 
-* Al hacer clic en el icono de flecha (→) se le redirige a las vistas relacionadas del sistema.
+* Al hacer clic en el icono de flecha (→) se te redirige a las vistas relacionadas del sistema.
 +
 image::dashboard-widget.png[align="center", width="835"]
 +

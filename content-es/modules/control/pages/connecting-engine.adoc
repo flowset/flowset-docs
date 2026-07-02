@@ -81,7 +81,7 @@ Selecciona entre los tipos de motor admitidos:
 +
 Selecciona el método de autenticación:
 +
-* *HTTP Basic Authentication*. Proporcione un nombre de usuario y una contraseña.
+* *HTTP Basic Authentication*. Proporciona un nombre de usuario y una contraseña.
 * *HTTP Headers Authentication*. Configura encabezados personalizados.
 
 . Antes de guardar cualquier cambio, haz clic en *Test connection* para verificar que la configuración de la conexión sea correcta. Esta acción inicia un intento de conexión al motor seleccionado. A continuación, el sistema mostrará un mensaje que indica si la conexión fue exitosa o si se encontraron errores.
@@ -104,7 +104,7 @@ Aparecerá el cuadro de diálogo *Select BPM engine*:
 
 image::select-bpm-engine.png[align="center", width="642"]
 
-El administrador puedes elegir el motor BPM y especificar los parámetros de autenticación, incluidos el nombre del encabezado y el valor del parámetro. Antes de cambiar de motor BPM, hay disponible una prueba de conexión.
+Como administrador, puedes elegir el motor BPM y especificar los parámetros de autenticación, incluidos el nombre del encabezado y el valor del parámetro. Antes de cambiar de motor BPM, hay disponible una prueba de conexión.
 
 // [[monitoring]]
 // == BPM Engine Monitoring

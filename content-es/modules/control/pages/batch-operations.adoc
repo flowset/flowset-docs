@@ -5,7 +5,7 @@
 Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
 ====
 
-Flowset Control le permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, se selecciona una operación, se eligen las instancias de proceso de destino con un filtro, se proporcionan los parámetros de la operación y se inicia un único lote asíncrono.
+Flowset Control te permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, se selecciona una operación, se eligen las instancias de proceso de destino con un filtro, se proporcionan los parámetros de la operación y se inicia un único lote asíncrono.
 
 El motor BPM ejecuta los lotes de forma asíncrona: cada lote se divide en trabajos más pequeños que el Job Executor procesa en segundo plano, de modo que la aplicación permanece receptiva mientras se procesan grandes cantidades de instancias.
 
@@ -42,8 +42,8 @@ image::batch-operation-1.png[align="center", width="1552"]
 El asistente *Execute batch* tiene tres pasos:
 
 * *Operation & process instances* - selecciona el tipo de operación y las instancias de proceso a las que se aplicará el lote.
-* *Batch options* - proporcione los parámetros requeridos para la operación seleccionada.
-* *Confirmation* - revisa los parámetros y la solicitud generada, luego inicie el lote.
+* *Batch options* - proporciona los parámetros requeridos para la operación seleccionada.
+* *Confirmation* - revisa los parámetros y la solicitud generada, luego inicia el lote.
 
 [[step-operation-instances]]
 == Paso 1: Operación e instancias de proceso
@@ -77,7 +77,7 @@ image::batch-operation-4.png[align="center", width="1552"]
 
 El número máximo de instancias a las que se puede aplicar un lote se controla mediante *Max modified instances count* en *Administration* -> *Application settings* -> *Bulk operation settings*. Si el filtro coincide con más instancias de las permitidas, se muestra una advertencia.
 
-No puedes continuar al siguiente paso hasta que se selecciona un tipo de operación y se encuentre al menos una instancia de proceso. Haz clic en *Next* para continuar.
+No puedes continuar al siguiente paso hasta que selecciones un tipo de operación y encuentres al menos una instancia de proceso. Haz clic en *Next* para continuar.
 
 [[step-batch-options]]
 == Paso 2: Opciones del lote

@@ -1,6 +1,6 @@
 = Diseñador de BPMN
 
-Usa el Diseñador de BPMN de Flowset para editar diagramas BPMN en IntelliJ IDEA. El Diseñador de BPMN se abrirá cuando abras un archivo .bpmn existente. Si creas un nuevo diagrama con Flowset Studio, se abrirá automáticamente en el Diseñador.
+Usa el Diseñador de BPMN de Flowset para editar diagramas BPMN en IntelliJ IDEA. El Diseñador de BPMN se abre cuando abres un archivo .bpmn existente. Si creas un nuevo diagrama con Flowset Studio, se abre automáticamente en el Diseñador.
 
 image::bpmn-designer.png[]
 
@@ -19,7 +19,7 @@ La interfaz del Diseñador de BPMN consta de:
 | Panel de acciones disponibles para el proceso.
 | *Modos del editor*
 | (3)
-| Panel para seleccionar el modo de vista. Hay tres modos disponibles: solo XML, XML y modelo, o solo modelo.
+| Panel para seleccionar el modo de visualización. Hay tres modos disponibles: solo XML, XML y modelo, o solo modelo.
 | *Inspector de BPMN*
 | (4)
 | El panel del inspector muestra los atributos del elemento seleccionado y permite editarlos.
@@ -78,7 +78,7 @@ El panel de propiedades permite modificar los parámetros del elemento del diagr
 |====
 | *Búsqueda*
 | (1)
-| Busca un atributo por su nombre; al hacer clic en el icono se muestra un historial de búsqueda desplegable.
+| Busca un atributo por su nombre; al hacer clic en el icono, se muestra un historial de búsqueda desplegable.
 | *Enlace <empty>*
 | (2)
 | Abre un cuadro de diálogo para editar texto de varias líneas. Si el texto ya está definido, la primera línea se muestra como un enlace.
@@ -172,7 +172,7 @@ Flowset Studio permite generar plantillas de clases para Task Listener y Executi
 | *Java class*
 | Permite especificar directamente una clase que implementa la interfaz ExecutionListener. El nombre completo de la clase debe estar disponible en el classpath. Se utiliza para lógica compleja que requiere código Java completo.
 | *Expression*
-| Una expresión que se ejecuta cuando se produce el evento. Puede pasar al objeto invocado un objeto DelegateTask y el nombre del evento mediante `task.eventName`. Permite llamar a un método de un bean o acceder a los datos del contexto de ejecución sin crear una clase independiente. Ejemplo: `${myObject.callMethod(task, task.eventName)}`
+| Una expresión que se ejecuta cuando se produce el evento. La expresión puede pasar al objeto invocado un objeto DelegateTask y el nombre del evento mediante `task.eventName`. También permite llamar a un método de un bean o acceder a los datos del contexto de ejecución sin crear una clase independiente. Ejemplo: `${myObject.callMethod(task, task.eventName)}`
 | *Delegate expression*
 | Una referencia a un bean (p. ej., un Spring Bean) que implementa la interfaz ExecutionListener. Se especifica en el formato `${beanName}`. Facilita la inyección de dependencias y la reutilización de la lógica.
 |====
@@ -208,7 +208,7 @@ El Inspector de BPMN permite abrir el asistente para generar una clase Java Dele
 
 3. Haz clic en el campo _Class_ para mostrar los controles
 
-4. Haz clic en el icono `+` del campo para abrir el cuadro de diálogo para generar una clase Java Delegate
+4. Haz clic en el icono `+` del campo para abrir el cuadro de diálogo de generación de una clase Java Delegate
 
 image::new-java-delegate-class-wizard.png[width=500px]
 
@@ -220,7 +220,7 @@ image::new-java-delegate-class-wizard.png[width=500px]
 | Paquete donde se ubicará la clase generada.
 |====
 
-Al hacer clic en el botón OK, se abrirá la clase generada en el editor de código.
+Al hacer clic en el botón OK, la clase generada se abre en el editor de código.
 
 == Despliegue
 
@@ -233,13 +233,13 @@ image::deployment-wizard.png[width=80%]
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Deployment name*
-| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del recurso en el sistema.
+| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión específica del recurso en el sistema.
 | *Enable duplicate filtering*
-| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios (p. ej., diagramas BPMN) dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
+| Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
 | *Deploy changed only*
 | Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia y evita la creación innecesaria de versiones del recurso.
 | *Deployment source*
-| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para la auditoría y el seguimiento del origen de los despliegues.
+| El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para auditoría y seguimiento del origen de los despliegues.
 | *Tenant ID*
 | El identificador de tenant para una arquitectura multitenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
 |====

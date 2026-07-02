@@ -146,7 +146,7 @@ image::job-actions-menu.png[align="center", width="1100"]
 [[job-set-priority]]
 ==== Cambiar la prioridad
 
-La acción *Set priority* le permite establecer una nueva prioridad de ejecución para el trabajo en el campo *New priority*. La prioridad afecta al orden en que el Job Executor toma los trabajos.
+La acción *Set priority* te permite establecer una nueva prioridad de ejecución para el trabajo en el campo *New priority*. La prioridad afecta al orden en que el Job Executor toma los trabajos.
 
 image::job-set-priority.png[align="center", width="720"]
 

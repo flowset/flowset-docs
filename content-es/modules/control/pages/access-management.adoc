@@ -14,17 +14,17 @@ El sistema incluye un usuario administrador predeterminado con las credenciales 
 
 Para crear un nuevo usuario:
 
-. Inicie sesión en Flowset Control con credenciales de administrador (de forma predeterminada: `admin`/`admin`).
+. Inicia sesión en Flowset Control con credenciales de administrador (de forma predeterminada: `admin`/`admin`).
 
-. Vaya a la opción de menú *Administration → Users* y haga clic en el botón *Create*.
+. Ve a la opción de menú *Administration → Users* y haz clic en el botón *Create*.
 +
 image::add-user-1.png[align="center", width="1428"]
-. En la vista *User*, complete los campos requeridos:
+. En la vista *User*, completa los campos requeridos:
 
 * *Username*: Debe ser único.
 * *Password* y *Confirm Password*.
 
-. Haga clic en *OK* para guardar el usuario.
+. Haz clic en *OK* para guardar el usuario.
 +
 image::add-user-2.png[align="center", width="1428"]
 
@@ -35,16 +35,16 @@ Los usuarios recién creados no tienen permisos de forma predeterminada y no pue
 
 Para asignar el <<role-management,rol de recurso>> predeterminado con acceso completo:
 
-. Seleccione el usuario de la lista y haga clic en *Role assignments*.
+. Selecciona el usuario de la lista y haz clic en *Role assignments*.
 +
 image::role-assignment.png[align="center", width="1048"]
-. En la sección *Resource roles*, haga clic en *Add*.
+. En la sección *Resource roles*, haz clic en *Add*.
 +
 image::role-assignment-2.png[align="center", width="1051"]
-. Seleccione la fila con la etiqueta `Full Access` y haga clic en *Select*.
+. Selecciona la fila con la etiqueta `Full Access` y haz clic en *Select*.
 +
 image::role-assignment-3.png[align="center", width="802"]
-. Haga clic en *OK* para guardar la asignación de rol.
+. Haz clic en *OK* para guardar la asignación de rol.
 
 El usuario ya puede iniciar sesión y acceder a todas las funciones de la aplicación.
 
@@ -60,12 +60,12 @@ Un administrador del sistema puede crear roles personalizados para implementar u
 
 Para definir un nuevo rol con un conjunto específico de permisos:
 
-. Vaya a la opción de menú *Administration → Roles*.
-. Haga clic en *Create* para crear un nuevo rol.
+. Ve a la opción de menú *Administration → Roles*.
+. Haz clic en *Create* para crear un nuevo rol.
 +
 image::add-role-1.png[align="center", width="1428"]
-. Especifique un *Name* descriptivo y un *Code* único.
-. Configure los permisos del rol mediante las siguientes políticas:
+. Especifica un *Name* descriptivo y un *Code* único.
+. Configura los permisos del rol mediante las siguientes políticas:
 +
 --
 * *Menu policy*: especifica qué elementos del menú principal son visibles para los usuarios que tienen asignado este rol.
@@ -77,4 +77,4 @@ Ejemplo: hacer que el campo `email` de la entidad `User` sea de solo lectura par
 --
 +
 image::add-role-2.png[align="center", width="1163"]
-. Haga clic en *OK* para guardar el nuevo rol.
+. Haz clic en *OK* para guardar el nuevo rol.

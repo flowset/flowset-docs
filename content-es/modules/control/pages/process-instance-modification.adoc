@@ -35,7 +35,7 @@ El asistente tiene tres pasos:
 
 * *Process & activities* - selecciona el proceso, la versión, la actividad de origen y la actividad de destino.
 * *Filtering instances* - selecciona las instancias de proceso en ejecución que deben modificarse.
-* *Confirmation* - revisa la solicitud de modificación generada e inicie la ejecución.
+* *Confirmation* - revisa la solicitud de modificación generada e inicia la ejecución.
 
 image::process-instance-modification-1.png[align="center", width="1552"]
 
@@ -127,7 +127,7 @@ Para la modificación masiva, Flowset Control inicia el procesamiento y muestra 
 
 image::process-instance-modification-10.png[align="center", width="1552"]
 
-Use *Batch details* desde la notificación para ver el progreso de la ejecución, o actualice los datos relacionados para verificar el estado actualizado del proceso.
+Usa *Batch details* desde la notificación para ver el progreso de la ejecución, o actualiza los datos relacionados para verificar el estado actualizado del proceso.
 
 [[modify-single-instance]]
 == Modificación de una única instancia
@@ -144,7 +144,7 @@ image::single-process-instance-modification-1.png[align="center", width="1552"]
 [[single-instance-interactive-mode]]
 === Modo interactivo del diagrama
 
-Haz clic en *Modify instance* para cambiar el diagrama de proceso al modo interactivo. En este modo, el diagrama se puedes usar para seleccionar las actividades de origen y destino, y los botones *OK* y *Cancel* aparecen debajo del diagrama.
+Haz clic en *Modify instance* para cambiar el diagrama de proceso al modo interactivo. En este modo, puedes usar el diagrama para seleccionar las actividades de origen y destino, y los botones *OK* y *Cancel* aparecen debajo del diagrama.
 
 image::single-process-instance-modification-2.png[align="center", width="1552"]
 
@@ -153,7 +153,7 @@ El modo interactivo sigue estas reglas:
 * Si solo una actividad, no una instancia de actividad, está activa en la instancia de proceso, se selecciona automáticamente como actividad de origen. Solo necesitas seleccionar la actividad de destino, pero la actividad de origen aún se puede cambiar.
 * Si varias actividades están activas, selecciona primero la actividad o actividades de origen y luego selecciona la actividad de destino.
 * Con varias actividades activas, la selección funciona en orden origen-destino: después de seleccionar una actividad de origen, el siguiente clic selecciona una actividad de destino. Después de seleccionar una actividad de destino, el siguiente clic selecciona de nuevo una actividad de origen.
-* Para seleccionar varias actividades de origen, mantenga pulsada *Ctrl* en Windows o Linux, o *Cmd* en macOS, y haz clic en los elementos del diagrama requeridos. Después de soltar la tecla, la siguiente selección de actividad se trata como destino.
+* Para seleccionar varias actividades de origen, mantén pulsada *Ctrl* en Windows o Linux, o *Cmd* en macOS, y haz clic en los elementos del diagrama requeridos. Después de soltar la tecla, la siguiente selección de actividad se trata como destino.
 * En el modo de selección *Source*, solo se puede hacer clic en las actividades en ejecución de la instancia de proceso.
 * En el modo de selección *Target*, se puede hacer clic en todos los elementos excepto en las actividades en ejecución de la instancia de proceso.
 * Las actividades de origen y destino deben seleccionarse antes de hacer clic en *OK*.

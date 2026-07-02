@@ -41,7 +41,7 @@ La aplicación no gestiona usuarios por sí misma.
 . Inicia sesión con un usuario administrador
 . Ve a *Admin → Users*
 . Haz clic en *Create New User* y completa el formulario
-. Después de crear el usuario, añádalo a un grupo con los siguientes permisos:
+. Después de crear el usuario, añádelo a un grupo con los siguientes permisos:
 * User
 * Process Definition
 * Process Instance
@@ -51,7 +51,7 @@ La aplicación no gestiona usuarios por sí misma.
 [TIP]
 ====
 Si usas *Operaton*, el procedimiento es similar.
-Lo importante es asegurarse de que el usuario tenga permisos para leer y ejecutar procesos y tareas.
+Lo importante es asegurarte de que el usuario tenga permisos para leer y ejecutar procesos y tareas.
 ====
 
 == Verificación de la conexión
