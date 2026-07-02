@@ -6,7 +6,7 @@ Tasklist requiere autenticación: cada usuario ve únicamente sus tareas activas
 
 == Trabajar con procesos
 
-Para ver los procesos de negocio disponibles, abra el elemento de menú *Processes*.
+Para ver los procesos de negocio disponibles, abre el elemento de menú *Processes*.
 La página muestra una tabla con las últimas versiones de todos los procesos desplegados en el motor BPM conectado.
 
 Acciones disponibles en la página:
@@ -20,7 +20,7 @@ image::process-view.png[Pantalla de lista de procesos]
 
 === Iniciar un proceso
 
-Para iniciar un proceso, haga clic en *Start Process* en la fila correspondiente.
+Para iniciar un proceso, haz clic en *Start Process* en la fila correspondiente.
 Se abrirá un cuadro de diálogo cuyo contenido depende del tipo de formulario vinculado al evento de inicio del proceso:
 
 * Si no se especifica ningún formulario, solo se muestra el campo *Business Key*
@@ -38,7 +38,7 @@ Después de completar el formulario y hacer clic en *Start*, Tasklist crea una n
 
 == Trabajar con tareas de usuario
 
-Para ver las tareas de usuario activas, abra el elemento de menú *Tasks*.
+Para ver las tareas de usuario activas, abre el elemento de menú *Tasks*.
 Se abrirá una página con una tabla de las tareas asignadas al usuario actual.
 
 Acciones disponibles:
@@ -51,7 +51,7 @@ image::task-view.png[Pantalla de lista de tareas]
 
 === Ver una tarea
 
-Para abrir una tarea, haga clic en *Edit* junto a la fila correspondiente.
+Para abrir una tarea, haz clic en *Edit* junto a la fila correspondiente.
 En el lado derecho de la pantalla, aparecerá un panel con los detalles de la tarea y el formulario asociado.
 
 Según el tipo de formulario, Tasklist muestra:
@@ -64,7 +64,7 @@ image::task-instance-view-1.png[Tarea de usuario con formulario personalizado]
 
 === Finalizar una tarea
 
-Para finalizar una tarea, complete los campos requeridos del formulario y haga clic en *Complete* (o en un botón con un nombre similar).
+Para finalizar una tarea, completa los campos requeridos del formulario y haz clic en *Complete* (o en un botón con un nombre similar).
 Tasklist envía los datos del formulario al motor BPM, tras lo cual la tarea se cierra y el proceso continúa según el modelo.
 
 image::task-instance-view-2.png[Pantalla de finalización de tarea]
@@ -80,7 +80,7 @@ Los formularios *Embedded* y *Generated* no son compatibles.
 El acceso a Tasklist se realiza mediante *Basic Authentication*.
 La lista de usuarios y sus permisos se define en el motor BPM.
 
-Para un funcionamiento correcto, asegúrese de que el grupo del usuario tenga asignadas las siguientes autorizaciones:
+Para un funcionamiento correcto, asegúrate de que el grupo del usuario tenga asignadas las siguientes autorizaciones:
 
 * User
 * Process Definition

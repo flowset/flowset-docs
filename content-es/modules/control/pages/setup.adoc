@@ -3,14 +3,14 @@
 [[check-system-requirements]]
 == Requisitos del sistema
 
-Antes de proceder con la instalación, asegúrese de que su sistema cumpla con los siguientes requisitos mínimos:
+Antes de proceder con la instalación, asegúrate de que tu sistema cumpla con los siguientes requisitos mínimos:
 
 * Sistema operativo: Windows, Linux o macOS de 64 bits
 * RAM: Mínimo 8 GB (16 GB recomendado)
 * Espacio en disco: Mínimo 10 GB de espacio libre
 * Java: JDK o JRE versión 21
 
-Verifique su instalación de Java ejecutando:
+Verifica tu instalación de Java ejecutando:
 
 [source,shell]
 ----
@@ -35,9 +35,9 @@ La distribución portátil le permite ejecutar Flowset Control sin dependencias 
 
 . Descargue el archivo portátil desde el https://flowset.io/downloads#control[enlace^] proporcionado.
 
-. Extraiga el archivo en el directorio de su preferencia.
+. Extraiga el archivo en el directorio de tu preferencia.
 
-. Ejecute el script de lanzamiento según su sistema operativo:
+. Ejecuta el script de lanzamiento según tu sistema operativo:
 +
 *Linux/macOS*:
 +
@@ -62,7 +62,7 @@ Este método permite un inicio rápido de Flowset Control en contenedores, sin c
 *Requisitos previos*:
 
 * *Docker* y *Docker Compose*
-* Verifique las instalaciones:
+* Verifica las instalaciones:
 +
 [source,shell]
 ----
@@ -72,7 +72,7 @@ docker compose version
 
 *Instrucciones de ejecución*:
 
-. Cree un archivo `docker-compose.yml` con:
+. Crea un archivo `docker-compose.yml` con:
 +
 [source,yaml]
 ----
@@ -122,7 +122,7 @@ Encontrará instrucciones detalladas en https://github.com/flowset/flowset-contr
 [[source-code-build]]
 === Compilación desde el código fuente
 
-Compile y ejecute desde el código fuente para desarrollo o despliegues personalizados.
+Compile y ejecuta desde el código fuente para desarrollo o despliegues personalizados.
 
 *Requisitos previos*:
 
@@ -138,7 +138,7 @@ Compile y ejecute desde el código fuente para desarrollo o despliegues personal
 ----
 git clone https://github.com/flowset/flowset-control-community
 ----
-. Configure la base de datos PostgreSQL.
+. Configura la base de datos PostgreSQL.
 +
 Flowset Control almacena datos, como las conexiones al motor BPM, en una base de datos. De forma predeterminada, Flowset Control requiere una base de datos PostgreSQL con los siguientes parámetros:
 
@@ -146,7 +146,7 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 * Nombre de usuario: `root`
 * Contraseña: `root`
 
-. Vaya al directorio del proyecto y ejecute:
+. Ve al directorio del proyecto y ejecuta:
 +
 [source,shell]
 ----
@@ -160,9 +160,9 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 
 Después de una instalación exitosa:
 
-. Abra su navegador web y vaya a `++http://localhost:8081++`.
-. Utilice las credenciales de administrador predeterminadas (`admin`/`admin`).
-. Configure las conexiones de su xref:connecting-engine.adoc[motor BPM].
+. Abre tu navegador web y ve a `++http://localhost:8081++`.
+. Utiliza las credenciales de administrador predeterminadas (`admin`/`admin`).
+. Configura las conexiones de tu xref:connecting-engine.adoc[motor BPM].
 
 // == Docker Image
 //
@@ -198,7 +198,7 @@ Después de una instalación exitosa:
 // git clone https://github.com/flowset/flowset-control-community
 // ----
 //
-// . Configure a PostgreSQL database.
+// . Configura a PostgreSQL database.
 // +
 // Flowset Control stores data such as connections to BPM engines in the database.
 // Flowset Control requires a PostgreSQL database by default:

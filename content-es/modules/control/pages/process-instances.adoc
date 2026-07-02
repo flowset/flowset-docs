@@ -1,6 +1,6 @@
 = Instancias de proceso
 
-Para ver las instancias de proceso almacenadas en el motor BPM, seleccione *Process instances* en el menú de la aplicación.
+Para ver las instancias de proceso almacenadas en el motor BPM, selecciona *Process instances* en el menú de la aplicación.
 
 [[instance-list]]
 == Funciones de la lista de instancias
@@ -52,7 +52,7 @@ image::process-with-incident.png[align="center", width="1165"]
 [[detailed-instance]]
 == Detalles de la instancia de proceso
 
-Para ver los detalles de ejecución de una instancia de proceso concreta, utilice la acción *View*.
+Para ver los detalles de ejecución de una instancia de proceso concreta, utiliza la acción *View*.
 
 Esta acción abre la vista detallada de la instancia, que contiene:
 

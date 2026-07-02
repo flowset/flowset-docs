@@ -20,9 +20,9 @@ La funcionalidad está disponible en las siguientes páginas:
 
 == Cómo habilitar la visualización
 
-1. Vaya a *Processes* o *Process Instances*.
-2. Seleccione el proceso deseado.
-3. Abra el diagrama.
+1. Ve a *Processes* o *Process Instances*.
+2. Selecciona el proceso deseado.
+3. Abre el diagrama.
 4. Habilite *Transaction Boundary Display*.
 +
 image::transaction-1.png[align=”center”]
@@ -59,7 +59,7 @@ Se indica mediante *marcadores azules* en los flujos entrantes o salientes de un
 
 Se indican mediante *marcadores discontinuos rojos* en los límites de un elemento.
 
-* Señalan que se crea una transacción independiente antes (async before) o después (async after) de que se ejecute una actividad.
+* Señalan que se crea una transacción independiente antes (async before) o después (async after) de que se ejecuta una actividad.
 * Permiten aislar la ejecución de una actividad.
 * Se utilizan para mejorar la tolerancia a fallos y la capacidad de gestión del proceso.
 

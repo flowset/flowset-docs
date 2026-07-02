@@ -5,7 +5,7 @@ La aplicación no requiere su propio backend y se conecta directamente al motor 
 
 == Configuración de la conexión
 
-Para establecer una conexión con el motor, debe especificar las variables de entorno.
+Para establecer una conexión con el motor, debes especificar las variables de entorno.
 Se pueden definir en el archivo `.env`, `.env.local`, o mediante parámetros de ejecución del contenedor Docker.
 
 [cols="2,3,3", options="header"]
@@ -37,10 +37,10 @@ La aplicación no gestiona usuarios por sí misma.
 
 === Ejemplo de configuración de usuarios en Camunda 7
 
-. Abra *Camunda WebApps* en el navegador
-. Inicie sesión con un usuario administrador
-. Vaya a *Admin → Users*
-. Haga clic en *Create New User* y complete el formulario
+. Abre *Camunda WebApps* en el navegador
+. Inicia sesión con un usuario administrador
+. Ve a *Admin → Users*
+. Haz clic en *Create New User* y completa el formulario
 . Después de crear el usuario, añádalo a un grupo con los siguientes permisos:
 * User
 * Process Definition
@@ -50,12 +50,12 @@ La aplicación no gestiona usuarios por sí misma.
 
 [TIP]
 ====
-Si utiliza *Operaton*, el procedimiento es similar.
+Si usas *Operaton*, el procedimiento es similar.
 Lo importante es asegurarse de que el usuario tenga permisos para leer y ejecutar procesos y tareas.
 ====
 
 == Verificación de la conexión
 
-Después de configurar y ejecutar la aplicación, vaya a `http://localhost:3000`
-e inicie sesión utilizando las credenciales del motor BPM.
+Después de configurar y ejecutar la aplicación, ve a `http://localhost:3000`
+e inicia sesión utilizando las credenciales del motor BPM.
 Si la conexión está configurada correctamente, aparecerá una lista de tareas activas.

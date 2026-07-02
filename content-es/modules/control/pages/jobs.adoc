@@ -20,7 +20,7 @@ Los trabajos se pueden gestionar en tres lugares de la aplicación:
 
 La pantalla *Jobs* está disponible como un elemento independiente del menú de la aplicación y muestra todos los trabajos del motor BPM conectado, independientemente de la instancia de proceso.
 
-image::jobs-screen.png[align="center", width="1552"]
+image::jobs-screan.png[align="center", width="1552"]
 
 La tabla admite ordenación y filtrado; para cada trabajo se muestra lo siguiente:
 
@@ -106,16 +106,16 @@ TIP: Al hacer clic en el valor de la columna *Failed activity* se resalta el ele
 
 Para reintentar un trabajo que finalizó con un error:
 
-. Seleccione un trabajo con un valor de *Retries* de `0` y haga clic en *Retry*.
-. En el cuadro de diálogo que se abre, especifique el número de intentos de ejecución en el campo *Retries* (el valor predeterminado es `1`; el valor debe ser positivo).
+. Selecciona un trabajo con un valor de *Retries* de `0` y haz clic en *Retry*.
+. En el cuadro de diálogo que se abre, especifica el número de intentos de ejecución en el campo *Retries* (el valor predeterminado es `1`; el valor debe ser positivo).
 +
 image::job-retry-dialog.png[align="center", width="720"]
-. Haga clic en *Retry* para aplicar el nuevo número de intentos.
+. Haz clic en *Retry* para aplicar el nuevo número de intentos.
 
 [[job-details]]
 == Vista detallada del trabajo
 
-Para abrir información detallada sobre un trabajo, haga clic en su identificador o utilice la acción *View*.
+Para abrir información detallada sobre un trabajo, haz clic en su identificador o utiliza la acción *View*.
 
 image::job-details.png[align="center", width="1100"]
 
@@ -155,10 +155,10 @@ image::job-set-priority.png[align="center", width="720"]
 
 La acción *Update due date* cambia la fecha de vencimiento (*Due date*) del trabajo. El conjunto de parámetros depende del tipo de trabajo.
 
-Para un trabajo de *temporizador*, puede elegir la operación (*Operation*):
+Para un trabajo de *temporizador*, puedes elegir la operación (*Operation*):
 
 * *Set* — establecer la fecha de vencimiento en una fecha y hora especificadas por el usuario. Cuando se selecciona esta operación, aparece una casilla *Update recurring timers*; si está marcada, la fecha de vencimiento también se actualiza para los temporizadores recurrentes.
-* *Recalculate* — recalcular la fecha de vencimiento utilizando el motor. Cuando se selecciona esta operación, puede especificar la fecha base para el recálculo — la *current time* o la *creation time* del trabajo.
+* *Recalculate* — recalcular la fecha de vencimiento utilizando el motor. Cuando se selecciona esta operación, puedes especificar la fecha base para el recálculo — la *current time* o la *creation time* del trabajo.
 
 image::job-change-due-date.png[align="center", width="720"]
 

@@ -4,7 +4,7 @@ Cuando inicia sesión en Flowset Control, la primera vista que verá es el *Dash
 
 image::dashboard.png[align="center", width="1440"]
 
-Puede volver al *Dashboard* en cualquier momento haciendo clic en *Flowset Control* en la esquina superior izquierda o seleccionando el elemento de menú *Dashboard*.
+Puedes volver al *Dashboard* en cualquier momento haciendo clic en *Flowset Control* en la esquina superior izquierda o seleccionando el elemento de menú *Dashboard*.
 
 *Widgets*:
 
@@ -34,7 +34,7 @@ Un gráfico dinámico muestra la actividad reciente, registrando específicament
 
 [NOTE]
 ====
-* En el Dashboard de Flowset Control, los widgets de gráfico circular le permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haga clic en el menú "..." (menú de tres puntos) dentro del widget.
+* En el Dashboard de Flowset Control, los widgets de gráfico circular le permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haz clic en el menú "..." (menú de tres puntos) dentro del widget.
 +
 image::dashboard-pie-widget.png[align="center", width="888"]
 

@@ -2,14 +2,14 @@
 
 La aplicación ofrece soporte integral para tablas de decisión DMN (Decision Model and Notation) a través del elemento de menú *DMN → Decisions*.
 
-Al seleccionar este elemento de menú se muestra una lista de todas las tablas de decisión desplegadas actualmente en su motor BPM activo.
+Al seleccionar este elemento de menú se muestra una lista de todas las tablas de decisión desplegadas actualmente en tu motor BPM activo.
 
 NOTE: Las definiciones e instancias de decisión se muestran utilizando datos históricos.
 
 [[decision-table-list]]
 == Lista de tablas de decisión
 
-La vista *Decisions* muestra todas las tablas de decisión DMN desplegadas en su motor BPM activo en una tabla ordenable y filtrable.
+La vista *Decisions* muestra todas las tablas de decisión DMN desplegadas en tu motor BPM activo en una tabla ordenable y filtrable.
 
 image::dmn-table-list.png[align="center", width="1537"]
 
@@ -30,13 +30,13 @@ Las siguientes acciones están disponibles:
 | Recarga la lista de decisiones DMN actual desde el motor BPM conectado.
 
 | *Deploy*
-| Carga y despliega nuevos archivos DMN. Consulte <<deploy-dmn-table>>.
+| Carga y despliega nuevos archivos DMN. Consulta <<deploy-dmn-table>>.
 
 | *View*
-| Muestra información detallada de la tabla DMN. Consulte <<view-desicion-details>>.
+| Muestra información detallada de la tabla DMN. Consulta <<view-desicion-details>>.
 
 | *Evaluate decision*
-| Abre una vista de evaluación independiente para la tabla de decisión seleccionada. Consulte xref:decision-evaluation.adoc[Evaluación de decisiones].
+| Abre una vista de evaluación independiente para la tabla de decisión seleccionada. Consulta xref:decision-evaluation.adoc[Evaluación de decisiones].
 |===
 
 [[deploy-dmn-table]]
@@ -44,18 +44,18 @@ Las siguientes acciones están disponibles:
 
 Para desplegar una tabla DMN:
 
-. En la vista *Decisions*, haga clic en *Deploy*
-. En la vista *New decision deployment*, haga clic en *Upload* y seleccione su archivo DMN 1.1 (.dmn o .dmn11.xml).
+. En la vista *Decisions*, haz clic en *Deploy*
+. En la vista *New decision deployment*, haz clic en *Upload* y selecciona tu archivo DMN 1.1 (.dmn o .dmn11.xml).
 +
 image::deploy-decision.png[align="center", width="1186"]
-. Haga clic en *OK* para completar el despliegue.
+. Haz clic en *OK* para completar el despliegue.
 
 [[view-desicion-details]]
 == Visualización de los detalles de la decisión
 
 La acción *View* proporciona una vista completa de la definición de decisión desplegada.
 
-Seleccione una definición de decisión desplegada y haga clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
+Selecciona una definición de decisión desplegada y haz clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
 
 image::dmn-details.png[align="center", width="1186"]
 

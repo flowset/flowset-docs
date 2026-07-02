@@ -27,9 +27,9 @@ image::process-documentation-2.png[align="center"]
 
 Para ver la documentación de un elemento:
 
-1. Vaya a *Processes* o *Process Instances*.
-2. Seleccione el proceso deseado y abra su diagrama.
-3. Haga clic en el icono *?* de cualquier elemento BPMN que tenga documentación adjunta.
+1. Ve a *Processes* o *Process Instances*.
+2. Selecciona el proceso deseado y abre su diagrama.
+3. Haz clic en el icono *?* de cualquier elemento BPMN que tenga documentación adjunta.
 4. Se abrirá el diálogo *Element documentation*.
 +
 image::process-documentation-3.png[align="center"]
@@ -57,5 +57,5 @@ Flowset Control lee este valor automáticamente cuando se despliega el proceso, 
 
 [NOTE]
 ====
-La documentación puede añadirse a cualquier elemento BPMN que la admita: tareas, compuertas, eventos, subprocesos y flujos de secuencia.
+La documentación puedes añadirse a cualquier elemento BPMN que la admita: tareas, compuertas, eventos, subprocesos y flujos de secuencia.
 ====

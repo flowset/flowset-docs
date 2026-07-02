@@ -17,8 +17,8 @@ image::bpm-engine-monitoring.png[align="center", width="1440"]
 
 === Dashboard externo (URL)
 
-* Especifique la URL de un dashboard de monitoreo externo (por ejemplo, https://grafana.com/[Grafana^]).
-* Ejemplo: para Camunda, puede configurar un dashboard de Grafana y pegar aquí su URL.
+* Especifica la URL de un dashboard de monitoreo externo (por ejemplo, https://grafana.com/[Grafana^]).
+* Ejemplo: para Camunda, puedes configurar un dashboard de Grafana y pegar aquí su URL.
 * Proporciona navegación con un solo clic desde Flowset Control directamente al dashboard externo:
 +
 image::grafana-monitoring.png[align="center", width="1440"]
@@ -26,20 +26,20 @@ image::grafana-monitoring.png[align="center", width="1440"]
 == Métricas integradas
 
 * Marque la casilla *Enable* para activar la recopilación y visualización de métricas en Flowset Control.
-* Campo *URL*: especifique el endpoint desde el que se obtendrán las métricas (por ejemplo, un endpoint de Spring Boot Actuator).
-* Haga clic en *Generate* para cargar las métricas disponibles desde el endpoint especificado.
+* Campo *URL*: especifica el endpoint desde el que se obtendrán las métricas (por ejemplo, un endpoint de Spring Boot Actuator).
+* Haz clic en *Generate* para cargar las métricas disponibles desde el endpoint especificado.
 +
 image::actuator-metrics.png[align="center", width="776"]
 
 == Selección de métricas
 
-* Seleccione las métricas deseadas marcando las casillas junto a sus nombres.
+* Selecciona las métricas deseadas marcando las casillas junto a sus nombres.
 +
 image::actuator-metrics-select.png[align="center", width="779"]
 
 * Pase el cursor sobre el icono de signo de interrogación (?) para ver una breve descripción de cada métrica.
 
-* Puede configurar etiquetas para cada métrica y así habilitar un monitoreo más granular de áreas específicas:
+* Puedes configurar etiquetas para cada métrica y así habilitar un monitoreo más granular de áreas específicas:
 +
 image::actuator-metrics-tags.png[align="center", width="802"]
 
@@ -47,7 +47,7 @@ image::actuator-metrics-tags.png[align="center", width="802"]
 == Visualización de métricas
 
 . Navegue hasta la lista de xref:connecting-engine.adoc#bpm-engines[Motores BPM] en Flowset Control.
-. Haga clic en *View metrics* para el motor deseado.
+. Haz clic en *View metrics* para el motor deseado.
 +
 image::view-metrics.png[align="center", width="1254"]
 . Se abrirá una ventana de diálogo:
@@ -59,7 +59,7 @@ image::metrics.png[align="center", width="962"]
 
 [NOTE]
 ====
-Utilice el botón *External dashboard* para acceder rápidamente al dashboard de Grafana (u otro) configurado.
+Utiliza el botón *External dashboard* para acceder rápidamente al dashboard de Grafana (u otro) configurado.
 
 image::external-dashboard.png[align="center", width="855"]
 ====
@@ -67,7 +67,7 @@ image::external-dashboard.png[align="center", width="855"]
 [[quick-access-toolbar]]
 == Barra de acceso rápido
 
-Para un monitoreo ágil, utilice el selector de motores situado en la parte superior de la pantalla.
+Para un monitoreo ágil, utiliza el selector de motores situado en la parte superior de la pantalla.
 
 image::quick-access-monitoring.png[align="center", width="876"]
 

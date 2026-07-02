@@ -1,11 +1,11 @@
 = Asistente de nuevo proyecto
 
-Use el asistente de proyectos de Flowset para generar un nuevo proyecto de aplicación BPM en IntelliJ IDEA.
+Usa el asistente de proyectos de Flowset para generar un nuevo proyecto de aplicación BPM en IntelliJ IDEA.
 
 [TIP, caption="Crear un proyecto de aplicación BPM"]
 ====
-1. En el menú principal, vaya a *File | New | Project*.
-2. En el cuadro de diálogo *New Project*, seleccione *Flowset Project*.
+1. En el menú principal, ve a *File | New | Project*.
+2. En el cuadro de diálogo *New Project*, selecciona *Flowset Project*.
 ====
 
 == Configuración básica del proyecto
@@ -16,38 +16,38 @@ image::new-project-wizard.png[alt="Asistente de nuevo proyecto"]
 [cols="1,3", frame=none, grid=rows]
 |===
 | *Project Name:*
-| Especifique un nombre para su proyecto.
+| Especifica un nombre para tu proyecto.
 
 | *Project Path:*
-| Especifique la ruta del sistema de archivos para su proyecto.
+| Especifica la ruta del sistema de archivos para tu proyecto.
 
 | *Build System:*
-| Seleccione el sistema de compilación **Gradle** o **Maven**.
+| Selecciona el sistema de compilación **Gradle** o **Maven**.
 
 | *Group:*
-| Especifique el identificador único del grupo, preferiblemente un nombre de dominio inverso que controle, p. ej., `com.example`.
+| Especifica el identificador único del grupo, preferiblemente un nombre de dominio inverso que controles, p. ej., `com.example`.
 
 | *Artifact:*
-| Especifique el nombre del artefacto dentro del grupo (normalmente coincide con el nombre del proyecto).
+| Especifica el nombre del artefacto dentro del grupo (normalmente coincide con el nombre del proyecto).
 
 | *SDK:*
-| Seleccione el SDK de Java para el proyecto.
+| Selecciona el SDK de Java para el proyecto.
 
 | *Java Version:*
-| Especifique el nivel de lenguaje de Java.
+| Especifica el nivel de lenguaje de Java.
 
 | *Engine:*
-| Seleccione el motor de procesos: **Camunda** u **Operaton**.
+| Selecciona el motor de procesos: **Camunda** u **Operaton**.
 
 | *H2 Database:*
-| Seleccione el tipo de base de datos H2: **On-Disk** (persistente) o **In-Memory** (volátil).
+| Selecciona el tipo de base de datos H2: **On-Disk** (persistente) o **In-Memory** (volátil).
 
 | *Camunda (Operaton) Version:*
-| Seleccione la versión del motor de procesos (para Camunda u Operaton).
+| Selecciona la versión del motor de procesos (para Camunda u Operaton).
 
 | *Admin Username:*
 a|
-Especifique el nombre de usuario para la creación automática del administrador.
+Especifica el nombre de usuario para la creación automática del administrador.
 En el primer inicio, Camunda comprueba si existen usuarios con este ID.
 Si no se encuentran, crea una nueva cuenta administrativa.
 
@@ -57,7 +57,7 @@ Si no se encuentran, crea una nueva cuenta administrativa.
 * Permisos `ALL`
 
 | *Admin Password:*
-| Especifique la contraseña del usuario administrador.
+| Especifica la contraseña del usuario administrador.
 |===
 
 [WARNING]
@@ -65,10 +65,10 @@ Si no se encuentran, crea una nueva cuenta administrativa.
 
 La creación automática de usuarios es una función exclusiva para desarrollo. No está pensada para uso en producción. En entornos de producción:
 
-* Cree usuarios mediante LDAP/Keycloak
-* Añada cuentas mediante migraciones de base de datos
+* Crea usuarios mediante LDAP/Keycloak
+* Añade cuentas mediante migraciones de base de datos
 
-*Advertencia de seguridad:* almacenar contraseñas en `application.properties` las expone en el sistema de control de versiones (Git). Utilice siempre:
+*Advertencia de seguridad:* almacenar contraseñas en `application.properties` las expone en el sistema de control de versiones (Git). Usa siempre:
 
 * Archivos `.env`
 * Secretos de Kubernetes
@@ -117,5 +117,5 @@ Se integra automáticamente con camunda-bpm-spring-boot-starter.
 
 [WARNING]
 ====
-Al añadir Spring Boot Security, la WebSecurityConfiguration predeterminada que se genera abre completamente el acceso a todos los endpoints sin autenticación. Nunca la utilice en producción sin modificaciones. Configure siempre las políticas de autenticación, autorización y CORS de acuerdo con los requisitos de seguridad.
+Al añadir Spring Boot Security, la WebSecurityConfiguration predeterminada que se genera abre completamente el acceso a todos los endpoints sin autenticación. Nunca la uses en producción sin modificaciones. Configura siempre las políticas de autenticación, autorización y CORS de acuerdo con los requisitos de seguridad.
 ====

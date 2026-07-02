@@ -7,9 +7,9 @@ Esta funcionalidad está disponible exclusivamente en la edición *Flowset Contr
 
 Flowset Control proporciona herramientas para mover tokens de procesos en ejecución de una actividad a otra.
 
-Use la modificación cuando necesite recuperar procesos en ejecución, volver a probar una parte específica de un proceso grande o sincronizar la ejecución del proceso después de que se hayan recibido datos incorrectos de un sistema externo. Puede modificar varias instancias de proceso a la vez desde la vista *Modification*, o modificar una única instancia en ejecución directamente desde la vista de detalle de la instancia de proceso.
+Usa la modificación cuando necesites recuperar procesos en ejecución, volver a probar una parte específica de un proceso grande o sincronizar la ejecución del proceso después de que se hayan recibido datos incorrectos de un sistema externo. Puedes modificar varias instancias de proceso a la vez desde la vista *Modification*, o modificar una única instancia en ejecución directamente desde la vista de detalle de la instancia de proceso.
 
-Para más información sobre la modificación de instancias de proceso de Camunda, consulte:
+Para más información sobre la modificación de instancias de proceso de Camunda, consulta:
 
 * https://docs.camunda.org/manual/latest/user-guide/process-engine/process-instance-modification/[documentación de modificación de instancias de proceso de Camunda 7]
 * https://docs.camunda.org/rest/camunda-bpm-platform/7.24-SNAPSHOT/#tag/Modification[API REST de modificación de Camunda 7]
@@ -29,24 +29,24 @@ Use la vista *Modification* cuando el mismo movimiento de token deba aplicarse a
 [[open-mass-modification]]
 === Apertura de la modificación masiva
 
-Seleccione *Modification* en el menú de la aplicación para abrir el asistente de modificación de instancias de proceso.
+Selecciona *Modification* en el menú de la aplicación para abrir el asistente de modificación de instancias de proceso.
 
 El asistente tiene tres pasos:
 
-* *Process & activities* - seleccione el proceso, la versión, la actividad de origen y la actividad de destino.
-* *Filtering instances* - seleccione las instancias de proceso en ejecución que deben modificarse.
-* *Confirmation* - revise la solicitud de modificación generada e inicie la ejecución.
+* *Process & activities* - selecciona el proceso, la versión, la actividad de origen y la actividad de destino.
+* *Filtering instances* - selecciona las instancias de proceso en ejecución que deben modificarse.
+* *Confirmation* - revisa la solicitud de modificación generada e inicie la ejecución.
 
 image::process-instance-modification-1.png[align="center", width="1552"]
 
 [[select-process-and-version]]
 === Selección del proceso y la versión
 
-En el primer paso, seleccione un proceso de la lista *Process*.
+En el primer paso, selecciona un proceso de la lista *Process*.
 
 La lista de procesos está ordenada para facilitar la búsqueda de procesos.
 
-Después de seleccionar el proceso, elija la versión de definición de proceso requerida.
+Después de seleccionar el proceso, elige la versión de definición de proceso requerida.
 
 image::process-instance-modification-2.png[align="center", width="1552"]
 
@@ -60,22 +60,22 @@ El asistente de modificación construye un movimiento de token desde una activid
 * *Source activity* - la actividad actualmente activa que debe cancelarse.
 * *Target activity* - la actividad donde debe iniciarse un nuevo token.
 
-Puede seleccionar actividades desde la lista desplegable ordenada.
+Puedes seleccionar actividades desde la lista desplegable ordenada.
 
 image::process-instance-modification-3.png[align="center", width="1552"]
 
-También puede seleccionar una actividad directamente en el diagrama BPMN. Haga clic en el botón de selección del diagrama junto al campo de origen o destino, seleccione el elemento BPMN requerido y confirme con *OK*.
+También puedes seleccionar una actividad directamente en el diagrama BPMN. Haz clic en el botón de selección del diagrama junto al campo de origen o destino, selecciona el elemento BPMN requerido y confirme con *OK*.
 
 image::process-instance-modification-4.png[align="center", width="1552"]
 
 image::process-instance-modification-5.png[align="center", width="1552"]
 
-Para la actividad de destino, elija cómo debe crearse el nuevo token:
+Para la actividad de destino, elige cómo debe crearse el nuevo token:
 
 * *Start before* - inicia la ejecución antes de la actividad seleccionada.
 * *Start after* - inicia la ejecución después de la actividad seleccionada.
 
-Cuando se hayan seleccionado las actividades de origen y destino, haga clic en *Next*.
+Cuando se hayan seleccionado las actividades de origen y destino, haz clic en *Next*.
 
 image::process-instance-modification-6.png[align="center", width="1552"]
 
@@ -98,16 +98,16 @@ Los filtros disponibles incluyen:
 * Condiciones de variables de proceso
 * Coincidencia sin distinción entre mayúsculas y minúsculas para nombres y valores de variables
 
-El número de instancias seleccionadas para la modificación se muestra encima de la tabla. Revise esta lista cuidadosamente, porque la modificación se aplicará a todas las instancias coincidentes.
+El número de instancias seleccionadas para la modificación se muestra encima de la tabla. Revisa esta lista cuidadosamente, porque la modificación se aplicará a todas las instancias coincidentes.
 
 [[confirm-modification]]
 === Confirmación de la modificación masiva
 
 El paso de confirmación resume el proceso, las actividades y el número de instancias de proceso seleccionados.
 
-Opcionalmente, puede añadir un comentario antes de iniciar la modificación.
+Opcionalmente, puedes añadir un comentario antes de iniciar la modificación.
 
-Haga clic en *General request* para generar y revisar la solicitud de modificación que se enviará al motor BPM.
+Haz clic en *General request* para generar y revisar la solicitud de modificación que se enviará al motor BPM.
 
 image::process-instance-modification-9.png[align="center", width="1552"]
 
@@ -118,7 +118,7 @@ La solicitud generada incluye:
 * Una instrucción `cancel` para la actividad de origen
 * Una instrucción `startBeforeActivity` o `startAfterActivity` para la actividad de destino
 
-Haga clic en *Modify* para iniciar la modificación.
+Haz clic en *Modify* para iniciar la modificación.
 
 [[track-modification]]
 === Seguimiento del progreso de la modificación masiva
@@ -144,37 +144,37 @@ image::single-process-instance-modification-1.png[align="center", width="1552"]
 [[single-instance-interactive-mode]]
 === Modo interactivo del diagrama
 
-Haga clic en *Modify instance* para cambiar el diagrama de proceso al modo interactivo. En este modo, el diagrama se puede usar para seleccionar las actividades de origen y destino, y los botones *OK* y *Cancel* aparecen debajo del diagrama.
+Haz clic en *Modify instance* para cambiar el diagrama de proceso al modo interactivo. En este modo, el diagrama se puedes usar para seleccionar las actividades de origen y destino, y los botones *OK* y *Cancel* aparecen debajo del diagrama.
 
 image::single-process-instance-modification-2.png[align="center", width="1552"]
 
 El modo interactivo sigue estas reglas:
 
-* Si solo una actividad, no una instancia de actividad, está activa en la instancia de proceso, se selecciona automáticamente como actividad de origen. Solo necesita seleccionar la actividad de destino, pero la actividad de origen aún se puede cambiar.
-* Si varias actividades están activas, seleccione primero la actividad o actividades de origen y luego seleccione la actividad de destino.
+* Si solo una actividad, no una instancia de actividad, está activa en la instancia de proceso, se selecciona automáticamente como actividad de origen. Solo necesitas seleccionar la actividad de destino, pero la actividad de origen aún se puede cambiar.
+* Si varias actividades están activas, selecciona primero la actividad o actividades de origen y luego selecciona la actividad de destino.
 * Con varias actividades activas, la selección funciona en orden origen-destino: después de seleccionar una actividad de origen, el siguiente clic selecciona una actividad de destino. Después de seleccionar una actividad de destino, el siguiente clic selecciona de nuevo una actividad de origen.
-* Para seleccionar varias actividades de origen, mantenga pulsada *Ctrl* en Windows o Linux, o *Cmd* en macOS, y haga clic en los elementos del diagrama requeridos. Después de soltar la tecla, la siguiente selección de actividad se trata como destino.
+* Para seleccionar varias actividades de origen, mantenga pulsada *Ctrl* en Windows o Linux, o *Cmd* en macOS, y haz clic en los elementos del diagrama requeridos. Después de soltar la tecla, la siguiente selección de actividad se trata como destino.
 * En el modo de selección *Source*, solo se puede hacer clic en las actividades en ejecución de la instancia de proceso.
 * En el modo de selección *Target*, se puede hacer clic en todos los elementos excepto en las actividades en ejecución de la instancia de proceso.
 * Las actividades de origen y destino deben seleccionarse antes de hacer clic en *OK*.
 
 Los elementos seleccionados se muestran con un borde de selección en el diagrama.
 
-Puede cerrar el modo interactivo de cualquiera de estas maneras:
+Puedes cerrar el modo interactivo de cualquiera de estas maneras:
 
-* Haga clic en *Cancel* debajo del diagrama.
-* Haga clic de nuevo en *Modify instance* en el panel de acciones.
+* Haz clic en *Cancel* debajo del diagrama.
+* Haz clic de nuevo en *Modify instance* en el panel de acciones.
 
 [[single-instance-dialog]]
 === Confirmación de la modificación de una única instancia
 
-Haga clic en *OK* debajo del diagrama para abrir el cuadro de diálogo *Process instance modification*.
+Haz clic en *OK* debajo del diagrama para abrir el cuadro de diálogo *Process instance modification*.
 
 image::single-process-instance-modification-3.png[align="center", width="1552"]
 
-En este cuadro de diálogo, revise las actividades de origen y la actividad de destino seleccionadas, elija *Start before* o *Start after* y, opcionalmente, añada un comentario.
+En este cuadro de diálogo, revisa las actividades de origen y la actividad de destino seleccionadas, elige *Start before* o *Start after* y, opcionalmente, añade un comentario.
 
-También puede configurar variables de proceso que se añadirán o actualizarán durante la modificación:
+También puedes configurar variables de proceso que se añadirán o actualizarán durante la modificación:
 
 * *Create* abre un cuadro de diálogo para crear una nueva variable.
 * *Add* abre un cuadro de diálogo para seleccionar una variable de instancia de proceso existente.
@@ -183,6 +183,6 @@ También puede configurar variables de proceso que se añadirán o actualizarán
 
 NOTE: El campo *Local* solo es visible al añadir o editar una variable para la modificación de instancias. No se muestra al añadir una variable directamente a la instancia de proceso desde la vista de variables normal.
 
-Haga clic en *Modify* para aplicar la modificación a la instancia de proceso actual.
+Haz clic en *Modify* para aplicar la modificación a la instancia de proceso actual.
 
 image::single-process-instance-modification-4.png[align="center", width="1552"]
