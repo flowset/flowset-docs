@@ -7,7 +7,7 @@ Esta funcionalidad está disponible exclusivamente en la edición *Flowset Contr
 
 Flowset Control le permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
 
-Utilice este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico únicamente para la ejecución de DMN.
+Utilice este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico solo para ejecutar DMN.
 
 Para obtener información general sobre DMN y las expresiones FEEL, consulte:
 
@@ -16,11 +16,11 @@ Para obtener información general sobre DMN y las expresiones FEEL, consulte:
 * https://nikku.github.io/feel-playground[FEEL playground]
 
 [[opening-evaluate-decision]]
-== Abrir el modo de evaluación
+== Apertura del modo de evaluación
 
 Puede abrir el modo de evaluación desde la lista *DMN -> Decisions* o desde una vista de detalle de una decisión.
 
-En la lista *Decisions*, haga clic en la acción *Evaluate decision* para la definición de decisión requerida.
+En la lista *Decisions*, haga clic en la acción *Evaluate decision* para la definición de decisión correspondiente.
 
 image::decision-evaluate-list-action.png[align="center", width="1552"]
 
@@ -66,7 +66,7 @@ Solo se admiten tipos de variables simples en la vista de evaluación y en el cu
 [[editing-input-values]]
 == Edición de los valores de entrada
 
-Después de añadir las variables, introduzca los valores de prueba en la columna *Value*.
+Después de añadir las variables, introduzca valores de prueba en la columna *Value*.
 
 image::decision-evaluate-edit-inputs.png[align="center", width="1552"]
 

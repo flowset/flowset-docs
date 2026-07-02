@@ -1,25 +1,25 @@
 = Control
 
-**Flowset Control** es una aplicación web que proporciona funcionalidad administrativa para motores BPM externos.
+**Flowset Control** es una aplicación web que proporciona funciones administrativas para motores BPM externos.
 
 +++
 <div class="card-block">
-  <p>¿Quieres probar Flowset Control ahora mismo? Usa el entorno de demostración público y explora la interfaz en cuestión de minutos.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Demo stand</a>
+  <p>¿Quieres probar Flowset Control ahora mismo? Usa el entorno de demo público y explora la interfaz en pocos minutos.</p>
+  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Abrir demo</a>
 </div>
 +++
 
 *Características principales*
 
-- **Gestión de conexiones:** Configure fácilmente conexiones a diversos motores BPM y cambie entre ellos según sea necesario.
-- **Exploración de procesos:** Navegue por los procesos desplegados en el motor.
-- **Despliegue de procesos:** Despliegue una nueva versión de un proceso de negocio con una cómoda vista previa del diagrama.
-- **Gestión de instancias:** Gestione las instancias de proceso que se están ejecutando actualmente en el motor BPM.
-- **Gestión de tareas de usuario:** Visualice las tareas de usuario con la posibilidad de reasignarlas.
+- **Gestión de conexiones:** permite configurar conexiones a distintos motores BPM y cambiar entre ellas según sea necesario.
+- **Exploración de procesos:** permite navegar por los procesos desplegados en el motor.
+- **Despliegue de procesos:** permite desplegar una nueva versión de un proceso de negocio con una vista previa clara del diagrama.
+- **Gestión de instancias:** permite gestionar las instancias de proceso que se están ejecutando actualmente en el motor BPM.
+- **Gestión de tareas de usuario:** permite visualizar tareas de usuario y reasignarlas.
 
 [NOTE]
 ====
 Actualmente, solo se admite Camunda 7/Operaton.
 ====
 
-Flowset Control está construido utilizando el framework de código abierto https://www.jmix.io[Jmix].
+Flowset Control está construido con https://www.jmix.io[Jmix], un framework de código abierto.

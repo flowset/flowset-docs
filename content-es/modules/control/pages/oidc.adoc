@@ -118,7 +118,7 @@ networks:
 == Configuración de una instancia local de Keycloak
 
 Uno de los proveedores de OpenID más populares es Keycloak.
-Para explorar el complemento Jmix OIDC, puede ejecutar Keycloak localmente utilizando Docker.
+Para explorar el plugin Jmix OIDC, puede ejecutar Keycloak localmente utilizando Docker.
 
 === Ejecución de Keycloak con Docker
 

@@ -5,13 +5,13 @@
 Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
 ====
 
-La sección *Jobs* se utiliza para ver y gestionar los trabajos asíncronos del motor BPM.
+La sección *Jobs* permite ver y gestionar los trabajos asíncronos del motor BPM.
 
 Un trabajo es un elemento de ejecución interno que el motor crea para el trabajo diferido o asíncrono: disparar temporizadores, ejecutar actividades de forma asíncrona y otras operaciones realizadas en segundo plano por el Job Executor. En la sección https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor] se ofrece una descripción detallada de este mecanismo.
 
 Los trabajos se pueden gestionar en tres lugares de la aplicación:
 
-* en la pantalla dedicada <<jobs-list-view,Jobs>> — sobre todos los trabajos del motor;
+* en la pantalla dedicada <<jobs-list-view,Jobs>> — para todos los trabajos del motor;
 * en la pestaña <<jobs-tab,Jobs>> de la vista detallada de una instancia de proceso — para los trabajos de una instancia específica;
 * en la pestaña <<job-definitions,Job definitions>> de la vista detallada de una definición de proceso — para las definiciones de trabajos.
 

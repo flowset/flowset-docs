@@ -1,5 +1,5 @@
 [[monitoring]]
-= Monitorización del motor BPM
+= Monitoreo del motor BPM
 
 [NOTE, caption="Enterprise Feature"]
 ====
@@ -9,17 +9,17 @@ Esta funcionalidad está disponible exclusivamente en la edición *Flowset Contr
 Flowset Control le permite ver el estado actual de los procesos de negocio en ejecución dentro del motor. Sin embargo, también resulta útil para un administrador de sistemas disponer de información sobre el estado general del sistema, como el número de núcleos de CPU, la memoria RAM disponible, el espacio en disco, etc. Esta información permite a los administradores recibir advertencias tempranas sobre el aumento de la carga. Combinado con el escalado automático o manual del sistema, Flowset Control proporciona una solución completa para gestionar motores de procesos de negocio.
 
 [[monitoring-configuration]]
-== Configuración de la monitorización
+== Configuración del monitoreo
 
-En la edición Enterprise, la vista de detalles del motor BPM se amplía con una sección específica de *Monitorización*:
+En la edición Enterprise, la vista de detalles del motor BPM se amplía con una sección específica de *Monitoreo*:
 
 image::bpm-engine-monitoring.png[align="center", width="1440"]
 
-=== Panel externo (URL)
+=== Dashboard externo (URL)
 
-* Especifique la URL de un panel de monitorización externo (por ejemplo, https://grafana.com/[Grafana^]).
-* Ejemplo: para Camunda, puede configurar un panel de Grafana y pegar aquí su URL.
-* Proporciona navegación con un solo clic desde Flowset Control directamente al panel externo:
+* Especifique la URL de un dashboard de monitoreo externo (por ejemplo, https://grafana.com/[Grafana^]).
+* Ejemplo: para Camunda, puede configurar un dashboard de Grafana y pegar aquí su URL.
+* Proporciona navegación con un solo clic desde Flowset Control directamente al dashboard externo:
 +
 image::grafana-monitoring.png[align="center", width="1440"]
 
@@ -39,7 +39,7 @@ image::actuator-metrics-select.png[align="center", width="779"]
 
 * Pase el cursor sobre el icono de signo de interrogación (?) para ver una breve descripción de cada métrica.
 
-* Puede configurar etiquetas para cada métrica y así habilitar una monitorización más granular de áreas específicas:
+* Puede configurar etiquetas para cada métrica y así habilitar un monitoreo más granular de áreas específicas:
 +
 image::actuator-metrics-tags.png[align="center", width="802"]
 
@@ -59,7 +59,7 @@ image::metrics.png[align="center", width="962"]
 
 [NOTE]
 ====
-Utilice el botón *External dashboard* para acceder rápidamente al panel de Grafana (u otro) configurado.
+Utilice el botón *External dashboard* para acceder rápidamente al dashboard de Grafana (u otro) configurado.
 
 image::external-dashboard.png[align="center", width="855"]
 ====
@@ -67,7 +67,7 @@ image::external-dashboard.png[align="center", width="855"]
 [[quick-access-toolbar]]
 == Barra de acceso rápido
 
-Para una monitorización ágil, utilice el panel selector de motores situado en la parte superior de la pantalla.
+Para un monitoreo ágil, utilice el selector de motores situado en la parte superior de la pantalla.
 
 image::quick-access-monitoring.png[align="center", width="876"]
 

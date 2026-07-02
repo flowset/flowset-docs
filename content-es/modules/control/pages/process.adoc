@@ -9,7 +9,7 @@ La tabla de procesos muestra:
 
 * Las últimas versiones de los procesos desplegados
 * Nombres, versiones y estado de despliegue de los procesos
-* Capacidades de filtrado y ordenación
+* Funciones de filtrado y ordenación
 
 image::process-list.png[align="center", width="1552"]
 

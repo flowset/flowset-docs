@@ -1,6 +1,6 @@
 = Conexión del motor BPM
 
-La aplicación permite a los administradores establecer y gestionar múltiples conexiones a motores BPM. Esta sección explica cómo añadir, configurar y probar estas conexiones.
+La aplicación permite a los administradores crear y gestionar múltiples conexiones a motores BPM. Esta sección explica cómo añadir, configurar y probar estas conexiones.
 
 [[empty-dashboard]]
 Al iniciar la aplicación, se abre la vista xref:dashboard.adoc[Dashboard]. Si no hay ningún motor BPM conectado, la vista aparece de la siguiente manera:
@@ -10,19 +10,19 @@ image::empty-dashboard.png[align="center", width="1552"]
 Para configurar un nuevo motor BPM:
 
 . Haga clic en el botón *Add* para abrir el cuadro de diálogo *New BPM engine*.
-. Alternativamente, navegue a la vista *BPM engines* a través del menú principal de la aplicación. Una vez allí, seleccione el botón *Create*.
+. También puede ir a la vista *BPM engines* a través del menú principal de la aplicación. Una vez allí, seleccione el botón *Create*.
 
 Una vez abierta la vista *New BPM engine*, complete todos los campos requeridos como se describe en <<adding-new-engine,Añadir un nuevo motor>>.
 
 [NOTE, caption="Key Features"]
 ====
-* *Multiple Connections*: Configure tantas conexiones de motores como sea necesario para diferentes entornos.
+* *Multiple Connections*: permite configurar tantas conexiones de motor como sea necesario para diferentes entornos.
 
-* *Immediate Activation*: Los cambios surten efecto sin necesidad de reiniciar la aplicación.
+* *Immediate Activation*: los cambios surten efecto sin necesidad de reiniciar la aplicación.
 
-* *Connection Validation*: La funcionalidad de prueba garantiza una configuración correcta antes de guardar.
+* *Connection Validation*: la prueba de conexión ayuda a verificar la configuración antes de guardarla.
 
-* *Default Engine*: Un motor debe designarse como predeterminado.
+* *Default Engine*: se debe designar un motor como predeterminado.
 
 * *Edit Existing Connections*: Modifique cualquier parámetro más adelante seleccionando la conexión y haciendo clic en *Edit*.
 ====
@@ -30,7 +30,7 @@ Una vez abierta la vista *New BPM engine*, complete todos los campos requeridos 
 [[bpm-engines]]
 == Motores BPM
 
-La vista *BPM engines* muestra una lista de motores BPM conectados a la aplicación de procesos. Los administradores pueden realizar las siguientes acciones:
+La vista *BPM engines* muestra una lista de motores BPM conectados a la aplicación. Los administradores pueden realizar las siguientes acciones:
 
 * Crear o eliminar un motor.
 * Editar la configuración de un motor existente.
@@ -51,7 +51,7 @@ NOTE: El primer motor añadido se establece automáticamente como predeterminado
 
 Para conectarse a un motor BPM en ejecución:
 
-. Acceda a la vista de configuración *New BPM engine*. Hay dos métodos para comenzar a configurar una nueva conexión de motor BPM:
+. Abra la vista de configuración *New BPM engine*. Hay dos métodos para comenzar a configurar una nueva conexión de motor BPM:
 +
 --
 * Desde el dashboard de la aplicación, si <<empty-dashboard,no hay motores BPM>> configurados.
@@ -84,14 +84,14 @@ Seleccione el método de autenticación:
 * *HTTP Basic Authentication*. Proporcione un nombre de usuario y una contraseña.
 * *HTTP Headers Authentication*. Configure encabezados personalizados.
 
-. Antes de guardar cualquier cambio, haga clic en *Test connection* para asegurar la exactitud de la configuración de la conexión. Esta acción inicia un intento de conexión al motor seleccionado. A continuación, el sistema mostrará un mensaje que indica si la conexión fue exitosa o si se encontraron errores.
+. Antes de guardar cualquier cambio, haga clic en *Test connection* para verificar que la configuración de la conexión sea correcta. Esta acción inicia un intento de conexión al motor seleccionado. A continuación, el sistema mostrará un mensaje que indica si la conexión fue exitosa o si se encontraron errores.
 
 . Haga clic en *OK* para guardar la conexión.
 
 [[managing-connections]]
 == Gestión de las conexiones del motor BPM
 
-Flowset Control muestra el motor BPM actualmente conectado en la insignia de estado de la esquina superior derecha. Esto muestra:
+Flowset Control muestra el motor BPM conectado actualmente en la insignia de estado de la esquina superior derecha. Esto muestra:
 
 * El nombre del motor activo
 * El estado de la conexión

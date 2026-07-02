@@ -1,10 +1,10 @@
 = Diseñador de BPMN
 
-Utilice el Diseñador de BPMN de Flowset para editar diagramas BPMN en IntelliJ IDEA. El Diseñador de BPMN aparecerá cuando abra un archivo .bpmn existente. Si crea un nuevo diagrama a través de Flowset Studio, se abrirá automáticamente en el Diseñador.
+Use el Diseñador de BPMN de Flowset para editar diagramas BPMN en IntelliJ IDEA. El Diseñador de BPMN se abrirá cuando abra un archivo .bpmn existente. Si crea un nuevo diagrama con Flowset Studio, se abrirá automáticamente en el Diseñador.
 
 image::bpmn-designer.png[]
 
-La interfaz del diseñador de BPMN consta de:
+La interfaz del Diseñador de BPMN consta de:
 
 [cols="3,1,11", frame=none, grid=rows]
 |===
@@ -13,30 +13,30 @@ La interfaz del diseñador de BPMN consta de:
 | Espacio de trabajo para crear un diagrama de proceso.
 | *Paleta de BPMN*
 |(1)
-| La Paleta de BPMN proporciona un conjunto completo de elementos para construir diagramas BPMN.
+| La paleta de BPMN proporciona un conjunto completo de elementos para crear diagramas BPMN.
 | *Acciones de proceso*
 | (2)
 | Panel de acciones disponibles para el proceso.
-| *Modos de editor*
+| *Modos del editor*
 | (3)
-| Panel para seleccionar el modo de vista. Hay tres modos de vista disponibles: solo XML, XML y modelo, solo modelo.
+| Panel para seleccionar el modo de vista. Hay tres modos disponibles: solo XML, XML y modelo, o solo modelo.
 | *Inspector de BPMN*
 | (4)
 | El panel del inspector muestra los atributos del elemento seleccionado y permite editarlos.
 | *Botón de visibilidad*
 | (5)
-| Alternador de visibilidad del inspector.
+| Control para mostrar u ocultar el inspector.
 |===
 
 == Editor de BPMN
 
-El editor de BPMN permite construir procesos directamente en el IDE.
+El editor de BPMN permite crear procesos directamente en el IDE.
 
 [TIP, caption="JCEF out-of-process en IntelliJ IDEA 2025.1+"]
 ====
 La función para ejecutar el navegador JCEF en un proceso independiente se implementó en IntelliJ IDEA 2025.1+ para mejorar la estabilidad (de modo que los problemas del navegador no afecten al proceso principal de IDEA). Sin embargo, actualmente hay una serie de problemas sin resolver que interfieren en el funcionamiento del navegador JCEF.
 
-Flowset Studio desactiva esta opción por defecto. Se trata de una medida necesaria para el funcionamiento estable de JCEF hasta que JetBrains publique un parche adecuado. Esta opción está disponible para su edición en Settings: Language & Frameworks | Flowset -> Enable JCEF in separate process.
+Flowset Studio desactiva esta opción por defecto. Se trata de una medida necesaria para el funcionamiento estable de JCEF hasta que JetBrains publique un parche adecuado. Puede editar esta opción en Settings: Language & Frameworks | Flowset -> Enable JCEF in separate process.
 ====
 
 === Operaciones básicas
@@ -46,26 +46,26 @@ Flowset Studio desactiva esta opción por defecto. Se trata de una medida necesa
 | *Añadir elemento*
 a| Dos métodos:
 
-   * Arrastrar y soltar un nuevo elemento desde la paleta al lienzo
-   * Añadir un elemento después de uno existente mediante el menú emergente
+   * Arrastrar un nuevo elemento desde la paleta al lienzo
+   * Añadir un elemento después de uno existente desde el menú contextual
 | *Cambiar el tipo de elemento*
 a| 1. Seleccione el elemento en el diagrama (haga clic en el elemento)
 
-2. Haga clic en el icono de la llave inglesa en el menú emergente
+2. Haga clic en el icono de llave inglesa del menú contextual
 
-3. Seleccione el nuevo tipo de elemento en el menú emergente
+3. Seleccione el nuevo tipo de elemento del menú contextual
 
 | *Cambiar el color de relleno del elemento*
 a| 1. Seleccione el elemento en el diagrama (haga clic en el elemento)
 
-2. Haga clic en el icono del pincel en el menú emergente
+2. Haga clic en el icono de pincel del menú contextual
 
 3. Seleccione el color de relleno
 
 | *Eliminar elemento*
 a| 1. Seleccione el elemento en el diagrama (haga clic en el elemento)
 
-2. Haga clic en el icono de la papelera en el menú emergente
+2. Haga clic en el icono de papelera del menú contextual
 |====
 
 == Panel de propiedades (Inspector de BPMN)
@@ -87,16 +87,16 @@ El panel de propiedades permite modificar los parámetros del elemento del diagr
 | Abre una lista desplegable de opciones disponibles.
 | *`+` (más)*
 | (3), (4)
-| Abre un cuadro de diálogo para establecer una propiedad (Inputs, Outputs, Field injection, etc.) o un asistente para generar un elemento (Java Delegate, Execution Listeners, etc.)
+| Abre un cuadro de diálogo para configurar una propiedad (Inputs, Outputs, Field injection, etc.) o un asistente para generar un elemento (Java Delegate, Execution Listeners, etc.).
 | *`>` (chevron hacia la derecha)*
 | (3)
-|  Navegación al código.
+| Navega al código.
 |====
 
 
 === Selección de User Form / DMN / Java Delegate desde la lista desplegable
 
-El Inspector de BPMN permite seleccionar formularios, tablas y clases existentes del proyecto desde las listas desplegables correspondientes en las propiedades.
+El Inspector de BPMN permite seleccionar formularios, tablas y clases existentes del proyecto desde las listas desplegables correspondientes del panel de propiedades.
 
 [cols="1,3", frame="none", grid="rows"]
 |====
@@ -109,7 +109,7 @@ a| 1. Seleccione un elemento (p. ej., un evento de inicio)
 | *DMN*
 a| 1. Seleccione una Business Rule Task en el diagrama
 2. Establezca _Implementation_ -> _Task Type_ en _DMN_
-3. Haga clic en el campo __Implementatio__n -> _Decision reference_
+3. Haga clic en el campo _Implementation_ -> _Decision reference_
 4. Seleccione una tabla DMN de la lista desplegable
 
 | *Java Delegate*
@@ -122,11 +122,11 @@ a| 1. Seleccione una Service Task en el diagrama de proceso
 
 === Generación de Task Listener / Execution Listener
 
-Flowset Studio permite generar plantillas de clases Task Listener y Execution Listener.
+Flowset Studio permite generar plantillas de clases para Task Listener y Execution Listener.
 
-*Paso 1.* Seleccione un elemento en el diagrama de proceso
+*Paso 1.* Seleccione un elemento en el diagrama de proceso.
 
-*Paso 2.* Haga clic en el icono `+` en el campo Execution Listeners o Task Listeners (para User Task)
+*Paso 2.* Haga clic en el icono `+` del campo Execution Listeners o Task Listeners (para User Task).
 
 
 
@@ -138,7 +138,7 @@ Flowset Studio permite generar plantillas de clases Task Listener y Execution Li
 | image:new-execution-listener-wizard.png[width=500px]
 |====
 
-*Paso 3.* Especifique el valor del parámetro Event:
+*Paso 3.* Especifique el valor del parámetro _Event_:
 
 [cols="1, 1,3", frame="none", grid="rows"]
 |====
@@ -147,16 +147,16 @@ Flowset Studio permite generar plantillas de clases Task Listener y Execution Li
 | El evento se produce cuando se asigna una tarea a un usuario o grupo. Se utiliza para enviar notificaciones o registrar la asignación.
 |
 | *Create*
-| Se genera después de crear una instancia de tarea. Se utiliza para inicializar variables, establecer plazos o preparar datos.
+| Se produce después de crear una instancia de tarea. Se utiliza para inicializar variables, establecer plazos o preparar datos.
 |
 | *Complete*
-| Se invoca cuando un usuario completa una tarea. Está pensado para el posprocesamiento: actualizar datos, iniciar los siguientes pasos del proceso o registrar resultados.
+| Se invoca cuando un usuario completa una tarea. Se utiliza para el posprocesamiento: actualizar datos, iniciar los siguientes pasos del proceso o registrar resultados.
 |
 | *Delete*
 | Se produce cuando se elimina una tarea (p. ej., cuando se interrumpe un proceso). Se utiliza para liberar recursos o cancelar acciones relacionadas.
 | *Execution Listener*
 | *Start*
-| Se produce cuando se inicia un elemento del proceso (p. ej., inicio del proceso, actividad o transición). El listener realiza la inicialización de variables o registra el inicio de la operación.
+| Se produce cuando se inicia un elemento del proceso (p. ej., inicio del proceso, actividad o transición). El listener puede inicializar variables o registrar el inicio de la operación.
 |
 | *End*
 | Se produce cuando finaliza un elemento del proceso (p. ej., una actividad o el fin del proceso). Se utiliza para liberar recursos, confirmar resultados o actualizar estados.
@@ -165,83 +165,83 @@ Flowset Studio permite generar plantillas de clases Task Listener y Execution Li
 | Se activa al pasar por un flujo de secuencia (transición). Se utiliza para rastrear la ruta de ejecución del proceso o validar las condiciones de la transición.
 |====
 
-*Paso 4.* Especifique el tipo de Task Listener / Event Listener que se va a generar:
+*Paso 4.* Especifique el tipo de Task Listener / Execution Listener que se va a generar:
 
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Java class*
-| Especificación directa de una clase que implementa la interfaz ExecutionListener. El nombre completo de la clase debe estar disponible en el classpath. Se utiliza para lógica compleja que requiere código Java completo.
+| Permite especificar directamente una clase que implementa la interfaz ExecutionListener. El nombre completo de la clase debe estar disponible en el classpath. Se utiliza para lógica compleja que requiere código Java completo.
 | *Expression*
-| Una expresión que se ejecuta cuando se produce el evento. Se pueden pasar como parámetros al objeto invocado un objeto DelegateTask y el nombre del evento (mediante `task.eventName`). Permite llamar a un método de un bean o acceder a los datos del contexto de ejecución sin crear una clase independiente. Ejemplo: `${myObject.callMethod(task, task.eventName)}`
+| Una expresión que se ejecuta cuando se produce el evento. Puede pasar al objeto invocado un objeto DelegateTask y el nombre del evento mediante `task.eventName`. Permite llamar a un método de un bean o acceder a los datos del contexto de ejecución sin crear una clase independiente. Ejemplo: `${myObject.callMethod(task, task.eventName)}`
 | *Delegate expression*
 | Una referencia a un bean (p. ej., un Spring Bean) que implementa la interfaz ExecutionListener. Se especifica en el formato `${beanName}`. Facilita la inyección de dependencias y la reutilización de la lógica.
 |====
 
 Si se selecciona el tipo Expression, se habilita un campo para introducir la expresión.
 
-Si se selecciona el tipo Java class o Delegate expression, están disponibles las siguientes acciones:
+Si se selecciona el tipo Java class o Delegate expression, se muestran las siguientes acciones:
 
-* Seleccionar una clase existente de la lista desplegable  (icono `v`)
+* Seleccionar una clase existente en la lista desplegable (icono `v`)
 * Crear una nueva clase (icono `+`)
 
-Al hacer clic en el icono `+` se invoca el asistente para crear un nuevo Execution Listener / Task Listener:
+Al hacer clic en el icono `+`, se abre el asistente para crear un nuevo Execution Listener / Task Listener:
 
 image::create-execution-listener-wizard.png[width=500px]
 
 [cols="1,3", frame="none", grid="rows"]
 |====
 | *Class Name*
-| Nombre de la clase generada
+| Nombre de la clase que se generará
 | *Package*
-| Paquete donde se ubicará la clase generada
+| Paquete donde se ubicará la clase generada.
 |====
 
-Al hacer clic en el botón OK se creará la clase en el paquete especificado y se rellenará el campo Listener Class del cuadro de diálogo New Execution Listener (o New Task Listener).
+Al hacer clic en el botón OK, se creará la clase en el paquete especificado y se completará el campo Listener Class del cuadro de diálogo New Execution Listener o New Task Listener.
 
 === Generación de Java Delegate
 
-El Inspector de BPMN permite invocar el asistente para generar una clase Java Delegate.
+El Inspector de BPMN permite abrir el asistente para generar una clase Java Delegate.
 
 1. Seleccione una Service Task en el diagrama
 
 2. Establezca _Implementation_ -> _Task Type_ en _Java Class_
 
-3. Haga clic en el campo _Class_ para mostrar los elementos de control
+3. Haga clic en el campo _Class_ para mostrar los controles
 
-4. Haga clic en el icono `+` del campo para invocar el cuadro de diálogo de generación de una clase Java Delegate
+4. Haga clic en el icono `+` del campo para abrir el cuadro de diálogo para generar una clase Java Delegate
 
 image::new-java-delegate-class-wizard.png[width=500px]
 
 [cols="1,3", frame="none", grid="rows"]
 |====
 | *Class Name*
-| Nombre de la clase generada
+| Nombre de la clase que se generará
 | *Package*
-| Paquete donde se ubicará la clase generada
+| Paquete donde se ubicará la clase generada.
 |====
 
-Al hacer clic en el botón OK se abrirá la clase generada en el editor de código.
+Al hacer clic en el botón OK, se abrirá la clase generada en el editor de código.
 
 == Despliegue
 
 El editor de BPMN permite desplegar el proceso en un motor Camunda/Operaton remoto.
-Para invocar el asistente de despliegue, haga clic en el icono del cohete en la barra de herramientas del editor.
-Se requiere una conexión correctamente configurada a un motor externo.
+Para abrir el asistente de despliegue, haga clic en el icono del cohete en la barra de herramientas del editor.
+Se requiere una conexión a un motor externo configurada correctamente.
 
 image::deployment-wizard.png[width=80%]
 
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Deployment name*
-| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del proceso en el sistema.
+| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del recurso en el sistema.
 | *Enable duplicate filtering*
 | Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios (p. ej., diagramas BPMN) dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
 | *Deploy changed only*
-| Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia, excluyendo la creación innecesaria de versiones del proceso.
+| Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia y evita la creación innecesaria de versiones del recurso.
 | *Deployment source*
 | El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para la auditoría y el seguimiento del origen de los despliegues.
 | *Tenant ID*
-| El identificador de tenant para una arquitectura multi-tenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
+| El identificador de tenant para una arquitectura multitenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
 |====
 
 

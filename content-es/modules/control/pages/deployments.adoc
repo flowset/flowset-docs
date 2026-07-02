@@ -1,11 +1,11 @@
 = Despliegues
 
-Flowset Control permite a los administradores ver y gestionar despliegues que contienen xref:process.adoc[definiciones de proceso], xref:dmn-decisions.adoc[tablas de decisión] y otros recursos. Todos los despliegues se muestran en una lista ordenable y filtrable dentro de la vista *Deployments*.
+Flowset Control permite a los administradores ver y gestionar despliegues que contienen xref:process.adoc[definiciones de proceso], xref:dmn-decisions.adoc[tablas de decisión] y otros recursos. Todos los despliegues se muestran en una lista ordenable y filtrable en la vista *Deployments*.
 
 [[deployment-list]]
 == Lista de despliegues
 
-La vista de lista de despliegues muestra todos los despliegues presentes actualmente en el sistema en formato de tabla:
+La vista de lista de despliegues muestra todos los despliegues disponibles actualmente en el sistema en formato de tabla:
 
 image::deployments.png[align="center", width="1428"]
 
@@ -18,7 +18,7 @@ Las siguientes acciones están disponibles:
 | Acción | Descripción
 
 | *Refresh*
-| Recarga la lista de despliegues actual desde el motor de BPM conectado.
+| Recarga la lista de despliegues actual desde el motor BPM conectado.
 
 | *Remove*
 a| Elimina el despliegue seleccionado. Aparece un cuadro de diálogo de confirmación con las siguientes opciones:
@@ -66,7 +66,7 @@ Debajo de los metadatos, el panel izquierdo también enumera todos los recursos 
 
 El panel derecho muestra dinámicamente una vista previa del recurso seleccionado de la lista. Para archivos con componentes visuales, como diagramas de proceso BPMN o tablas de decisión DMN, el sistema renderiza una vista previa gráfica junto con los metadatos técnicos.
 
-Mediante el botón *Download*, puede recuperar archivos de recursos individuales (BPMN, DMN, etc.).
+Con el botón *Download*, puede descargar archivos de recursos individuales (BPMN, DMN, etc.).
 
 Según el tipo de recurso, el panel contiene dos o tres pestañas.
 

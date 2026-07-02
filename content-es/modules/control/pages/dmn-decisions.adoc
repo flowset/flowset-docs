@@ -1,15 +1,15 @@
 = Decisiones DMN
 
-La aplicación proporciona soporte integral para tablas de decisión DMN (Decision Model and Notation) a través del elemento de menú *DMN → Decisions*.
+La aplicación ofrece soporte integral para tablas de decisión DMN (Decision Model and Notation) a través del elemento de menú *DMN → Decisions*.
 
-Al seleccionar este elemento de menú se muestra una lista completa de todas las tablas de decisión desplegadas actualmente en su motor de BPM activo.
+Al seleccionar este elemento de menú se muestra una lista de todas las tablas de decisión desplegadas actualmente en su motor BPM activo.
 
 NOTE: Las definiciones e instancias de decisión se muestran utilizando datos históricos.
 
 [[decision-table-list]]
 == Lista de tablas de decisión
 
-La vista *Decisions* muestra todas las tablas de decisión DMN desplegadas en su motor de BPM activo en un formato de tabla ordenable y filtrable.
+La vista *Decisions* muestra todas las tablas de decisión DMN desplegadas en su motor BPM activo en una tabla ordenable y filtrable.
 
 image::dmn-table-list.png[align="center", width="1537"]
 
@@ -27,7 +27,7 @@ Las siguientes acciones están disponibles:
 | Acción | Descripción
 
 | *Refresh*
-| Recarga la lista de decisiones DMN actual desde el motor de BPM conectado.
+| Recarga la lista de decisiones DMN actual desde el motor BPM conectado.
 
 | *Deploy*
 | Carga y despliega nuevos archivos DMN. Consulte <<deploy-dmn-table>>.
@@ -53,7 +53,7 @@ image::deploy-decision.png[align="center", width="1186"]
 [[view-desicion-details]]
 == Visualización de los detalles de la decisión
 
-La acción *View* proporciona una visión integral de la definición de decisión desplegada.
+La acción *View* proporciona una vista completa de la definición de decisión desplegada.
 
 Seleccione una definición de decisión desplegada y haga clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
 
@@ -79,7 +79,7 @@ El panel derecho muestra instancias de ejecución concretas en formato tabular c
 . La pestaña *Schema* - un diagrama de la definición de decisión desplegada.
 +
 image::dmn-details-diagram.png[align="center", width="1186"]
-. La pestaña *XML* - definición DMN 1.1 sin procesar
+. La pestaña *XML* - definición DMN 1.1 en formato sin procesar
 +
 image::dmn-details-xml.png[align="center", width="1186"]
 

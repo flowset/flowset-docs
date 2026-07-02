@@ -1,6 +1,6 @@
 = Tareas de usuario
 
-La vista *User tasks* permite a los administradores monitorizar y gestionar todas las tareas asociadas al motor BPM seleccionado.
+La vista *User tasks* permite a los administradores monitorear y gestionar todas las tareas asociadas con el motor BPM seleccionado.
 
 [[task-list]]
 == Lista de tareas de usuario
@@ -17,7 +17,7 @@ El sistema muestra las tareas en una tabla ordenable y filtrable con la siguient
 * *Creation time* - marca de tiempo de creación de la tarea
 * *Assignee* - usuario actualmente responsable
 
-*Capacidades avanzadas de filtrado*
+*Funciones avanzadas de filtrado*
 
 Los administradores pueden refinar la lista de tareas utilizando múltiples criterios de filtro:
 

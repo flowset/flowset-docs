@@ -1,6 +1,6 @@
 = Asistente de nuevo proyecto
 
-Utilice el asistente de proyectos de Flowset para generar un nuevo proyecto de aplicación BPM en IntelliJ IDEA.
+Use el asistente de proyectos de Flowset para generar un nuevo proyecto de aplicación BPM en IntelliJ IDEA.
 
 [TIP, caption="Crear un proyecto de aplicación BPM"]
 ====
@@ -25,7 +25,7 @@ image::new-project-wizard.png[alt="Asistente de nuevo proyecto"]
 | Seleccione el sistema de compilación **Gradle** o **Maven**.
 
 | *Group:*
-| Especifique el identificador único del grupo (preferiblemente un nombre de dominio inverso que usted controle, p. ej., `com.example`).
+| Especifique el identificador único del grupo, preferiblemente un nombre de dominio inverso que controle, p. ej., `com.example`.
 
 | *Artifact:*
 | Especifique el nombre del artefacto dentro del grupo (normalmente coincide con el nombre del proyecto).
@@ -63,12 +63,12 @@ Si no se encuentran, crea una nueva cuenta administrativa.
 [WARNING]
 ====
 
-La creación automática de usuarios es una función exclusiva para desarrollo. ¡No es para uso en producción! En entornos de producción:
+La creación automática de usuarios es una función exclusiva para desarrollo. No está pensada para uso en producción. En entornos de producción:
 
 * Cree usuarios mediante LDAP/Keycloak
-* Añada cuentas a través de migraciones de base de datos
+* Añada cuentas mediante migraciones de base de datos
 
-*Advertencia de vulnerabilidad de seguridad:* almacenar contraseñas en `application.properties` las expone en el control de versiones (Git). Utilice siempre:
+*Advertencia de seguridad:* almacenar contraseñas en `application.properties` las expone en el sistema de control de versiones (Git). Utilice siempre:
 
 * Archivos `.env`
 * Secretos de Kubernetes
@@ -80,19 +80,19 @@ La creación automática de usuarios es una función exclusiva para desarrollo. 
 [cols="1, 3", frame=none, grid=rows]
 |===
 | *REST API*
-| Proporciona acceso a todas las interfaces relevantes del motor.
+| Proporciona acceso a todas las interfaces principales del motor.
 Permite la interacción con el motor mediante solicitudes HTTP.
 
 | *Webapps*
 a| Incluye los módulos estándar de Camunda:
 
-* Cockpit: monitorización y gestión de los procesos en ejecución
+* Cockpit: monitoreo y gestión de los procesos en ejecución
 * Tasklist: interfaz para completar tareas de usuario
 * Admin: interfaz administrativa para la configuración y gestión del sistema
 
 | *Spin (XML & JSON)*
 | Camunda Spin es una biblioteca de JVM para el procesamiento simplificado de XML y JSON en Java y lenguajes basados en la JVM (p. ej., Groovy, JavaScript).
-Ofrece una API fluida con envoltorios ligeros de formatos de datos.
+Ofrece una API fluida con wrappers ligeros para formatos de datos.
 
 | *Assert*
 a| Incluye bibliotecas de pruebas:
@@ -108,8 +108,8 @@ Protege el acceso a las interfaces de Cockpit, Tasklist y Admin, garantizando qu
 a| El módulo Spring Boot Web añade:
 
 * Servidor web embebido (Tomcat por defecto)
-* Spring MVC para el manejo de solicitudes HTTP
-* Soporte para controladores REST y serialización JSON
+* Spring MVC para la gestión de solicitudes HTTP
+* Compatibilidad con controladores REST y serialización JSON
 
 Se integra automáticamente con camunda-bpm-spring-boot-starter.
 |===
@@ -117,5 +117,5 @@ Se integra automáticamente con camunda-bpm-spring-boot-starter.
 
 [WARNING]
 ====
-Al añadir Spring Boot Security, la WebSecurityConfiguration predeterminada generada abre completamente el acceso a todos los endpoints sin autenticación. Nunca la utilice en producción sin modificaciones. Configure siempre las políticas de autenticación, autorización y CORS de acuerdo con los requisitos de seguridad.
+Al añadir Spring Boot Security, la WebSecurityConfiguration predeterminada que se genera abre completamente el acceso a todos los endpoints sin autenticación. Nunca la utilice en producción sin modificaciones. Configure siempre las políticas de autenticación, autorización y CORS de acuerdo con los requisitos de seguridad.
 ====

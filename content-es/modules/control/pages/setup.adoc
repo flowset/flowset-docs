@@ -146,7 +146,7 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 * Nombre de usuario: `root`
 * Contraseña: `root`
 
-. Navegue al directorio del proyecto y ejecute:
+. Vaya al directorio del proyecto y ejecute:
 +
 [source,shell]
 ----
@@ -156,11 +156,11 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 . Acceda a la aplicación en: `++http://localhost:8081++`.
 
 [[post-installation]]
-== Posinstalación
+== Postinstalación
 
 Después de una instalación exitosa:
 
-. Abra su navegador web y navegue a `++http://localhost:8081++`.
+. Abra su navegador web y vaya a `++http://localhost:8081++`.
 . Utilice las credenciales de administrador predeterminadas (`admin`/`admin`).
 . Configure las conexiones de su xref:connecting-engine.adoc[motor BPM].
 

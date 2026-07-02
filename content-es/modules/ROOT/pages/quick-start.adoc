@@ -1,8 +1,8 @@
 = Inicio rápido
 
-En esta guía recorrerás todo el camino: desde la instalación hasta el modelado de procesos.
+En esta guía recorrerás todo el proceso: desde la instalación hasta el modelado de procesos.
 
-Conozcamos Flowset mediante el proceso de demostración **«Solicitud de viaje de negocios»**.
+Conozcamos Flowset a través del proceso de demostración **«Solicitud de viaje de negocios»**.
 
 +++
 <div class="card-block">
@@ -16,24 +16,24 @@ Conozcamos Flowset mediante el proceso de demostración **«Solicitud de viaje d
 Antes de empezar, asegúrate de tener instaladas las herramientas necesarias (las instrucciones detalladas se ofrecen en secciones independientes):
 
 * xref:flowset:studio:setup.adoc[Flowset Studio] — un entorno para modelar diagramas BPMN y formularios.
-* xref:control:setup.adoc[Flowset Control] — una interfaz web para la monitorización y administración de procesos.
+* xref:control:setup.adoc[Flowset Control] — una interfaz web para el monitoreo y la administración de procesos.
 
 == Proceso de demostración
 
 Modelaremos un proceso de solicitud de viaje de negocios compuesto por tres elementos:
 
 * **Start Event** con un *formulario de inicio* (Camunda Form): el empleado introduce los datos.
-* **Service Task** (`JavaDelegate`): emula la notificación al departamento de contabilidad (registra los datos en el log).
+* **Service Task** (`JavaDelegate`): simula la notificación al departamento de contabilidad (registra los datos en el log).
 * **End Event**: finaliza el proceso.
 
 image::flowset:ROOT:quick-start-process.png[Proceso de demostración]
 
 == Paso 1. Crear un diagrama en *Flowset Studio*
 
-Primero, creemos una aplicación sencilla de Spring Boot con el complemento Flowset Studio.
+Primero, creemos una aplicación sencilla de Spring Boot con el plugin Flowset Studio.
 
 [NOTE]
-Puedes encontrar las instrucciones de instalación de Flowset Studio en xref:flowset:studio:setup.adoc[el enlace].
+Puedes encontrar las instrucciones de instalación de Flowset Studio en xref:flowset:studio:setup.adoc[esta sección].
 
 1. Inicia Studio y crea una nueva aplicación con un motor BPM embebido.
 +
@@ -50,13 +50,13 @@ image:flowset:ROOT:studio-new-process-1.png[Creación de un nuevo diagrama]
 * *Process ID:* `business-trip-process`
 * *Process name:* `Business trip process`
 +
-image:flowset:ROOT:studio-new-process-2.png[Cumplimentación de las propiedades del proceso]
+image:flowset:ROOT:studio-new-process-2.png[Completar las propiedades del proceso]
 
 4. Coloca los elementos en el diagrama: *Start Event → Service Task → End Event* y conéctalos.
 +
 image:flowset:ROOT:studio-new-process-3.png[Construcción del diagrama]
 
-5. Configura el *Service Task* y genera una nueva clase mediante el icono «+» del campo *Class*:
+5. Configura el *Service Task* y genera una nueva clase con el icono «+» del campo *Class*:
 * *Name:* Notificar al departamento de contabilidad
 * *Task type:* Java Class
 +
@@ -106,11 +106,11 @@ Ahora creemos un formulario de usuario para la solicitud de viaje de negocios.
 +
 image:flowset:ROOT:studio-new-form-1.png[Creación de un nuevo formulario]
 
-2. En el cuadro de diálogo de creación del formulario, rellena:
+2. En el cuadro de diálogo de creación del formulario, completa:
 +
 * *Form ID:* `start-form`.
 +
-image:flowset:ROOT:studio-new-form-2.png[Cumplimentación de las propiedades del formulario]
+image:flowset:ROOT:studio-new-form-2.png[Completar las propiedades del formulario]
 
 3. Mediante el editor visual, añade los siguientes campos:
 +
@@ -143,7 +143,7 @@ image:flowset:ROOT:studio-new-form-2.png[Cumplimentación de las propiedades del
 |Sí
 |===
 +
-image:flowset:ROOT:studio-new-form-3.png[Constructor de formularios]
+image:flowset:ROOT:studio-new-form-3.png[Editor visual de formularios]
 
 4. Vincula el formulario al *Start Event*:
 +
@@ -184,12 +184,12 @@ Una vez completado el proceso, aparecerá una entrada en el log con los datos en
 +
 image::flowset:ROOT:tasklist-start-process-6.png[]
 
-== Paso 4. Monitorización en *Flowset Control*
+== Paso 4. Monitoreo en *Flowset Control*
 
-Puedes ver la ejecución del proceso mediante Flowset Control. Para ello, inicia Control y conéctalo a tu aplicación.
+Puedes ver la ejecución del proceso con Flowset Control. Para ello, inicia Control y conéctalo a tu aplicación.
 
 [NOTE]
-Instrucciones de instalación de Flowset Control: xref:control:setup.adoc[enlace].
+Instrucciones de instalación de Flowset Control: xref:control:setup.adoc[esta sección].
 
 1. Inicia sesión en la aplicación:
 +
@@ -198,7 +198,7 @@ Instrucciones de instalación de Flowset Control: xref:control:setup.adoc[enlace
 +
 image:flowset:ROOT:control-login.png[]
 
-2. En la pantalla principal, haz clic en *Add* y rellena los campos:
+2. En la pantalla principal, haz clic en *Add* y completa los campos:
 * *Name:* `Operaton`
 * *Base URL:* `http://localhost:8080/engine-rest`
 * *Authentication:* `false`
@@ -217,7 +217,7 @@ image:flowset:ROOT:control-new-connection-3.png[]
 +
 image:flowset:ROOT:control-process-instance-1.png[]
 +
-4. Asegúrate de que la ejecución pasó por el *Service Task*.
+4. Asegúrate de que la ejecución haya pasado por el *Service Task*.
 Si tiene éxito, el diagrama del proceso aparecerá resaltado en verde.
 +
 image:flowset:ROOT:control-process-instance-2.png[]

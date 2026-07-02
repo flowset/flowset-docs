@@ -2,11 +2,11 @@
 
 == Ejecución desde el código fuente
 
-La ejecución desde el código fuente permite a los desarrolladores desplegar rápidamente *Flowset Tasklist* en un entorno de desarrollo y adaptar la aplicación a sus necesidades de forma flexible.
+La ejecución desde el código fuente permite a los desarrolladores ejecutar rápidamente *Flowset Tasklist* en un entorno de desarrollo y adaptar la aplicación a sus necesidades con flexibilidad.
 
 === Requisitos
 
-Antes de la instalación, asegúrese de que los siguientes componentes estén instalados:
+Antes de comenzar, asegúrese de tener instalados los siguientes componentes:
 
 * *Node.js* versión 20.19 o superior (se recomienda LTS)
 * *npm* versión 8 o superior
@@ -21,13 +21,13 @@ Antes de la instalación, asegúrese de que los siguientes componentes estén in
 git clone https://github.com/flowset/flowset-tasklist-react-community
 cd flowset-tasklist-react-community
 ----
-. Cree un archivo de configuración de entorno:
+. Cree un archivo de configuración del entorno:
 +
 [source,shell]
 ----
 cp .env.example .env.local
 ----
-. Edite `env.local`, especificando los parámetros de conexión de su motor BPM:
+. Edite `.env.local`, y especifique los parámetros de conexión de su motor BPM:
 +
 [source,properties]
 ----
@@ -37,8 +37,8 @@ VITE_BPM_ENGINE_TYPE=OPERATON
 ----
 +
 * `VITE_APP_LOCALE` — idioma de la interfaz;
-* `VITE_BPM_ENGINE_API_URL` — URL de la REST API del motor;
-* `VITE_BPM_ENGINE_TYPE` — tipo de motor (`CAMUNDA`, `OPERATON`).
+* `VITE_BPM_ENGINE_API_URL` — URL de la API REST del motor;
+* `VITE_BPM_ENGINE_TYPE` — tipo de motor (`CAMUNDA_7`, `OPERATON`).
 
 . Instale las dependencias:
 +
@@ -52,7 +52,7 @@ npm install
 ----
 npm run dev
 ----
-. Tras una ejecución exitosa, la interfaz estará disponible en: http://localhost:3000
+. Después de iniciar la aplicación correctamente, la interfaz estará disponible en: http://localhost:3000
 
 [NOTE]
 ====
@@ -102,11 +102,11 @@ docker-compose up -d
 ----
 docker ps
 ----
-. Tras la ejecución, la interfaz estará disponible en: http://localhost:3000
+. Después de iniciar el contenedor, la interfaz estará disponible en: http://localhost:3000
 
 [WARNING, caption=Advertencia]
 ====
-Si ejecuta *Tasklist* en un contenedor mientras el motor BPM se ejecuta localmente, debe permitir las solicitudes CORS.
+Si ejecuta *Tasklist* en un contenedor mientras el motor BPM se ejecuta localmente, debe habilitar las solicitudes CORS.
 
 Para *Tomcat*, añada el siguiente filtro a `web.xml`:
 [source,xml]
@@ -138,9 +138,9 @@ Para *Tomcat*, añada el siguiente filtro a `web.xml`:
 </filter-mapping>
 ----
 
-Para *Run*, añada la siguiente configuración a `default.yml`:
+Para *Operaton Run*, añada la siguiente configuración a `default.yml`:
 
-[source, yml]
+[source,yml]
 ----
 operaton.bpm:
   run:
@@ -153,7 +153,7 @@ operaton.bpm:
 
 === Detención del contenedor
 
-Para detenerlo, utilice el comando:
+Para detener el contenedor, utilice el comando:
 [source,shell]
 ----
 docker-compose down

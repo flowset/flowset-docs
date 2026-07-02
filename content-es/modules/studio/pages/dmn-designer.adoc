@@ -1,10 +1,10 @@
 = Diseñador de DMN
 
-Utilice el Diseñador de DMN de Flowset para editar diagramas de requisitos de decisión (DRD), tablas de decisión y expresiones literales en IntelliJ IDEA. El Diseñador de DMN aparecerá cuando abra un archivo .dmn existente. Si crea una nueva tabla de decisión a través de Flowset Studio, se abrirá automáticamente en el Diseñador.
+Use el Diseñador de DMN de Flowset para editar diagramas de requisitos de decisión (DRD), tablas de decisión y expresiones literales en IntelliJ IDEA. El Diseñador de DMN se abrirá cuando abra un archivo .dmn existente. Si crea una nueva tabla de decisión con Flowset Studio, se abrirá automáticamente en el Diseñador.
 
 == Editor de DRD
 
-El editor de DRD permite construir diagramas directamente en el IDE.
+El editor de DRD permite crear diagramas directamente en el IDE.
 
 image::drd-editor-interface.png[]
 
@@ -20,16 +20,16 @@ La interfaz del editor de DRD consta de:
 | Panel de acciones disponibles para el DRD.
 | *Paleta de componentes*
 | (2)
-| La Paleta de componentes proporciona un conjunto completo de elementos para construir el diagrama.
-| *Modos de editor*
+| La paleta de componentes proporciona un conjunto completo de elementos para crear el diagrama.
+| *Modos del editor*
 | (3)
-| Panel para seleccionar el modo de vista. Hay tres modos de vista disponibles: solo XML, XML y diagrama, solo diagrama.
+| Panel para seleccionar el modo de vista. Hay tres modos disponibles: solo XML, XML y diagrama, o solo diagrama.
 | *Inspector de DMN*
 | (4)
 | El panel del inspector muestra los atributos del elemento seleccionado y permite editarlos.
 | *Botón de visibilidad*
 | (5)
-| Alternador de visibilidad del inspector.
+| Control para mostrar u ocultar el inspector.
 |===
 
 === Operaciones básicas
@@ -37,11 +37,11 @@ La interfaz del editor de DRD consta de:
 [cols="1,3", frame="none", grid="rows"]
 |====
 | *Añadir elemento*
-| Arrastre y suelte un nuevo elemento desde la Paleta de componentes al lienzo.
+| Arrastre un nuevo elemento desde la Paleta de componentes al lienzo.
 | *Seleccionar un elemento*
 | Haga clic en el elemento.
 | *Cambiar el tipo de elemento*
-| Seleccione el elemento en el lienzo y haga clic en el icono de la llave inglesa.
+| Seleccione el elemento en el lienzo y haga clic en el icono de llave inglesa.
 | *Añadir un nuevo Input Data*
 | Haga clic en la herramienta Input Data de la paleta y luego haga clic en el lienzo.
 | *Conectar dos elementos*
@@ -49,7 +49,7 @@ La interfaz del editor de DRD consta de:
 | *Mover un elemento*
 | Haga clic y arrastre el elemento a una nueva ubicación en el lienzo.
 | *Eliminar un elemento*
-| Seleccione el elemento y pulse la tecla Supr o haga clic en el icono de la papelera.
+| Seleccione el elemento y pulse la tecla Supr o haga clic en el icono de papelera.
 | *Abrir el editor de tablas de decisión*
 | Haga clic en el icono azul situado en la esquina superior izquierda del elemento.
 |====
@@ -65,25 +65,25 @@ image::dmn-table-editor-interface.png[]
 
 [cols="1,3", frame="none", grid="rows"]
 |===
-| *Añadir una nueva Regla (fila)*
-| Haga clic en el botón Más (+) situado en la parte inferior izquierda de la tabla.
-| *Insertar una Regla encima*
-| Haga clic derecho en el número de una regla y seleccione _Add rule above_.
-| *Insertar una Regla debajo*
-| Haga clic derecho en el número de una regla y seleccione _Add rule below_.
-| *Eliminar una Regla*
-| Haga clic derecho en el número de la regla y seleccione _Remove rule_.
-| *Añadir un nuevo Input/Output*
+| *Añadir una nueva regla (fila)*
+| Haga clic en el botón Más (+) situado en la esquina inferior izquierda de la tabla.
+| *Insertar una regla encima*
+| Haga clic con el botón derecho en el número de una regla y seleccione _Add rule above_.
+| *Insertar una regla debajo*
+| Haga clic con el botón derecho en el número de una regla y seleccione _Add rule below_.
+| *Eliminar una regla*
+| Haga clic con el botón derecho en el número de la regla y seleccione _Remove rule_.
+| *Añadir un nuevo input/output*
 | Haga clic en el botón Más (+) del encabezado de la columna _Input_ u _Output_.
-| *Eliminar un Input/Output*
-| Haga clic derecho en el encabezado de la columna correspondiente y seleccione _Remove input column_.
+| *Eliminar un input/output*
+| Haga clic con el botón derecho en el encabezado de la columna correspondiente y seleccione _Remove input column_.
 | *Editar una celda*
-| Haga doble clic en la celda o selecciónela y empiece a escribir.
+| Haga doble clic en la celda o selecciónela y comience a escribir.
 | *Aplicar los cambios en una celda*
-| Pulse Enter o haga clic fuera de la celda.
-| *Renombrar un Input/Output*
+| Presione Enter o haga clic fuera de la celda.
+| *Cambiar el nombre de un input/output*
 | Haga doble clic en el nombre del encabezado de la columna
-| *Cambiar la Hit Policy*
+| *Cambiar la hit policy*
 | Haga clic en el indicador de hit policy (p. ej., `UNIQUE`, `FIRST`) situado en la esquina superior izquierda de la tabla y seleccione una nueva política de la lista desplegable.
 | *Navegar entre celdas*
 | Pulse Tab para pasar a la siguiente celda, Shift+Tab para volver a la celda anterior.
@@ -92,7 +92,7 @@ image::dmn-table-editor-interface.png[]
 
 == Editor de expresiones literales
 
-El editor de expresiones literales le permite trabajar con expresiones literales directamente en el IDE. Su interfaz es similar a la del editor de DRD y de tablas de decisión.
+El editor de expresiones literales permite trabajar con expresiones literales directamente en el IDE. Su interfaz es similar a las de los editores de DRD y de tablas de decisión.
 
 image::literal-expression-editor-interface.png[]
 
@@ -101,33 +101,33 @@ image::literal-expression-editor-interface.png[]
 [cols="1,3", frame="none", grid="rows"]
 |====
 | *Acceder al editor*
-| En la vista del diagrama de requisitos de decisión (DRD), haga clic en el icono azul de un elemento de decisión que se haya transformado en una expresión literal.
+| En la vista del diagrama de requisitos de decisión (DRD), haga clic en el icono azul de un elemento de decisión que se haya convertido en una expresión literal.
 | *Editar la expresión*
-| Haga clic dentro del editor de expresiones y escriba la lógica.
-| *Definir/Editar el nombre de la variable*
-| Edite el atributo `name` del elemento `variable` mediante el campo Variable name.
-| *Definir/Editar el tipo de la variable*
-| Especifique el atributo `type Ref` del elemento `variable` (p. ej. `string`, `number`) mediante la lista desplegable 'Variable type'.
+| Haga clic dentro del editor de expresiones y escriba la lógica de la expresión.
+| *Definir o editar el nombre de la variable*
+| Edite el atributo `name` del elemento `variable` mediante el campo _Variable name_.
+| *Definir o editar el tipo de la variable*
+| Especifique el atributo `typeRef` del elemento `variable` (p. ej., `string`, `number`) mediante la lista desplegable _Variable type_.
 |====
 
 == Despliegue
 
-El editor de DMN permite desplegar el DMN en un motor Camunda/Operaton remoto.
-Para invocar el asistente de despliegue, haga clic en el icono del cohete en la barra de herramientas del editor (panel DMN Actions).
-Se requiere una conexión correctamente configurada a un motor externo.
+El editor de DMN permite desplegar el modelo DMN en un motor Camunda/Operaton remoto.
+Para abrir el asistente de despliegue, haga clic en el icono del cohete en la barra de herramientas del editor (panel DMN Actions).
+Se requiere una conexión a un motor externo configurada correctamente.
 
 image::dmn-deployment-wizard.png[width=80%]
 
 [cols="1,3", frame=none, grid=rows]
 |====
 | *Deployment name*
-| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del proceso en el sistema.
+| Un nombre único para identificar el paquete de despliegue. Permite encontrar y administrar fácilmente una versión concreta del recurso en el sistema.
 | *Enable duplicate filtering*
 | Filtrado a nivel de archivo individual. Omite el redespliegue de recursos sin cambios (p. ej., diagramas BPMN) dentro de un despliegue. Ahorra espacio en la base de datos al evitar la creación de duplicados.
 | *Deploy changed only*
-| Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia, excluyendo la creación innecesaria de versiones del proceso.
+| Filtrado a nivel de todo el paquete de despliegue. Si ningún archivo del despliegue ha cambiado, la operación se ignora por completo. Garantiza la idempotencia y evita la creación innecesaria de versiones del recurso.
 | *Deployment source*
 | El origen desde el que se inició el despliegue (p. ej., 'Flowset Studio'). Se utiliza para la auditoría y el seguimiento del origen de los despliegues.
 | *Tenant ID*
-| El identificador de tenant para una arquitectura multi-tenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
+| El identificador de tenant para una arquitectura multitenant. Permite aislar procesos y datos de diferentes clientes o departamentos dentro de un único clúster de Camunda.
 |====

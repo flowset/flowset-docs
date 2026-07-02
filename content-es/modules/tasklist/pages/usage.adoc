@@ -1,8 +1,8 @@
 = Uso
 
-*Flowset Tasklist* proporciona una interfaz cómoda para trabajar con procesos de negocio y tareas de usuario ejecutados en el motor BPM conectado.
+*Flowset Tasklist* proporciona una interfaz clara para trabajar con procesos de negocio y tareas de usuario ejecutados en el motor BPM conectado.
 
-Tasklist requiere autenticación: cada usuario ve únicamente sus propias tareas activas y los procesos disponibles para iniciar.
+Tasklist requiere autenticación: cada usuario ve únicamente sus tareas activas y los procesos disponibles para iniciar.
 
 == Trabajar con procesos
 
@@ -11,7 +11,7 @@ La página muestra una tabla con las últimas versiones de todos los procesos de
 
 Acciones disponibles en la página:
 
-* *Refresh* — cargar la lista más reciente de procesos desde el motor
+* *Refresh* — cargar desde el motor la lista más reciente de procesos
 * *Sort* — ordenar los procesos por nombre o por hora de despliegue
 * *Filter* — filtrar los procesos por nombre, clave o descripción
 * *Start Process* — iniciar una nueva instancia del proceso seleccionado
@@ -20,8 +20,8 @@ image::process-view.png[Pantalla de lista de procesos]
 
 === Iniciar un proceso
 
-Para iniciar un proceso, haga clic en *Start Process* junto a la fila deseada.
-Se abrirá una ventana de diálogo cuyo contenido depende del tipo de formulario vinculado al evento de inicio del proceso:
+Para iniciar un proceso, haga clic en *Start Process* en la fila correspondiente.
+Se abrirá un cuadro de diálogo cuyo contenido depende del tipo de formulario vinculado al evento de inicio del proceso:
 
 * Si no se especifica ningún formulario, solo se muestra el campo *Business Key*
 * Si se utiliza un formulario de Camunda, se mostrará el formulario de Camunda publicado
@@ -34,7 +34,7 @@ image::start-process.png[Iniciar un proceso]
 Los tipos de formulario *Embedded* y *Generated* no son compatibles con Flowset Tasklist.
 ====
 
-Tras completar el formulario y hacer clic en *Start*, Tasklist crea una nueva instancia de proceso con las variables y la clave de negocio proporcionadas.
+Después de completar el formulario y hacer clic en *Start*, Tasklist crea una nueva instancia de proceso con las variables y la business key proporcionadas.
 
 == Trabajar con tareas de usuario
 
@@ -45,14 +45,14 @@ Acciones disponibles:
 
 * Filtrado y ordenación de tareas
 * Visualización de los detalles de la tarea
-* Finalización de una tarea
+* Finalización de tareas
 
 image::task-view.png[Pantalla de lista de tareas]
 
-=== Visualizar una tarea
+=== Ver una tarea
 
 Para abrir una tarea, haga clic en *Edit* junto a la fila correspondiente.
-En el lado derecho de la pantalla aparecerá un panel con los detalles de la tarea y el formulario asociado.
+En el lado derecho de la pantalla, aparecerá un panel con los detalles de la tarea y el formulario asociado.
 
 Según el tipo de formulario, Tasklist muestra:
 
@@ -77,10 +77,10 @@ Los formularios *Embedded* y *Generated* no son compatibles.
 
 == Autorización y usuarios
 
-El acceso a Tasklist se realiza mediante Basic Authentication.
-La lista de usuarios y sus permisos se define en el lado del motor BPM.
+El acceso a Tasklist se realiza mediante *Basic Authentication*.
+La lista de usuarios y sus permisos se define en el motor BPM.
 
-Para un funcionamiento correcto, asegúrese de que el grupo del usuario tenga habilitadas las siguientes autorizaciones:
+Para un funcionamiento correcto, asegúrese de que el grupo del usuario tenga asignadas las siguientes autorizaciones:
 
 * User
 * Process Definition
