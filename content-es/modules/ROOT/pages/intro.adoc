@@ -2,36 +2,36 @@
 
 [.fl-hero]
 --
-Flowset es una plataforma de automatización de procesos de negocio: diseña, ejecuta y monitoriza procesos BPMN de principio a fin.
+Flowset es una plataforma de automatización de procesos de negocio para diseñar, ejecutar y monitorear procesos BPMN de principio a fin.
 
 [.fl-hero-actions]
-* xref:ROOT:quick-start.adoc[Empezar]
-* https://demo-control.flowset.io/login[Demostración en vivo]
+* xref:ROOT:quick-start.adoc[Comenzar]
+* https://demo-control.flowset.io/login[Demo en vivo]
 --
 
 [.fl-cards]
-* xref:control:index.adoc[Control]: Monitoriza y administra los procesos en ejecución.
-* xref:studio:index.adoc[Studio]: Modela diagramas BPMN/DMN y formularios en IntelliJ IDEA.
-* xref:tasklist:index.adoc[Tasklist]: Gestiona las tareas de los usuarios finales con una aplicación React.
+* xref:control:index.adoc[Control]: monitorea y administra los procesos en ejecución.
+* xref:studio:index.adoc[Studio]: modela diagramas BPMN/DMN y formularios en IntelliJ IDEA.
+* xref:tasklist:index.adoc[Tasklist]: gestiona tareas de usuarios finales con una aplicación React.
 
 
 == ¿Qué es Flowset?
 
-Flowset es una plataforma de automatización de procesos de negocio con su propio motor de ejecución y un conjunto de herramientas que cubren todo el ciclo de vida de una solución BPM.
+Flowset es una plataforma de automatización de procesos de negocio con un motor de ejecución propio y un conjunto de herramientas que cubren todo el ciclo de vida de una solución BPM.
 
 === Principios fundamentales
 
 * **Compatibilidad con Camunda**
-  Creemos que esta tecnología, que se ha convertido en un estándar de la industria, perdurará durante mucho tiempo.
+  Creemos que esta tecnología, que se ha convertido en un estándar de la industria, seguirá siendo relevante durante mucho tiempo.
 
 * **Cumplimiento del estándar BPMN 2.0**
-  Garantiza transparencia, previsibilidad y facilita la incorporación de talento.
+  Garantiza transparencia, previsibilidad y facilita la incorporación de nuevos especialistas.
 
 * **Interoperabilidad**
   Flowset es compatible con las herramientas de modelado y desarrollo más populares.
 
 * **Enfoque en la automatización de procesos de negocio**
-  Flowset cubre el ciclo completo de la automatización de procesos: desde el diseño hasta la ejecución y la monitorización.
+  Flowset cubre el ciclo completo de la automatización de procesos: desde el diseño hasta la ejecución y el monitoreo.
 
 * **Modularidad y apertura**
   Cada componente de la plataforma funciona de forma independiente y, en conjunto, aportan el máximo valor.
@@ -39,11 +39,11 @@ Flowset es una plataforma de automatización de procesos de negocio con su propi
 === Componentes de la plataforma
 
 ==== Control
-Una herramienta de código abierto para monitorizar la ejecución de procesos de negocio. Similar a Camunda Cockpit, pero con funcionalidad ampliada.
-Construida sobre el framework de código abierto Jmix. Código fuente disponible en https://github.com/flowset/flowset-control-community[GitHub].
+Una herramienta de código abierto para monitorear la ejecución de procesos de negocio. Es similar a Camunda Cockpit, pero ofrece funcionalidad ampliada.
+Está construida sobre Jmix, un framework de código abierto. El código fuente está disponible en https://github.com/flowset/flowset-control-community[GitHub].
 
 ==== Studio
-Un complemento para https://www.jetbrains.com/idea/[IntelliJ IDEA]. Añade un editor BPMN/DMN directamente en el entorno de desarrollo, junto con capacidades adicionales para la generación de código, la navegación, etc.
+Un plugin para https://www.jetbrains.com/idea/[IntelliJ IDEA]. Añade un editor BPMN/DMN directamente al entorno de desarrollo, junto con funciones adicionales para generación de código, navegación y otras tareas.
 
 ==== Tasklist
-Una plantilla de aplicación basada en React para gestionar las tareas de los usuarios finales. Código fuente disponible en https://github.com/flowset/flowset-tasklist-react-community[GitHub].
+Una plantilla de aplicación basada en React para gestionar tareas de usuarios finales. El código fuente está disponible en https://github.com/flowset/flowset-tasklist-react-community[GitHub].

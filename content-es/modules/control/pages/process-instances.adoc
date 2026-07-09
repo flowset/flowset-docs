@@ -1,22 +1,22 @@
 = Instancias de proceso
 
-Para ver las instancias de proceso almacenadas en el motor de BPM, seleccione *Process instances* en el menú de la aplicación.
+Para ver las instancias de proceso almacenadas en el motor BPM, selecciona *Process instances* en el menú de la aplicación.
 
 [[instance-list]]
 == Funciones de la lista de instancias
 
-La vista *Process instances* presenta todas las ejecuciones de proceso actualmente en curso recuperadas del xref:connecting-engine.adoc[motor de BPM conectado].
+La vista *Process instances* muestra todas las ejecuciones de proceso en curso recuperadas del xref:connecting-engine.adoc[motor BPM conectado].
 
-Cada xref:process.adoc#starting-processes[inicio de proceso] genera una nueva instancia que es visible en esta vista. El sistema presenta las instancias en formato tabular, mostrando los detalles esenciales de ejecución.
+Cada xref:process.adoc#starting-processes[inicio de proceso] genera una nueva instancia visible en esta vista. El sistema presenta las instancias en formato tabular, mostrando los detalles esenciales de ejecución.
 
 image::process-instances.png[align="center", width="1552"]
 
-La tabla de instancias de proceso proporciona capacidades de filtrado y ordenación, lo que permite a los usuarios organizar las instancias según diversos criterios, como:
+La tabla de instancias de proceso proporciona funciones de filtrado y ordenación, lo que permite a los usuarios organizar las instancias según diversos criterios, como:
 
 * Estado: en ejecución, suspendida, completada o con error
 * Clave de negocio: utilizada para iniciar y ejecutar la instancia
 * Hora de inicio/Hora de finalización
-* Y así sucesivamente.
+* Entre otros.
 
 De forma predeterminada, la tabla de instancias de proceso muestra exclusivamente las instancias activas para centrar la atención en los flujos de trabajo que se están ejecutando actualmente.
 
@@ -28,7 +28,7 @@ Las siguientes operaciones están disponibles:
 | Acción | Descripción
 
 | *Refresh*
-| Actualiza la lista de instancias de proceso actual, sincronizándola con el estado más reciente del motor de BPM.
+| Actualiza la lista de instancias de proceso actual, sincronizándola con el estado más reciente del motor BPM.
 
 | *Terminate*
 | Detiene de inmediato la ejecución de las instancias de proceso seleccionadas.
@@ -52,7 +52,7 @@ image::process-with-incident.png[align="center", width="1165"]
 [[detailed-instance]]
 == Detalles de la instancia de proceso
 
-Para ver los detalles de ejecución de una instancia de proceso concreta, utilice la acción *View*.
+Para ver los detalles de ejecución de una instancia de proceso concreta, utiliza la acción *View*.
 
 Esta acción abre la vista detallada de la instancia, que contiene:
 

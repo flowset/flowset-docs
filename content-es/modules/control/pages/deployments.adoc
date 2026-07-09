@@ -1,15 +1,15 @@
 = Despliegues
 
-Flowset Control permite a los administradores ver y gestionar despliegues que contienen xref:process.adoc[definiciones de proceso], xref:dmn-decisions.adoc[tablas de decisión] y otros recursos. Todos los despliegues se muestran en una lista ordenable y filtrable dentro de la vista *Deployments*.
+Flowset Control permite a los administradores ver y gestionar despliegues que contienen xref:process.adoc[definiciones de proceso], xref:dmn-decisions.adoc[tablas de decisión] y otros recursos. Todos los despliegues se muestran en una lista ordenable y filtrable en la vista *Deployments*.
 
 [[deployment-list]]
 == Lista de despliegues
 
-La vista de lista de despliegues muestra todos los despliegues presentes actualmente en el sistema en formato de tabla:
+La vista de lista de despliegues muestra todos los despliegues disponibles actualmente en el sistema en formato de tabla:
 
 image::deployments.png[align="center", width="1428"]
 
-Utilice el campo de búsqueda para localizar despliegues por nombre o por fecha.
+Utiliza el campo de búsqueda para localizar despliegues por nombre o por fecha.
 
 Las siguientes acciones están disponibles:
 
@@ -18,7 +18,7 @@ Las siguientes acciones están disponibles:
 | Acción | Descripción
 
 | *Refresh*
-| Recarga la lista de despliegues actual desde el motor de BPM conectado.
+| Recarga la lista de despliegues actual desde el motor BPM conectado.
 
 | *Remove*
 a| Elimina el despliegue seleccionado. Aparece un cuadro de diálogo de confirmación con las siguientes opciones:
@@ -32,13 +32,13 @@ a| Elimina el despliegue seleccionado. Aparece un cuadro de diálogo de confirma
 Una vez confirmado, el despliegue se elimina de forma permanente.
 
 | *View*
-| Muestra información detallada del despliegue. Consulte <<deployment-details>>.
+| Muestra información detallada del despliegue. Consulta <<deployment-details>>.
 |===
 
 [[deployment-details]]
 == Visualización de los detalles del despliegue
 
-Para inspeccionar el contenido de un despliegue, seleccione la acción *View* de la lista de despliegues. Esto abre una vista de detalles dedicada organizada en dos paneles principales.
+Para inspeccionar el contenido de un despliegue, selecciona la acción *View* de la lista de despliegues. Esto abre una vista de detalles dedicada organizada en dos paneles principales.
 
 image::deployment-details.png[align="center", width="1428"]
 
@@ -66,7 +66,7 @@ Debajo de los metadatos, el panel izquierdo también enumera todos los recursos 
 
 El panel derecho muestra dinámicamente una vista previa del recurso seleccionado de la lista. Para archivos con componentes visuales, como diagramas de proceso BPMN o tablas de decisión DMN, el sistema renderiza una vista previa gráfica junto con los metadatos técnicos.
 
-Mediante el botón *Download*, puede recuperar archivos de recursos individuales (BPMN, DMN, etc.).
+Con el botón *Download*, puedes descargar archivos de recursos individuales (BPMN, DMN, etc.).
 
 Según el tipo de recurso, el panel contiene dos o tres pestañas.
 
@@ -78,7 +78,7 @@ Esta pestaña proporciona una representación visual del recurso. Por ejemplo:
 +
 image::deployment-resource-form.png[align="center", width="1043"]
 
-* *DMN Decision Tables*: Muestra el DRD. Haga clic en cualquier nodo del DRD para abrir la tabla de decisión DMN correspondiente en una vista detallada.
+* *DMN Decision Tables*: Muestra el DRD. Haz clic en cualquier nodo del DRD para abrir la tabla de decisión DMN correspondiente en una vista detallada.
 +
 image::deployment-resource-drd.png[align="center", width="1041"]
 

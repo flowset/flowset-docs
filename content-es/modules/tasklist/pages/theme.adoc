@@ -1,14 +1,14 @@
 = Tema
 
 *Flowset Tasklist* utiliza la biblioteca https://ant.design/[Ant Design] como base de su interfaz.
-Esto proporciona un diseño de aplicación moderno, adaptable y personalizable.
+Esto proporciona una interfaz moderna, adaptable y personalizable.
 
-Puede modificar la apariencia de Tasklist ajustando el tema para que coincida con la marca y el estilo de su organización.
+Puedes modificar la apariencia de Tasklist ajustando el tema a la marca y al estilo de tu organización.
 
 == General
 
-Ant Design admite los denominados *Design Tokens*: variables que definen colores, fuentes, espaciado y otros parámetros de estilo.
-En Flowset Tasklist, todos los ajustes del tema se concentran en un único lugar: en el archivo:
+Ant Design admite los denominados *design tokens*: variables que definen colores, fuentes, espaciado y otros parámetros de estilo.
+En Flowset Tasklist, todos los ajustes del tema se encuentran en un único archivo:
 
 [source,shell]
 ----
@@ -17,16 +17,16 @@ src/features/theme/flowsetTheme.ts
 
 == Modificar el tema
 
-. Abra el archivo:
+. Abre el archivo:
 +
 [source,shell]
 ----
 src/features/theme/flowsetTheme.ts
 ----
-. Localice el objeto que contiene los design tokens (por ejemplo, `colorPrimary`, `borderRadius`, `fontFamily`).
-. Cambie los valores de los parámetros según sus preferencias.
+. Localiza el objeto que contiene los design tokens (por ejemplo, `colorPrimary`, `borderRadius`, `fontFamily`).
+. Cambia los valores de los parámetros según tus necesidades.
 
-=== Ejemplo de modificación del esquema de color principal
+=== Ejemplo de modificación del color principal
 
 [source,typescript]
 ----
@@ -40,7 +40,7 @@ export const flowsetTheme = {
 };
 ----
 
-Después de guardar los cambios, reinicie la aplicación: Tasklist aplicará automáticamente el nuevo esquema de color.
+Después de guardar los cambios, reinicia la aplicación: Tasklist aplicará automáticamente el nuevo esquema de colores.
 
-Para más detalles, consulte la documentación oficial de Ant Design:
+Para obtener más detalles, consulta la documentación oficial de Ant Design:
 https://ant.design/docs/react/customize-theme

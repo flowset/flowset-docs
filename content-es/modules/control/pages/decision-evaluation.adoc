@@ -5,22 +5,22 @@
 Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
 ====
 
-Flowset Control le permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
+Flowset Control te permite evaluar una tabla de decisión DMN directamente desde la interfaz de usuario sin iniciar un proceso BPM.
 
-Utilice este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico únicamente para la ejecución de DMN.
+Utiliza este modo para probar reglas de negocio con datos de entrada de ejemplo, validar el comportamiento en producción o investigar la lógica de decisión sin crear un proceso técnico solo para ejecutar DMN.
 
-Para obtener información general sobre DMN y las expresiones FEEL, consulte:
+Para obtener información general sobre DMN y las expresiones FEEL, consulta:
 
 * https://docs.camunda.org/manual/7.24/reference/dmn/decision-table/[Documentación de tablas de decisión DMN de Camunda]
 * https://docs.camunda.io/docs/components/modeler/feel/what-is-feel/[Documentación de expresiones FEEL]
 * https://nikku.github.io/feel-playground[FEEL playground]
 
 [[opening-evaluate-decision]]
-== Abrir el modo de evaluación
+== Apertura del modo de evaluación
 
-Puede abrir el modo de evaluación desde la lista *DMN -> Decisions* o desde una vista de detalle de una decisión.
+Puedes abrir el modo de evaluación desde la lista *DMN -> Decisions* o desde una vista de detalle de una decisión.
 
-En la lista *Decisions*, haga clic en la acción *Evaluate decision* para la definición de decisión requerida.
+En la lista *Decisions*, haz clic en la acción *Evaluate decision* para la definición de decisión correspondiente.
 
 image::decision-evaluate-list-action.png[align="center", width="1552"]
 
@@ -39,13 +39,13 @@ La vista contiene:
 [[input-variables]]
 == Variables de entrada
 
-Antes de la evaluación, añada las variables que espera la tabla de decisión.
+Antes de la evaluación, añade las variables que espera la tabla de decisión.
 
-Puede añadir variables manualmente con *Add* o detectar variables a partir del DMN XML con *Add from DMN*.
+Puedes añadir variables manualmente con *Add* o detectar variables a partir del DMN XML con *Add from DMN*.
 
 image::decision-evaluate-add-from-dmn.png[align="center", width="1552"]
 
-El cuadro de diálogo *Add variables from DMN XML* lista las variables de entrada detectadas. Seleccione las variables que desea añadir y confirme con *Add*.
+El cuadro de diálogo *Add variables from DMN XML* lista las variables de entrada detectadas. Selecciona las variables que quieres añadir y confirme con *Add*.
 
 image::decision-evaluate-add-from-dmn-dialog.png[align="center", width="1552"]
 
@@ -66,7 +66,7 @@ Solo se admiten tipos de variables simples en la vista de evaluación y en el cu
 [[editing-input-values]]
 == Edición de los valores de entrada
 
-Después de añadir las variables, introduzca los valores de prueba en la columna *Value*.
+Después de añadir las variables, introduce valores de prueba en la columna *Value*.
 
 image::decision-evaluate-edit-inputs.png[align="center", width="1552"]
 
@@ -77,7 +77,7 @@ Si cambia las variables de entrada después de una evaluación exitosa sin volve
 [[running-evaluation]]
 == Ejecución de la evaluación
 
-Haga clic en *Evaluate* para ejecutar la tabla de decisión con las variables de entrada actuales.
+Haz clic en *Evaluate* para ejecutar la tabla de decisión con las variables de entrada actuales.
 
 image::decision-evaluate-run.png[align="center", width="1552"]
 
@@ -96,7 +96,7 @@ Después de cada evaluación:
 [[analyzing-decision-result]]
 == Análisis de los resultados de la evaluación
 
-Abra una instancia de decisión para inspeccionar los valores de entrada y salida evaluados junto con la tabla de decisión.
+Abre una instancia de decisión para inspeccionar los valores de entrada y salida evaluados junto con la tabla de decisión.
 
 La pestaña *Inputs* muestra las variables utilizadas para la evaluación y resalta la regla coincidente en la tabla.
 
@@ -106,4 +106,4 @@ La pestaña *Outputs* muestra los valores devueltos por la evaluación.
 
 image::decision-evaluate-instance-outputs.png[align="center", width="1552"]
 
-Utilice esta vista para verificar qué regla coincidió, qué valores de entrada se utilizaron y qué valores de salida se produjeron.
+Utiliza esta vista para verificar qué regla coincidió, qué valores de entrada se utilizaron y qué valores de salida se produjeron.

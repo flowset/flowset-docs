@@ -1,7 +1,7 @@
 = Formularios personalizados
 
-*Flowset Tasklist* admite el uso de componentes React personalizados como formularios para iniciar procesos y finalizar tareas de usuario.
-Esto le permite crear interfaces totalmente adaptadas a procesos de negocio específicos.
+*Flowset Tasklist* permite usar componentes React personalizados como formularios para iniciar procesos y finalizar tareas de usuario.
+Esto permite crear interfaces totalmente adaptadas a procesos de negocio específicos.
 
 == Conceptos fundamentales
 
@@ -11,21 +11,21 @@ Si el `formKey` coincide con un componente registrado, Tasklist muestra automát
 Se admiten dos tipos de formularios:
 
 * *Start Forms* — se muestran al iniciar un proceso
-* *Task Forms* — se muestran al finalizar tareas de usuario
+* *Task Forms* — se muestran al completar tareas de usuario
 
 == Crear un formulario personalizado
 
-. En el editor BPMN, establezca el tipo de formulario en *Embedded or External Task Form* y defina un valor de *Form key* (por ejemplo, `newVisit`).
-. En el proyecto, cree un nuevo formulario en el directorio:
+. En el editor BPMN, define el tipo de formulario en *Embedded or External Task Form* y especifica un valor de *Form key* (por ejemplo, `newVisit`).
+. En el proyecto, crea un nuevo formulario en el siguiente directorio:
 +
 [source,shell]
 ----
 src/custom-forms/
 ----
-. Defina un componente React que implemente una de las interfaces:
+. Define un componente React que implemente una de las interfaces:
 +
 * `CustomStartFormProps` — para formularios de inicio
-* `CustomTaskFormProps` — para formularios de tareas
+* `CustomTaskFormProps` — para formularios de tarea
 
 === Ejemplo de formulario de inicio
 
@@ -161,15 +161,15 @@ export const CheckVisitDetailsForm = (props: CustomTaskFormProps<VisitInputVaria
 
 == Registrar formularios personalizados
 
-Para que el formulario aparezca en la interfaz de Tasklist, debe registrarse en el archivo de configuración.
+Para que el formulario aparezca en la interfaz de Tasklist, debes registrarlo en el archivo de configuración.
 
-. Abra el archivo:
+. Abre el archivo:
 +
 [source,shell]
 ----
 src/features/custom-forms/config.ts
 ----
-. Añada una entrada al array `customFormConfigs`, especificando la clave del formulario (`formKey`) y el componente:
+. Añade una entrada al arreglo `customFormConfigs`, especificando la clave del formulario (`formKey`) y el componente:
 +
 [source,typescript]
 ----
@@ -194,10 +194,10 @@ export const customFormConfigs: CustomFormConfig[] = [
     }
 ];
 ----
-. Tras esto, Tasklist mostrará automáticamente el formulario al abrir una tarea o iniciar un proceso con un `formKey` coincidente.
+. Después de esto, Tasklist mostrará automáticamente el formulario al abrir una tarea o al iniciar un proceso con un `formKey` coincidente.
 
 [NOTE]
 ====
 Los tipos de formulario *Embedded* y *Generated* no son compatibles.
-Para todos los escenarios de usuario, se recomiendan los formularios personalizados o de Camunda.
+Para todos los escenarios de uso, se recomiendan los formularios personalizados o de Camunda.
 ====

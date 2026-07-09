@@ -1,10 +1,10 @@
-= Panel de control
+= Dashboard
 
-Cuando inicia sesión en Flowset Control, la primera vista que verá es el *Dashboard*. Esta es su vista principal para monitorizar todo en el sistema. Muestra información importante mediante widgets fáciles de leer que se actualizan en tiempo real.
+Cuando inicia sesión en Flowset Control, la primera vista que verá es el *Dashboard*. Esta es la vista principal para monitorear el estado del sistema. Muestra información importante mediante widgets fáciles de leer que se actualizan en tiempo real.
 
 image::dashboard.png[align="center", width="1440"]
 
-Puede volver al *Dashboard* en cualquier momento haciendo clic en *Flowset Control* en la esquina superior izquierda o seleccionando el elemento de menú *Dashboard*.
+Puedes volver al *Dashboard* en cualquier momento haciendo clic en *Flowset Control* en la esquina superior izquierda o seleccionando el elemento de menú *Dashboard*.
 
 *Widgets*:
 
@@ -18,7 +18,7 @@ Este widget muestra el número de instancias de proceso en ejecución, categoriz
 
 * *User tasks*
 +
-Presenta el número total de tareas de usuario que están actualmente activas y a la espera de ser completadas.
+Muestra el número total de tareas de usuario que están activas y a la espera de completarse.
 
 * *Running processes*
 +
@@ -26,7 +26,7 @@ Este widget proporciona un gráfico circular de todas las instancias de proceso 
 
 * *Incidents*
 +
-El widget *Incidents* destaca el número de procesos en los que se han producido errores o excepciones durante la ejecución.
+El widget *Incidents* resalta el número de procesos en los que se han producido errores o excepciones durante la ejecución.
 
 * *Recent activity*
 +
@@ -34,11 +34,11 @@ Un gráfico dinámico muestra la actividad reciente, registrando específicament
 
 [NOTE]
 ====
-* En el Dashboard de Flowset Control, los widgets de gráfico circular le permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haga clic en el menú "..." (menú de tres puntos) dentro del widget.
+* En el Dashboard de Flowset Control, los widgets de gráfico circular te permiten cambiar a una vista de tabla para obtener datos más detallados. Para ello, haz clic en el menú "..." (menú de tres puntos) dentro del widget.
 +
 image::dashboard-pie-widget.png[align="center", width="888"]
 
-* Al hacer clic en el icono de flecha (→) se le redirige a las vistas relacionadas del sistema.
+* Al hacer clic en el icono de flecha (→) se te redirige a las vistas relacionadas del sistema.
 +
 image::dashboard-widget.png[align="center", width="835"]
 +

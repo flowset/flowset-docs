@@ -1,6 +1,6 @@
 = Procesos
 
-La vista *Processes* proporciona gestión centralizada de todos los procesos de negocio desplegados en su motor BPM activo. Acceda a esta vista seleccionando *Processes* en el menú de la aplicación.
+La vista *Processes* proporciona gestión centralizada de todos los procesos de negocio desplegados en tu motor BPM activo. Accede a esta vista seleccionando *Processes* en el menú de la aplicación.
 
 [[process-list]]
 == Funciones de la lista de procesos
@@ -9,7 +9,7 @@ La tabla de procesos muestra:
 
 * Las últimas versiones de los procesos desplegados
 * Nombres, versiones y estado de despliegue de los procesos
-* Capacidades de filtrado y ordenación
+* Funciones de filtrado y ordenación
 
 image::process-list.png[align="center", width="1552"]
 
@@ -23,7 +23,7 @@ Las siguientes acciones están disponibles:
 | Recarga la lista de procesos actual desde el motor BPM conectado.
 
 | *Deploy*
-| Carga y despliega nuevas definiciones de proceso BPMN 2.0. Consulte <<deploying-processes>>.
+| Carga y despliega nuevas definiciones de proceso BPMN 2.0. Consulta <<deploying-processes>>.
 
 | *Remove*
 | Elimina los procesos seleccionados y sus instancias en ejecución.
@@ -42,12 +42,12 @@ a| Muestra información detallada del proceso, incluida:
 * Historial de versiones
 * Instancias asociadas
 
-Consulte <<viewing-process>>.
+Consulta <<viewing-process>>.
 | *Start*
-| Inicia una nueva instancia de proceso. Consulte <<starting-processes>>.
+| Inicia una nueva instancia de proceso. Consulta <<starting-processes>>.
 
 | *Migrate*
-| Mueve las instancias en ejecución a versiones de proceso más recientes. Consulte <<process-migration>>.
+| Mueve las instancias en ejecución a versiones de proceso más recientes. Consulta <<process-migration>>.
 |===
 
 [[deploying-processes]]
@@ -55,14 +55,14 @@ Consulte <<viewing-process>>.
 
 Para desplegar un nuevo proceso o versión:
 
-. En la vista *Processes*, haga clic en *Deploy*
-. En la vista *New process deployment*, haga clic en *Upload* y seleccione su archivo XML BPMN 2.0.
+. En la vista *Processes*, haz clic en *Deploy*
+. En la vista *New process deployment*, haz clic en *Upload* y selecciona tu archivo XML BPMN 2.0.
 +
 image::deploy-process.png[align="center", width="1552"]
 +
 El sistema validará la sintaxis BPMN 2.0 y mostrará una vista previa del diagrama de proceso.
 
-. Haga clic en *OK* para completar el despliegue.
+. Haz clic en *OK* para completar el despliegue.
 
 [[starting-processes]]
 == Inicio de procesos
@@ -74,22 +74,22 @@ Iniciar un proceso crea una nueva instancia de proceso que aparece automáticame
 
 Para iniciar un proceso:
 
-. Haga clic en el botón *Start* junto al proceso deseado.
-. En el cuadro de diálogo *Start process*, puede agregar valores de variables de proceso.
+. Haz clic en el botón *Start* junto al proceso deseado.
+. En el cuadro de diálogo *Start process*, puedes agregar valores de variables de proceso.
 +
 image::add-process-var.png[align="center", width="1153"]
 +
 Estos valores pueden ser utilizados por las tareas dentro del proceso para su ejecución o depuración.
 +
 image::process-variables.png[align="center", width="1155"]
-. Haga clic en *Start* para crear una nueva instancia de proceso.
+. Haz clic en *Start* para crear una nueva instancia de proceso.
 
 [[viewing-process]]
 == Visualización de los detalles del proceso
 
 La acción *View* proporciona una visión integral de los procesos desplegados.
 
-Seleccione el proceso de destino y haga clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
+Selecciona el proceso de destino y haz clic en *View* en la columna de acciones. La aplicación se abre en una vista de varias pestañas:
 
 . La pestaña *General* - información básica del proceso
 +
@@ -106,13 +106,13 @@ image::process-view-xml.png[align="center", width="1552"]
 
 La columna de acciones permite migrar instancias de proceso en ejecución a versiones de proceso más recientes directamente desde la vista *Processes*.
 
-. Seleccione el proceso de destino en la <<process-list,tabla de procesos>>.
+. Selecciona el proceso de destino en la <<process-list,tabla de procesos>>.
 +
 image::process-migrate.png[align="center", width="1141"]
-. Haga clic en *... -> Migrate* en la columna de acciones.
-. Configure la migración:
+. Haz clic en *... -> Migrate* en la columna de acciones.
+. Configura la migración:
 +
 image::process-instance-migrate.png[align="center", width="942"]
 +
 * *Source process*: Detectado automáticamente (instancias en ejecución actuales).
-* *Target process*: Seleccione entre el desplegable de versiones desplegadas.
+* *Target process*: Selecciona entre el desplegable de versiones desplegadas.
