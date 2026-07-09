@@ -22,7 +22,7 @@ java -version
 [[portable]]
 === Portable Distribution
 
-The portable distribution allows you to run Flowset Control without additional dependencies (except Java). Ideal for quick testing or local development.
+The portable distribution allows you to run Flowset Control without additional dependencies (except Java). It ships as a self-contained application JAR and runs on an embedded HSQLDB database, created automatically on first startup — no external database is required. Ideal for quick testing or local development.
 
 +++
 <div class="card-block">
@@ -31,28 +31,93 @@ The portable distribution allows you to run Flowset Control without additional d
 </div>
 +++
 
+*Prerequisites*:
+
+[cols="1,3"]
+|===
+|Component |Requirement
+
+|Java |JDK or JRE *17* (Java 21 also supported)
+|OS |Linux, macOS, or Windows
+|Port 8081 |Must be free (configurable, see below)
+|RAM |At least *512 MB* available for the JVM
+|===
+
+The archive has the following structure:
+
+[source,text]
+----
+flowset-control-community/
+├── flowset-control-community-2026.0.1-rc.jar   # compiled application JAR
+├── run.sh  / run.bat                           # start the application
+├── stop.sh / stop.bat                          # stop the application
+├── data/                                       # HSQLDB data (created automatically)
+└── README.md
+----
+
 *Running Instructions*:
 
-. Download the portable archive from the provided https://flowset.io/downloads#control[link^].
+. Get the portable archive from the official https://flowset.io/downloads#control[downloads page^].
 
-. Extract the archive to your preferred directory.
+. Unpack the archive into any working directory. Keep the folder structure intact — the `run`/`stop` scripts must stay next to the application JAR.
 
-. Execute the launch script based on your OS:
+. Start the application:
 +
 *Linux/macOS*:
 +
 [source,shell]
 ----
+chmod +x run.sh
 ./run.sh
 ----
 +
-Windows:
+*Windows*:
 +
 [source,bash]
 ----
 run.bat
 ----
++
+On startup the script verifies Java, launches the application, and automatically opens the browser once it is ready.
+
 . Access the application at: `++http://localhost:8081++`.
++
+Default credentials: `admin`/`admin`. Change the default password immediately after the first login.
+
+*Stopping the application*:
+
+*Linux/macOS*:
+
+[source,shell]
+----
+./stop.sh
+----
+
+*Windows*:
+
+[source,bash]
+----
+stop.bat
+----
+
+*Changing the HTTP port*:
+
+If port 8081 is already in use, pass a different port when starting:
+
+[source,shell]
+----
+./run.sh --server.port=8090
+----
+
+[source,bash]
+----
+run.bat --server.port=8090
+----
+
+[NOTE]
+====
+The embedded HSQLDB stores its files under the `data/` folder next to the JAR. It is intended for evaluation and local development. For production, use the xref:database.adoc[external database configuration] with Oracle or PostgreSQL.
+====
 
 [[docker-compose]]
 === Docker Compose
@@ -154,6 +219,118 @@ Flowset Control stores data, such as BPM engine connections, in a database. By d
 ----
 
 . Access the application at: `++http://localhost:8081++`.
+
+[[wildfly]]
+=== WildFly Bundle
+
+A self-contained archive that already includes the WildFly application server with Flowset Control deployed and pre-configured. No separate WildFly download or manual deployment is required. By default the application runs on an embedded HSQLDB database, created automatically on first startup, so no external database is needed to get started.
+
+*Prerequisites*:
+
+[cols="1,3"]
+|===
+|Component |Requirement
+
+|Java |JDK or JRE *17* (Java 21 also supported)
+|OS |Linux, macOS, or Windows
+|Port 8080 |Must be free (configurable, see below)
+|RAM |At least *2 GB* available for the JVM
+|===
+
+The archive has the following structure:
+
+[source,text]
+----
+flowset-control-community-wildfly-2026.0.1-rc/
+├── wildfly-40.0.0.Final/                 # WildFly application server
+│   ├── bin/standalone.conf               # pre-configured for Flowset Control
+│   └── standalone/deployments/
+│       └── flowset-control-community-2026.0.1-rc.war   # already deployed
+├── start.sh / start.bat                  # start the server
+├── stop.sh  / stop.bat                   # stop the server gracefully
+└── README.md
+----
+
+*Running Instructions*:
+
+. Get the WildFly bundle from the official https://flowset.io/downloads#control[downloads page^].
+
+. Unpack the archive into any working directory. Keep the folder structure intact — the `start`/`stop` scripts must stay next to the `wildfly-*` folder.
+
+. Start the server:
++
+*Linux/macOS*:
++
+[source,shell]
+----
+chmod +x start.sh
+./start.sh
+----
++
+*Windows*:
++
+[source,bash]
+----
+start.bat
+----
++
+Startup takes approximately 40–60 seconds. A successful start ends with a line like `WildFly 40.0.0.Final started in 43443ms`.
+
+. Access the application at: `++http://localhost:8080++`.
++
+Default credentials: `admin`/`admin`. Change the default password immediately after the first login.
+
+*Stopping the server*:
+
+*Linux/macOS*:
+
+[source,shell]
+----
+./stop.sh
+----
+
+*Windows*:
+
+[source,bash]
+----
+stop.bat
+----
+
+*Changing the HTTP port*:
+
+If port 8080 is already in use, pass a different port when starting:
+
+[source,shell]
+----
+./start.sh -Djboss.http.port=8090
+----
+
+[source,bash]
+----
+start.bat -Djboss.http.port=8090
+----
+
+*Log files*:
+
+[source,text]
+----
+wildfly-40.0.0.Final/standalone/log/server.log
+----
+
+*Updating to a new version*:
+
+Replace the WAR in the deployments folder while WildFly is running — it reloads automatically:
+
+[source,shell]
+----
+cp flowset-control-community-2026.0.1-rc.war \
+   wildfly-40.0.0.Final/standalone/deployments/
+----
+
+[NOTE]
+====
+The embedded HSQLDB is intended for evaluation and small installations. For production, point the application at an external database by editing `wildfly-40.0.0.Final/bin/standalone.conf` — uncomment the Oracle *or* PostgreSQL `main.datasource.*` block and set the URL, username and password (or provide them via the `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS` environment variables). Supported: *Oracle 19c+* and *PostgreSQL*. Restart the server after changing the configuration.
+====
 
 [[post-installation]]
 == Post-Installation

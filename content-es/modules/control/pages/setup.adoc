@@ -22,7 +22,7 @@ java -version
 [[portable]]
 === Distribución portátil
 
-La distribución portátil le permite ejecutar Flowset Control sin dependencias adicionales (excepto Java). Ideal para pruebas rápidas o desarrollo local.
+La distribución portátil le permite ejecutar Flowset Control sin dependencias adicionales (excepto Java). Se distribuye como un JAR de aplicación autónomo y se ejecuta con una base de datos HSQLDB integrada, que se crea automáticamente en el primer arranque — no se requiere ninguna base de datos externa. Ideal para pruebas rápidas o desarrollo local.
 
 +++
 <div class="card-block">
@@ -31,28 +31,93 @@ La distribución portátil le permite ejecutar Flowset Control sin dependencias 
 </div>
 +++
 
+*Requisitos previos*:
+
+[cols="1,3"]
+|===
+|Componente |Requisito
+
+|Java |JDK o JRE *17* (Java 21 también es compatible)
+|Sistema operativo |Linux, macOS o Windows
+|Puerto 8081 |Debe estar libre (configurable, véase más abajo)
+|RAM |Al menos *512 MB* disponibles para la JVM
+|===
+
+El archivo tiene la siguiente estructura:
+
+[source,text]
+----
+flowset-control-community/
+├── flowset-control-community-2026.0.1-rc.jar   # JAR de aplicación compilado
+├── run.sh  / run.bat                           # iniciar la aplicación
+├── stop.sh / stop.bat                          # detener la aplicación
+├── data/                                       # datos de HSQLDB (se crea automáticamente)
+└── README.md
+----
+
 *Instrucciones de ejecución*:
 
-. Descargue el archivo portátil desde el https://flowset.io/downloads#control[enlace^] proporcionado.
+. Obtenga el archivo portátil desde la https://flowset.io/downloads#control[página de descargas^] oficial.
 
-. Extraiga el archivo en el directorio de su preferencia.
+. Descomprima el archivo en el directorio de su preferencia. Mantenga intacta la estructura de carpetas — los scripts `run`/`stop` deben permanecer junto al JAR de la aplicación.
 
-. Ejecute el script de lanzamiento según su sistema operativo:
+. Inicie la aplicación:
 +
 *Linux/macOS*:
 +
 [source,shell]
 ----
+chmod +x run.sh
 ./run.sh
 ----
 +
-Windows:
+*Windows*:
 +
 [source,bash]
 ----
 run.bat
 ----
++
+Al arrancar, el script verifica Java, inicia la aplicación y abre automáticamente el navegador una vez que está lista.
+
 . Acceda a la aplicación en: `++http://localhost:8081++`.
++
+Credenciales predeterminadas: `admin`/`admin`. Cambie la contraseña predeterminada inmediatamente después del primer inicio de sesión.
+
+*Detener la aplicación*:
+
+*Linux/macOS*:
+
+[source,shell]
+----
+./stop.sh
+----
+
+*Windows*:
+
+[source,bash]
+----
+stop.bat
+----
+
+*Cambiar el puerto HTTP*:
+
+Si el puerto 8081 ya está en uso, indique un puerto diferente al iniciar:
+
+[source,shell]
+----
+./run.sh --server.port=8090
+----
+
+[source,bash]
+----
+run.bat --server.port=8090
+----
+
+[NOTE]
+====
+La HSQLDB integrada almacena sus archivos en la carpeta `data/` junto al JAR. Está pensada para evaluación y desarrollo local. Para producción, utilice la xref:database.adoc[configuración de base de datos externa] con Oracle o PostgreSQL.
+====
 
 [[docker-compose]]
 === Docker Compose
@@ -154,6 +219,118 @@ Flowset Control almacena datos, como las conexiones al motor BPM, en una base de
 ----
 
 . Acceda a la aplicación en: `++http://localhost:8081++`.
+
+[[wildfly]]
+=== Paquete WildFly
+
+Un archivo autónomo que ya incluye el servidor de aplicaciones WildFly con Flowset Control desplegado y preconfigurado. No es necesario descargar WildFly por separado ni realizar un despliegue manual. De forma predeterminada, la aplicación se ejecuta con una base de datos HSQLDB integrada, que se crea automáticamente en el primer arranque, por lo que no se necesita ninguna base de datos externa para empezar.
+
+*Requisitos previos*:
+
+[cols="1,3"]
+|===
+|Componente |Requisito
+
+|Java |JDK o JRE *17* (Java 21 también es compatible)
+|Sistema operativo |Linux, macOS o Windows
+|Puerto 8080 |Debe estar libre (configurable, véase más abajo)
+|RAM |Al menos *2 GB* disponibles para la JVM
+|===
+
+El archivo tiene la siguiente estructura:
+
+[source,text]
+----
+flowset-control-community-wildfly-2026.0.1-rc/
+├── wildfly-40.0.0.Final/                 # servidor de aplicaciones WildFly
+│   ├── bin/standalone.conf               # preconfigurado para Flowset Control
+│   └── standalone/deployments/
+│       └── flowset-control-community-2026.0.1-rc.war   # ya desplegado
+├── start.sh / start.bat                  # iniciar el servidor
+├── stop.sh  / stop.bat                   # detener el servidor correctamente
+└── README.md
+----
+
+*Instrucciones de ejecución*:
+
+. Obtenga el paquete WildFly desde la https://flowset.io/downloads#control[página de descargas^] oficial.
+
+. Descomprima el archivo en el directorio de su preferencia. Mantenga intacta la estructura de carpetas — los scripts `start`/`stop` deben permanecer junto a la carpeta `wildfly-*`.
+
+. Inicie el servidor:
++
+*Linux/macOS*:
++
+[source,shell]
+----
+chmod +x start.sh
+./start.sh
+----
++
+*Windows*:
++
+[source,bash]
+----
+start.bat
+----
++
+El arranque tarda aproximadamente 40–60 segundos. Un inicio correcto termina con una línea como `WildFly 40.0.0.Final started in 43443ms`.
+
+. Acceda a la aplicación en: `++http://localhost:8080++`.
++
+Credenciales predeterminadas: `admin`/`admin`. Cambie la contraseña predeterminada inmediatamente después del primer inicio de sesión.
+
+*Detener el servidor*:
+
+*Linux/macOS*:
+
+[source,shell]
+----
+./stop.sh
+----
+
+*Windows*:
+
+[source,bash]
+----
+stop.bat
+----
+
+*Cambiar el puerto HTTP*:
+
+Si el puerto 8080 ya está en uso, indique un puerto diferente al iniciar:
+
+[source,shell]
+----
+./start.sh -Djboss.http.port=8090
+----
+
+[source,bash]
+----
+start.bat -Djboss.http.port=8090
+----
+
+*Archivos de registro*:
+
+[source,text]
+----
+wildfly-40.0.0.Final/standalone/log/server.log
+----
+
+*Actualización a una nueva versión*:
+
+Reemplace el archivo WAR en la carpeta de despliegues mientras WildFly está en ejecución — se recarga automáticamente:
+
+[source,shell]
+----
+cp flowset-control-community-2026.0.1-rc.war \
+   wildfly-40.0.0.Final/standalone/deployments/
+----
+
+[NOTE]
+====
+La HSQLDB integrada está pensada para evaluación e instalaciones pequeñas. Para producción, dirija la aplicación a una base de datos externa editando `wildfly-40.0.0.Final/bin/standalone.conf` — descomente el bloque `main.datasource.*` de Oracle *o* PostgreSQL y establezca la URL, el nombre de usuario y la contraseña (o proporciónelos mediante las variables de entorno `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS`). Compatible con: *Oracle 19c+* y *PostgreSQL*. Reinicie el servidor después de cambiar la configuración.
+====
 
 [[post-installation]]
 == Posinstalación
