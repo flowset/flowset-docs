@@ -241,23 +241,36 @@ El archivo tiene la siguiente estructura:
 
 [source,text]
 ----
-flowset-control-community-wildfly-2026.0.1-rc/
-├── wildfly-40.0.0.Final/                 # servidor de aplicaciones WildFly
-│   ├── bin/standalone.conf               # preconfigurado para Flowset Control
-│   └── standalone/deployments/
-│       └── flowset-control-community-2026.0.1-rc.war   # ya desplegado
+flowset-control-community-wildfly-2026.0.1/
+├── server.tar.gz                         # WildFly + app desplegada (se descomprime en el primer arranque)
 ├── start.sh / start.bat                  # iniciar el servidor
 ├── stop.sh  / stop.bat                   # detener el servidor correctamente
 └── README.md
 ----
 
+En el *primer* arranque, `server.tar.gz` se descomprime automáticamente en una carpeta `server/wildfly/` junto a los scripts (un paso único de unos pocos segundos):
+
+[source,text]
+----
+flowset-control-community-wildfly-2026.0.1/
+└── server/wildfly/                       # servidor de aplicaciones WildFly
+    ├── bin/standalone.conf               # preconfigurado para Flowset Control
+    └── standalone/deployments/
+        └── flowset-control-community-2026.0.1.war   # ya desplegado
+----
+
+[TIP]
+====
+El servidor se distribuye como un `server.tar.gz` interno para que el archivo externo contenga solo rutas cortas. Esto permite abrirlo con el extractor integrado en Windows y macOS sin alcanzar el límite de 260 caracteres de ruta de Windows. La descompresión utiliza `tar` (integrado en Windows 10 1803+, Windows 11, macOS y Linux), que no tiene ese límite.
+====
+
 *Instrucciones de ejecución*:
 
 . Obtenga el paquete WildFly desde la https://flowset.io/downloads#control[página de descargas^] oficial.
 
-. Descomprima el archivo en el directorio de su preferencia. Mantenga intacta la estructura de carpetas — los scripts `start`/`stop` deben permanecer junto a la carpeta `wildfly-*`.
+. Descomprima el archivo en el directorio de su preferencia. Mantenga intacta la estructura de carpetas — los scripts `start`/`stop` deben permanecer junto a `server.tar.gz`. En Windows, el extractor integrado del Explorador funciona correctamente aquí, ya que el archivo contiene solo rutas cortas.
 
-. Inicie el servidor:
+. Inicie el servidor (en el primer arranque, el servidor incluido se descomprime automáticamente):
 +
 *Linux/macOS*:
 +
@@ -310,11 +323,19 @@ Si el puerto 8080 ya está en uso, indique un puerto diferente al iniciar:
 start.bat -Djboss.http.port=8090
 ----
 
+*Comprobación de estado (health check)*:
+
+[source,shell]
+----
+curl http://localhost:8080/actuator/health
+# Esperado: {"status":"UP"}
+----
+
 *Archivos de registro*:
 
 [source,text]
 ----
-wildfly-40.0.0.Final/standalone/log/server.log
+server/wildfly/standalone/log/server.log
 ----
 
 *Actualización a una nueva versión*:
@@ -323,13 +344,13 @@ Reemplace el archivo WAR en la carpeta de despliegues mientras WildFly está en 
 
 [source,shell]
 ----
-cp flowset-control-community-2026.0.1-rc.war \
-   wildfly-40.0.0.Final/standalone/deployments/
+cp flowset-control-community-2026.0.1.war \
+   server/wildfly/standalone/deployments/
 ----
 
 [NOTE]
 ====
-La HSQLDB integrada está pensada para evaluación e instalaciones pequeñas. Para producción, dirija la aplicación a una base de datos externa editando `wildfly-40.0.0.Final/bin/standalone.conf` — descomente el bloque `main.datasource.*` de Oracle *o* PostgreSQL y establezca la URL, el nombre de usuario y la contraseña (o proporciónelos mediante las variables de entorno `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS`). Compatible con: *Oracle 19c+* y *PostgreSQL*. Reinicie el servidor después de cambiar la configuración.
+La HSQLDB integrada está pensada para evaluación e instalaciones pequeñas. Para producción, dirija la aplicación a una base de datos externa editando `server/wildfly/bin/standalone.conf` — descomente el bloque `main.datasource.*` de Oracle *o* PostgreSQL y establezca la URL, el nombre de usuario y la contraseña (o proporciónelos mediante las variables de entorno `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS`). Compatible con: *Oracle 19c+* y *PostgreSQL*. Reinicie el servidor después de cambiar la configuración.
 ====
 
 [[post-installation]]

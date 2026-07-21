@@ -241,23 +241,36 @@ Das Archiv hat die folgende Struktur:
 
 [source,text]
 ----
-flowset-control-community-wildfly-2026.0.1-rc/
-├── wildfly-40.0.0.Final/                 # WildFly-Anwendungsserver
-│   ├── bin/standalone.conf               # für Flowset Control vorkonfiguriert
-│   └── standalone/deployments/
-│       └── flowset-control-community-2026.0.1-rc.war   # bereits bereitgestellt
+flowset-control-community-wildfly-2026.0.1/
+├── server.tar.gz                         # WildFly + bereitgestellte App (beim ersten Start entpackt)
 ├── start.sh / start.bat                  # Server starten
 ├── stop.sh  / stop.bat                   # Server ordnungsgemäß stoppen
 └── README.md
 ----
 
+Beim *ersten* Start wird `server.tar.gz` automatisch in einen `server/wildfly/`-Ordner neben den Skripten entpackt (ein einmaliger Schritt von wenigen Sekunden):
+
+[source,text]
+----
+flowset-control-community-wildfly-2026.0.1/
+└── server/wildfly/                       # WildFly-Anwendungsserver
+    ├── bin/standalone.conf               # für Flowset Control vorkonfiguriert
+    └── standalone/deployments/
+        └── flowset-control-community-2026.0.1.war   # bereits bereitgestellt
+----
+
+[TIP]
+====
+Der Server wird als inneres `server.tar.gz` ausgeliefert, sodass das äußere Archiv nur kurze Pfade enthält. Dadurch lässt es sich mit dem integrierten Entpacker unter Windows und macOS öffnen, ohne die 260-Zeichen-Pfadgrenze von Windows zu erreichen. Das Entpacken erfolgt mit `tar` (in Windows 10 1803+, Windows 11, macOS und Linux integriert), das keine solche Grenze hat.
+====
+
 *Ausführungsanweisungen*:
 
 . Beziehen Sie das WildFly-Bundle von der offiziellen https://flowset.io/downloads#control[Downloadseite^].
 
-. Entpacken Sie das Archiv in ein Verzeichnis Ihrer Wahl. Behalten Sie die Ordnerstruktur bei — die `start`/`stop`-Skripte müssen sich neben dem `wildfly-*`-Ordner befinden.
+. Entpacken Sie das Archiv in ein Verzeichnis Ihrer Wahl. Behalten Sie die Ordnerstruktur bei — die `start`/`stop`-Skripte müssen sich neben `server.tar.gz` befinden. Unter Windows funktioniert der integrierte Explorer-Entpacker hier problemlos, da das Archiv nur kurze Pfade enthält.
 
-. Starten Sie den Server:
+. Starten Sie den Server (beim ersten Start wird der mitgelieferte Server automatisch entpackt):
 +
 *Linux/macOS*:
 +
@@ -310,11 +323,19 @@ Wenn Port 8080 bereits belegt ist, geben Sie beim Start einen anderen Port an:
 start.bat -Djboss.http.port=8090
 ----
 
+*Zustandsprüfung (Health Check)*:
+
+[source,shell]
+----
+curl http://localhost:8080/actuator/health
+# Erwartet: {"status":"UP"}
+----
+
 *Protokolldateien*:
 
 [source,text]
 ----
-wildfly-40.0.0.Final/standalone/log/server.log
+server/wildfly/standalone/log/server.log
 ----
 
 *Aktualisierung auf eine neue Version*:
@@ -323,13 +344,13 @@ Ersetzen Sie die WAR-Datei im Deployments-Ordner, während WildFly läuft — si
 
 [source,shell]
 ----
-cp flowset-control-community-2026.0.1-rc.war \
-   wildfly-40.0.0.Final/standalone/deployments/
+cp flowset-control-community-2026.0.1.war \
+   server/wildfly/standalone/deployments/
 ----
 
 [NOTE]
 ====
-Die eingebettete HSQLDB ist für Evaluierung und kleine Installationen gedacht. Richten Sie für den Produktivbetrieb die Anwendung auf eine externe Datenbank aus, indem Sie `wildfly-40.0.0.Final/bin/standalone.conf` bearbeiten — kommentieren Sie den Oracle- *oder* PostgreSQL-Block `main.datasource.*` aus und setzen Sie URL, Benutzername und Passwort (oder geben Sie diese über die Umgebungsvariablen `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS` an). Unterstützt: *Oracle 19c+* und *PostgreSQL*. Starten Sie den Server nach der Konfigurationsänderung neu.
+Die eingebettete HSQLDB ist für Evaluierung und kleine Installationen gedacht. Richten Sie für den Produktivbetrieb die Anwendung auf eine externe Datenbank aus, indem Sie `server/wildfly/bin/standalone.conf` bearbeiten — kommentieren Sie den Oracle- *oder* PostgreSQL-Block `main.datasource.*` aus und setzen Sie URL, Benutzername und Passwort (oder geben Sie diese über die Umgebungsvariablen `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS` an). Unterstützt: *Oracle 19c+* und *PostgreSQL*. Starten Sie den Server nach der Konfigurationsänderung neu.
 ====
 
 [[post-installation]]

@@ -241,23 +241,36 @@ The archive has the following structure:
 
 [source,text]
 ----
-flowset-control-community-wildfly-2026.0.1-rc/
-├── wildfly-40.0.0.Final/                 # WildFly application server
-│   ├── bin/standalone.conf               # pre-configured for Flowset Control
-│   └── standalone/deployments/
-│       └── flowset-control-community-2026.0.1-rc.war   # already deployed
+flowset-control-community-wildfly-2026.0.1/
+├── server.tar.gz                         # WildFly + deployed app (unpacked on first start)
 ├── start.sh / start.bat                  # start the server
 ├── stop.sh  / stop.bat                   # stop the server gracefully
 └── README.md
 ----
 
+On the *first* start, `server.tar.gz` is unpacked automatically into a `server/wildfly/` folder next to the scripts (a one-time step of a few seconds):
+
+[source,text]
+----
+flowset-control-community-wildfly-2026.0.1/
+└── server/wildfly/                       # WildFly application server
+    ├── bin/standalone.conf               # pre-configured for Flowset Control
+    └── standalone/deployments/
+        └── flowset-control-community-2026.0.1.war   # already deployed
+----
+
+[TIP]
+====
+The server is shipped as an inner `server.tar.gz` so the outer archive contains only short paths. This lets it open with the built-in extractor on Windows and macOS without hitting the Windows 260-character path limit. Unpacking uses `tar` (built into Windows 10 1803+, Windows 11, macOS and Linux), which has no such limit.
+====
+
 *Running Instructions*:
 
 . Get the WildFly bundle from the official https://flowset.io/downloads#control[downloads page^].
 
-. Unpack the archive into any working directory. Keep the folder structure intact — the `start`/`stop` scripts must stay next to the `wildfly-*` folder.
+. Unpack the archive into any working directory. Keep the folder structure intact — the `start`/`stop` scripts must stay next to `server.tar.gz`. On Windows the built-in Explorer extractor works fine here, because the archive contains only short paths.
 
-. Start the server:
+. Start the server (on the first launch the bundled server is unpacked automatically):
 +
 *Linux/macOS*:
 +
@@ -310,11 +323,19 @@ If port 8080 is already in use, pass a different port when starting:
 start.bat -Djboss.http.port=8090
 ----
 
+*Health check*:
+
+[source,shell]
+----
+curl http://localhost:8080/actuator/health
+# Expected: {"status":"UP"}
+----
+
 *Log files*:
 
 [source,text]
 ----
-wildfly-40.0.0.Final/standalone/log/server.log
+server/wildfly/standalone/log/server.log
 ----
 
 *Updating to a new version*:
@@ -323,13 +344,13 @@ Replace the WAR in the deployments folder while WildFly is running — it reload
 
 [source,shell]
 ----
-cp flowset-control-community-2026.0.1-rc.war \
-   wildfly-40.0.0.Final/standalone/deployments/
+cp flowset-control-community-2026.0.1.war \
+   server/wildfly/standalone/deployments/
 ----
 
 [NOTE]
 ====
-The embedded HSQLDB is intended for evaluation and small installations. For production, point the application at an external database by editing `wildfly-40.0.0.Final/bin/standalone.conf` — uncomment the Oracle *or* PostgreSQL `main.datasource.*` block and set the URL, username and password (or provide them via the `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS` environment variables). Supported: *Oracle 19c+* and *PostgreSQL*. Restart the server after changing the configuration.
+The embedded HSQLDB is intended for evaluation and small installations. For production, point the application at an external database by editing `server/wildfly/bin/standalone.conf` — uncomment the Oracle *or* PostgreSQL `main.datasource.*` block and set the URL, username and password (or provide them via the `FLOWSET_DB_URL` / `FLOWSET_DB_USER` / `FLOWSET_DB_PASS` environment variables). Supported: *Oracle 19c+* and *PostgreSQL*. Restart the server after changing the configuration.
 ====
 
 [[post-installation]]
