@@ -1,0 +1,99 @@
+= AI Assistant
+
+[NOTE, caption="Enterprise Feature"]
+====
+This feature is available exclusively in the *Flowset Control Enterprise* edition.
+====
+
+The AI assistant helps operators understand what is happening in their processes and decide what to do next. It can summarize open incidents, explain how a deployed process works, diagnose why a process instance is stuck, and answer free-form questions about the data visible in Flowset Control. The assistant only reads data — every action (retrying a job, completing a task, terminating an instance) stays with the standard Control screens and buttons.
+
+== Opening the Assistant
+
+The assistant is available from two places:
+
+* The *AI* button in the application header opens a side panel on the right. The panel stays open while you navigate between screens, so you can keep the conversation next to the data you are working with.
+* The *AI assistant* menu item opens the chat hub — a full page with all your conversations, where you can search, rename, continue or delete them.
+
+image::ai-assistant-1.png[align="center", width="1552"]
+
+image::ai-assistant-2.png[align="center", width="1552"]
+
+The side panel header contains three controls: the clock icon opens the chat hub with all conversations, the plus icon starts a new chat, and the cross closes the panel. The panel width can be adjusted by dragging its left edge.
+
+== Configuration
+
+The assistant connects to a large language model through an OpenAI-compatible API. The connection is configured with environment variables:
+
+[cols="1,2"]
+|===
+|Variable |Purpose
+
+|`AI_API_KEY`
+|API key of the LLM provider. Required for the assistant to answer.
+
+|`AI_BASE_URL`
+|Base URL of an OpenAI-compatible endpoint. Optional; without the `/v1` suffix.
+
+|`AI_MODEL`
+|Model name as expected by the provider. Optional.
+|===
+
+Any OpenAI-compatible provider can be used, including locally hosted models (for example, via Ollama) — in that case the entire AI loop, including the model, stays inside your network perimeter.
+
+The application starts and works normally without these variables. In that case the assistant UI stays available, but clearly indicates that it is not configured: the *AI* button tooltip explains what is missing, and an information banner is shown in the side panel and on the chat hub page.
+
+// TODO: screenshot — the "assistant is not configured" banner in the side panel
+image::ai-assistant-3.png[align="center", width="785"]
+
+== Starting a Conversation
+
+A new, empty conversation opens with a starter screen: an input field and suggested templates for the most common questions.
+
+image::ai-assistant-4.png[align="center", width="785"]
+
+* *What happened? Incident summary* — an overview of open incidents grouped by type and process, with recommendations.
+* *Summary of all processes* — deployed processes, their versions, active instance counts and problem areas.
+* *Analyze the current object* — appears when the open screen shows a single object (a process instance, an incident, a process definition or a user task); the assistant analyzes exactly that object.
+
+You can also simply type a question. The assistant answers in the language of your question.
+
+== Screen Context
+
+The assistant knows what you are looking at. The chip below the message input shows the object of the current screen — for example, the business key of a process instance:
+
+// TODO: screenshot — context chip under the composer showing "@ ORDER-42"
+image::ai-assistant-5.png[align="center", width="785"]
+
+When you refer to "the current process", "this instance" or similar, the assistant resolves it to the object on your screen and loads its data itself. On screens without a single object (lists, the dashboard) the chip shows *No subject on this screen*, and the assistant asks which object you mean instead of guessing.
+
+Only a reference to the object (its type and identifier) is shared with the assistant — the data itself is loaded through the same access-controlled services that power the Control screens.
+
+== What the Assistant Can Do
+
+* *Diagnose a stuck process instance.* The assistant determines where the instance currently is, why it is waiting — a failed job, an external task without a worker, an unassigned or overdue user task, a timer that is not due yet, a suspended instance — and recommends a next step. When waiting is normal process behavior (for example, a timer that fires tomorrow), the assistant says so explicitly instead of recommending an intervention.
++
+image::ai-assistant-6.png[align="center", width="785"]
++
+image::ai-assistant-7.png[align="center", width="785"]
+
+* *Analyze incidents.* Summaries of open incidents by type and process, root-cause analysis of a specific incident with a recommended action from the Control toolset (retry, change a variable, terminate the instance, escalate to developers).
+
+* *Explain a process.* A step-by-step explanation of a deployed process based on its BPMN model: what it does, who participates, what happens on timers, errors and messages.
+
+* *Answer with links.* Objects mentioned in answers — process instances, incidents, definitions, user tasks — are rendered as links that open the corresponding Control screens.
+
+== Conversations
+
+Conversations are persistent. The side panel continues your latest conversation; the *New chat* button starts a fresh one. The chat hub page lists all conversations of the current user.
+
+image::ai-assistant-8.png[align="center", width="1552"]
+
+image::ai-assistant-9.png[align="center", width="1552"]
+
+
+== Data Access and Security
+
+* The assistant works strictly through the Flowset Control service layer: it sees only the data the current user is allowed to see, on the currently selected engine.
+* All assistant tools are read-only. The assistant recommends actions but never executes them.
+* Sensitive application entities (users, engine connections, license data) are excluded from the assistant's data access.
+* Without an API key no data leaves the application — the assistant simply reports that it is not configured.

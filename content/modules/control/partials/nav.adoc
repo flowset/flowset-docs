@@ -19,3 +19,4 @@
 ** xref:control:database.adoc[]
 ** xref:control:transactions.adoc[]
 ** xref:control:heatmap.adoc[]
+// ** xref:control:ai-assistant.adoc[]
