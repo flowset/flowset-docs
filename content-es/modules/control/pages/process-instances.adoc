@@ -78,6 +78,9 @@ image::process-instance-user-task.png[align="center", width="1168"]
 * La pestaña *History* muestra una lista de todas las tareas de usuario (tanto completadas como activas), una lista completa de las actividades completadas y los últimos valores de las variables de proceso. La pestaña *History* está disponible tanto para instancias de proceso activas como completadas.
 +
 image::process-instance-history.png[align="center", width="1163"]
++
+En Flowset Control Enterprise, la pestaña *History* también contiene la pestaña *Variable log* con todos los cambios de las variables de proceso.
+Consulta xref:process-variable-history.adoc[] para más detalles.
 
 * El panel derecho muestra las <<actions,acciones>> disponibles para la instancia de proceso, incluidas:
 

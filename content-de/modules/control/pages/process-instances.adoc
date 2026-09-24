@@ -78,6 +78,9 @@ image::process-instance-user-task.png[align="center", width="1168"]
 * Der Tab *History* zeigt eine Liste aller Benutzeraufgaben (sowohl abgeschlossene als auch aktive), eine umfassende Liste abgeschlossener Aktivitäten und die letzten Werte der Prozessvariablen an. Der Tab *History* ist sowohl für aktive als auch für abgeschlossene Prozessinstanzen verfügbar.
 +
 image::process-instance-history.png[align="center", width="1163"]
++
+In Flowset Control Enterprise enthält der Tab *History* außerdem den Tab *Variable log* mit allen Änderungen der Prozessvariablen.
+Weitere Informationen finden Sie unter xref:process-variable-history.adoc[].
 
 * Das rechte Panel zeigt die für die Prozessinstanz verfügbaren <<actions,Aktionen>> an, darunter:
 

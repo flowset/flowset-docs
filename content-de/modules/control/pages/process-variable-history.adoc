@@ -1,0 +1,265 @@
+[[process-variable-history]]
+= Verlauf der Prozessvariablen
+
+[NOTE, caption="Enterprise-Funktion"]
+====
+Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Der Tab *History → Variables* einer Prozessinstanz zeigt nur den letzten Wert jeder Prozessvariablen an.
+Der Verlauf der Prozessvariablen zeigt *jede Änderung* einer Variablen: wann sie erfolgte, in welcher Aktivität, welchen Wert die Variable erhielt und ob die Variable erstellt, aktualisiert oder gelöscht wurde.
+
+Die Funktion hilft Operatoren und Analysten dabei:
+
+* herauszufinden, in welchem Prozessschritt eine Variable einen unerwarteten Wert erhalten hat;
+* zu sehen, welche Variablen eine bestimmte Aktivität geändert hat;
+* den gesamten Lebenszyklus einer einzelnen Variablen direkt auf dem BPMN-Diagramm nachzuverfolgen;
+* vor einer xref:control:process-instance-modification.adoc[Prozessinstanz-Modifikation] die Aktivität auszuwählen, ab der der Prozess neu gestartet werden soll.
+
+Die Funktion ist in der Ansicht xref:control:process-instances.adoc#detailed-instance[Details der Prozessinstanz] verfügbar und unterstützt zwei Arten, Änderungen zu analysieren:
+
+* <<activity-variable-changes,nach Aktivität>> – wählen Sie eine Aktivität auf dem Diagramm aus und sehen Sie, welche Variablen darin geändert wurden;
+* <<variable-instance-history,nach Variable>> – wählen Sie eine Variable aus und sehen Sie alle ihre Änderungen auf dem Diagramm.
+
+[[prerequisites]]
+== Voraussetzungen
+
+* *Lizenz.* Die Lizenz für Flowset Control Enterprise muss die Funktion `PROCESS_VARIABLE_HISTORY` enthalten.
+Ist die Funktion nicht lizenziert, werden der Tab *Variable log* und die Schaltfläche *Show process variable changes* auf dem Diagramm zwar angezeigt, sind aber deaktiviert. Die Aktion *Variable changes* wird im Kontextmenü eines Diagrammelements nicht angezeigt.
+* *History-Level der BPM-Engine.* Variablenänderungen werden aus den historischen Details (historic details) gelesen, die die BPM-Engine speichert.
+Die Engine zeichnet sie nur auf, wenn der History-Level auf `full` gesetzt ist, zum Beispiel für eine Engine auf Basis von Spring Boot:
++
+[source,properties]
+----
+# Camunda 7
+camunda.bpm.history-level=full
+
+# Operaton
+operaton.bpm.history-level=full
+----
++
+Bei einem niedrigeren History-Level ist das Variablenprotokoll leer.
+* *Berechtigungen.* Der Benutzer benötigt Lesezugriff auf Prozessvariablen, zum Beispiel über die Ressourcenrolle `Variables: read` (`variables-read`).
+Für Benutzer ohne diese Berechtigung sind die Schaltfläche, der Tab und die Aktionen des Kontextmenüs für Variablenänderungen ausgeblendet.
+Siehe xref:control:access-management.adoc[].
+
+[[variable-log]]
+== Variablenprotokoll
+
+So zeigen Sie alle Variablenänderungen einer Prozessinstanz in einer Liste an:
+
+. Navigieren Sie zu *Process instances* und öffnen Sie die gewünschte Prozessinstanz.
+. Wechseln Sie zum Tab *History* und wählen Sie den Tab *Variable log* aus.
+Die Beschriftung des Tabs zeigt die Gesamtzahl der Änderungen an, zum Beispiel *Variable log (7)*.
+
+image::process-variable-history-4.png[align="center", width="1552"]
+
+Jede Zeile entspricht einer Änderung einer Variablen:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Spalte | Beschreibung
+
+| *Id*
+| Bezeichner der Änderung. Klicken Sie darauf, um die <<variable-change-details,Details der Änderung>> zu öffnen.
+
+| *Activity instance*
+| Aktivitätsinstanz, in der die Änderung vorgenommen wurde. Klicken Sie auf den Bezeichner, um die Details der Aktivitätsinstanz zu öffnen.
+
+| *Variable instance*
+| Geänderte Variableninstanz. Die Schaltfläche neben dem Bezeichner <<variable-instance-history,zeigt den Verlauf dieser Variablen auf dem Diagramm an>>.
+
+| *Variable name*
+| Name der Prozessvariablen.
+
+| *Date*
+| Datum und Uhrzeit der Änderung.
+
+| *Revision*
+| Von der BPM-Engine vergebene Revisionsnummer der Variablen.
+
+| *Variable type*
+| Typ des Variablenwerts, zum Beispiel `String`, `Double`, `Object`, `File`.
+
+| *Value*
+| Wert der Variablen nach der Änderung.
+
+| *Change type*
+| *Update* oder *Delete*. Siehe <<change-type,Bestimmung des Änderungstyps>>.
+|===
+
+[[activity-variable-changes]]
+== Variablenänderungen nach Aktivität anzeigen
+
+Dieser Modus beantwortet die Frage: _„Welche Variablen wurden in diesem Schritt geändert?“_
+
+[[enable-activity-mode]]
+=== Modus aktivieren
+
+Verwenden Sie eine der folgenden Möglichkeiten:
+
+* Klicken Sie in der Symbolleiste des Diagramms auf die Schaltfläche *Show process variable changes* (Symbol `{ }`) und wählen Sie anschließend eine abgeschlossene oder laufende Aktivität auf dem Diagramm aus.
+Aktivitäten, die noch nicht durchlaufen wurden, können nicht ausgewählt werden.
++
+image::process-variable-history-1.png[align="center", width="1515"]
+* Klicken Sie mit der rechten Maustaste auf eine abgeschlossene oder laufende Aktivität auf dem Diagramm und wählen Sie im <<element-context-menu,Kontextmenü>> *Variable changes* aus.
+
+Wenn der Modus aktiviert ist, wird über dem Diagramm der Hinweis _„Select activity to view variable changes“_ angezeigt, und die ausgewählte Aktivität wird hervorgehoben.
+
+Um den Modus zu verlassen, klicken Sie auf die Schaltfläche *Hide process variable changes* oder schließen Sie den Tab *Variable changes*.
+
+[[activity-variable-changes-tab]]
+=== Tab „Variable changes“
+
+Wenn eine Aktivität ausgewählt ist, wird neben den Tabs *Runtime* und *History* der schließbare Tab *Variable changes* geöffnet.
+Der Tab enthält:
+
+* *Activity* – Name und Bezeichner der ausgewählten Aktivität;
+* *Start time* – Startzeit der ausgewählten Aktivitätsinstanz;
+* eine Tabelle der in der ausgewählten Aktivität vorgenommenen Variablenänderungen. Die Spalten entsprechen denen des <<variable-log,Variablenprotokolls>>.
+
+image::process-variable-history-2.png[align="center", width="1552"]
+
+Der Schalter *Show all changes* zeigt alle Variablenänderungen der Prozessinstanz in der Tabelle an.
+Dabei werden Änderungen aus anderen Aktivitäten farbig hinterlegt, während Änderungen der ausgewählten Aktivität ohne Hervorhebung bleiben.
+
+image::process-variable-history-3.png[align="center", width="1552"]
+
+Wenn die ausgewählte Aktivität mehrmals ausgeführt wurde (zum Beispiel eine Multi-Instanz-Aktivität oder eine Schleife), wird links zusätzlich der Baum *Activity instances* angezeigt.
+Wählen Sie eine Aktivitätsinstanz im Baum aus, um die Variablenänderungen genau dieser Ausführung zu sehen.
+
+[NOTE, caption="Hinweis"]
+====
+Beim Start des Prozesses übergebene Variablen sind an die Prozessinstanz gebunden und nicht an eine bestimmte Aktivitätsinstanz.
+Sie werden als Änderungen des Startereignisses angezeigt.
+====
+
+[[variable-instance-history]]
+== Verlauf einer einzelnen Variablen anzeigen
+
+Dieser Modus beantwortet die Frage: _„Wie hat sich diese Variable während der Prozessausführung verändert?“_
+
+[NOTE, caption="Hinweis"]
+====
+Der Verlauf wird für eine bestimmte *Variableninstanz* angezeigt, nicht für einen Variablennamen.
+Beispielsweise haben zwei lokale Variablen mit demselben Namen in verschiedenen Ausführungen (Executions) getrennte Verläufe.
+====
+
+[[enable-variable-mode]]
+=== Verlauf öffnen
+
+. Öffnen Sie die Prozessinstanz und wechseln Sie zum Tab *History*.
+. Wählen Sie den Tab *Variables* oder *Variable log* aus.
+. Klicken Sie in der Spalte *Variable instance* auf die Schaltfläche *Show variable changes on diagram* neben dem Bezeichner.
+
+image::process-variable-history-5.png[align="center", width="1552"]
+
+[[variable-history-diagram]]
+=== Änderungen auf dem Diagramm
+
+Über den Aktivitäten, in denen die Variable geändert wurde, werden Markierungen angezeigt:
+
+* Wurde die Variable in der Aktivität einmal geändert, zeigt die Markierung die laufende Nummer der Änderung an, zum Beispiel *#1*.
+* Wurde die Variable in der Aktivität mehrmals geändert, zeigt die Markierung die Anzahl der Änderungen an.
+
+Die Farbe der Markierung hängt vom Änderungstyp ab:
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Farbe | Änderungstyp
+
+| Grün
+| Die Variable wurde erstellt (erste Änderung der Variableninstanz).
+
+| Blau
+| Die Variable wurde aktualisiert.
+
+| Rot
+| Die Variable wurde gelöscht.
+|===
+
+[[variable-history-cards]]
+=== Änderungskarten
+
+Unter dem Diagramm wird neben dem Variablennamen (zum Beispiel *Variable changes: creditor*) eine Liste von Karten angezeigt.
+Jede Karte entspricht einer Änderung der Variablen und enthält:
+
+* die laufende Nummer der Änderung, eingefärbt entsprechend dem Änderungstyp;
+* den Bezeichner der Aktivität, in der die Änderung vorgenommen wurde;
+* den Wert der Variablen nach der Änderung;
+* Datum und Uhrzeit der Änderung;
+* die Schaltfläche *View details*, die die <<variable-change-details,Details der Änderung>> öffnet.
+
+Verwenden Sie die Pfeilschaltflächen, um durch die Karten zu blättern, und die Schließen-Schaltfläche neben dem Variablennamen, um den Verlauf auszublenden.
+
+Klicken Sie auf eine Karte, um die zugehörige Aktivität auf dem Diagramm hervorzuheben.
+
+[[unknown-activity]]
+==== Änderungen ohne Bezug zu einer Aktivität
+
+Einige Änderungen sind keiner Aktivität zugeordnet, zum Beispiel Variablen, die über die API geändert wurden.
+Solche Karten zeigen *Unknown activity* mit einem Hilfesymbol an.
+Wenn Sie auf eine solche Karte klicken, wird auf dem Diagramm die nächstgelegene Aktivität ausgewählt, die vor dem Zeitpunkt der Änderung abgeschlossen wurde.
+Gibt es keine solche Aktivität, wird eine Warnmeldung angezeigt.
+
+[[element-context-menu]]
+== Kontextmenü eines BPMN-Elements
+
+Klicken Sie mit der rechten Maustaste auf ein beliebiges Element des Prozessinstanz-Diagramms, um dessen Kontextmenü *Activity details* zu öffnen.
+Das Menü zeigt Folgendes an:
+
+* den *Typ* des BPMN-Elements;
+* *Id* und *Name* des Elements aus der BPMN-XML, jeweils mit einer Kopierschaltfläche;
+* für ausgeführte Elemente den Abschnitt *Activity instance*:
+** den Status der Aktivitätsinstanz (*Running* oder *Completed*);
+** die *Startzeit* und bei abgeschlossenen Aktivitäten die *Endzeit*;
+* für Multi-Instanz-Aktivitäten den Abschnitt *Activity instances* mit der Anzahl der Instanzen anstelle von Status und Zeiten;
+* die Aktion *Variable changes* für laufende und abgeschlossene Aktivitäten, die <<activity-variable-changes,die Variablenänderungen der Aktivität anzeigt>>.
+
+[NOTE, caption="Hinweis"]
+====
+Die BPM-Engine speichert für eine laufende Aktivität mit einem Incident keine historische Aktivitätsinstanz.
+Daher wird für solche Aktivitäten keine Startzeit angezeigt.
+====
+
+[[variable-change-details]]
+== Details der Änderung
+
+Weitere Informationen sind in den folgenden Dialogen verfügbar:
+
+* *Variable change* – wird über die Spalte *Id* oder die Schaltfläche *View details* auf einer Änderungskarte geöffnet.
+Zeigt den Variablennamen, die Revision, den Variablentyp, den Änderungstyp, Datum und Uhrzeit, das Kennzeichen *On process start*, die Bezeichner der Aktivitätsinstanz und der Variableninstanz sowie den vollständigen Wert mit der Schaltfläche *Copy* an.
+Bei Dateivariablen kann die Datei heruntergeladen werden, bei Objektvariablen werden der Objekttyp und das Serialisierungsformat angezeigt.
++
+image::process-variable-history-6.png[align="center", width="1552"]
+* *Variable instance* – wird über die Spalte *Variable instance* geöffnet.
+Enthält den Tab *General* und den Tab *Changes* mit allen Änderungen dieser Variableninstanz.
+* *Activity instance* – wird über die Spalte *Activity instance* geöffnet.
+Enthält den Tab *General* und den Tab *Variable changes* mit allen Variablenänderungen, die in dieser Aktivitätsinstanz vorgenommen wurden.
+
+[[change-type]]
+== Bestimmung des Änderungstyps
+
+Die BPM-Engine speichert den Typ einer Variablenänderung nicht explizit, daher berechnet Flowset Control ihn:
+
+* *Delete* – die Variable hat nach der Änderung keinen Wert (bei Dateivariablen – keinen Dateinamen);
+* *Update* – in allen anderen Fällen.
+
+Ob eine Variable erstellt wurde, ist keine Eigenschaft einer einzelnen Änderung: Es wird anhand des gesamten Verlaufs der Variableninstanz bestimmt.
+Daher wird in Tabellen und im Dialog *Variable change* die erste Änderung als *Update* angezeigt, während sie auf dem Diagramm und in den Karten als Erstellung markiert wird (grüne Markierung).
+
+[NOTE, caption="Hinweis"]
+====
+Bei Variablen der Typen `Null` und `Bytes` sowie bei nicht serialisierbaren Objekten liefert die BPM-Engine nicht genügend Informationen, um ein Löschen zu erkennen.
+Änderungen solcher Variablen werden immer als *Update* angezeigt.
+====
+
+[[modification-integration]]
+== Zusammenspiel mit der Prozessinstanz-Modifikation
+
+Die Anzeige von Variablenänderungen nach Aktivität, die Anzeige des Verlaufs einer einzelnen Variablen und die xref:control:process-instance-modification.adoc[Prozessinstanz-Modifikation] sind getrennte Diagrammmodi: Es kann immer nur einer von ihnen aktiv sein.
+Beim Wechsel zwischen den Modi werden Auswahl und Daten des vorherigen Modus zurückgesetzt.
+
+Der Variablenverlauf hilft bei der Auswahl der Aktivität, ab der der Prozess neu gestartet werden soll.
+Wenn in einem der Modi des Variablenverlaufs eine abgeschlossene Aktivität ausgewählt ist und Sie in den Modifikationsmodus wechseln, fragt Flowset Control, ob die ausgewählte Aktivität als Zielaktivität verwendet werden soll.
+Klicken Sie auf *Yes*, um sie als Zielaktivität der Modifikation vorauszuwählen.
