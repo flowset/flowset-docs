@@ -1,0 +1,253 @@
+[[app-properties]]
+= Application Properties
+
+Flowset Control is a Spring Boot and Jmix application, so it is configured with the standard Spring Boot mechanisms. This page lists the properties specific to Flowset Control and the most important general ones. The full list of Jmix platform properties (`jmix.*`) with details is in the https://docs.jmix.io/jmix/app-properties.html[Jmix documentation^]; Spring Boot properties (`server.*`, `spring.*`, `logging.*`, `management.*`) are described in the https://docs.spring.io/spring-boot/appendix/application-properties/index.html[Spring Boot documentation^].
+
+[[how-to-set]]
+== How to Set a Property
+
+Any property can be set in one of the ways below. They are listed in ascending order of precedence: when the same property is set in several places, the value from the higher-precedence source wins.
+
+[cols="1,2,2", options="header"]
+|===
+| Method | Example | Where it is used
+
+| External `application.properties` file
+| `config/application.properties` next to the JAR:
+`server.port=9090`
+| Portable distribution. Spring Boot automatically reads the file from the `./config/` directory relative to the working directory.
+
+| Environment variable
+| `SERVER_PORT=9090`
+| Docker, Kubernetes, systemd. The variable name is derived from the property name: dots and dashes become `_`, letters are upper-cased (relaxed binding). For example, `flowset.control.features.modification-enabled` → `FLOWSET_CONTROL_FEATURES_MODIFICATION_ENABLED`.
+
+| JVM system property
+| `-Dserver.port=9090`
+| `java -D... -jar`, WildFly (`standalone.conf`).
+
+| Command-line argument
+| `--server.port=9090`
+| `java -jar flowset-control.jar --server.port=9090` or `./run.sh --server.port=9090` in the portable distribution.
+|===
+
+Restart the application after changing properties.
+
+[[server]]
+== Server
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `server.port`
+| `8082`
+| HTTP port of the application.
+
+| `server.servlet.session.cookie.name`
+| `CONTROL_JSESSION`
+| Session cookie name. Change it when several Jmix applications run on the same domain.
+
+| `jmix.core.available-locales`
+| `en,de,es,ru`
+| UI languages available to users.
+
+| `management.endpoints.web.exposure.include`
+| `health,info`
+| Spring Boot Actuator endpoints exposed over HTTP (`/actuator/health`, `/actuator/info`).
+|===
+
+[[database]]
+== Database
+
+See xref:database.adoc[] for the supported databases.
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `main.datasource.url`
+| embedded HSQLDB
+| JDBC URL of the Flowset Control database.
+
+| `main.datasource.username`
+| `sa`
+| Database user name.
+
+| `main.datasource.password`
+| empty
+| Database user password.
+
+| `main.datasource.driver-class-name`
+| derived from the URL
+| JDBC driver class. Required only when it cannot be detected automatically.
+|===
+
+The connection pool is configured with `main.datasource.hikari.*` properties (for example, `main.datasource.hikari.maximum-pool-size`); see the https://github.com/brettwooldridge/HikariCP#gear-configuration-knobs-baby[HikariCP documentation^].
+
+[[engine]]
+== BPM Engine Connection
+
+Engines themselves are added in the UI (see xref:connecting-engine.adoc[]). The properties below control how the application calls the engine REST API.
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `spring.cloud.openfeign.client.config.default.connect-timeout`
+| `10000`
+| Connection timeout for engine REST API calls, ms.
+
+| `spring.cloud.openfeign.client.config.default.read-timeout`
+| `30000`
+| Read timeout for engine REST API calls, ms. Increase it when working with large result sets.
+
+| `flowset.control.engine.offset-lifetime-in-millis`
+| `10000`
+| Lifetime of the computed clock offset between the engine and the application, ms. The offset is used when displaying engine event times.
+
+| `flowset.control.engine.oauth2.lock-enabled`
+| `false`
+| Lock while obtaining an access token for an engine with OAuth2 authentication, so that concurrent threads do not request tokens in parallel.
+
+| `flowset.control.engine.oauth2.max-retries`
+| `5`
+| Maximum number of retries when obtaining an access token.
+
+| `flowset.control.ui.connection-check.interval-sec`
+| `30`
+| Interval of the background availability check of the selected engine from the UI, seconds.
+
+| `flowset.control.ui.connection-check.connect-timeout`
+| `10000`
+| Connection timeout of the availability check, ms.
+
+| `flowset.control.ui.connection-check.read-timeout`
+| `10000`
+| Read timeout of the availability check, ms.
+
+| `flowset.control.ui.connection-check.max-retries`
+| `1`
+| Number of retries when the check fails.
+
+| `flowset.control.ui.connection-check.retry-timeout`
+| `100`
+| Pause between retries, ms.
+|===
+
+[[ui]]
+== User Interface
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `flowset.control.ui.dashboard-load-timeout-sec`
+| `300`
+| Timeout for loading dashboard data, seconds.
+
+| `flowset.control.ui.engine-time-load-timeout-sec`
+| `300`
+| Timeout for retrieving the current engine time, seconds.
+
+| `flowset.control.ui.recent-activity-max-results`
+| `500`
+| Maximum number of entries in the recent activity block on the dashboard.
+
+| `flowset.control.ui.recent-activity-days`
+| `7`
+| How many days back recent activity is loaded.
+|===
+
+[[security]]
+== Security
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `flowset.control.security.login-mode`
+| not set
+| Login mode. The value `oidc` enables login through an external OpenID Connect provider and requires the `spring.security.oauth2.client.*` and `jmix.oidc.*` properties. See xref:oidc.adoc[] for details and a Keycloak example.
+
+| `ui.login.defaultUsername`, `ui.login.defaultPassword`
+| not set
+| Pre-fill the login form fields. Convenient for demo stands; do not use in production.
+|===
+
+[[features]]
+== Enterprise Features
+
+[NOTE, caption="Enterprise feature"]
+====
+The properties in this section apply to the *Flowset Control Enterprise* edition only.
+====
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `flowset.control.features.modification-enabled`
+| `true`
+| Whether xref:process-instance-modification.adoc[process instance modification] is available in the UI.
+
+| `flowset.control.diagnostics.no-worker-threshold-minutes`
+| `15`
+| Process instance diagnostics threshold: an external task is reported as "no worker" when no worker has locked it for longer than this time, minutes.
+
+| `flowset.control.diagnostics.unassigned-threshold-minutes`
+| `240`
+| Process instance diagnostics threshold: a user task is reported as "unassigned" when it has had no assignee for longer than this time, minutes.
+|===
+
+[[ai]]
+== AI Assistant
+
+[NOTE, caption="Enterprise feature"]
+====
+The properties in this section apply to the *Flowset Control Enterprise* edition only.
+====
+
+The assistant is built on Spring AI and connects to any OpenAI-compatible API. Configuration scenarios for the portable distribution and Docker are described on the xref:ai-assistant.adoc#configuration[AI Assistant] page.
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `spring.ai.openai.api-key`
+| empty
+| API key of the LLM provider. Until it is set, the assistant shows a "not configured" message.
+
+| `spring.ai.openai.base-url`
+| not set
+| Base URL of an OpenAI-compatible endpoint, without the `/v1` suffix. Optional for OpenAI; for locally hosted models point it to your server, for example Ollama.
+
+| `spring.ai.openai.chat.model`
+| not set
+| Model name as expected by the provider. Optional: without it the Spring AI default model is used.
+|===
+
+[[logging]]
+== Logging
+
+Log levels are set with the standard `logging.level.<logger>` properties. The most useful ones for troubleshooting:
+
+[cols="2,1,3", options="header"]
+|===
+| Property | Default | Purpose
+
+| `logging.level.io.flowset`
+| `info`
+| Logs of the Flowset Control application itself.
+
+| `logging.level.org.camunda.community.rest.client.api`
+| not set
+| `debug` logs requests to the engine REST API (together with `spring.cloud.openfeign.client.config.default.logger-level=BASIC`).
+
+| `logging.level.io.jmix`
+| `info`
+| Jmix platform logs.
+
+| `logging.level.eclipselink.logging.sql`
+| `info`
+| `debug` prints the SQL generated by the ORM.
+|===
