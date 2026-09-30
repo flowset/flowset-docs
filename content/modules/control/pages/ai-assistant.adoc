@@ -20,27 +20,77 @@ image::ai-assistant-2.png[align="center", width="1552"]
 
 The side panel header contains three controls: the clock icon opens the chat hub with all conversations, the plus icon starts a new chat, and the cross closes the panel. The panel width can be adjusted by dragging its left edge.
 
+[[configuration]]
 == Configuration
 
-The assistant connects to a large language model through an OpenAI-compatible API. The connection is configured with environment variables:
+The assistant connects to a large language model through an OpenAI-compatible API.
+The connection is defined with the standard Spring AI properties — like any other xref:app-properties.adoc[application property].
 
-[cols="1,2"]
+[cols="2,2,3"]
 |===
-|Variable |Purpose
+|Property |Environment variable |Purpose
 
-|`AI_API_KEY`
+|`spring.ai.openai.api-key`
+|`SPRING_AI_OPENAI_API_KEY`
 |API key of the LLM provider. Required for the assistant to answer.
 
-|`AI_BASE_URL`
+|`spring.ai.openai.base-url`
+|`SPRING_AI_OPENAI_BASE_URL`
 |Base URL of an OpenAI-compatible endpoint. Optional; without the `/v1` suffix.
 
-|`AI_MODEL`
+|`spring.ai.openai.chat.model`
+|`SPRING_AI_OPENAI_CHAT_MODEL`
 |Model name as expected by the provider. Optional.
 |===
 
-Any OpenAI-compatible provider can be used, including locally hosted models (for example, via Ollama) — in that case the entire AI loop, including the model, stays inside your network perimeter.
+=== Portable Distribution
 
-The application starts and works normally without these variables. In that case the assistant UI stays available, but clearly indicates that it is not configured: the *AI* button tooltip explains what is missing, and an information banner is shown in the side panel and on the chat hub page.
+Uncomment and fill in the *AI Assistant* block in `config/application.properties` next to the JAR:
+
+[source,properties]
+----
+spring.ai.openai.api-key=<your API key>
+spring.ai.openai.base-url=https://api.openai.com
+spring.ai.openai.chat.model=gpt-4o-mini
+----
+
+The file is read automatically when the application is started with `run.sh` / `run.bat`; restart the application after changing it.
+
+=== Docker
+
+Pass the settings to the container as environment variables:
+
+[source,yaml]
+----
+services:
+  flowset-control:
+    image: <Flowset Control Enterprise image>
+    environment:
+      SPRING_AI_OPENAI_API_KEY: "<your API key>"
+      SPRING_AI_OPENAI_BASE_URL: "https://api.openai.com"
+      SPRING_AI_OPENAI_CHAT_MODEL: "gpt-4o-mini"
+----
+
+Keep the API key out of `docker-compose.yml`: put it into an `.env` file next to it or into the orchestrator's secret store.
+
+=== Local Models
+
+Any OpenAI-compatible provider can be used, including locally hosted models (for example, via Ollama) — in that case the entire AI loop, including the model, stays inside your network perimeter:
+
+[source,properties]
+----
+spring.ai.openai.base-url=http://localhost:11434
+spring.ai.openai.chat.model=qwen2.5:14b
+----
+
+[IMPORTANT, caption="Minimum model"]
+====
+The smallest locally hosted model the assistant works reliably with is `qwen2.5:14b`.
+The assistant relies on tool calling and a long screen context; smaller models do not handle this consistently — they answer without querying the data or break off the conversation.
+Larger models improve answer quality.
+====
+
+The application starts and works normally without these settings. In that case the assistant UI stays available, but clearly indicates that it is not configured: the *AI* button tooltip explains what is missing, and an information banner is shown in the side panel and on the chat hub page.
 
 // TODO: screenshot — the "assistant is not configured" banner in the side panel
 image::ai-assistant-3.png[align="center", width="785"]
