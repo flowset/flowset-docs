@@ -1,6 +1,7 @@
 * xref:control:index.adoc[]
 ** xref:control:setup.adoc[]
 ** xref:control:app-properties.adoc[]
+** xref:control:license.adoc[]
 ** xref:control:dashboard.adoc[]
 ** xref:control:connecting-engine.adoc[]
 ** xref:control:engine-monitoring.adoc[]
