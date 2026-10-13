@@ -1,0 +1,99 @@
+= Asistente de IA
+
+[NOTE, caption="Enterprise Feature"]
+====
+Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
+====
+
+El asistente de IA ayuda a los operadores a entender qué está ocurriendo en sus procesos y a decidir qué hacer a continuación. Puede resumir las incidencias abiertas, explicar cómo funciona un proceso desplegado, diagnosticar por qué una instancia de proceso está bloqueada y responder preguntas libres sobre los datos visibles en Flowset Control. El asistente solo lee datos: cualquier acción (reintentar un job, completar una tarea, finalizar una instancia) se sigue realizando desde las pantallas y los botones estándar de Control.
+
+== Abrir el asistente
+
+El asistente está disponible desde dos lugares:
+
+* El botón *AI* del encabezado de la aplicación abre un panel lateral a la derecha. El panel permanece abierto mientras navegas entre pantallas, de modo que puedes mantener la conversación junto a los datos con los que estás trabajando.
+* El elemento de menú *AI assistant* abre el centro de chats: una página completa con todas tus conversaciones, donde puedes buscarlas, cambiarles el nombre, continuarlas o eliminarlas.
+
+image::ai-assistant-1.png[align="center", width="1552"]
+
+image::ai-assistant-2.png[align="center", width="1552"]
+
+El encabezado del panel lateral contiene tres controles: el icono del reloj abre el centro de chats con todas las conversaciones, el icono del signo más inicia un nuevo chat y la cruz cierra el panel. El ancho del panel se puede ajustar arrastrando su borde izquierdo.
+
+== Configuración
+
+El asistente se conecta a un modelo de lenguaje de gran tamaño (LLM) a través de una API compatible con OpenAI. La conexión se configura mediante variables de entorno:
+
+[cols="1,2"]
+|===
+|Variable |Finalidad
+
+|`AI_API_KEY`
+|Clave de API del proveedor del LLM. Necesaria para que el asistente pueda responder.
+
+|`AI_BASE_URL`
+|URL base de un endpoint compatible con OpenAI. Opcional; sin el sufijo `/v1`.
+
+|`AI_MODEL`
+|Nombre del modelo tal como lo espera el proveedor. Opcional.
+|===
+
+Se puede utilizar cualquier proveedor compatible con OpenAI, incluidos los modelos alojados localmente (por ejemplo, mediante Ollama); en ese caso, todo el ciclo de IA, incluido el modelo, permanece dentro del perímetro de tu red.
+
+La aplicación se inicia y funciona con normalidad sin estas variables. En ese caso, la interfaz del asistente sigue disponible, pero indica claramente que no está configurado: la información emergente del botón *AI* explica qué falta y se muestra un banner informativo en el panel lateral y en la página del centro de chats.
+
+// TODO: screenshot — the "assistant is not configured" banner in the side panel
+image::ai-assistant-3.png[align="center", width="785"]
+
+== Iniciar una conversación
+
+Una conversación nueva y vacía se abre con una pantalla de inicio: un campo de entrada y plantillas sugeridas para las preguntas más habituales.
+
+image::ai-assistant-4.png[align="center", width="785"]
+
+* *What happened? Incident summary*: una visión general de las incidencias abiertas, agrupadas por tipo y proceso, con recomendaciones.
+* *Summary of all processes*: los procesos desplegados, sus versiones, el número de instancias activas y las áreas problemáticas.
+* *Analyze the current object*: aparece cuando la pantalla abierta muestra un único objeto (una instancia de proceso, una incidencia, una definición de proceso o una tarea de usuario); el asistente analiza exactamente ese objeto.
+
+También puedes simplemente escribir una pregunta. El asistente responde en el idioma de tu pregunta.
+
+== Contexto de la pantalla
+
+El asistente sabe lo que estás viendo. El chip situado debajo del campo de mensaje muestra el objeto de la pantalla actual, por ejemplo, la business key de una instancia de proceso:
+
+// TODO: screenshot — context chip under the composer showing "@ ORDER-42"
+image::ai-assistant-5.png[align="center", width="785"]
+
+Cuando te refieres a «el proceso actual», «esta instancia» o algo similar, el asistente lo asocia al objeto de tu pantalla y carga sus datos por sí mismo. En las pantallas sin un único objeto (listas, el panel de control) el chip muestra *No subject on this screen* y el asistente pregunta a qué objeto te refieres en lugar de suponerlo.
+
+Con el asistente solo se comparte una referencia al objeto (su tipo e identificador); los datos en sí se cargan a través de los mismos servicios con control de acceso que utilizan las pantallas de Control.
+
+== Qué puede hacer el asistente
+
+* *Diagnosticar una instancia de proceso bloqueada.* El asistente determina dónde se encuentra la instancia en ese momento y por qué está esperando (un job fallido, una tarea externa sin worker, una tarea de usuario sin asignar o vencida, un temporizador que todavía no ha vencido, una instancia suspendida) y recomienda el siguiente paso. Cuando la espera es un comportamiento normal del proceso (por ejemplo, un temporizador que se activa mañana), el asistente lo indica explícitamente en lugar de recomendar una intervención.
++
+image::ai-assistant-6.png[align="center", width="785"]
++
+image::ai-assistant-7.png[align="center", width="785"]
+
+* *Analizar incidencias.* Resúmenes de las incidencias abiertas por tipo y proceso, y análisis de la causa raíz de una incidencia concreta con una acción recomendada de entre las herramientas de Control (reintentar, cambiar una variable, finalizar la instancia, escalar a los desarrolladores).
+
+* *Explicar un proceso.* Una explicación paso a paso de un proceso desplegado basada en su modelo BPMN: qué hace, quién participa y qué ocurre con los temporizadores, los errores y los mensajes.
+
+* *Responder con enlaces.* Los objetos mencionados en las respuestas (instancias de proceso, incidencias, definiciones, tareas de usuario) se muestran como enlaces que abren las pantallas correspondientes de Control.
+
+== Conversaciones
+
+Las conversaciones se guardan de forma persistente. El panel lateral continúa tu conversación más reciente; el botón *New chat* inicia una nueva. La página del centro de chats muestra todas las conversaciones del usuario actual.
+
+image::ai-assistant-8.png[align="center", width="1552"]
+
+image::ai-assistant-9.png[align="center", width="1552"]
+
+
+== Acceso a datos y seguridad
+
+* El asistente trabaja estrictamente a través de la capa de servicios de Flowset Control: solo ve los datos que el usuario actual tiene permitido ver, en el motor seleccionado en ese momento.
+* Todas las herramientas del asistente son de solo lectura. El asistente recomienda acciones, pero nunca las ejecuta.
+* Las entidades sensibles de la aplicación (usuarios, conexiones a motores, datos de licencia) están excluidas del acceso a datos del asistente.
+* Sin una clave de API, ningún dato sale de la aplicación: el asistente simplemente informa de que no está configurado.
