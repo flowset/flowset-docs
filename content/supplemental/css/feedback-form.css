@@ -1,7 +1,7 @@
 .feedback-form {
     display: none;
     padding: 16px 24px;
-    border: 1px solid #E1E1E1;
+    border: 1px solid var(--fl-border);
     border-radius: 8px;
     margin: 32px -1rem -1rem;
 }
@@ -24,8 +24,8 @@
 }
 
 .feedback-form__btn {
-    border: 1px solid #3D72D6;
-    background: #3D72D6;
+    border: 1px solid var(--fl-btn);
+    background: var(--fl-btn);
     border-radius: 6px;
     cursor: pointer;
     padding: 12px 16px;
@@ -50,10 +50,8 @@
 }
 
 .feedback-form__btn_dark {
-    border-color: #043278;
-    background: #043278;
- //    border-color: #104656;
- //       background: #104656;
+    border-color: var(--fl-btn-hover);
+    background: var(--fl-btn-hover);
     color: #fff;
 }
 
@@ -64,7 +62,7 @@
 
 .feedback-form__title {
     margin-right: 20px;
-    color: #424242;
+    color: var(--fl-text);
     font-weight: 700;
     font-size: 16px;
     line-height: 26px;
@@ -78,7 +76,7 @@
 }
 
 .feedback-form__input {
-    border: 1px solid #C1C1C1;
+    border: 1px solid var(--fl-border-strong);
     border-radius: 6px;
     padding: 12px 8px;
     width: 100%;
@@ -94,7 +92,7 @@
 }
 
 .feedback-form__label {
-    color: #424242;
+    color: var(--fl-text);
     font-size: 14px;
     line-height: 20px;
 }
@@ -132,7 +130,7 @@
     color: indianred;
     border: 2px solid;
     padding: 10px;
-    font-family: sans-serif;
+    font-family: inherit;
     margin-right: 10px;
 }
 

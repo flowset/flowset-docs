@@ -1,205 +1,13 @@
-/* This file contains CSS rules that override the rules defined by Antora Default UI */
-
-/* Right-aligned top-bar cluster: search, language, theme toggle, links.
-   Desktop only; mobile keeps the default collapsible burger menu. */
-@media screen and (min-width: 1024px) {
-    .navbar-menu {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: flex-end;
-    }
-}
-
-.navbar-end {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.lang-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.lang-dropdown-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    color: var(--fl-text);
-}
-
-.lang-dropdown-toggle:hover,
-.lang-dropdown.opened .lang-dropdown-toggle {
-    border-color: var(--fl-border);
-    background: var(--fl-bg-subtle);
-}
-
-.lang-caret {
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid currentColor;
-    transition: transform 0.15s ease;
-}
-
-.lang-dropdown.opened .lang-caret {
-    transform: rotate(180deg);
-}
-
-.lang-dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: calc(100% + 4px);
-    margin: 0;
-    padding: 4px 0;
-    list-style: none;
-    min-width: 140px;
-    background: var(--fl-surface);
-    border: 1px solid var(--fl-border);
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    z-index: 100;
-}
-
-.lang-dropdown.opened .lang-dropdown-menu {
-    display: block;
-}
-
-.lang-dropdown-item a {
-    display: block;
-    padding: 7px 14px;
-    text-decoration: none;
-    color: var(--fl-text);
-    white-space: nowrap;
-}
-
-.lang-dropdown-item a:hover {
-    background: var(--fl-bg-subtle);
-    color: var(--fl-brand);
-}
-
-.lang-dropdown-item.is-current a {
-    font-weight: bold;
-    color: var(--fl-brand);
-    cursor: default;
-}
-
 .doc {
     hyphens: none;
-}
-
-a.live-demo-btn {
-    background-color: #fdcb6e;
-    text-decoration: none;
-    padding: 8px 20px;
-    color: #32346b;
-    border-radius: 6px;
-    font-weight: bold;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-a.live-demo-btn:hover {
-    background-color: #ffd588;
-}
-
-a.live-demo-btn:active, a.live-demo-btn:focus {
-    outline: none;
-}
-
-.doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 {
-    color: #104656;
 }
 
 .doc pre.highlight code {
     font-size: 0.8rem;
 }
 
-nav.navbar {
-    background: rgba(255, 255, 255, 1);
-//    background: #104656;
-}
-
-a, .doc a, .doc a:hover {
-    color: #104656;
-}
-
-a.vaadin-docs-btn {
-    background-color: #2486f9;
-    text-decoration: none;
-    padding: 6px 15px;
-    color: #fdfdfd;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: smaller;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-a.vaadin-docs-btn:hover {
-    background-color: #3890f8;
-    color: #fdfdfd;
-}
-
-a.vaadin-docs-btn:active, a.vaadin-docs-btn:focus {
-    outline: none;
-}
-
-a.mdn-docs-btn {
-    background-color: #575757;
-    text-decoration: none;
-    padding: 6px 15px;
-    color: #f8f8f9;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: smaller;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-a.mdn-docs-btn:hover {
-    background-color: #727272;
-    color: #f8f8f9;
-}
-
-a.mdn-docs-btn:active, a.mdn-docs-btn:focus {
-    outline: none;
-}
-
-a.echarts-docs-btn {
-    background-color: #B03A5B;
-    text-decoration: none;
-    padding: 6px 15px;
-    color: #fdfdfd;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: smaller;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-a.echarts-docs-btn:hover {
-    background-color: #B03A5B;
-    color: #fdfdfd;
-}
-
-a.echarts-docs-btn:active, a.echarts-docs-btn:focus {
-    outline: none;
-}
-
 .navbar {
     height: 5em;
-    border-bottom: 1px solid #e1e1e1;
 }
 
 .article {
@@ -207,25 +15,31 @@ a.echarts-docs-btn:active, a.echarts-docs-btn:focus {
 }
 
 .toolbar {
-    top: 4.4rem;
-    background-color: #fff;
+    top: 5.3em;
+    background-color: var(--fl-bg);
 }
 
 .nav {
-    background-color: #fff;
-    border-right: 1px solid #e1e1e1;
+    position: fixed;
+    top: 5.3em;
+    width: inherit;
+    border-right: 1px solid var(--fl-border);
+    background-color: var(--fl-bg);
+    height: calc(100vh - 5.3em)
 }
 
 .nav-panel-menu {
-    height: calc(100% - 4.4rem);
+    top: 5.3em;
+    height: calc(100% - 4.4em);
 }
 
 @media screen and (min-width: 1024px) {
+    /* Sticky, not fixed: the nav stops above the footer */
     .nav {
-        top: 4.4rem;
+        position: sticky;
         -webkit-box-shadow: none;
         box-shadow: none;
-        position: sticky;
-        height: calc(100vh - 4.4rem);
     }
 }
+
+.videoblock { border: 1px solid var(--fl-border); }

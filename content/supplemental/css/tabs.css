@@ -1,0 +1,22 @@
+.doc .tabs > .tablist > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--fl-border);
+}
+.doc .tabs > .tablist li {
+  margin: 0;
+  padding: .5rem .9rem;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  color: var(--fl-muted);
+  font-size: .9rem;
+  cursor: pointer;
+}
+.doc .tabs > .tablist li:hover { color: var(--fl-text); }
+.doc .tabs > .tablist li.is-selected { border-color: var(--fl-border); background: var(--fl-bg-soft); color: var(--fl-action); font-weight: 600; }
+.doc .tabs > .tabpanel { padding: 1rem 1.1rem; border: 1px solid var(--fl-border); border-top: 0; border-radius: 0 0 10px 10px; }

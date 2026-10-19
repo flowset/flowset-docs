@@ -69,7 +69,7 @@
     }).join('');
     container.innerHTML =
       '<div class="lang-dropdown">' +
-        '<button type="button" class="lang-dropdown-toggle" aria-haspopup="true" aria-expanded="false">' +
+        '<button type="button" class="lang-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="' + ((window.FL_I18N && window.FL_I18N.language) || 'Language') + '" title="' + ((window.FL_I18N && window.FL_I18N.language) || 'Language') + '">' +
           cur.short + '<span class="lang-caret"></span>' +
         '</button>' +
         '<ul class="lang-dropdown-menu">' + menu + '</ul>' +

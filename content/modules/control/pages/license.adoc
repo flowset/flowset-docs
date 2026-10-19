@@ -1,10 +1,6 @@
 [[license]]
 = License
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Without an installed license, Flowset Control Enterprise runs with the Community edition feature set: Enterprise features are marked with a lock icon in the menu and are not available. To enable them, install a license key.
 

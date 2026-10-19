@@ -4,12 +4,7 @@ En esta guía recorrerás todo el proceso: desde la instalación hasta el modela
 
 Conozcamos Flowset a través del proceso de demostración **«Solicitud de viaje de negocios»**.
 
-+++
-<div class="card-block">
-  <p>¿Quieres probar Flowset Control ahora mismo? Usa el entorno de demostración público y explora la interfaz en cuestión de minutos.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Entorno de demostración</a>
-</div>
-+++
+TIP: ¿Quieres probar Flowset Control ahora mismo? Abre el https://demo-control.flowset.io[entorno de demostración público^] y explora la interfaz en cuestión de minutos.
 
 == Requisitos previos
 

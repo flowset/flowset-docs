@@ -75,7 +75,7 @@
     matches.sort(function (a, b) { return a.rank - b.rank; });
 
     if (!matches.length) {
-      results.innerHTML = '<div class="search-modal__empty">Nothing found for “' + escapeHtml(q) + '”</div>';
+      results.innerHTML = '<div class="search-modal__empty">' + escapeHtml((window.FL_I18N && window.FL_I18N.noResults) || 'Nothing found for') + ' “' + escapeHtml(q) + '”</div>';
       return;
     }
     results.innerHTML = matches.map(function (m, i) {

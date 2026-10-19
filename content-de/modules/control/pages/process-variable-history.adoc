@@ -1,10 +1,6 @@
 [[process-variable-history]]
 = Verlauf der Prozessvariablen
-
-[NOTE, caption="Enterprise-Funktion"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Der Tab *History → Variables* einer Prozessinstanz zeigt nur den letzten Wert jeder Prozessvariablen an.
 Der Verlauf der Prozessvariablen zeigt *jede Änderung* einer Variablen: wann sie erfolgte, in welcher Aktivität, welchen Wert die Variable erhielt und ob die Variable erstellt, aktualisiert oder gelöscht wurde.

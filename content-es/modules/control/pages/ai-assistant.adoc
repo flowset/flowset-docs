@@ -1,9 +1,5 @@
 = Asistente de IA
-
-[NOTE, caption="Enterprise Feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 El asistente de IA ayuda a los operadores a entender qué está ocurriendo en sus procesos y a decidir qué hacer a continuación. Puede resumir las incidencias abiertas, explicar cómo funciona un proceso desplegado, diagnosticar por qué una instancia de proceso está bloqueada y responder preguntas libres sobre los datos visibles en Flowset Control. El asistente solo lee datos: cualquier acción (reintentar un job, completar una tarea, finalizar una instancia) se sigue realizando desde las pantallas y los botones estándar de Control.
 

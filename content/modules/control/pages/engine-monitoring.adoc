@@ -1,10 +1,6 @@
 [[monitoring]]
 = BPM Engine Monitoring
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Flowset Control allows you to view the current state of business processes running inside the engine. However, it is also useful for a system administrator to have information about the overall system health — such as the number of CPU cores, available RAM, disk space, and so on. This information enables administrators to receive early warnings about increasing load. Combined with automatic or manual system scaling, Flowset Control provides a complete solution for managing business process engines.
 

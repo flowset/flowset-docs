@@ -1,11 +1,5 @@
 = Sending a Message
-
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
-
+:page-edition: enterprise
 
 Flowset Control lets you send a Message to a connected BPM engine directly from the process instance diagram.
 This is useful when a process is waiting for an external event and an administrator needs to continue execution without manually calling the REST API through Postman or `curl`.

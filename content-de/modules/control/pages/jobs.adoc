@@ -1,9 +1,5 @@
 = Jobs
-
-[NOTE, caption="Enterprise-Funktion"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Der Bereich *Jobs* dient dem Anzeigen und Verwalten der asynchronen Jobs der BPM-Engine.
 

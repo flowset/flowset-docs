@@ -1,9 +1,5 @@
 = Heatmap
-
-[NOTE, caption="Enterprise-Funktion"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Heatmaps, eine Funktion von Flowset Control Enterprise, bieten eine visuelle Darstellung der am häufigsten genutzten Ausführungspfade in Geschäftsprozessen. Dadurch lassen sich Engpässe und Problembereiche leicht erkennen, was zur Optimierung von Prozessen beiträgt.
 

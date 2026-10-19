@@ -1,9 +1,5 @@
 = KI-Assistent
-
-[NOTE, caption="Enterprise-Funktion"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Der KI-Assistent hilft Operatoren zu verstehen, was in ihren Prozessen geschieht, und zu entscheiden, was als Nächstes zu tun ist. Er kann offene Incidents zusammenfassen, die Funktionsweise eines deployten Prozesses erklären, diagnostizieren, warum eine Prozessinstanz hängt, und freie Fragen zu den in Flowset Control sichtbaren Daten beantworten. Der Assistent liest Daten ausschließlich — jede Aktion (einen Job erneut ausführen, eine Aufgabe abschließen, eine Instanz beenden) bleibt den regulären Ansichten und Schaltflächen von Control vorbehalten.
 

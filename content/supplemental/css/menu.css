@@ -1,10 +1,27 @@
-.paid::after {
-    content: "";
-    vertical-align: sub;
-    display: inline-block;
-    width: 1.2em;
-    height: 1.2em;
-    background-image: url("../img/enterprise.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
+.nav-menu .nav-link { display: flex; align-items: baseline; gap: .5rem; }
+.nav-ee {
+  flex: none;
+  margin-left: auto;
+  padding: 0 .3rem;
+  border: 1px solid var(--fl-ee-border);
+  border-radius: 4px;
+  font-size: .625rem;
+  font-weight: 700;
+  line-height: 1rem;
+  letter-spacing: .02em;
+  color: var(--fl-action, #176278);
+  background: var(--fl-bg, #FFFFFF);
 }
+.nav-item.is-current-page > .nav-link .nav-ee { background: transparent; }
+
+.doc .page-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: -.25rem 0 1.25rem; }
+.doc .page-tag {
+  display: inline-block;
+  padding: .1rem .65rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.doc .page-tag-ee { background: var(--fl-tint, #E2F0F2); color: var(--fl-action, #176278); }
+.doc .page-tag-since { background: var(--fl-bg-soft, #F5F9F9); color: var(--fl-muted, #56666D); font-weight: 500; }

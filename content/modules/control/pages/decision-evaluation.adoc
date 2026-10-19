@@ -1,9 +1,5 @@
 = Evaluating Decisions
-
-[NOTE, caption=Enterprise Feature]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Flowset Control allows you to evaluate a DMN decision table directly from the user interface without starting a BPM process.
 

@@ -1,9 +1,5 @@
 = Entscheidungen auswerten
-
-[NOTE, caption=Enterprise-Funktion]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Mit Flowset Control können Sie eine DMN-Entscheidungstabelle direkt über die Benutzeroberfläche auswerten, ohne einen BPM-Prozess zu starten.
 

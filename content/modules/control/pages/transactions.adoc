@@ -1,9 +1,5 @@
 = Transaction Boundaries
-
-[NOTE, caption=Enterprise Feature]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Transaction boundary visualization is a visual highlight of commit points and wait states of the BPM engine.
 The feature helps to:

@@ -81,8 +81,8 @@
         const closeButton = document.createElement('button');
         closeButton.type = 'button';
         closeButton.className = 'img-preview__close';
-        closeButton.setAttribute('aria-label', 'Close image preview');
-        closeButton.setAttribute('title', 'Close');
+        closeButton.setAttribute('aria-label', (window.FL_I18N && window.FL_I18N.closePreview) || 'Close image preview');
+        closeButton.setAttribute('title', (window.FL_I18N && window.FL_I18N.close) || 'Close');
         closeButton.innerHTML = '&times;';
 
         const image = document.createElement('img');

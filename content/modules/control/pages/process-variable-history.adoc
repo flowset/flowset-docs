@@ -1,10 +1,6 @@
 [[process-variable-history]]
 = Process Variable History
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 The *History → Variables* tab of a process instance shows only the latest value of each process variable.
 Process variable history shows *every change* of a variable: when it happened, in which activity, what value the variable received, and whether the variable was created, updated, or deleted.

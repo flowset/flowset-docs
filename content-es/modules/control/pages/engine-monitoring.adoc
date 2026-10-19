@@ -1,10 +1,6 @@
 [[monitoring]]
 = Monitoreo del motor BPM
-
-[NOTE, caption="Enterprise Feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 Flowset Control te permite ver el estado actual de los procesos de negocio en ejecución dentro del motor. Sin embargo, también resulta útil para un administrador de sistemas disponer de información sobre el estado general del sistema, como el número de núcleos de CPU, la memoria RAM disponible, el espacio en disco, etc. Esta información permite a los administradores recibir advertencias tempranas sobre el aumento de la carga. Combinado con el escalado automático o manual del sistema, Flowset Control proporciona una solución completa para gestionar motores de procesos de negocio.
 

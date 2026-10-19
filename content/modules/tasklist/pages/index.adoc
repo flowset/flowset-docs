@@ -1,9 +1,34 @@
-= Tasklist
+= Flowset Tasklist
+:navtitle: Tasklist
+:page-layout: module-home
+:description: Flowset Tasklist is a web application for working with user tasks within business processes executed in BPM engines. Tasklist provides end users with a convenient interface for interacting with tasks and processes — from starting them to completing them.
+:page-hero-primary: setup.adoc|Run Tasklist
+:page-hero-secondary: custom-forms.adoc|Custom forms
 
-*Flowset Tasklist* is a web application for working with user tasks within business processes executed in BPM engines.
-Tasklist provides end users with a convenient interface for interacting with tasks and processes — from starting them to completing them.
+== Getting started
 
-== Key Features
+[.cards]
+* xref:setup.adoc[]
++
+Run Tasklist from source or with Docker.
+* xref:connecting-engine.adoc[]
++
+Connect Tasklist to the REST API of a BPM engine.
+* xref:usage.adoc[]
++
+Start processes and complete user tasks.
+
+== Customization
+
+[.cards]
+* xref:custom-forms.adoc[]
++
+React components as start and task forms.
+* xref:theme.adoc[]
++
+Adjust the Ant Design theme to your brand.
+
+== Key features
 
 * *Task Management* – viewing, filtering, and completing tasks assigned to the user
 * *Process Management* – viewing available processes and starting new instances

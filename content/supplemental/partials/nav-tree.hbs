@@ -1,54 +1,15 @@
 {{#if navigation.length}}
 <ul class="nav-list">
   {{#each navigation}}
-  <li class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}} {{#if paid}}paid{{/if}}" data-depth="{{or ../level 0}}">
+  <li class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}" data-depth="{{or ../level 0}}">
     {{#if ./content}}
     {{#if ./items.length}}
     <button class="nav-item-toggle"></button>
     {{/if}}
     {{#if ./url}}
-    <a class="nav-link
-      {{~! mark paid (Enterprise) pages by page path (works for the en `flowset` and es `flowset-es` components) ~}}
-      {{#if (or
-        (eq ./url "/flowset/control/engine-monitoring.html")
-        (eq ./url "/flowset/control/jobs.html")
-        (eq ./url "/flowset/control/process-instance-modification.html")
-        (eq ./url "/flowset/control/batch-operations.html")
-        (eq ./url "/flowset/control/messages.html")
-        (eq ./url "/flowset/control/process-documentation.html")
-        (eq ./url "/flowset/control/decision-evaluation.html")
-        (eq ./url "/flowset/control/transactions.html")
-        (eq ./url "/flowset/control/heatmap.html")
-        (eq ./url "/flowset/control/ai-assistant.html")
-        (eq ./url "/flowset/control/process-variable-history.html")
-        (eq ./url "/flowset-es/control/engine-monitoring.html")
-        (eq ./url "/flowset-es/control/jobs.html")
-        (eq ./url "/flowset-es/control/process-instance-modification.html")
-        (eq ./url "/flowset-es/control/batch-operations.html")
-        (eq ./url "/flowset-es/control/messages.html")
-        (eq ./url "/flowset-es/control/process-documentation.html")
-        (eq ./url "/flowset-es/control/decision-evaluation.html")
-        (eq ./url "/flowset-es/control/transactions.html")
-        (eq ./url "/flowset-es/control/heatmap.html")
-        (eq ./url "/flowset-es/control/ai-assistant.html")
-        (eq ./url "/flowset-es/control/process-variable-history.html")
-        (eq ./url "/flowset-de/control/engine-monitoring.html")
-        (eq ./url "/flowset-de/control/jobs.html")
-        (eq ./url "/flowset-de/control/process-instance-modification.html")
-        (eq ./url "/flowset-de/control/batch-operations.html")
-        (eq ./url "/flowset-de/control/messages.html")
-        (eq ./url "/flowset-de/control/process-documentation.html")
-        (eq ./url "/flowset-de/control/decision-evaluation.html")
-        (eq ./url "/flowset-de/control/transactions.html")
-        (eq ./url "/flowset-de/control/heatmap.html")
-        (eq ./url "/flowset-de/control/ai-assistant.html")
-        (eq ./url "/flowset-de/control/process-variable-history.html")
-      )}}
-        paid
-      {{/if}}" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}"
-  >
-  {{{./content}}}
-</a>
+    <a class="nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}">{{{./content}}}
+      {{~#if (eq (page-edition ./url) 'enterprise')}}<span class="nav-ee" title="{{t 'eeFeature'}}">EE</span>{{/if~}}
+    </a>
     {{else}}
     <span class="nav-text">{{{./content}}}</span>
     {{/if}}
@@ -58,4 +19,3 @@
   {{/each}}
 </ul>
 {{/if}}
-

@@ -1,9 +1,5 @@
 = Batch-Operationen
-
-[NOTE, caption="Enterprise-Funktion"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Mit Flowset Control können Sie eine neue Batch-Operation erstellen und ausführen, die dieselbe Aktion gleichzeitig auf viele laufende Prozessinstanzen anwendet. Anstatt dieselbe Änderung Instanz für Instanz zu wiederholen, wählen Sie eine Operation aus, bestimmen die Ziel-Prozessinstanzen über einen Filter, geben die Operationsparameter an und starten einen einzigen asynchronen Batch.
 

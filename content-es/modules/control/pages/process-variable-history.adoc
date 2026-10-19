@@ -1,10 +1,6 @@
 [[process-variable-history]]
 = Historial de variables de proceso
-
-[NOTE, caption="Enterprise Feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 La pestaña *History → Variables* de una instancia de proceso muestra solo el último valor de cada variable de proceso.
 El historial de variables de proceso muestra *cada cambio* de una variable: cuándo se produjo, en qué actividad, qué valor recibió la variable y si la variable se creó, se actualizó o se eliminó.

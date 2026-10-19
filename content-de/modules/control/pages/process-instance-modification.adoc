@@ -1,9 +1,5 @@
 = Prozessinstanz-Modifikation
-
-[NOTE, caption=Enterprise-Funktion]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Flowset Control bietet Werkzeuge, um laufende Prozess-Tokens von einer Aktivität zu einer anderen zu verschieben.
 

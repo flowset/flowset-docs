@@ -1,10 +1,6 @@
 [[process-documentation]]
 = Process Element Documentation
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Flowset Control can display documentation for individual BPMN elements directly on the process diagram.
 When a process developer adds a `Documentation` entry to an element in the BPMN XML, that text becomes accessible to operators and analysts in Flowset Control — without having to open the source model.

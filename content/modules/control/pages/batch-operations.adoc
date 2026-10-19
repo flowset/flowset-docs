@@ -1,9 +1,5 @@
 = Batch Operations
-
-[NOTE, caption="Enterprise feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Flowset Control lets you create and execute a new batch operation that applies the same action to many running process instances at once. Instead of repeating the same change instance by instance, you select an operation, choose the target process instances with a filter, provide the operation parameters, and start a single asynchronous batch.
 

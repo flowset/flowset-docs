@@ -24,12 +24,7 @@ java -version
 
 The portable distribution allows you to run Flowset Control without additional dependencies (except Java). It ships as a self-contained application JAR and runs on an embedded HSQLDB database, created automatically on first startup — no external database is required. Ideal for quick testing or local development.
 
-+++
-<div class="card-block">
-  <p>Get the latest Flowset Control distribution package from the official downloads page.</p>
-  <a class="primary-btn" href="https://flowset.io/downloads#control" target="_blank">Download</a>
-</div>
-+++
+TIP: Get the latest Flowset Control distribution from the https://flowset.io/downloads#control[downloads page^].
 
 *Prerequisites*:
 

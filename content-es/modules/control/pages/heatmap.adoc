@@ -1,9 +1,5 @@
 = Mapa de calor
-
-[NOTE, caption="Enterprise Feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 Los mapas de calor, una funcionalidad de Flowset Control Enterprise, proporcionan una representación visual de las rutas de ejecución más utilizadas en los procesos de negocio. Esto facilita la identificación de cuellos de botella y áreas problemáticas, ayudando a optimizar los procesos.
 

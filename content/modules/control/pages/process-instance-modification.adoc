@@ -1,9 +1,5 @@
 = Process Instance Modification
-
-[NOTE, caption=Enterprise Feature]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Flowset Control provides tools for moving running process tokens from one activity to another.
 

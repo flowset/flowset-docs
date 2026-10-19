@@ -177,7 +177,7 @@ Engines themselves are added in the UI (see xref:connecting-engine.adoc[]). The 
 [[features]]
 == Enterprise Features
 
-[NOTE, caption="Enterprise feature"]
+[NOTE.ee, caption="Enterprise feature"]
 ====
 The properties in this section apply to the *Flowset Control Enterprise* edition only.
 ====
@@ -202,7 +202,7 @@ The properties in this section apply to the *Flowset Control Enterprise* edition
 [[ai]]
 == AI Assistant
 
-[NOTE, caption="Enterprise feature"]
+[NOTE.ee, caption="Enterprise feature"]
 ====
 The properties in this section apply to the *Flowset Control Enterprise* edition only.
 ====

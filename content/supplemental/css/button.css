@@ -1,18 +1,16 @@
-a.primary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: #368f52;
-    color: #fff;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-weight: 600;
+/* Used by release_2025.0 pages, which share these supplemental files in CI */
+a.primary-btn, .doc a.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .6rem 1.1rem;
+  border-radius: 8px;
+  background: var(--fl-btn);
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
 }
-
-a.primary-btn:hover,
-a.primary-btn:focus-visible {
-    background-color: #27683b;
-    color: #fff;
-}
+a.primary-btn:hover, a.primary-btn:focus-visible, .doc a.primary-btn:hover { background: var(--fl-btn-hover); color: #fff; text-decoration: none; }

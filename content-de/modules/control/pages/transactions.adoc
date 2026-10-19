@@ -1,9 +1,5 @@
 = Transaktionsgrenzen
-
-[NOTE, caption=Enterprise-Funktion]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
+:page-edition: enterprise
 
 Die Visualisierung von Transaktionsgrenzen ist eine visuelle Hervorhebung der Commit-Punkte und Wartezustände der BPM-Engine.
 Die Funktion hilft dabei:

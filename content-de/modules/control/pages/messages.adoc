@@ -1,11 +1,5 @@
 = Senden einer Message
-
-
-[NOTE, caption="Enterprise Feature"]
-====
-Diese Funktion ist ausschließlich in der Edition *Flowset Control Enterprise* verfügbar.
-====
-
+:page-edition: enterprise
 
 Mit Flowset Control können Sie eine Message direkt aus dem Prozessinstanz-Diagramm an eine verbundene BPM-Engine senden.
 Dies ist nützlich, wenn ein Prozess auf ein externes Ereignis wartet und ein Administrator die Ausführung fortsetzen muss, ohne die REST-API manuell über Postman oder `curl` aufzurufen.

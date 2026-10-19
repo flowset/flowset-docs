@@ -1,16 +1,15 @@
  <script>
-/* Set the theme before first paint to avoid a flash of the wrong theme. */
+/* Resolve the theme before first paint. fl-theme holds the choice: system (default), light or dark. */
 (function () {
-  try {
-    var t = localStorage.getItem('fl-theme');
-    if (t !== 'dark' && t !== 'light') {
-      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-theme', t);
-  } catch (e) {}
-})();
+  var choice = 'system'
+  try { choice = localStorage.getItem('fl-theme') || 'system' } catch (e) {}
+  if (choice !== 'light' && choice !== 'dark') choice = 'system'
+  var dark = choice === 'dark' || (choice === 'system' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+  document.documentElement.setAttribute('data-theme-choice', choice)
+})()
 </script>
- <script>uiRootPath = '{{{uiRootPath}}}'</script>
+ <script>uiRootPath = '{{{uiRootPath}}}'; window.FL_I18N = {{{t '@json'}}}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

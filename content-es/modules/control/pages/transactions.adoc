@@ -1,9 +1,5 @@
 = Límites de transacción
-
-[NOTE, caption=Enterprise Feature]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 La visualización de los límites de transacción es un resaltado visual de los puntos de confirmación (commit) y los estados de espera del motor BPM.
 La funcionalidad ayuda a:

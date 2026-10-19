@@ -4,12 +4,7 @@ In dieser Anleitung durchlaufen Sie den gesamten Weg: von der Installation bis z
 
 Lernen wir Flowset anhand des Demoprozesses **„Dienstreiseantrag“** kennen.
 
-+++
-<div class="card-block">
-  <p>Möchten Sie Flowset Control sofort ausprobieren? Nutzen Sie die öffentliche Demo-Umgebung und erkunden Sie die Oberfläche in wenigen Minuten.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Demo-Umgebung</a>
-</div>
-+++
+TIP: Möchten Sie Flowset Control sofort ausprobieren? Öffnen Sie die https://demo-control.flowset.io[öffentliche Demo-Umgebung^] und erkunden Sie die Oberfläche in wenigen Minuten.
 
 == Voraussetzungen
 

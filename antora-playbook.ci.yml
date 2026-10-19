@@ -23,14 +23,10 @@ content:
     start_path: content-de
 ui:
   bundle:
-    # Phase 1: production builds use the published Flowset UI bundle.
-    # url: https://github.com/flowset/flowset-ui/releases/latest/download/ui-bundle.zip
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
-    snapshot: true
+    url: ./ui/ui-bundle.zip
   supplemental_files: ./content/supplemental
 antora:
   extensions:
-    # Builds the full-text search index during the build (runs in CI too).
     - ./search-index-extension.js
 asciidoc:
   extensions:

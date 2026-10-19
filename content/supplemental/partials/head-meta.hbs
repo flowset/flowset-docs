@@ -1,16 +1,20 @@
 {{! This Source Code Form is subject to the terms of the Mozilla Public }}
 {{! License, v. 2.0. If a copy of the MPL was not distributed with this }}
 {{! file, You can obtain one at http://mozilla.org/MPL/2.0/. }}
-<link rel="stylesheet" href="{{uiRootPath}}/css/search.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/fonts.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/overrides.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/block.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/button.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/image-lightbox.css">
-<link rel="stylesheet" href="{{uiRootPath}}/css/menu.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/feedback-form.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/menu.css">
 <link rel="stylesheet" href="{{uiRootPath}}/css/theme.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/search.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/article.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/module-home.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/tabs.css">
+<link rel="stylesheet" href="{{uiRootPath}}/css/dark.css">
 
-{{! --- SEO & social meta (Phase 5) --- }}
 {{#if page.description}}<meta name="description" content="{{page.description}}">{{/if}}
 {{#if page.canonicalUrl}}<link rel="canonical" href="{{{page.canonicalUrl}}}">{{/if}}
 <meta property="og:type" content="website">
@@ -24,9 +28,6 @@
 {{#if page.description}}<meta name="twitter:description" content="{{page.description}}">{{/if}}
 {{#if site.url}}<meta name="twitter:image" content="{{site.url}}_/img/flowset-logo.png">{{/if}}
 
-{{! --- Speed up third-party origins (Phase 5) --- }}
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://widget.docsbot.ai">
 

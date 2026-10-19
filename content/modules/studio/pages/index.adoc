@@ -1,8 +1,34 @@
-= Studio
+= Flowset Studio
+:navtitle: Studio
+:page-layout: module-home
+:description: Flowset Studio allows developers to leverage the Java and Spring Boot ecosystem for development of enterprise applications following BPMN approach. Flowset Studio provides developers with an all-in-one tool from modeling to deployment.
+:page-hero-primary: setup.adoc|Install the plugin
+:page-hero-secondary: new-project-wizard.adoc|Create a project
 
-*Flowset Studio* allows developers to leverage the Java and Spring Boot ecosystem for development of enterprise applications following BPMN approach. Flowset Studio provides developers with an all-in-one tool from modeling to deployment.
+== Getting started
 
-*Key features*
+[.cards]
+* xref:setup.adoc[]
++
+Install the Flowset Studio plugin in IntelliJ IDEA.
+* xref:new-project-wizard.adoc[]
++
+Generate a new BPM application project.
+
+== Designers
+
+[.cards]
+* xref:bpmn-designer.adoc[]
++
+Edit BPMN diagrams in IntelliJ IDEA.
+* xref:dmn-designer.adoc[]
++
+Decision requirements diagrams, decision tables and literal expressions.
+* xref:user-form-designer.adoc[]
++
+Edit Camunda Forms in IntelliJ IDEA.
+
+== Key features
 
 * Explicit project structure
 * Navigation between process-related objects

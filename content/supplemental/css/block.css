@@ -1,22 +1,17 @@
+/* Used by release_2025.0 pages, which share these supplemental files in CI */
 .card-block {
-    margin: 1.2rem 0 1.5rem;
-    padding: 1rem 1.25rem;
-    border: 1px solid #d9e5e8;
-    border-radius: 8px;
-    background-color: #f8fbfc;
-    display: flex;
-    align-items: self-start;
-    justify-content: space-between;
-    gap: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--fl-border);
+  border-radius: 10px;
+  background: var(--fl-bg-soft);
+  color: var(--fl-text);
 }
-
-.card-block p {
-    margin: 0;
-}
-
+.card-block p { margin: 0; }
 @media (max-width: 768px) {
-    .card-block {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .card-block { flex-direction: column; align-items: flex-start; }
 }

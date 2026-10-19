@@ -4,12 +4,7 @@ In this guide, you will go through the entire path: from installation to process
 
 Let’s get acquainted with Flowset using the demo process **“Business Trip Request”**.
 
-+++
-<div class="card-block">
-  <p>Want to try Flowset Control immediately? Use the public demo stand and explore the interface in minutes.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Demo stand</a>
-</div>
-+++
+TIP: Want to try Flowset Control right away? Open the https://demo-control.flowset.io[public demo stand^] and explore the interface in minutes.
 
 == Prerequisites
 

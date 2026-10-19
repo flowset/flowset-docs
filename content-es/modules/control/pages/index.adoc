@@ -1,15 +1,90 @@
-= Control
+= Flowset Control
+:navtitle: Control
+:page-layout: module-home
+:description: Flowset Control es una aplicación web que proporciona funciones administrativas para motores BPM externos.
+:page-hero-primary: setup.adoc|Instalar
+:page-hero-secondary: connecting-engine.adoc|Conectar un motor
+:page-hero-link: https://demo-control.flowset.io|Demo en vivo
 
-**Flowset Control** es una aplicación web que proporciona funciones administrativas para motores BPM externos.
+== Primeros pasos
 
-+++
-<div class="card-block">
-  <p>¿Quieres probar Flowset Control ahora mismo? Usa el entorno de demo público y explora la interfaz en pocos minutos.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Abrir demo</a>
-</div>
-+++
+[.cards]
+* xref:setup.adoc[]
++
+Requisitos del sistema y formas de ejecutar Flowset Control.
+* xref:connecting-engine.adoc[]
++
+Varias conexiones a motores y el cambio entre ellas.
+* xref:database.adoc[]
++
+PostgreSQL, MySQL o la base HSQLDB integrada.
+* xref:oidc.adoc[]
++
+Inicio de sesión mediante un proveedor OpenID Connect externo.
+* xref:access-management.adoc[]
++
+Usuarios, roles y permisos.
 
-*Características principales*
+== Trabajo con procesos
+
+[.cards]
+* xref:dashboard.adoc[]
++
+La primera pantalla tras iniciar sesión: un resumen del motor conectado.
+* xref:process.adoc[]
++
+Procesos de negocio desplegados en el motor activo.
+* xref:process-instances.adoc[]
++
+Consulta y gestión de instancias de proceso.
+* xref:user-tasks.adoc[]
++
+Seguimiento de las tareas del motor seleccionado y su reasignación.
+* xref:dmn-decisions.adoc[]
++
+Tablas de decisión DMN desplegadas en el motor.
+* xref:deployments.adoc[]
++
+Despliegues con definiciones de procesos y decisiones.
+
+== Funciones Enterprise
+
+[.cards]
+* xref:engine-monitoring.adoc[] [.ee]#EE#
++
+Estado de los procesos y de los recursos del sistema.
+* xref:process-variable-history.adoc[] [.ee]#EE#
++
+Cada cambio de una variable de una instancia de proceso.
+* xref:jobs.adoc[] [.ee]#EE#
++
+Trabajos asíncronos del motor: reintentos, prioridad, fecha de vencimiento.
+* xref:process-instance-modification.adoc[] [.ee]#EE#
++
+Mover tokens de un proceso en ejecución entre actividades.
+* xref:batch-operations.adoc[] [.ee]#EE#
++
+Una acción sobre muchas instancias de proceso a la vez.
+* xref:messages.adoc[] [.ee]#EE#
++
+Enviar un mensaje al motor desde el diagrama de la instancia.
+* xref:process-documentation.adoc[] [.ee]#EE#
++
+Documentación de los elementos BPMN directamente en el diagrama.
+* xref:decision-evaluation.adoc[] [.ee]#EE#
++
+Evaluar una tabla de decisión DMN desde la interfaz.
+* xref:heatmap.adoc[] [.ee]#EE#
++
+Las rutas de ejecución más frecuentes de un proceso.
+* xref:transactions.adoc[] [.ee]#EE#
++
+Puntos de confirmación y estados de espera en el diagrama.
+* xref:ai-assistant.adoc[] [.ee]#EE#
++
+Resúmenes de incidentes y respuestas sobre procesos e instancias.
+
+== Características principales
 
 - **Gestión de conexiones:** permite configurar conexiones a distintos motores BPM y cambiar entre ellas según sea necesario.
 - **Exploración de procesos:** permite navegar por los procesos desplegados en el motor.

@@ -1,9 +1,5 @@
 = Operaciones por lotes
-
-[NOTE, caption="Enterprise feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 Flowset Control te permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, se selecciona una operación, se eligen las instancias de proceso de destino con un filtro, se proporcionan los parámetros de la operación y se inicia un único lote asíncrono.
 

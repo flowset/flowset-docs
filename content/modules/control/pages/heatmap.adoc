@@ -1,9 +1,5 @@
 = Heatmap
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 Heatmaps, a Flowset Control Enterprise feature, provide a visual representation of the most frequently used execution paths in business processes. This makes it easy to identify bottlenecks and problem areas, helping to optimize processes.
 

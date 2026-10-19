@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{t '@locale'}}">
+  <head>
+{{> head defaultPageTitle='Untitled'}}
+  </head>
+  <body class="article module-home{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
+{{> header}}
+<div class="body">
+{{> nav}}
+<main id="main-content">
+{{> toolbar}}
+  <div class="content">
+    <article class="doc">
+      <section class="module-hero">
+        <div class="module-hero-kicker">{{{or page.attributes.hero-kicker (t 'documentation')}}}</div>
+        <h1 class="page">{{{page.title}}}</h1>
+        {{#with page.description}}<p class="module-hero-lead">{{{this}}}</p>{{/with}}
+        {{#if (or page.attributes.hero-primary page.attributes.hero-secondary page.attributes.hero-link)}}
+        <div class="module-hero-actions">
+          {{{hero-action page.attributes.hero-primary 'btn-primary'}}}
+          {{{hero-action page.attributes.hero-secondary 'btn-secondary'}}}
+          {{{hero-action page.attributes.hero-link 'btn-link'}}}
+        </div>
+        {{/if}}
+      </section>
+{{{page.contents}}}
+{{> pagination}}
+    </article>
+  </div>
+</main>
+</div>
+{{> footer}}
+  </body>
+</html>

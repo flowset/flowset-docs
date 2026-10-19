@@ -1,9 +1,5 @@
 = AI Assistant
-
-[NOTE, caption="Enterprise Feature"]
-====
-This feature is available exclusively in the *Flowset Control Enterprise* edition.
-====
+:page-edition: enterprise
 
 The AI assistant helps operators understand what is happening in their processes and decide what to do next. It can summarize open incidents, explain how a deployed process works, diagnose why a process instance is stuck, and answer free-form questions about the data visible in Flowset Control. The assistant only reads data — every action (retrying a job, completing a task, terminating an instance) stays with the standard Control screens and buttons.
 

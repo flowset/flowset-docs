@@ -1,15 +1,90 @@
-= Control
+= Flowset Control
+:navtitle: Control
+:page-layout: module-home
+:description: Flowset Control ist eine Webanwendung, die administrative Funktionen für externe BPM-Engines bereitstellt.
+:page-hero-primary: setup.adoc|Installieren
+:page-hero-secondary: connecting-engine.adoc|Engine verbinden
+:page-hero-link: https://demo-control.flowset.io|Live-Demo
 
-**Flowset Control** ist eine Webanwendung, die administrative Funktionen für externe BPM-Engines bereitstellt.
+== Erste Schritte
 
-+++
-<div class="card-block">
-  <p>Möchten Sie Flowset Control sofort ausprobieren? Nutzen Sie den öffentlichen Demo-Stand und erkunden Sie die Oberfläche in wenigen Minuten.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Demo stand</a>
-</div>
-+++
+[.cards]
+* xref:setup.adoc[]
++
+Systemanforderungen und Möglichkeiten, Flowset Control zu starten.
+* xref:connecting-engine.adoc[]
++
+Mehrere Engine-Verbindungen und der Wechsel zwischen ihnen.
+* xref:database.adoc[]
++
+PostgreSQL, MySQL oder die integrierte HSQLDB.
+* xref:oidc.adoc[]
++
+Anmeldung über einen externen OpenID-Connect-Anbieter.
+* xref:access-management.adoc[]
++
+Benutzer, Rollen und Berechtigungen.
 
-*Hauptfunktionen*
+== Arbeiten mit Prozessen
+
+[.cards]
+* xref:dashboard.adoc[]
++
+Der erste Bildschirm nach der Anmeldung: eine Übersicht der verbundenen Engine.
+* xref:process.adoc[]
++
+Geschäftsprozesse, die in der aktiven Engine bereitgestellt sind.
+* xref:process-instances.adoc[]
++
+Prozessinstanzen anzeigen und verwalten.
+* xref:user-tasks.adoc[]
++
+Aufgaben der gewählten Engine verfolgen und neu zuweisen.
+* xref:dmn-decisions.adoc[]
++
+DMN-Entscheidungstabellen, die in der Engine bereitgestellt sind.
+* xref:deployments.adoc[]
++
+Deployments mit Prozess- und Entscheidungsdefinitionen.
+
+== Enterprise-Funktionen
+
+[.cards]
+* xref:engine-monitoring.adoc[] [.ee]#EE#
++
+Zustand der Prozesse und der Systemressourcen.
+* xref:process-variable-history.adoc[] [.ee]#EE#
++
+Jede Änderung einer Variablen einer Prozessinstanz.
+* xref:jobs.adoc[] [.ee]#EE#
++
+Asynchrone Jobs der Engine: Wiederholungen, Priorität, Fälligkeit.
+* xref:process-instance-modification.adoc[] [.ee]#EE#
++
+Token eines laufenden Prozesses zwischen Aktivitäten verschieben.
+* xref:batch-operations.adoc[] [.ee]#EE#
++
+Eine Aktion für viele Prozessinstanzen gleichzeitig.
+* xref:messages.adoc[] [.ee]#EE#
++
+Eine Message aus dem Instanzdiagramm an die Engine senden.
+* xref:process-documentation.adoc[] [.ee]#EE#
++
+Dokumentation von BPMN-Elementen direkt im Diagramm.
+* xref:decision-evaluation.adoc[] [.ee]#EE#
++
+Eine DMN-Entscheidungstabelle über die Oberfläche auswerten.
+* xref:heatmap.adoc[] [.ee]#EE#
++
+Die häufigsten Ausführungspfade eines Prozesses.
+* xref:transactions.adoc[] [.ee]#EE#
++
+Commit-Punkte und Wartezustände im Diagramm.
+* xref:ai-assistant.adoc[] [.ee]#EE#
++
+Zusammenfassungen von Incidents und Antworten zu Prozessen und Instanzen.
+
+== Hauptfunktionen
 
 - **Verbindungsverwaltung:** Richten Sie mühelos Verbindungen zu verschiedenen BPM-Engines ein und wechseln Sie bei Bedarf zwischen ihnen.
 - **Prozessdurchsicht:** Navigieren Sie durch die auf der Engine bereitgestellten Prozesse.

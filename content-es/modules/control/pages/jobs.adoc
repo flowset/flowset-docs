@@ -1,9 +1,5 @@
 = Trabajos
-
-[NOTE, caption="Enterprise feature"]
-====
-Esta funcionalidad está disponible exclusivamente en la edición *Flowset Control Enterprise*.
-====
+:page-edition: enterprise
 
 La sección *Jobs* permite ver y gestionar los trabajos asíncronos del motor BPM.
 

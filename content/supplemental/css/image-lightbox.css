@@ -45,7 +45,7 @@ body.img-preview-open {
     right: 1.5rem;
     border: 0;
     background: #fff;
-    color: #104656;
+    color: var(--fl-action);
     border-radius: 0.5rem;
     width: 2.25rem;
     height: 2.25rem;
@@ -61,7 +61,7 @@ body.img-preview-open {
 
 .img-preview__close:hover,
 .img-preview__close:focus-visible {
-    background: #104656;
+    background: var(--fl-btn);
     color: #fff;
 }
 

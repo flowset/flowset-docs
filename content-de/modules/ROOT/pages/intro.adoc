@@ -1,18 +1,20 @@
-= Einführung
+= Flowset
+:navtitle: Einführung
+:page-layout: module-home
+:description: Flowset ist eine Plattform zur Automatisierung von Geschäftsprozessen — entwerfen, ausführen und überwachen Sie BPMN-Prozesse durchgängig.
+:page-hero-primary: ROOT:quick-start.adoc|Erste Schritte
+:page-hero-link: https://demo-control.flowset.io|Live-Demo
 
-[.fl-hero]
---
-Flowset ist eine Plattform zur Automatisierung von Geschäftsprozessen — entwerfen, ausführen und überwachen Sie BPMN-Prozesse durchgängig.
-
-[.fl-hero-actions]
-* xref:ROOT:quick-start.adoc[Erste Schritte]
-* https://demo-control.flowset.io[Live-Demo]
---
-
-[.fl-cards]
-* xref:control:index.adoc[Control]: Überwachen und verwalten Sie laufende Prozesse.
-* xref:studio:index.adoc[Studio]: Modellieren Sie BPMN/DMN-Diagramme und Formulare in IntelliJ IDEA.
-* xref:tasklist:index.adoc[Tasklist]: Verwalten Sie Endbenutzeraufgaben mit einer React-App.
+[.cards]
+* xref:control:index.adoc[Control]
++
+Überwachen und verwalten Sie laufende Prozesse.
+* xref:studio:index.adoc[Studio]
++
+Modellieren Sie BPMN/DMN-Diagramme und Formulare in IntelliJ IDEA.
+* xref:tasklist:index.adoc[Tasklist]
++
+Verwalten Sie Endbenutzeraufgaben mit einer React-App.
 
 == Was ist Flowset?
 
