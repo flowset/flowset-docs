@@ -5,7 +5,7 @@
 +++
 <div class="card-block">
   <p>Möchten Sie Flowset Control sofort ausprobieren? Nutzen Sie den öffentlichen Demo-Stand und erkunden Sie die Oberfläche in wenigen Minuten.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Demo stand</a>
+  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Demo stand</a>
 </div>
 +++
 

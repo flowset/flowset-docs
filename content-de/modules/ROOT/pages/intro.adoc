@@ -6,7 +6,7 @@ Flowset ist eine Plattform zur Automatisierung von Geschäftsprozessen — entwe
 
 [.fl-hero-actions]
 * xref:ROOT:quick-start.adoc[Erste Schritte]
-* https://demo-control.flowset.io/login[Live-Demo]
+* https://demo-control.flowset.io[Live-Demo]
 --
 
 [.fl-cards]

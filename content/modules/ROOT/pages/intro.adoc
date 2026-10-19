@@ -6,7 +6,7 @@ Flowset is a business process automation platform — design, run, and monitor B
 
 [.fl-hero-actions]
 * xref:ROOT:quick-start.adoc[Get started]
-* https://demo-control.flowset.io/login[Live demo]
+* https://demo-control.flowset.io[Live demo]
 --
 
 [.fl-cards]

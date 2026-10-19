@@ -7,7 +7,7 @@ Let’s get acquainted with Flowset using the demo process **“Business Trip Re
 +++
 <div class="card-block">
   <p>Want to try Flowset Control immediately? Use the public demo stand and explore the interface in minutes.</p>
-  <a class="primary-btn" href="https://demo-control.flowset.io/login" target="_blank">Demo stand</a>
+  <a class="primary-btn" href="https://demo-control.flowset.io" target="_blank">Demo stand</a>
 </div>
 +++
 
