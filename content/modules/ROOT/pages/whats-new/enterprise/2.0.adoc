@@ -1,0 +1,70 @@
+= Release 2.0
+
+Flowset Control Enterprise 2.0.0. This is the first Enterprise release that ships ahead of the platform: it is based on Flowset Control 2026.0 and includes the features of xref:ROOT:whats-new/enterprise/1.1.adoc[Enterprise 1.1]. Some of its changes will reach the Community edition in a later release.
+
+[[control]]
+== Flowset Control 2.0.0
+
+Flowset Control 2.0 requires Java 21. The application now runs on Jmix 3.0 and Spring Boot 4. Install JDK 21 on the server that runs Control before you upgrade. Installation and upgrade are described in xref:control:setup.adoc[].
+
+Enterprise features are now enabled by a license key. Without a license, Control runs with the Community feature set, and Enterprise sections are marked with a lock icon in the menu. How to install a key is described in xref:control:license.adoc[].
+
+=== Updated Dependencies
+
+* Jmix 3.0, Spring Boot 4.0
+* Java 21
+
+=== New and Improved Features
+
+==== AI Assistant
+
+Control has an LLM-based assistant. It summarizes open incidents, explains how a deployed process or DMN decision works, helps you find out why a process instance stopped, and answers questions about the data available in Control. The assistant only reads data and never changes anything in the engine. It is configured with the standard Spring AI properties, and the API key is optional. A separate *AI Assistant User* role grants access to it. See xref:control:ai-assistant.adoc[].
+
+==== History of Process Variable Changes
+
+The *History → Variables* tab of a process instance used to show only the latest value of each variable. Now you can see every change: when it happened, in which activity, and what value was written. The analysis works both ways: select an activity on the diagram to see which variables it changed, or select a variable to see all its changes on the diagram. The engine must keep history at the `full` level. See xref:control:process-variable-history.adoc[].
+
+==== Engine Connection via OAuth2
+
+OAuth2 has been added to the authentication options for a BPM engine connection, alongside HTTP Basic and HTTP headers. Control obtains an access token from the authorization server and adds it to requests to the engine REST API. See xref:control:connecting-engine.adoc[].
+
+==== Exporting Lists to Excel
+
+List screens that load data from the engine have an *Excel* action: processes, process instances, incidents, user tasks, decisions, decision instances, deployments, and batches. The rows of the current table page are exported.
+
+==== Engine Time in the User's Time Zone
+
+Dates and times received from the engine are shown in the time zone of the Control user instead of the engine server's time zone.
+
+==== Process Instance Diagram
+
+State highlighting on the process instance diagram has been reworked. Elements that execution has not passed through are dimmed by default. Active elements show the number of activity instances as well as the number of incidents. New toggles let you show the element colors set in the BPMN XML (hidden by default) and the number of completed activity instances on each element.
+
+==== Other Changes
+
+* New engine types: CIB Seven and Fluxnova.
+* The *Start message* group on the send message screen has a *Business key* field, as on the process start screen.
+* The Docker Compose setup runs Operaton instead of Camunda 7.
+* The login screen no longer shows the default username and password.
+* The *About* page uses icon links instead of plain text links.
+
+=== Breaking Changes
+
+==== Java 21
+
+Control 2.0 does not start on Java 17. Upgrade the JDK to 21 before installing the new version.
+
+=== Bug Fixes
+
+* The application started slowly when a preconfigured engine was unavailable.
+* Process variables could not be changed through a dialog opened from a link.
+* In the variable history, the change type in the table did not match the status in the card.
+* On the process instance screen, jobs and the data on the *Runtime* tabs were not filtered by the selected activity.
+* *Test connection* failed with an error when the engine URL was empty.
+* A variable without a value was shown as deleted in the variable log.
+* Heatmap: values were not hidden after changing the process version or hiding connections.
+* Exporting a process without instances now exports only the general data.
+* The export button is hidden together with the components it belongs to.
+* The *State* label was displayed inconsistently in the job details.
+* Some screens showed no title.
+* The suspend and activate dialogs for process instances showed raw message keys instead of localized text.

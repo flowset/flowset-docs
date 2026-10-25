@@ -1,0 +1,112 @@
+= Release 2026.0
+
+Flowset Control 2026.0, Flowset Tasklist 2026.0, and an update of the Flowset Studio plugin.
+
+== Flowset Control 2026.0.0
+
+This release reworks the screens you use to analyze decisions, processes, tasks, jobs, and incidents. Most changes make related objects easier to reach and long tables easier to read.
+
+Supported engines: Camunda 7 and Operaton. Control requires Java 17.
+
+=== Improvements
+
+==== Decisions and DMN
+
+* A new list of historic decision instances.
+* The decision instance detail view has been redesigned. The *View DRD* button is no longer shown there.
+* The decision detail view has been improved, and you can open the decision table directly from related screens.
+* The process instance screen has a *Decisions* tab with the decisions evaluated in that instance.
+
+==== Processes and BPMN Diagrams
+
+* The process start dialog has a *Business Key* field.
+* When you terminate process instances, you can skip custom listeners and input/output mappings.
+* BPMN diagrams have zoom in and zoom out buttons.
+* The process detail view has a *Refresh* button.
+
+==== Tasks, Jobs, and Incidents
+
+* User tasks can be completed and reassigned from the task list, the process instance screen, and the task detail view.
+* Jobs can be activated, suspended, and retried from the job view, and a failed job's stack trace can be copied.
+* From an incident, you can go straight to the related job.
+* The stack trace window can be opened in full screen.
+
+==== Interface and Navigation
+
+* Table cells link to the related process and process instance.
+* Action buttons in tables show icons only, without text labels.
+* Filter values are saved in the URL, so a filtered list can be bookmarked or shared.
+* The dashboard shows the current date and the URL of the connected engine.
+* Process variables are sorted by default.
+* Each BPM engine connection can be given an environment type: production, pre-production, stage, QA, development, or local. The type is shown as a badge next to the engine name.
+* The *About* page has been updated.
+
+==== Technical Updates
+
+Jmix has been updated to 2.7.
+
+=== Bug Fixes
+
+* The interface locked up when the connection to the BPM engine failed.
+* Error details of external tasks were not shown.
+* The user task list failed when the database contained a manual task.
+* The deployment list showed the wrong total count.
+
+=== Patch 2026.0.1
+
+Improvements:
+
+* Support for the Fluxnova engine.
+* Control can be deployed to WildFly and JBoss EAP. See xref:control:setup.adoc#wildfly[WildFly Bundle].
+* The login screen no longer shows the default username and password.
+* Control sends anonymous usage statistics. To turn this off, set `flowset.control.analytics.enabled=false`.
+
+Bug fixes:
+
+* `SocketTimeoutException` when loading process variables on the process instance screen.
+* The BPMN viewer failed to open a process with an expression-based business rule task or a call activity without `calledElement`.
+
+Release notes on GitHub:
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.0[2026.0.0],
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.1[2026.0.1].
+
+== Flowset Tasklist 2026.0.0
+
+This version aligns Tasklist with the 2026.0 platform release. It has no functional changes; only the description on the *About* page was updated.
+
+Release notes on GitHub: https://github.com/flowset/flowset-tasklist-react-community/releases/tag/2026.0.0[2026.0.0].
+
+== Flowset Studio
+
+This update improves work with BPMN models, the properties inspector, external tasks, and project templates, and fixes a number of issues in the plugin and in project generation.
+
+=== Improvements
+
+* Property groups in the inspector can be collapsed and expanded, which helps with large BPMN models.
+* Navigation between the model, Java code, external tasks, and related process elements has been improved.
+* Studio can generate external task handlers, navigate to them from the model, and create Spring Boot projects for setups with an external engine. Projects built around external tasks are also supported.
+* A business process deployment scenario has been added, project templates have been improved, and Operaton versions have been updated.
+* IntelliJ IDEA 2026.1 is supported.
+* The plugin description in JetBrains Marketplace has been rewritten.
+
+=== Bug Fixes
+
+Properties inspector:
+
+* Editing form properties works again.
+* Lists of task listeners, execution listeners, and custom forms are displayed again, and the task listener type can be changed.
+* Creating task listeners and configuring call activities work correctly, including choosing the called element type and navigating to the called element.
+
+Project generation and configuration:
+
+* The run configuration is created correctly for new projects and on Linux.
+* The project wizard selects the correct Java version.
+* Creating a Maven project no longer duplicates the web and security dependencies in `pom.xml`.
+* Changing connection parameters and engine configuration no longer adds unneeded dependencies or reorders existing ones.
+
+Interface:
+
+* A conflict with Jmix Studio, a false IDE slowdown warning, and unnecessary opening of documents have been fixed.
+* Long text in input fields is displayed correctly.
+* The plugin icon is shown in window titles again.
+* Authentication data is no longer saved in the applications file.

@@ -1,0 +1,37 @@
+= Versión 2025.0
+
+La primera versión estable de Flowset: Flowset Control 2025.0 y Flowset Tasklist 2025.0. Las versiones anteriores de Control se publicaron como betas, de `1.0.0-beta.1` a `1.0.0-beta.6`.
+
+== Flowset Control 2025.0.0
+
+Flowset Control es una aplicación web para administrar motores BPM externos. Conectas un motor, lo supervisas y gestionas los procesos desplegados en él. Control está construido sobre el framework de código abierto Jmix y está pensado para desarrolladores, integradores y administradores de plataformas BPM.
+
+Motores admitidos: Camunda 7 y Operaton. La interfaz está disponible en inglés, alemán, español y ruso.
+
+Control requiere Java 17. La instalación se describe en xref:control:setup.adoc[].
+
+=== Parche 2025.0.1
+
+Mejoras:
+
+* Al finalizar una instancia de proceso desde la pantalla *Process Instance*, puedes indicar el motivo.
+* El motivo de la finalización se muestra en la información de la instancia.
+* El diálogo de inicio de proceso tiene el campo *Business Key*.
+
+Correcciones de errores:
+
+* `NullPointerException` al hacer clic en la superposición de una call activity en la vista previa del proceso.
+* Tras actualizar la página *Process instances* se seleccionaba un modo incorrecto.
+* Las actividades del proceso se ordenaban de forma incorrecta.
+
+Notas de versión en GitHub:
+https://github.com/flowset/flowset-control-community/releases/tag/2025.0.0[2025.0.0],
+https://github.com/flowset/flowset-control-community/releases/tag/2025.0.1[2025.0.1].
+
+== Flowset Tasklist 2025.0.0
+
+Flowset Tasklist es una plantilla de aplicación React para las personas que trabajan con procesos de negocio: lista de tareas, inicio de procesos y formularios de inicio y de tareas de usuario. No tiene backend propio y trabaja directamente con la API REST del motor. Se admiten Camunda 7 y Operaton.
+
+La plantilla está pensada como punto de partida que adaptas a tus necesidades. La instalación se describe en xref:tasklist:setup.adoc[].
+
+Notas de versión en GitHub: https://github.com/flowset/flowset-tasklist-react-community/releases/tag/2025.0.0[2025.0.0].

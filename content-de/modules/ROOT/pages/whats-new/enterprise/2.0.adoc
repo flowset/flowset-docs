@@ -1,0 +1,70 @@
+= Release 2.0
+
+Flowset Control Enterprise 2.0.0. Es ist das erste Enterprise-Release, das vor der Plattform erscheint: Es basiert auf Flowset Control 2026.0 und enthält die Funktionen von xref:ROOT:whats-new/enterprise/1.1.adoc[Enterprise 1.1]. Ein Teil der Änderungen kommt erst in einem späteren Release in die Community-Edition.
+
+[[control]]
+== Flowset Control 2.0.0
+
+Flowset Control 2.0 benötigt Java 21. Die Anwendung läuft jetzt auf Jmix 3.0 und Spring Boot 4. Installieren Sie JDK 21 auf dem Server, auf dem Control läuft, bevor Sie aktualisieren. Installation und Aktualisierung sind unter xref:control:setup.adoc[] beschrieben.
+
+Enterprise-Funktionen werden jetzt mit einem Lizenzschlüssel aktiviert. Ohne Lizenz läuft Control mit dem Funktionsumfang der Community-Edition, und Enterprise-Bereiche sind im Menü mit einem Schloss-Symbol markiert. Wie Sie einen Schlüssel installieren, ist unter xref:flowset:control:license.adoc[License (auf Englisch)] beschrieben.
+
+=== Aktualisierte Abhängigkeiten
+
+* Jmix 3.0, Spring Boot 4.0
+* Java 21
+
+=== Neue und verbesserte Funktionen
+
+==== KI-Assistent
+
+Control enthält einen Assistenten auf Basis eines LLM. Er fasst offene Vorfälle zusammen, erklärt, wie ein bereitgestellter Prozess oder eine DMN-Entscheidung funktioniert, hilft herauszufinden, warum eine Prozessinstanz angehalten hat, und beantwortet Fragen zu den in Control verfügbaren Daten. Der Assistent liest nur Daten und ändert nichts in der Engine. Er wird über die Standardeigenschaften von Spring AI konfiguriert, der API-Schlüssel ist optional. Die Rolle *AI Assistant User* gewährt Zugriff darauf. Siehe xref:control:ai-assistant.adoc[].
+
+==== Verlauf der Änderungen von Prozessvariablen
+
+Der Tab *History → Variables* einer Prozessinstanz zeigte bisher nur den letzten Wert jeder Variable. Jetzt sehen Sie jede Änderung: wann sie stattfand, in welcher Aktivität und welcher Wert geschrieben wurde. Die Analyse funktioniert in beide Richtungen: Wählen Sie eine Aktivität im Diagramm, um zu sehen, welche Variablen sie geändert hat, oder wählen Sie eine Variable, um alle ihre Änderungen im Diagramm zu sehen. Die Engine muss den Verlauf auf der Stufe `full` führen. Siehe xref:control:process-variable-history.adoc[].
+
+==== Verbindung zur Engine über OAuth2
+
+OAuth2 wurde zu den Authentifizierungsoptionen für die Verbindung zu einer BPM-Engine hinzugefügt, neben HTTP Basic und HTTP-Headern. Control holt ein Access Token vom Autorisierungsserver und fügt es den Anfragen an die REST-API der Engine hinzu. Siehe xref:control:connecting-engine.adoc[].
+
+==== Export von Listen nach Excel
+
+Listenbildschirme, die Daten aus der Engine laden, haben die Aktion *Excel*: Prozesse, Prozessinstanzen, Vorfälle, Benutzeraufgaben, Entscheidungen, Entscheidungsinstanzen, Bereitstellungen und Batches. Exportiert werden die Zeilen der aktuellen Tabellenseite.
+
+==== Engine-Zeit in der Zeitzone des Benutzers
+
+Datums- und Zeitangaben aus der Engine werden in der Zeitzone des Control-Benutzers angezeigt, nicht in der Zeitzone des Engine-Servers.
+
+==== Diagramm der Prozessinstanz
+
+Die Hervorhebung von Zuständen im Diagramm der Prozessinstanz wurde überarbeitet. Elemente, die die Ausführung nicht durchlaufen hat, werden standardmäßig abgeblendet. Aktive Elemente zeigen neben der Anzahl der Vorfälle auch die Anzahl der Aktivitätsinstanzen. Neue Schalter blenden die im BPMN XML festgelegten Elementfarben (standardmäßig ausgeblendet) und die Anzahl abgeschlossener Aktivitätsinstanzen an jedem Element ein.
+
+==== Weitere Änderungen
+
+* Neue Engine-Typen: CIB Seven und Fluxnova.
+* Die Gruppe *Start message* auf dem Bildschirm zum Senden einer Message hat das Feld *Business key*, wie der Bildschirm zum Starten eines Prozesses.
+* Das Docker-Compose-Setup startet Operaton statt Camunda 7.
+* Der Anmeldebildschirm zeigt den Standard-Benutzernamen und das Standard-Passwort nicht mehr an.
+* Die Seite *About* verwendet Symbol-Links statt Textlinks.
+
+=== Inkompatible Änderungen
+
+==== Java 21
+
+Control 2.0 startet nicht mit Java 17. Aktualisieren Sie das JDK auf Version 21, bevor Sie die neue Version installieren.
+
+=== Fehlerbehebungen
+
+* Die Anwendung startete langsam, wenn eine vorkonfigurierte Engine nicht erreichbar war.
+* Prozessvariablen ließen sich nicht über einen per Link geöffneten Dialog ändern.
+* Im Variablenverlauf stimmte der Änderungstyp in der Tabelle nicht mit dem Status in der Karte überein.
+* Auf dem Bildschirm der Prozessinstanz wurden Jobs und die Daten in den Tabs *Runtime* nicht nach der ausgewählten Aktivität gefiltert.
+* *Test connection* schlug bei leerer Engine-URL mit einem Fehler fehl.
+* Eine Variable ohne Wert wurde im Variablenprotokoll als gelöscht angezeigt.
+* Heatmap: Werte wurden nach einem Wechsel der Prozessversion oder dem Ausblenden der Verbindungen nicht ausgeblendet.
+* Beim Export eines Prozesses ohne Instanzen werden jetzt nur die allgemeinen Daten exportiert.
+* Die Export-Schaltfläche wird zusammen mit den Komponenten ausgeblendet, zu denen sie gehört.
+* Die Beschriftung *State* wurde in den Job-Details uneinheitlich angezeigt.
+* Einige Bildschirme zeigten keinen Titel.
+* Die Dialoge zum Aussetzen und Aktivieren von Prozessinstanzen zeigten Message-Keys statt übersetztem Text.

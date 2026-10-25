@@ -1,0 +1,112 @@
+= Versión 2026.0
+
+Flowset Control 2026.0, Flowset Tasklist 2026.0 y una actualización del plugin Flowset Studio.
+
+== Flowset Control 2026.0.0
+
+Esta versión rediseña las pantallas que se usan para analizar decisiones, procesos, tareas, trabajos e incidencias. La mayoría de los cambios facilitan llegar a los objetos relacionados y leer tablas largas.
+
+Motores admitidos: Camunda 7 y Operaton. Control requiere Java 17.
+
+=== Mejoras
+
+==== Decisiones y DMN
+
+* Nueva lista de instancias históricas de decisiones.
+* Se ha rediseñado la vista de detalle de la instancia de decisión. El botón *View DRD* ya no se muestra en ella.
+* Se ha mejorado la vista de detalle de la decisión, y la tabla de decisión se puede abrir directamente desde las pantallas relacionadas.
+* La pantalla de la instancia de proceso tiene la pestaña *Decisions* con las decisiones evaluadas en esa instancia.
+
+==== Procesos y diagramas BPMN
+
+* El diálogo de inicio de proceso tiene el campo *Business Key*.
+* Al finalizar instancias de proceso, puedes omitir los listeners personalizados y los mapeos de entrada y salida.
+* Los diagramas BPMN tienen botones para acercar y alejar.
+* La vista de detalle del proceso tiene el botón *Refresh*.
+
+==== Tareas, trabajos e incidencias
+
+* Las tareas de usuario se pueden completar y reasignar desde la lista de tareas, la pantalla de la instancia de proceso y la vista de detalle de la tarea.
+* Los trabajos se pueden activar, suspender y reintentar desde la vista del trabajo, y se puede copiar el stack trace de un trabajo fallido.
+* Desde una incidencia puedes ir directamente al trabajo relacionado.
+* La ventana del stack trace se puede abrir a pantalla completa.
+
+==== Interfaz y navegación
+
+* Las celdas de las tablas enlazan con el proceso y la instancia de proceso relacionados.
+* Los botones de acción de las tablas muestran solo iconos, sin texto.
+* Los valores de los filtros se guardan en la URL, así que una lista filtrada se puede guardar en marcadores o compartir.
+* El dashboard muestra la fecha actual y la URL del motor conectado.
+* Las variables de proceso se ordenan por defecto.
+* A cada conexión con un motor BPM se le puede asignar un tipo de entorno: producción, preproducción, stage, QA, desarrollo o local. El tipo se muestra como una etiqueta junto al nombre del motor.
+* Se ha actualizado la página *About*.
+
+==== Actualizaciones técnicas
+
+Jmix se ha actualizado a la versión 2.7.
+
+=== Correcciones de errores
+
+* La interfaz se bloqueaba cuando fallaba la conexión con el motor BPM.
+* No se mostraban los detalles de error de las tareas externas.
+* La lista de tareas de usuario fallaba cuando la base de datos contenía una tarea manual.
+* La lista de despliegues mostraba un recuento total incorrecto.
+
+=== Parche 2026.0.1
+
+Mejoras:
+
+* Compatibilidad con el motor Fluxnova.
+* Control se puede desplegar en WildFly y JBoss EAP. Consulta xref:control:setup.adoc#wildfly[Paquete WildFly].
+* La pantalla de inicio de sesión ya no muestra el usuario y la contraseña predeterminados.
+* Control envía estadísticas de uso anónimas. Para desactivarlas, establece `flowset.control.analytics.enabled=false`.
+
+Correcciones de errores:
+
+* `SocketTimeoutException` al cargar las variables de proceso en la pantalla de la instancia de proceso.
+* El visor BPMN no podía abrir un proceso con una business rule task basada en una expresión o una call activity sin `calledElement`.
+
+Notas de versión en GitHub:
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.0[2026.0.0],
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.1[2026.0.1].
+
+== Flowset Tasklist 2026.0.0
+
+Esta versión alinea Tasklist con la versión 2026.0 de la plataforma. No tiene cambios funcionales: solo se ha actualizado la descripción de la página *About*.
+
+Notas de versión en GitHub: https://github.com/flowset/flowset-tasklist-react-community/releases/tag/2026.0.0[2026.0.0].
+
+== Flowset Studio
+
+Esta actualización mejora el trabajo con modelos BPMN, el inspector de propiedades, las tareas externas y las plantillas de proyecto, y corrige varios problemas del plugin y de la generación de proyectos.
+
+=== Mejoras
+
+* Los grupos de propiedades del inspector se pueden contraer y expandir, lo que ayuda con modelos BPMN grandes.
+* Se ha mejorado la navegación entre el modelo, el código Java, las tareas externas y los elementos de proceso relacionados.
+* Studio puede generar handlers de tareas externas, navegar hacia ellos desde el modelo y crear proyectos Spring Boot para configuraciones con un motor externo. También se admiten proyectos construidos en torno a tareas externas.
+* Se ha añadido un escenario de despliegue de procesos de negocio, se han mejorado las plantillas de proyecto y se han actualizado las versiones de Operaton.
+* Se admite IntelliJ IDEA 2026.1.
+* Se ha reescrito la descripción del plugin en JetBrains Marketplace.
+
+=== Correcciones de errores
+
+Inspector de propiedades:
+
+* La edición de las propiedades de formularios vuelve a funcionar.
+* Las listas de task listeners, execution listeners y formularios personalizados vuelven a mostrarse, y se puede cambiar el tipo de task listener.
+* La creación de task listeners y la configuración de call activities funcionan correctamente, incluida la elección del tipo de elemento invocado y la navegación hacia él.
+
+Generación y configuración de proyectos:
+
+* La configuración de ejecución se crea correctamente para proyectos nuevos y en Linux.
+* El asistente de proyecto selecciona la versión correcta de Java.
+* Al crear un proyecto Maven ya no se duplican las dependencias web y de seguridad en `pom.xml`.
+* Cambiar los parámetros de conexión y la configuración del motor ya no añade dependencias innecesarias ni reordena las existentes.
+
+Interfaz:
+
+* Se han corregido un conflicto con Jmix Studio, una falsa advertencia de ralentización del IDE y la apertura innecesaria de documentos.
+* El texto largo en los campos de entrada se muestra correctamente.
+* El icono del plugin vuelve a mostrarse en los títulos de las ventanas.
+* Los datos de autenticación ya no se guardan en el archivo de aplicaciones.

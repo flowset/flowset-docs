@@ -1,0 +1,35 @@
+= Versión 1.1
+
+Flowset Control Enterprise 1.1.0. Corresponde a la versión Community xref:ROOT:whats-new/community/2026.0.adoc[2026.0] e incluye todo su contenido, además de las funciones de xref:ROOT:whats-new/enterprise/1.0.adoc[Enterprise 1.0].
+
+== Flowset Control 1.1.0
+
+Novedades de esta versión:
+
+=== Operaciones por lotes
+
+Puedes aplicar una acción a muchas instancias de proceso en ejecución a la vez: actualizar variables de proceso, enviar un mensaje o establecer el número de reintentos de tareas externas o trabajos. El motor ejecuta el lote de forma asíncrona mediante el Job Executor, así que la interfaz sigue respondiendo incluso con miles de instancias. Un lote se inicia desde la vista *Batches* o desde la lista de instancias de proceso. Consulta xref:control:batch-operations.adoc[].
+
+=== Evaluación de decisiones
+
+Puedes evaluar una tabla de decisión DMN desde Control sin iniciar un proceso: introduces los datos de entrada y compruebas el resultado. Sirve para probar reglas de negocio con ejemplos y para investigar cómo se comporta una decisión en producción. Consulta xref:control:decision-evaluation.adoc[].
+
+=== Trabajos
+
+Una nueva sección cubre los trabajos asíncronos del motor: temporizadores, continuaciones asíncronas y otro trabajo en segundo plano del Job Executor. Los trabajos se gestionan en tres lugares: la pantalla *Jobs*, la pestaña *Jobs* de una instancia de proceso y la pestaña *Job definitions* de una definición de proceso. Consulta xref:control:jobs.adoc[].
+
+=== Modificación de instancias de proceso
+
+Puedes mover los tokens de un proceso en ejecución de una actividad a otra directamente en el diagrama. Es útil para recuperar un proceso tras un fallo, repetir parte de un proceso grande o realinear la ejecución tras datos de entrada incorrectos. Consulta xref:control:process-instance-modification.adoc[].
+
+=== Límites de transacción
+
+El diagrama resalta los puntos de commit y los estados de espera del motor. Muestran dónde guarda el proceso su estado, dónde empiezan nuevas transacciones, si las continuaciones asíncronas están bien colocadas y dónde pueden repetirse pasos. Consulta xref:control:transactions.adoc[].
+
+=== Roles predefinidos y seguridad a nivel de fila
+
+Control Enterprise incluye roles listos para responsabilidades habituales: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager* y *User & Role Admin*. Cada área, como definiciones de proceso, trabajos o incidencias, tiene además roles separados para lectura, acciones concretas y acceso completo. La pantalla *Roles* muestra los roles de recursos y los roles de nivel de fila en dos pestañas. Los roles de nivel de fila restringen el acceso a objetos concretos, por ejemplo a motores BPM determinados. Consulta xref:control:access-management.adoc[].
+
+=== Despliegue en WildFly y JBoss EAP
+
+Control se puede desplegar en WildFly y JBoss EAP. Consulta xref:control:setup.adoc#wildfly[Paquete WildFly].

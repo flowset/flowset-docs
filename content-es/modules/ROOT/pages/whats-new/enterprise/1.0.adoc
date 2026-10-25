@@ -1,0 +1,23 @@
+= Versión 1.0
+
+La primera versión Enterprise: Flowset Control Enterprise 1.0.0. Corresponde a la versión Community xref:ROOT:whats-new/community/2025.0.adoc[2025.0] e incluye todo su contenido. Flowset no tiene motor propio, así que la edición Enterprise abarca solo Control.
+
+== Flowset Control 1.0.0
+
+Control Enterprise 1.0.0 añade las siguientes funciones a Flowset Control 2025.0.
+
+=== Monitoreo del motor BPM
+
+Los detalles de un motor conectado tienen la sección *Monitoring*. Control lee métricas de un endpoint del motor, por ejemplo Spring Boot Actuator. Indicas la URL, cargas la lista de métricas disponibles, eliges las que necesitas y, si hace falta, añades etiquetas. Los valores se muestran en la pantalla del motor y se actualizan con el botón *Refresh*. También puedes añadir un enlace a un dashboard externo, como Grafana, y abrirlo con un clic. Consulta xref:control:engine-monitoring.adoc[].
+
+=== Mapa de calor
+
+La sección *Heatmap* muestra en el diagrama del proceso qué rutas de ejecución se usan con más frecuencia. Puedes generar el mapa para cualquier versión del proceso y usarlo para encontrar cuellos de botella. Consulta xref:control:heatmap.adoc[].
+
+=== Envío de mensajes
+
+Puedes enviar un mensaje al motor desde el diagrama de una instancia de proceso que espera en un *Intermediate Message Catch Event* o en un *Boundary Message Event*. Antes había que llamar a la API REST manualmente. Consulta xref:control:messages.adoc[].
+
+=== Documentación de elementos de proceso
+
+Si un desarrollador rellenó `Documentation` de un elemento en el BPMN XML, Control muestra ese texto en el diagrama. Un operador puede ver para qué sirve una tarea o una compuerta sin abrir el modelo original. Consulta xref:control:process-documentation.adoc[].

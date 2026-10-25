@@ -1,0 +1,70 @@
+= Versión 2.0
+
+Flowset Control Enterprise 2.0.0. Es la primera versión Enterprise que se publica antes que la plataforma: se basa en Flowset Control 2026.0 e incluye las funciones de xref:ROOT:whats-new/enterprise/1.1.adoc[Enterprise 1.1]. Parte de sus cambios llegará a la edición Community en una versión posterior.
+
+[[control]]
+== Flowset Control 2.0.0
+
+Flowset Control 2.0 requiere Java 21. La aplicación funciona ahora sobre Jmix 3.0 y Spring Boot 4. Instala JDK 21 en el servidor donde se ejecuta Control antes de actualizar. La instalación y la actualización se describen en xref:control:setup.adoc[].
+
+Las funciones Enterprise se activan ahora con una clave de licencia. Sin licencia, Control funciona con el conjunto de funciones de Community, y las secciones Enterprise aparecen en el menú con un icono de candado. Cómo instalar una clave se explica en xref:flowset:control:license.adoc[License (en inglés)].
+
+=== Dependencias actualizadas
+
+* Jmix 3.0, Spring Boot 4.0
+* Java 21
+
+=== Funciones nuevas y mejoradas
+
+==== Asistente de IA
+
+Control incluye un asistente basado en un LLM. Resume las incidencias abiertas, explica cómo funciona un proceso o una decisión DMN desplegados, ayuda a averiguar por qué se detuvo una instancia de proceso y responde preguntas sobre los datos disponibles en Control. El asistente solo lee datos y nunca cambia nada en el motor. Se configura con las propiedades estándar de Spring AI, y la clave de API es opcional. El rol *AI Assistant User* da acceso a él. Consulta xref:control:ai-assistant.adoc[].
+
+==== Historial de cambios de las variables de proceso
+
+La pestaña *History → Variables* de una instancia de proceso mostraba solo el último valor de cada variable. Ahora puedes ver cada cambio: cuándo ocurrió, en qué actividad y qué valor se escribió. El análisis funciona en ambos sentidos: selecciona una actividad en el diagrama para ver qué variables cambió, o selecciona una variable para ver todos sus cambios en el diagrama. El motor debe guardar el historial en el nivel `full`. Consulta xref:control:process-variable-history.adoc[].
+
+==== Conexión con el motor mediante OAuth2
+
+OAuth2 se ha añadido a las opciones de autenticación de la conexión con un motor BPM, junto a HTTP Basic y las cabeceras HTTP. Control obtiene un token de acceso del servidor de autorización y lo añade a las peticiones a la API REST del motor. Consulta xref:control:connecting-engine.adoc[].
+
+==== Exportación de listas a Excel
+
+Las pantallas de lista que cargan datos del motor tienen la acción *Excel*: procesos, instancias de proceso, incidencias, tareas de usuario, decisiones, instancias de decisión, despliegues y lotes. Se exportan las filas de la página actual de la tabla.
+
+==== Hora del motor en la zona horaria del usuario
+
+Las fechas y horas recibidas del motor se muestran en la zona horaria del usuario de Control y no en la del servidor del motor.
+
+==== Diagrama de la instancia de proceso
+
+Se ha rediseñado el resaltado de estados en el diagrama de la instancia de proceso. Los elementos por los que no pasó la ejecución aparecen atenuados por defecto. Los elementos activos muestran el número de instancias de actividad además del número de incidencias. Nuevos interruptores permiten mostrar los colores de los elementos definidos en el BPMN XML (ocultos por defecto) y el número de instancias de actividad completadas en cada elemento.
+
+==== Otros cambios
+
+* Nuevos tipos de motor: CIB Seven y Fluxnova.
+* El grupo *Start message* de la pantalla de envío de mensajes tiene el campo *Business key*, como la pantalla de inicio de proceso.
+* La configuración de Docker Compose ejecuta Operaton en lugar de Camunda 7.
+* La pantalla de inicio de sesión ya no muestra el usuario y la contraseña predeterminados.
+* La página *About* usa enlaces con iconos en lugar de enlaces de texto.
+
+=== Cambios incompatibles
+
+==== Java 21
+
+Control 2.0 no arranca con Java 17. Actualiza el JDK a la versión 21 antes de instalar la nueva versión.
+
+=== Correcciones de errores
+
+* La aplicación tardaba en arrancar cuando un motor preconfigurado no estaba disponible.
+* No se podían cambiar las variables de proceso desde un diálogo abierto mediante un enlace.
+* En el historial de variables, el tipo de cambio de la tabla no coincidía con el estado de la tarjeta.
+* En la pantalla de la instancia de proceso, los trabajos y los datos de las pestañas *Runtime* no se filtraban por la actividad seleccionada.
+* *Test connection* fallaba con un error cuando la URL del motor estaba vacía.
+* Una variable sin valor aparecía como eliminada en el registro de variables.
+* Mapa de calor: los valores no se ocultaban tras cambiar la versión del proceso u ocultar las conexiones.
+* Al exportar un proceso sin instancias ahora se exportan solo los datos generales.
+* El botón de exportación se oculta junto con los componentes a los que pertenece.
+* La etiqueta *State* se mostraba de forma inconsistente en los detalles del trabajo.
+* Algunas pantallas no mostraban título.
+* Los diálogos para suspender y activar instancias de proceso mostraban claves de mensaje en lugar del texto traducido.

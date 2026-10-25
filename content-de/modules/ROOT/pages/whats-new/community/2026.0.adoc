@@ -1,0 +1,112 @@
+= Release 2026.0
+
+Flowset Control 2026.0, Flowset Tasklist 2026.0 und ein Update des Plugins Flowset Studio.
+
+== Flowset Control 2026.0.0
+
+Dieses Release überarbeitet die Bildschirme, mit denen Sie Entscheidungen, Prozesse, Aufgaben, Jobs und Vorfälle analysieren. Die meisten Änderungen machen zugehörige Objekte leichter erreichbar und lange Tabellen besser lesbar.
+
+Unterstützte Engines: Camunda 7 und Operaton. Control benötigt Java 17.
+
+=== Verbesserungen
+
+==== Entscheidungen und DMN
+
+* Neue Liste historischer Entscheidungsinstanzen.
+* Die Detailansicht der Entscheidungsinstanz wurde neu gestaltet. Die Schaltfläche *View DRD* wird dort nicht mehr angezeigt.
+* Die Detailansicht der Entscheidung wurde verbessert, und die Entscheidungstabelle lässt sich direkt aus zugehörigen Bildschirmen öffnen.
+* Der Bildschirm der Prozessinstanz hat den Tab *Decisions* mit den Entscheidungen, die in dieser Instanz ausgewertet wurden.
+
+==== Prozesse und BPMN-Diagramme
+
+* Der Dialog zum Starten eines Prozesses hat das Feld *Business Key*.
+* Beim Beenden von Prozessinstanzen können Sie benutzerdefinierte Listener und Ein-/Ausgabe-Mappings überspringen.
+* BPMN-Diagramme haben Schaltflächen zum Vergrößern und Verkleinern.
+* Die Detailansicht des Prozesses hat die Schaltfläche *Refresh*.
+
+==== Aufgaben, Jobs und Vorfälle
+
+* Benutzeraufgaben lassen sich in der Aufgabenliste, auf dem Bildschirm der Prozessinstanz und in der Detailansicht der Aufgabe abschließen und neu zuweisen.
+* Jobs lassen sich in der Job-Ansicht aktivieren, aussetzen und erneut ausführen, und der Stacktrace eines fehlgeschlagenen Jobs kann kopiert werden.
+* Von einem Vorfall aus gelangen Sie direkt zum zugehörigen Job.
+* Das Stacktrace-Fenster lässt sich im Vollbildmodus öffnen.
+
+==== Oberfläche und Navigation
+
+* Tabellenzellen verlinken auf den zugehörigen Prozess und die zugehörige Prozessinstanz.
+* Aktionsschaltflächen in Tabellen zeigen nur Symbole ohne Beschriftung.
+* Filterwerte werden in der URL gespeichert, sodass sich eine gefilterte Liste als Lesezeichen speichern oder teilen lässt.
+* Das Dashboard zeigt das aktuelle Datum und die URL der verbundenen Engine.
+* Prozessvariablen werden standardmäßig sortiert.
+* Jeder Verbindung zu einer BPM-Engine lässt sich ein Umgebungstyp zuweisen: Produktion, Pre-Production, Stage, QA, Entwicklung oder lokal. Der Typ wird als Badge neben dem Namen der Engine angezeigt.
+* Die Seite *About* wurde aktualisiert.
+
+==== Technische Aktualisierungen
+
+Jmix wurde auf Version 2.7 aktualisiert.
+
+=== Fehlerbehebungen
+
+* Die Oberfläche blieb hängen, wenn die Verbindung zur BPM-Engine fehlschlug.
+* Fehlerdetails externer Tasks wurden nicht angezeigt.
+* Die Liste der Benutzeraufgaben schlug fehl, wenn die Datenbank eine manuelle Aufgabe enthielt.
+* Die Liste der Bereitstellungen zeigte eine falsche Gesamtzahl.
+
+=== Patch 2026.0.1
+
+Verbesserungen:
+
+* Unterstützung der Engine Fluxnova.
+* Control kann in WildFly und JBoss EAP bereitgestellt werden. Siehe xref:control:setup.adoc#wildfly[WildFly-Bundle].
+* Der Anmeldebildschirm zeigt den Standard-Benutzernamen und das Standard-Passwort nicht mehr an.
+* Control sendet anonyme Nutzungsstatistiken. Zum Abschalten setzen Sie `flowset.control.analytics.enabled=false`.
+
+Fehlerbehebungen:
+
+* `SocketTimeoutException` beim Laden der Prozessvariablen auf dem Bildschirm der Prozessinstanz.
+* Der BPMN-Viewer konnte einen Prozess mit einer ausdrucksbasierten Business Rule Task oder einer Call Activity ohne `calledElement` nicht öffnen.
+
+Release Notes auf GitHub:
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.0[2026.0.0],
+https://github.com/flowset/flowset-control-community/releases/tag/2026.0.1[2026.0.1].
+
+== Flowset Tasklist 2026.0.0
+
+Diese Version bringt Tasklist auf den Stand des Plattform-Releases 2026.0. Sie enthält keine funktionalen Änderungen; nur die Beschreibung auf der Seite *About* wurde aktualisiert.
+
+Release Notes auf GitHub: https://github.com/flowset/flowset-tasklist-react-community/releases/tag/2026.0.0[2026.0.0].
+
+== Flowset Studio
+
+Dieses Update verbessert die Arbeit mit BPMN-Modellen, dem Eigenschaften-Inspektor, externen Tasks und Projektvorlagen und behebt eine Reihe von Fehlern im Plugin und bei der Projektgenerierung.
+
+=== Verbesserungen
+
+* Eigenschaftsgruppen im Inspektor lassen sich ein- und ausklappen, was bei großen BPMN-Modellen hilft.
+* Die Navigation zwischen Modell, Java-Code, externen Tasks und zugehörigen Prozesselementen wurde verbessert.
+* Studio kann Handler für externe Tasks generieren, aus dem Modell zu ihnen navigieren und Spring-Boot-Projekte für Setups mit externer Engine erstellen. Projekte, die auf externen Tasks aufbauen, werden ebenfalls unterstützt.
+* Ein Szenario zur Bereitstellung von Geschäftsprozessen wurde hinzugefügt, die Projektvorlagen wurden verbessert und die Operaton-Versionen aktualisiert.
+* IntelliJ IDEA 2026.1 wird unterstützt.
+* Die Beschreibung des Plugins im JetBrains Marketplace wurde neu geschrieben.
+
+=== Fehlerbehebungen
+
+Eigenschaften-Inspektor:
+
+* Das Bearbeiten von Formulareigenschaften funktioniert wieder.
+* Die Listen von Task Listenern, Execution Listenern und benutzerdefinierten Formularen werden wieder angezeigt, und der Typ eines Task Listeners lässt sich ändern.
+* Das Erstellen von Task Listenern und das Konfigurieren von Call Activities funktionieren korrekt, einschließlich der Auswahl des Typs des aufgerufenen Elements und der Navigation dorthin.
+
+Projektgenerierung und -konfiguration:
+
+* Die Run Configuration wird für neue Projekte und unter Linux korrekt erstellt.
+* Der Projektassistent wählt die richtige Java-Version.
+* Beim Erstellen eines Maven-Projekts werden die Web- und Security-Abhängigkeiten in `pom.xml` nicht mehr dupliziert.
+* Das Ändern von Verbindungsparametern und der Engine-Konfiguration fügt keine unnötigen Abhängigkeiten mehr hinzu und ändert nicht mehr die Reihenfolge der vorhandenen.
+
+Oberfläche:
+
+* Ein Konflikt mit Jmix Studio, eine fälschliche Warnung über eine verlangsamte IDE und das unnötige Öffnen von Dokumenten wurden behoben.
+* Langer Text in Eingabefeldern wird korrekt angezeigt.
+* Das Plugin-Symbol erscheint wieder in den Fenstertiteln.
+* Authentifizierungsdaten werden nicht mehr in der Anwendungsdatei gespeichert.

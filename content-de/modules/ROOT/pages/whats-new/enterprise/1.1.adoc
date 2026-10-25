@@ -1,0 +1,35 @@
+= Release 1.1
+
+Flowset Control Enterprise 1.1.0. Es entspricht dem Community-Release xref:ROOT:whats-new/community/2026.0.adoc[2026.0] und enthält dessen gesamten Umfang sowie die Funktionen von xref:ROOT:whats-new/enterprise/1.0.adoc[Enterprise 1.0].
+
+== Flowset Control 1.1.0
+
+Neu in dieser Version:
+
+=== Batch-Operationen
+
+Sie können eine Aktion auf viele laufende Prozessinstanzen gleichzeitig anwenden: Prozessvariablen aktualisieren, eine Message senden oder die Anzahl der Wiederholungen für externe Tasks oder Jobs festlegen. Die Engine führt den Batch asynchron über den Job Executor aus, sodass die Oberfläche auch bei Tausenden von Instanzen reaktionsfähig bleibt. Ein Batch wird in der Ansicht *Batches* oder aus der Liste der Prozessinstanzen gestartet. Siehe xref:control:batch-operations.adoc[].
+
+=== Auswertung von Entscheidungen
+
+Sie können eine DMN-Entscheidungstabelle in Control auswerten, ohne einen Prozess zu starten: Eingaben festlegen und das Ergebnis prüfen. Das eignet sich zum Testen von Geschäftsregeln an Beispielen und zur Untersuchung, wie sich eine Entscheidung in der Produktion verhält. Siehe xref:control:decision-evaluation.adoc[].
+
+=== Jobs
+
+Ein neuer Abschnitt behandelt die asynchronen Jobs der Engine: Timer, asynchrone Fortsetzungen und andere Hintergrundarbeit des Job Executors. Jobs verwalten Sie an drei Stellen: auf dem Bildschirm *Jobs*, im Tab *Jobs* einer Prozessinstanz und im Tab *Job definitions* einer Prozessdefinition. Siehe xref:control:jobs.adoc[].
+
+=== Prozessinstanz-Modifikation
+
+Sie können Tokens eines laufenden Prozesses direkt im Diagramm von einer Aktivität zu einer anderen verschieben. Das hilft, einen Prozess nach einem Fehler wiederherzustellen, einen Teil eines großen Prozesses zu wiederholen oder die Ausführung nach fehlerhaften Eingabedaten neu auszurichten. Siehe xref:control:process-instance-modification.adoc[].
+
+=== Transaktionsgrenzen
+
+Das Diagramm hebt Commit-Punkte und Wartezustände der Engine hervor. Daran sehen Sie, wo der Prozess seinen Zustand speichert, wo neue Transaktionen beginnen, ob asynchrone Fortsetzungen richtig gesetzt sind und wo Schritte erneut ausgeführt werden können. Siehe xref:control:transactions.adoc[].
+
+=== Vordefinierte Rollen und Sicherheit auf Zeilenebene
+
+Control Enterprise enthält fertige Rollen für typische Aufgaben: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager* und *User & Role Admin*. Für jeden Bereich, etwa Prozessdefinitionen, Jobs oder Vorfälle, gibt es außerdem eigene Rollen für Lesezugriff, einzelne Aktionen und Vollzugriff. Der Bildschirm *Roles* zeigt Ressourcenrollen und Rollen auf Zeilenebene in zwei Tabs. Rollen auf Zeilenebene beschränken den Zugriff auf einzelne Objekte, zum Beispiel auf bestimmte BPM-Engines. Siehe xref:control:access-management.adoc[].
+
+=== Bereitstellung in WildFly und JBoss EAP
+
+Control kann in WildFly und JBoss EAP bereitgestellt werden. Siehe xref:control:setup.adoc#wildfly[WildFly-Bundle].
