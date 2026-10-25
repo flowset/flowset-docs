@@ -6,95 +6,145 @@
 :page-hero-secondary: connecting-engine.adoc|Engine verbinden
 :page-hero-link: https://demo-control.flowset.io|Live-Demo
 
-== Erste Schritte
+== Editionen
+
+Flowset Control gibt es in den Editionen Community und Enterprise. Enterprise-Funktionen sind mit dem Badge [.ee]#EE# markiert. Was jede Edition enthält, ist unter xref:editions.adoc[Editionen vergleichen] beschrieben.
+
+== Installation und erste Schritte
 
 [.cards]
-* xref:setup.adoc[]
+* xref:setup.adoc[Installation]
 +
-Systemanforderungen und Möglichkeiten, Flowset Control zu starten.
-* xref:connecting-engine.adoc[]
+Systemanforderungen und Möglichkeiten, Flowset Control auszuführen.
+* xref:connecting-engine.adoc[Verbindung zu einer Engine]
 +
 Mehrere Engine-Verbindungen und der Wechsel zwischen ihnen.
-* xref:database.adoc[]
+* xref:editions.adoc[Editionen vergleichen]
 +
-PostgreSQL, MySQL oder die integrierte HSQLDB.
-* xref:oidc.adoc[]
-+
-Anmeldung über einen externen OpenID-Connect-Anbieter.
-* xref:access-management.adoc[]
-+
-Benutzer, Rollen und Berechtigungen.
+Was die Editionen Community und Enterprise enthalten.
 
-== Arbeiten mit Prozessen
+== Überwachung
 
 [.cards]
-* xref:dashboard.adoc[]
+* xref:dashboard.adoc[Dashboard]
 +
-Der erste Bildschirm nach der Anmeldung: eine Übersicht der verbundenen Engine.
-* xref:process.adoc[]
-+
-Geschäftsprozesse, die in der aktiven Engine bereitgestellt sind.
-* xref:process-instances.adoc[]
-+
-Prozessinstanzen anzeigen und verwalten.
-* xref:user-tasks.adoc[]
-+
-Aufgaben der gewählten Engine verfolgen und neu zuweisen.
-* xref:dmn-decisions.adoc[]
-+
-DMN-Entscheidungstabellen, die in der Engine bereitgestellt sind.
-* xref:deployments.adoc[]
-+
-Deployments mit Prozess- und Entscheidungsdefinitionen.
-
-== Enterprise-Funktionen
-
-[.cards]
-* xref:engine-monitoring.adoc[] [.ee]#EE#
+Der erste Bildschirm nach der Anmeldung: eine Übersicht über die verbundene Engine.
+* xref:engine-monitoring.adoc[Überwachung der Engine] [.ee]#EE#
 +
 Zustand der Prozesse und der Systemressourcen.
-* xref:process-variable-history.adoc[] [.ee]#EE#
+
+== Prozesse
+
+[.cards]
+* xref:process.adoc[Prozesse]
 +
-Jede Änderung einer Variablen einer Prozessinstanz.
-* xref:jobs.adoc[] [.ee]#EE#
+In der aktiven Engine bereitgestellte Geschäftsprozesse.
+* xref:process-instances.adoc[Prozessinstanzen]
 +
-Asynchrone Jobs der Engine: Wiederholungen, Priorität, Fälligkeit.
-* xref:process-instance-modification.adoc[] [.ee]#EE#
+Prozessinstanzen anzeigen und verwalten.
+* xref:incidents.adoc[Incidents]
 +
-Token eines laufenden Prozesses zwischen Aktivitäten verschieben.
-* xref:batch-operations.adoc[] [.ee]#EE#
+Fehler bei der Prozessausführung und erneute Ausführung fehlgeschlagener Schritte.
+* xref:process-migration.adoc[Migration von Instanzen]
 +
-Eine Aktion für viele Prozessinstanzen gleichzeitig.
-* xref:messages.adoc[] [.ee]#EE#
+Laufende Instanzen auf eine andere Prozessversion verschieben.
+* xref:process-instance-modification.adoc[Modifikation von Instanzen] [.ee]#EE#
++
+Tokens eines laufenden Prozesses zwischen Aktivitäten verschieben.
+* xref:messages.adoc[Senden von Messages] [.ee]#EE#
 +
 Eine Message aus dem Instanzdiagramm an die Engine senden.
-* xref:process-documentation.adoc[] [.ee]#EE#
+* xref:process-variable-history.adoc[Variablenverlauf] [.ee]#EE#
 +
-Dokumentation von BPMN-Elementen direkt im Diagramm.
-* xref:decision-evaluation.adoc[] [.ee]#EE#
+Jede Änderung einer Variable einer Prozessinstanz.
+* xref:process-documentation.adoc[Dokumentation von Elementen] [.ee]#EE#
 +
-Eine DMN-Entscheidungstabelle über die Oberfläche auswerten.
-* xref:heatmap.adoc[] [.ee]#EE#
-+
-Die häufigsten Ausführungspfade eines Prozesses.
-* xref:transactions.adoc[] [.ee]#EE#
+Dokumentation von BPMN-Elementen im Diagramm.
+* xref:transactions.adoc[Transaktionsgrenzen] [.ee]#EE#
 +
 Commit-Punkte und Wartezustände im Diagramm.
-* xref:ai-assistant.adoc[] [.ee]#EE#
+* xref:heatmap.adoc[Heatmap] [.ee]#EE#
++
+Die häufigsten Ausführungspfade eines Prozesses.
+
+== DMN-Entscheidungen
+
+[.cards]
+* xref:dmn-decisions.adoc[Entscheidungstabellen]
++
+In der Engine bereitgestellte DMN-Entscheidungstabellen.
+* xref:decision-instances.adoc[Entscheidungsinstanzen]
++
+Verlauf der Auswertungen von Entscheidungstabellen.
+* xref:decision-evaluation.adoc[Auswertung von Entscheidungen] [.ee]#EE#
++
+Eine DMN-Entscheidungstabelle in der Oberfläche auswerten.
+
+== Benutzeraufgaben
+
+[.cards]
+* xref:user-tasks.adoc[Benutzeraufgaben]
++
+Aufgaben der ausgewählten Engine: abschließen und neu zuweisen.
+
+== Jobs und Batch-Operationen
+
+[.cards]
+* xref:process-instance-jobs.adoc[Jobs]
++
+Jobs einer Prozessinstanz: Wiederholungen, Aussetzen, Fehlerdetails.
+* xref:jobs.adoc[Job-Verwaltung] [.ee]#EE#
++
+Alle Jobs der Engine, Priorität, Fälligkeitsdatum und Job-Definitionen.
+* xref:batches.adoc[Batch-Operationen]
++
+Aktive und abgeschlossene Batches und ihr Fortschritt.
+* xref:batch-operations.adoc[Batch-Operationen ausführen] [.ee]#EE#
++
+Eine Aktion für viele Prozessinstanzen gleichzeitig.
+
+== Bereitstellung
+
+[.cards]
+* xref:deployments.adoc[Deployments]
++
+Deployments mit Prozess- und Entscheidungsdefinitionen.
+* xref:deploy-process.adoc[Prozess bereitstellen]
++
+Ein neuer Prozess oder eine neue Prozessversion.
+* xref:deploy-decision.adoc[Entscheidungstabelle bereitstellen]
++
+Eine neue DMN-Entscheidungstabelle.
+
+== Administration
+
+[.cards]
+* xref:access-management.adoc[Benutzer und Rollen]
++
+Benutzerkonten und Rollenmodell.
+* xref:oidc.adoc[Single Sign-On (SSO)]
++
+Anmeldung über einen externen OpenID-Connect-Anbieter.
+* xref:keycloak.adoc[Keycloak einrichten]
++
+Ein Beispiel für die Einrichtung von Keycloak für Single Sign-On.
+* xref:database.adoc[Datenbanken]
++
+PostgreSQL, MySQL oder die integrierte HSQLDB.
+
+== KI-Assistent, Referenz und Lizenz
+
+[.cards]
+* xref:ai-assistant.adoc[KI-Assistent] [.ee]#EE#
 +
 Zusammenfassungen von Incidents und Antworten zu Prozessen und Instanzen.
+* xref:flowset:control:app-properties.adoc[Application Properties (auf Englisch)]
++
+Konfiguration über die Standardeigenschaften von Spring Boot.
+* xref:flowset:control:license.adoc[License (auf Englisch)] [.ee]#EE#
++
+Installation des Enterprise-Lizenzschlüssels.
 
-== Hauptfunktionen
-
-- **Verbindungsverwaltung:** Richten Sie mühelos Verbindungen zu verschiedenen BPM-Engines ein und wechseln Sie bei Bedarf zwischen ihnen.
-- **Prozessdurchsicht:** Navigieren Sie durch die auf der Engine bereitgestellten Prozesse.
-- **Prozessbereitstellung:** Stellen Sie eine neue Version eines Geschäftsprozesses mit einer praktischen Diagrammvorschau bereit.
-- **Instanzverwaltung:** Verwalten Sie die derzeit auf der BPM-Engine laufenden Prozessinstanzen.
-- **Verwaltung von Benutzeraufgaben:** Zeigen Sie Benutzeraufgaben an und weisen Sie sie neu zu.
-
-[NOTE]
-====
-Derzeit werden nur Camunda 7/Operaton unterstützt.
-====
+Flowset Control arbeitet mit externen BPM-Engines, die mit Camunda 7 kompatibel sind. Unterstützte Engines und Verbindungseinstellungen sind unter xref:connecting-engine.adoc[] beschrieben.
 
 Flowset Control wurde mit dem Open-Source-Framework https://www.jmix.io[Jmix] entwickelt.

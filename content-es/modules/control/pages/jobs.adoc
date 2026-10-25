@@ -1,4 +1,4 @@
-= Trabajos
+= Gestión de trabajos
 :page-edition: enterprise
 
 La sección *Jobs* permite ver y gestionar los trabajos asíncronos del motor BPM.
@@ -8,7 +8,7 @@ Un trabajo es un elemento de ejecución interno que el motor crea para el trabaj
 Los trabajos se pueden gestionar en tres lugares de la aplicación:
 
 * en la pantalla dedicada <<jobs-list-view,Jobs>> — para todos los trabajos del motor;
-* en la pestaña <<jobs-tab,Jobs>> de la vista detallada de una instancia de proceso — para los trabajos de una instancia específica;
+* en la pestaña *Jobs* de la vista detallada de una instancia de proceso — para los trabajos de una instancia específica (esta pestaña también está disponible en la edición Community, consulta xref:process-instance-jobs.adoc[Trabajos]);
 * en la pestaña <<job-definitions,Job definitions>> de la vista detallada de una definición de proceso — para las definiciones de trabajos.
 
 [[jobs-list-view]]
@@ -20,7 +20,7 @@ image::jobs-screan.png[align="center", width="1552"]
 
 La tabla admite ordenación y filtrado; para cada trabajo se muestra lo siguiente:
 
-* *Id* — el identificador del trabajo (con la opción de abrir la <<job-details,vista detallada>>).
+* *Id* — el identificador del trabajo (con la opción de abrir la xref:process-instance-jobs.adoc#job-details[vista detallada]).
 * *Process instance* — la instancia de proceso a la que pertenece el trabajo.
 * *Process* — la definición de proceso y su versión.
 * *Creation date* — la fecha y hora en que se creó el trabajo.
@@ -63,91 +63,22 @@ El panel *Job executor state* se muestra únicamente cuando se cumplen las sigui
 . El Actuator está configurado tanto en el lado del motor BPM como en el lado de Flowset Control.
 . Las métricas `executor.active` y `executor.pool.size` están habilitadas para el motor BPM, y se añade una etiqueta con el nombre `name` y el valor `camundaTaskExecutor` (para Camunda 7) o `operatonTaskExecutor` (para Operaton).
 
-[[jobs-tab]]
-== Pestaña Jobs en una instancia de proceso
+[[job-details-ee]]
+== Acciones adicionales del trabajo
 
-La pestaña *Jobs* está disponible en la pantalla xref:process-instances.adoc#detailed-instance[vista detallada de la instancia de proceso] (el bloque *Runtime*) y muestra los trabajos de la instancia seleccionada.
-
-image::jobs-tab.png[align="center", width="1552"]
-
-Para cada trabajo se muestran las columnas *Job*, *Failed activity*, *Create time*, *Retries*, *Priority* y *State*; están disponibles las acciones *Retry*, *Activate* y *Suspend*.
-
-TIP: Al hacer clic en el valor de la columna *Failed activity* se resalta el elemento correspondiente en el diagrama de la instancia de proceso, lo que ayuda a localizar rápidamente dónde ocurrió el error.
-
-[[jobs-actions]]
-== Operaciones sobre trabajos
-
-[cols="1,3", options="header", frame=none, grid=rows]
-|===
-| Acción | Descripción
-
-| *Retry*
-| Establece un nuevo número de intentos de ejecución, tras lo cual el Job Executor podrá tomar y ejecutar el trabajo de nuevo. Disponible solo para trabajos cuyo número de intentos es `0`.
-
-| *Activate*
-| Reanuda la ejecución de un trabajo previamente suspendido. Disponible solo para trabajos en estado *Suspended*.
-
-| *Suspend*
-| Suspende la ejecución de un trabajo activo. Disponible solo para trabajos en estado *Active*.
-
-| *Set job priority*
-| <<job-set-priority,Cambia la prioridad>> de ejecución del trabajo.
-
-| *Update due date*
-| <<job-update-due-date,Cambia la fecha de vencimiento>> del trabajo.
-|===
-
-[[jobs-retry]]
-=== Reintentar un trabajo
-
-Para reintentar un trabajo que finalizó con un error:
-
-. Selecciona un trabajo con un valor de *Retries* de `0` y haz clic en *Retry*.
-. En el cuadro de diálogo que se abre, especifica el número de intentos de ejecución en el campo *Retries* (el valor predeterminado es `1`; el valor debe ser positivo).
-+
-image::job-retry-dialog.png[align="center", width="720"]
-. Haz clic en *Retry* para aplicar el nuevo número de intentos.
-
-[[job-details]]
-== Vista detallada del trabajo
-
-Para abrir información detallada sobre un trabajo, haz clic en su identificador o utiliza la acción *View*.
-
-image::job-details.png[align="center", width="1100"]
-
-La pantalla contiene información detallada sobre el trabajo:
-
-* *Job Id* — el identificador del trabajo, con la opción de copiarlo.
-* *Job type* — el tipo de trabajo, por ejemplo `timer-intermediate-transition` (un evento de temporizador) o `async-continuation` (continuación asíncrona). Para el campo se muestra una información sobre herramientas localizada que explica el tipo.
-* *State* — el estado actual del trabajo (*Active* / *Suspended*).
-* *Creation date* y *Due date* — la hora de creación y la fecha de vencimiento del trabajo.
-* *Priority* — la prioridad del trabajo.
-* *Retries* — el número restante de intentos de ejecución.
-* *Activity* y *Failed activity* — la actividad del trabajo y la actividad donde ocurrió el error.
-* *Process* — la definición de proceso; el botón de navegación abre la xref:process.adoc[definición de proceso].
-* *Process instance* — la instancia de proceso; el botón de navegación abre la xref:process-instances.adoc#detailed-instance[vista detallada de la instancia].
-* *Exception message* y traza de la pila — el texto y la pila de llamadas completa del error de ejecución.
-
-Para un trabajo que finalizó con un error (*Retries* = `0`), los campos *Exception message* y traza de la pila muestran la causa del fallo, y la acción *Retry* permite volver a ejecutar el trabajo.
-
-image::job-details-failed.png[align="center", width="1100"]
-
-[[job-details-actions]]
-=== Acciones en la vista detallada
-
-En la parte inferior de la pantalla están disponibles las acciones *Retry*, *Activate* / *Suspend*, *Copy stacktrace* (copiar la pila de llamadas) y *Copy error message* (copiar el texto del error). El botón *...* abre acciones adicionales — *Set priority* y *Update due date*.
+La edición Enterprise añade las acciones *Set priority* y *Update due date* para un trabajo concreto. Puedes ejecutarlas en la pantalla <<jobs-list-view,Jobs>> o en la xref:process-instance-jobs.adoc#job-details[vista detallada del trabajo], donde están en el menú del botón *...*.
 
 image::job-actions-menu.png[align="center", width="1100"]
 
 [[job-set-priority]]
-==== Cambiar la prioridad
+=== Cambiar la prioridad
 
 La acción *Set priority* te permite establecer una nueva prioridad de ejecución para el trabajo en el campo *New priority*. La prioridad afecta al orden en que el Job Executor toma los trabajos.
 
 image::job-set-priority.png[align="center", width="720"]
 
 [[job-update-due-date]]
-==== Cambiar la fecha de vencimiento
+=== Cambiar la fecha de vencimiento
 
 La acción *Update due date* cambia la fecha de vencimiento (*Due date*) del trabajo. El conjunto de parámetros depende del tipo de trabajo.
 

@@ -1,0 +1,25 @@
+= Process Instance Migration
+:description: Moving running process instances to another version of the process definition.
+
+Migration moves running process instances to another version of the process definition, for example after you deploy a fixed model. How the engine performs migration is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/process-instance-migration[Process Instance Migration].
+
+[[from-process-list]]
+== Migrating from the Processes view
+
+The actions column enables migration of running process instances to newer process versions directly from the *Processes* view.
+
+. Select target process in the xref:process.adoc#process-list[processes table].
++
+image::process-migrate.png[align="center", width="1141"]
+. Click .*.. -> Migrate* in the actions column.
+. Configure migration:
++
+image::process-instance-migrate.png[align="center", width="942"]
++
+* *Source process*: Automatically detected (current running instances).
+* *Target process*: Select from deployed versions dropdown.
+
+[[from-instance]]
+== Migrating a single instance
+
+You can start migration of a single instance from the xref:process-instances.adoc#detailed-instance[detailed process instance view]. The migration action is in the right-hand panel.

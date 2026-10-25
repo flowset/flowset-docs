@@ -5,8 +5,23 @@
 {{#if (eq page.attributes.edition 'enterprise')}}
 <div class="page-meta is-before-toc">
   <span class="page-tag page-tag-ee" title="{{t 'enterpriseOnly'}}">{{t 'enterprise'}}</span>
-  {{#with page.attributes.since}}<span class="page-tag page-tag-since">{{t 'since' this}}</span>{{/with}}
+  {{#with page.attributes.since}}<span class="page-tag page-tag-since">{{t 'sinceEe' this}}</span>{{/with}}
 </div>
+{{#unless (eq (lookup page.attributes 'edition-banner') 'none')}}
+<aside class="edition-banner" role="note" aria-label="{{t 'eeFeature'}}">
+  <p class="edition-banner-text"><strong>{{t 'eeBannerTitle'}}</strong> {{t 'eeBannerCommunity'}}{{#if (eq page.module 'control')}} {{t 'eeBannerLicense'}}{{/if}}</p>
+  <p class="edition-banner-links">
+    {{~#with (page-href 'editions.adoc')}}<a href="{{this}}">{{t 'eeBannerCompare'}}</a>{{/with~}}
+    {{~#with (page-href 'license.adoc')}}{{#unless (eq this './')}}{{#if (page-href 'editions.adoc')}} · {{/if}}<a href="{{this}}">{{t 'eeBannerInstall'}}</a>{{/unless}}{{/with~}}
+  </p>
+</aside>
+{{/unless}}
+{{else}}
+{{#with page.attributes.since}}
+<div class="page-meta is-before-toc">
+  <span class="page-tag page-tag-since">{{t 'since' this}}</span>
+</div>
+{{/with}}
 {{/if}}
 {{#if (eq page.layout 'home')}}
       <div class="navbar-item search hide-for-print">

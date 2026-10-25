@@ -78,3 +78,17 @@ Ejemplo: hacer que el campo `email` de la entidad `User` sea de solo lectura par
 +
 image::add-role-2.png[align="center", width="1163"]
 . Haz clic en *OK* para guardar el nuevo rol.
+
+[[row-level-roles]]
+== Roles de nivel de fila [.ee]#EE#
+
+[NOTE.ee, caption="Función Enterprise"]
+====
+Los roles de nivel de fila solo están disponibles en la edición *Flowset Control Enterprise*.
+====
+
+Los roles de recursos definen a qué tipos de objetos y pantallas puede acceder un usuario. Los https://docs.jmix.io/jmix/security/row-level-roles.html[roles de nivel de fila^] restringen además el acceso a objetos concretos, por ejemplo a motores BPM determinados. Un usuario sin roles de nivel de fila ve todos los objetos que le permiten sus roles de recursos.
+
+En la edición Enterprise, la pantalla *Roles* (*Administration → Roles*) tiene dos pestañas: roles de recursos y roles de nivel de fila. En la pestaña de roles de nivel de fila puedes crear, editar y eliminar un rol, asignarlo a usuarios y exportar roles a JSON o ZIP.
+
+Control Enterprise también incluye roles predefinidos para responsabilidades habituales: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager*, *User & Role Admin* y *AI Assistant User*. Cada área, como definiciones de proceso, trabajos o incidentes, tiene además roles separados para lectura, acciones concretas y acceso completo.

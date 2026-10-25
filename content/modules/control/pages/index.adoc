@@ -6,101 +6,145 @@
 :page-hero-secondary: connecting-engine.adoc|Connect an engine
 :page-hero-link: https://demo-control.flowset.io|Live demo
 
-== Getting started
+== Editions
+
+Flowset Control comes in the Community and Enterprise editions. Enterprise features are marked with the [.ee]#EE# badge. What each edition includes is described in xref:editions.adoc[Compare Editions].
+
+== Installation and Getting Started
 
 [.cards]
-* xref:setup.adoc[]
+* xref:setup.adoc[Installation]
 +
 System requirements and ways to run Flowset Control.
-* xref:app-properties.adoc[]
-+
-Configuration through standard Spring Boot properties.
-* xref:connecting-engine.adoc[]
+* xref:connecting-engine.adoc[Connecting to an Engine]
 +
 Several engine connections and switching between them.
-* xref:database.adoc[]
+* xref:editions.adoc[Compare Editions]
 +
-PostgreSQL, MySQL or the built-in HSQLDB.
-* xref:oidc.adoc[]
+What the Community and Enterprise editions include.
+
+== Monitoring
+
+[.cards]
+* xref:dashboard.adoc[Dashboard]
++
+The first screen after login: a summary of the connected engine.
+* xref:engine-monitoring.adoc[Engine Monitoring] [.ee]#EE#
++
+Health of processes and system resources.
+
+== Processes
+
+[.cards]
+* xref:process.adoc[Processes]
++
+Business processes deployed to the active engine.
+* xref:process-instances.adoc[Process Instances]
++
+Browse process instances and manage them.
+* xref:incidents.adoc[Incidents]
++
+Process execution errors and retrying failed steps.
+* xref:process-migration.adoc[Instance Migration]
++
+Move running instances to another process version.
+* xref:process-instance-modification.adoc[Instance Modification] [.ee]#EE#
++
+Move tokens of a running process between activities.
+* xref:messages.adoc[Sending Messages] [.ee]#EE#
++
+Send a message to the engine from the instance diagram.
+* xref:process-variable-history.adoc[Variable History] [.ee]#EE#
++
+Every change of a process instance variable.
+* xref:process-documentation.adoc[Element Documentation] [.ee]#EE#
++
+Documentation of BPMN elements on the diagram.
+* xref:transactions.adoc[Transaction Boundaries] [.ee]#EE#
++
+Commit points and wait states on the diagram.
+* xref:heatmap.adoc[Heatmap] [.ee]#EE#
++
+The most frequent execution paths of a process.
+
+== DMN Decisions
+
+[.cards]
+* xref:dmn-decisions.adoc[Decision Tables]
++
+DMN decision tables deployed to the engine.
+* xref:decision-instances.adoc[Decision Instances]
++
+History of decision table evaluations.
+* xref:decision-evaluation.adoc[Decision Evaluation] [.ee]#EE#
++
+Evaluate a DMN decision table from the interface.
+
+== User Tasks
+
+[.cards]
+* xref:user-tasks.adoc[User Tasks]
++
+Tasks of the selected engine: completing and reassigning them.
+
+== Jobs and Batch Operations
+
+[.cards]
+* xref:process-instance-jobs.adoc[Jobs]
++
+Jobs of a process instance: retries, suspension, error details.
+* xref:jobs.adoc[Job Management] [.ee]#EE#
++
+All engine jobs, priority, due date, and job definitions.
+* xref:batches.adoc[Batch Operations]
++
+Active and completed batches and their progress.
+* xref:batch-operations.adoc[Running Batch Operations] [.ee]#EE#
++
+One action on many process instances at once.
+
+== Deployment
+
+[.cards]
+* xref:deployments.adoc[Deployments]
++
+Deployments with process and decision definitions.
+* xref:deploy-process.adoc[Deploying a Process]
++
+A new process or a new process version.
+* xref:deploy-decision.adoc[Deploying a Decision Table]
++
+A new DMN decision table.
+
+== Administration
+
+[.cards]
+* xref:access-management.adoc[Users and Roles]
++
+User accounts and the role model.
+* xref:oidc.adoc[Single Sign-On (SSO)]
 +
 Sign-in through an external OpenID Connect provider.
-* xref:access-management.adoc[]
+* xref:keycloak.adoc[Keycloak Setup]
 +
-Users, roles and permissions.
-* xref:license.adoc[] [.ee]#EE#
+An example of setting up Keycloak for single sign-on.
+* xref:database.adoc[Databases]
++
+PostgreSQL, MySQL or the built-in HSQLDB.
+
+== AI Assistant, Reference, and License
+
+[.cards]
+* xref:ai-assistant.adoc[AI Assistant] [.ee]#EE#
++
+Summaries of incidents and answers about processes and instances.
+* xref:app-properties.adoc[Application Properties]
++
+Configuration through standard Spring Boot properties.
+* xref:license.adoc[License] [.ee]#EE#
 +
 Installing the Enterprise license key.
 
-== Working with processes
-
-[.cards]
-* xref:dashboard.adoc[]
-+
-The first screen after login: a summary of the connected engine.
-* xref:process.adoc[]
-+
-Business processes deployed to the active engine.
-* xref:process-instances.adoc[]
-+
-Browse process instances and manage them.
-* xref:user-tasks.adoc[]
-+
-Track tasks of the selected engine and reassign them.
-* xref:dmn-decisions.adoc[]
-+
-DMN decision tables deployed to the engine.
-* xref:deployments.adoc[]
-+
-Deployments with process and decision definitions.
-
-== Enterprise features
-
-[.cards]
-* xref:engine-monitoring.adoc[] [.ee]#EE#
-+
-Health of processes and system resources.
-* xref:process-variable-history.adoc[] [.ee]#EE#
-+
-Every change of a process instance variable.
-* xref:jobs.adoc[] [.ee]#EE#
-+
-Asynchronous engine jobs: retries, priority, due date.
-* xref:process-instance-modification.adoc[] [.ee]#EE#
-+
-Move tokens of a running process between activities.
-* xref:batch-operations.adoc[] [.ee]#EE#
-+
-One action on many process instances at once.
-* xref:messages.adoc[] [.ee]#EE#
-+
-Send a message to the engine from the instance diagram.
-* xref:process-documentation.adoc[] [.ee]#EE#
-+
-Documentation of BPMN elements right on the diagram.
-* xref:decision-evaluation.adoc[] [.ee]#EE#
-+
-Evaluate a DMN decision table from the interface.
-* xref:heatmap.adoc[] [.ee]#EE#
-+
-The most frequent execution paths of a process.
-* xref:transactions.adoc[] [.ee]#EE#
-+
-Commit points and wait states on the diagram.
-* xref:ai-assistant.adoc[] [.ee]#EE#
-+
-Summaries of incidents and answers about processes and instances.
-
-== Key features
-
-- **Connection Management:** Easily set up connections to various BPM engines and switch between them as needed.
-- **Process Browsing:** Navigate through the processes deployed to the engine.
-- **Process Deployment:** Deploy a new version of a business process with a convenient diagram preview.
-- **Instance Management:** Manage process instances currently running on the BPM engine.
-- **User Task Management:** View user tasks with the ability to reassign them.
-
-[NOTE]
-====
-Currently, only Camunda 7/Operaton is supported.
-====
+Flowset Control works with external BPM engines compatible with Camunda 7. Supported engines and connection settings are described in xref:connecting-engine.adoc[].
 
 Flowset Control is built using the open-source https://www.jmix.io[Jmix] framework.

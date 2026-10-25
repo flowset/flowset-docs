@@ -1,7 +1,7 @@
-= Batch Operations
+= Running Batch Operations
 :page-edition: enterprise
 
-Flowset Control lets you create and execute a new batch operation that applies the same action to many running process instances at once. Instead of repeating the same change instance by instance, you select an operation, choose the target process instances with a filter, provide the operation parameters, and start a single asynchronous batch.
+In the Enterprise edition, Flowset Control lets you create and execute a new batch operation that applies the same action to many running process instances at once. Instead of repeating the same change instance by instance, you select an operation, choose the target process instances with a filter, provide the operation parameters, and start a single asynchronous batch.
 
 A batch is executed asynchronously by the BPM engine: it is split into smaller jobs that the Job Executor processes in the background, so the application stays responsive while large numbers of instances are processed.
 
@@ -30,7 +30,7 @@ The *Execute batch* wizard supports four operation types:
 
 You can start a new batch from two places:
 
-* *Batches* view -> *Active* tab -> *Execute new*.
+* xref:batches.adoc[Batches] view -> *Active* tab -> *Execute new*.
 * *Process instances* view -> dropdown button -> *Execute batch*.
 
 image::batch-operation-1.png[align="center", width="1552"]
@@ -131,7 +131,7 @@ image::batch-operation-9.png[align="center", width="1552"]
 A warning can be shown if the batch may have no effect for some instances - for example, when setting retries for process instances that have no active jobs or external tasks.
 ====
 
-Click *OK* to start the batch. After the request is accepted, a notification with a *Batch details* button is shown. Use *Batch details* to open the batch and track its progress, or open the *Batches* view to monitor active and completed batches.
+Click *OK* to start the batch. After the request is accepted, a notification with a *Batch details* button is shown. Use *Batch details* to open the batch and track its progress, or open the xref:batches.adoc[Batches] view to monitor active and completed batches.
 
 image::batch-operation-10.png[align="center", width="1552"]
 

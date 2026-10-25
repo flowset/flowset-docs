@@ -78,3 +78,17 @@ Beispiel: Machen Sie das Feld `email` der Entität `User` für diese Rolle schre
 +
 image::add-role-2.png[align="center", width="1163"]
 . Klicken Sie auf *OK*, um die neue Rolle zu speichern.
+
+[[row-level-roles]]
+== Rollen auf Zeilenebene [.ee]#EE#
+
+[NOTE.ee, caption="Enterprise-Funktion"]
+====
+Rollen auf Zeilenebene sind nur in der Edition *Flowset Control Enterprise* verfügbar.
+====
+
+Ressourcenrollen legen fest, auf welche Arten von Objekten und Bildschirmen ein Benutzer zugreifen kann. https://docs.jmix.io/jmix/security/row-level-roles.html[Rollen auf Zeilenebene^] beschränken den Zugriff zusätzlich auf einzelne Objekte, zum Beispiel auf bestimmte BPM-Engines. Ein Benutzer ohne Rollen auf Zeilenebene sieht alle Objekte, die seine Ressourcenrollen erlauben.
+
+In der Enterprise-Edition hat der Bildschirm *Roles* (*Administration → Roles*) zwei Tabs: Ressourcenrollen und Rollen auf Zeilenebene. Auf dem Tab der Rollen auf Zeilenebene können Sie eine Rolle anlegen, bearbeiten und löschen, sie Benutzern zuweisen und Rollen nach JSON oder ZIP exportieren.
+
+Control Enterprise enthält außerdem vordefinierte Rollen für typische Aufgaben: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager*, *User & Role Admin* und *AI Assistant User*. Für jeden Bereich, etwa Prozessdefinitionen, Jobs oder Incidents, gibt es außerdem eigene Rollen für Lesezugriff, einzelne Aktionen und Vollzugriff.

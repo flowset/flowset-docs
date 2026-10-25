@@ -78,3 +78,17 @@ Example: Make the `email` field of the `User` entity read-only for this role.
 +
 image::add-role-2.png[align="center", width="1163"]
 . Click *OK* to save the new role.
+
+[[row-level-roles]]
+== Row-Level Roles [.ee]#EE#
+
+[NOTE.ee, caption="Enterprise feature"]
+====
+Row-level roles are available in the *Flowset Control Enterprise* edition only.
+====
+
+Resource roles define which kinds of objects and screens a user can access. https://docs.jmix.io/jmix/security/row-level-roles.html[Row-level roles^] additionally restrict access to individual objects, for example to specific BPM engines. A user without row-level roles sees every object that their resource roles allow.
+
+In the Enterprise edition, the *Roles* screen (*Administration → Roles*) has two tabs: resource roles and row-level roles. On the row-level roles tab you can create, edit, and delete a role, assign it to users, and export roles to JSON or ZIP.
+
+Control Enterprise also includes predefined roles for common responsibilities: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager*, *User & Role Admin*, and *AI Assistant User*. Each area, such as process definitions, jobs, or incidents, also has separate roles for read access, individual actions, and full access.

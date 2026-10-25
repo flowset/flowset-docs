@@ -6,95 +6,145 @@
 :page-hero-secondary: connecting-engine.adoc|Conectar un motor
 :page-hero-link: https://demo-control.flowset.io|Demo en vivo
 
-== Primeros pasos
+== Ediciones
+
+Flowset Control tiene las ediciones Community y Enterprise. Las funciones Enterprise llevan la etiqueta [.ee]#EE#. Qué incluye cada edición se describe en xref:editions.adoc[Comparar ediciones].
+
+== Instalación y primeros pasos
 
 [.cards]
-* xref:setup.adoc[]
+* xref:setup.adoc[Instalación]
 +
 Requisitos del sistema y formas de ejecutar Flowset Control.
-* xref:connecting-engine.adoc[]
+* xref:connecting-engine.adoc[Conexión con un motor]
 +
-Varias conexiones a motores y el cambio entre ellas.
-* xref:database.adoc[]
+Varias conexiones a motores y cambio entre ellas.
+* xref:editions.adoc[Comparar ediciones]
 +
-PostgreSQL, MySQL o la base HSQLDB integrada.
-* xref:oidc.adoc[]
-+
-Inicio de sesión mediante un proveedor OpenID Connect externo.
-* xref:access-management.adoc[]
-+
-Usuarios, roles y permisos.
+Qué incluyen las ediciones Community y Enterprise.
 
-== Trabajo con procesos
+== Monitoreo
 
 [.cards]
-* xref:dashboard.adoc[]
+* xref:dashboard.adoc[Dashboard]
 +
 La primera pantalla tras iniciar sesión: un resumen del motor conectado.
-* xref:process.adoc[]
-+
-Procesos de negocio desplegados en el motor activo.
-* xref:process-instances.adoc[]
-+
-Consulta y gestión de instancias de proceso.
-* xref:user-tasks.adoc[]
-+
-Seguimiento de las tareas del motor seleccionado y su reasignación.
-* xref:dmn-decisions.adoc[]
-+
-Tablas de decisión DMN desplegadas en el motor.
-* xref:deployments.adoc[]
-+
-Despliegues con definiciones de procesos y decisiones.
-
-== Funciones Enterprise
-
-[.cards]
-* xref:engine-monitoring.adoc[] [.ee]#EE#
+* xref:engine-monitoring.adoc[Monitoreo del motor] [.ee]#EE#
 +
 Estado de los procesos y de los recursos del sistema.
-* xref:process-variable-history.adoc[] [.ee]#EE#
+
+== Procesos
+
+[.cards]
+* xref:process.adoc[Procesos]
 +
-Cada cambio de una variable de una instancia de proceso.
-* xref:jobs.adoc[] [.ee]#EE#
+Procesos de negocio desplegados en el motor activo.
+* xref:process-instances.adoc[Instancias de proceso]
 +
-Trabajos asíncronos del motor: reintentos, prioridad, fecha de vencimiento.
-* xref:process-instance-modification.adoc[] [.ee]#EE#
+Consulta y gestión de instancias de proceso.
+* xref:incidents.adoc[Incidentes]
++
+Errores de ejecución de procesos y reintento de pasos fallidos.
+* xref:process-migration.adoc[Migración de instancias]
++
+Mover instancias en ejecución a otra versión del proceso.
+* xref:process-instance-modification.adoc[Modificación de instancias] [.ee]#EE#
 +
 Mover tokens de un proceso en ejecución entre actividades.
-* xref:batch-operations.adoc[] [.ee]#EE#
-+
-Una acción sobre muchas instancias de proceso a la vez.
-* xref:messages.adoc[] [.ee]#EE#
+* xref:messages.adoc[Envío de mensajes] [.ee]#EE#
 +
 Enviar un mensaje al motor desde el diagrama de la instancia.
-* xref:process-documentation.adoc[] [.ee]#EE#
+* xref:process-variable-history.adoc[Historial de variables] [.ee]#EE#
 +
-Documentación de los elementos BPMN directamente en el diagrama.
-* xref:decision-evaluation.adoc[] [.ee]#EE#
+Cada cambio de una variable de una instancia de proceso.
+* xref:process-documentation.adoc[Documentación de elementos] [.ee]#EE#
 +
-Evaluar una tabla de decisión DMN desde la interfaz.
-* xref:heatmap.adoc[] [.ee]#EE#
+Documentación de los elementos BPMN en el diagrama.
+* xref:transactions.adoc[Límites de transacción] [.ee]#EE#
++
+Puntos de commit y estados de espera en el diagrama.
+* xref:heatmap.adoc[Mapa de calor] [.ee]#EE#
 +
 Las rutas de ejecución más frecuentes de un proceso.
-* xref:transactions.adoc[] [.ee]#EE#
+
+== Decisiones DMN
+
+[.cards]
+* xref:dmn-decisions.adoc[Tablas de decisión]
 +
-Puntos de confirmación y estados de espera en el diagrama.
-* xref:ai-assistant.adoc[] [.ee]#EE#
+Tablas de decisión DMN desplegadas en el motor.
+* xref:decision-instances.adoc[Instancias de decisión]
++
+Historial de evaluaciones de tablas de decisión.
+* xref:decision-evaluation.adoc[Evaluación de decisiones] [.ee]#EE#
++
+Evaluar una tabla de decisión DMN desde la interfaz.
+
+== Tareas de usuario
+
+[.cards]
+* xref:user-tasks.adoc[Tareas de usuario]
++
+Tareas del motor seleccionado: completarlas y reasignarlas.
+
+== Trabajos y operaciones por lotes
+
+[.cards]
+* xref:process-instance-jobs.adoc[Trabajos]
++
+Trabajos de una instancia de proceso: reintentos, suspensión, detalles del error.
+* xref:jobs.adoc[Gestión de trabajos] [.ee]#EE#
++
+Todos los trabajos del motor, prioridad, fecha de vencimiento y definiciones de trabajos.
+* xref:batches.adoc[Operaciones por lotes]
++
+Lotes activos y completados y su progreso.
+* xref:batch-operations.adoc[Ejecución de operaciones por lotes] [.ee]#EE#
++
+Una acción sobre muchas instancias de proceso a la vez.
+
+== Despliegue
+
+[.cards]
+* xref:deployments.adoc[Despliegues]
++
+Despliegues con definiciones de procesos y decisiones.
+* xref:deploy-process.adoc[Despliegue de un proceso]
++
+Un proceso nuevo o una nueva versión de un proceso.
+* xref:deploy-decision.adoc[Despliegue de una tabla de decisión]
++
+Una tabla de decisión DMN nueva.
+
+== Administración
+
+[.cards]
+* xref:access-management.adoc[Usuarios y roles]
++
+Cuentas de usuario y modelo de roles.
+* xref:oidc.adoc[Inicio de sesión único (SSO)]
++
+Inicio de sesión mediante un proveedor OpenID Connect externo.
+* xref:keycloak.adoc[Configuración de Keycloak]
++
+Un ejemplo de configuración de Keycloak para el inicio de sesión único.
+* xref:database.adoc[Bases de datos]
++
+PostgreSQL, MySQL o la HSQLDB integrada.
+
+== Asistente de IA, referencia y licencia
+
+[.cards]
+* xref:ai-assistant.adoc[Asistente de IA] [.ee]#EE#
 +
 Resúmenes de incidentes y respuestas sobre procesos e instancias.
+* xref:flowset:control:app-properties.adoc[Application Properties (en inglés)]
++
+Configuración mediante las propiedades estándar de Spring Boot.
+* xref:flowset:control:license.adoc[License (en inglés)] [.ee]#EE#
++
+Instalación de la clave de licencia Enterprise.
 
-== Características principales
-
-- **Gestión de conexiones:** permite configurar conexiones a distintos motores BPM y cambiar entre ellas según sea necesario.
-- **Exploración de procesos:** permite navegar por los procesos desplegados en el motor.
-- **Despliegue de procesos:** permite desplegar una nueva versión de un proceso de negocio con una vista previa clara del diagrama.
-- **Gestión de instancias:** permite gestionar las instancias de proceso que se están ejecutando actualmente en el motor BPM.
-- **Gestión de tareas de usuario:** permite visualizar tareas de usuario y reasignarlas.
-
-[NOTE]
-====
-Actualmente, solo se admite Camunda 7/Operaton.
-====
+Flowset Control trabaja con motores BPM externos compatibles con Camunda 7. Los motores admitidos y los ajustes de conexión se describen en xref:connecting-engine.adoc[].
 
 Flowset Control está construido con https://www.jmix.io[Jmix], un framework de código abierto.

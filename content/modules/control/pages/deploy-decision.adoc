@@ -1,0 +1,15 @@
+= Deploying a Decision Table
+:description: Deploying a DMN decision table to the connected engine.
+
+You can deploy a DMN decision table to the connected engine directly from Control. Deployed tables appear in the xref:dmn-decisions.adoc[Decision Tables] view, and the deployment record appears in the xref:deployments.adoc[Deployments] view.
+
+[[deploy]]
+== Deploying
+
+To deploy a DMN table:
+
+. In the *Decisions* view, click *Deploy*
+. In the *New decision deployment* view, click *Upload* and select your DMN 1.1(.dmn or .dmn11.xml) file.
++
+image::deploy-decision.png[align="center", width="1186"]
+. Click *OK* to complete deployment.

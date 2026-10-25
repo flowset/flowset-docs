@@ -1,0 +1,18 @@
+= Deploying a Process
+:description: Deploying a new BPMN 2.0 process or a new process version to the connected engine.
+
+You can deploy a new process, or a new version of an existing one, to the connected engine directly from Control. Deployed processes appear in the xref:process.adoc[Processes] view, and the deployment record appears in the xref:deployments.adoc[Deployments] view.
+
+[[deploy]]
+== Deploying
+
+To deploy a new process or version:
+
+. In the *Processes* view, click *Deploy*
+. In the *New process deployment* view, click *Upload* and select your BPMN 2.0 XML file.
++
+image::deploy-process.png[align="center", width="1552"]
++
+The system will validate the BPMN 2.0 syntax and display a preview of the process diagram.
+
+. Click *OK* to complete deployment.

@@ -1,0 +1,61 @@
+= Incidents
+:description: Incidents of the connected engine: the list, filters, incident details, and retrying failed steps.
+
+An incident is an error that stops a process instance from continuing, for example when a job or an external task has run out of retries. The mechanism is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/incidents[Incidents].
+
+The *Incidents* view shows open incidents of the connected engine across all processes. To open it, select *Incidents* in the application menu. The incidents of a specific process instance are also shown on the *Incidents* tab of the xref:process-instances.adoc#detailed-instance[detailed instance view], and such instances are marked with an icon in the instance list.
+
+[[list]]
+== Incident list
+
+For each incident the list shows:
+
+* *Id*: the incident identifier, which opens the <<details,incident details>>;
+* *Type*: the incident type, for example a failed job or a failed external task;
+* *Message*: the error text;
+* *Process* and *Process instance*;
+* *Activity*: the process element where the incident occurred;
+* *Creation date*.
+
+You can filter the list:
+
+* by process and process version;
+* by incident type, including a custom type (the *Custom* value);
+* by message text;
+* by activity;
+* by process instance identifier;
+* by creation date.
+
+[[retry]]
+== Retrying failed steps
+
+If an incident was caused by a job or an external task that ran out of retries, you can run the step again: Control increases the number of remaining retries, and the engine tries to execute the step once more.
+
+To retry several incidents:
+
+. Select the incidents in the list.
+. Click the retry button above the list.
+. In the *Retry failed activities* dialog, enter the new number of retries in the *Retries* field and confirm.
+
+The number of retries is increased asynchronously. Refresh the list to see the result.
+
+For a single incident, retrying is available in the incident details: the *Retry failed job* or *Retry external task* dialog opens, depending on the incident type.
+
+TIP: If the cause of the error has not been fixed, the incident appears again once the new retries are used up. Check the error message and the stack trace first.
+
+[[details]]
+== Incident details
+
+To open an incident, click its identifier, or select it and click *View*. The window has three groups:
+
+* *General*: the identifier, type, message, creation date, and payload (for example, the identifier of the job or external task);
+* *Process & activity*: the process, the process instance, the activity, and the failed activity;
+* *Related incidents*: the cause incident and the root incident, if this incident was caused by another one.
+
+From this window you can:
+
+* open the stack trace of the error;
+* go to the process, the process instance, or the related job or external task;
+* open the cause incident or the root incident;
+* copy the incident identifier and the payload;
+* <<retry,retry the failed step>>.

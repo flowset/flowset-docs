@@ -1,6 +1,7 @@
 [[license]]
 = License
 :page-edition: enterprise
+:page-edition-banner: none
 
 Without an installed license, Flowset Control Enterprise runs with the Community edition feature set: Enterprise features are marked with a lock icon in the menu and are not available. To enable them, install a license key.
 

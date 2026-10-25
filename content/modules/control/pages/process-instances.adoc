@@ -71,24 +71,24 @@ image::process-instance-variable.png[align="center", width="1168"]
 ** *User tasks*. View a list of active tasks and reassign tasks to other users:
 +
 image::process-instance-user-task.png[align="center", width="1168"]
-** *Jobs*
+** *Jobs*. Jobs of the instance: retry, suspend, and activate them (see xref:process-instance-jobs.adoc[Jobs]).
 ** *External tasks*
-** *Incidents*
+** *Incidents*. Incidents of the instance (see xref:incidents.adoc[Incidents]).
 
 * The *History* tab displays a list of all user tasks (both completed and active), a comprehensive list of completed activities, and the last values of process variables. The *History* tab is available for both active and completed process instances.
 +
 image::process-instance-history.png[align="center", width="1163"]
 +
 In Flowset Control Enterprise, the *History* tab also contains the *Variable log* tab with all changes of process variables.
-See xref:process-variable-history.adoc[] for details.
+See xref:process-variable-history.adoc[] [.ee]#EE# for details.
 
 * The right panel displays <<actions,actions>> available for the process instance, including:
 
 ** Viewing instance information.
 ** Reloading the process instance.
 ** Suspending the instance.
-** xref:process.adoc#process-migration[Migrating] the instance to a new process definition version.
-** xref:process-instance-modification.adoc#modify-single-instance[Modifying] the current running process instance by moving tokens between activities.
+** xref:process-migration.adoc#from-instance[Migrating] the instance to a new process definition version.
+** xref:process-instance-modification.adoc#modify-single-instance[Modifying] the current running process instance by moving tokens between activities [.ee]#EE#.
 ** Terminating the process instance.
 +
 image::process-instance-info.png[align="center", width="1166"]

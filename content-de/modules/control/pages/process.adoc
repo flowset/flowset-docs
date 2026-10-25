@@ -53,16 +53,7 @@ Siehe <<viewing-process>>.
 [[deploying-processes]]
 == Prozesse bereitstellen
 
-So stellen Sie einen neuen Prozess oder eine neue Version bereit:
-
-. Klicken Sie in der Ansicht *Processes* auf *Deploy*
-. Klicken Sie in der Ansicht *New process deployment* auf *Upload* und wählen Sie Ihre BPMN 2.0-XML-Datei aus.
-+
-image::deploy-process.png[align="center", width="1552"]
-+
-Das System validiert die BPMN 2.0-Syntax und zeigt eine Vorschau des Prozessdiagramms an.
-
-. Klicken Sie auf *OK*, um die Bereitstellung abzuschließen.
+Wie Sie einen neuen Prozess oder eine neue Prozessversion bereitstellen, ist unter xref:deploy-process.adoc[] beschrieben.
 
 [[starting-processes]]
 == Prozesse starten
@@ -104,15 +95,4 @@ image::process-view-xml.png[align="center", width="1552"]
 [[process-migration]]
 == Prozessmigration
 
-Die Aktionsspalte ermöglicht die Migration laufender Prozessinstanzen auf neuere Prozessversionen direkt aus der Ansicht *Processes*.
-
-. Wählen Sie den Zielprozess in der <<process-list,Prozesstabelle>> aus.
-+
-image::process-migrate.png[align="center", width="1141"]
-. Klicken Sie in der Aktionsspalte auf .*.. -> Migrate*.
-. Konfigurieren Sie die Migration:
-+
-image::process-instance-migrate.png[align="center", width="942"]
-+
-* *Source process*: Automatisch erkannt (aktuell laufende Instanzen).
-* *Target process*: Auswahl aus dem Dropdown der bereitgestellten Versionen.
+Sie können laufende Prozessinstanzen auf eine andere Version der Prozessdefinition verschieben. Die Schritte sind unter xref:process-migration.adoc[] beschrieben.

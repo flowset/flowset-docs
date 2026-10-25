@@ -1,7 +1,7 @@
-= Operaciones por lotes
+= Ejecución de operaciones por lotes
 :page-edition: enterprise
 
-Flowset Control te permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, se selecciona una operación, se eligen las instancias de proceso de destino con un filtro, se proporcionan los parámetros de la operación y se inicia un único lote asíncrono.
+En la edición Enterprise, Flowset Control te permite crear y ejecutar una nueva operación por lotes que aplica la misma acción a muchas instancias de proceso en ejecución a la vez. En lugar de repetir el mismo cambio instancia por instancia, se selecciona una operación, se eligen las instancias de proceso de destino con un filtro, se proporcionan los parámetros de la operación y se inicia un único lote asíncrono.
 
 El motor BPM ejecuta los lotes de forma asíncrona: cada lote se divide en trabajos más pequeños que el Job Executor procesa en segundo plano, de modo que la aplicación permanece receptiva mientras se procesan grandes cantidades de instancias.
 
@@ -30,7 +30,7 @@ El asistente *Execute batch* admite cuatro tipos de operación:
 
 Puedes iniciar un nuevo lote desde dos lugares:
 
-* Vista *Batches* -> pestaña *Active* -> *Execute new*.
+* Vista xref:batches.adoc[Batches] -> pestaña *Active* -> *Execute new*.
 * Vista *Process instances* -> botón desplegable -> *Execute batch*.
 
 image::batch-operation-1.png[align="center", width="1552"]
@@ -131,7 +131,7 @@ image::batch-operation-9.png[align="center", width="1552"]
 Se puede mostrar una advertencia si el lote puede no tener efecto para algunas instancias; por ejemplo, al establecer reintentos para instancias de proceso que no tienen trabajos ni tareas externas activas.
 ====
 
-Haz clic en *OK* para iniciar el lote. Una vez aceptada la solicitud, se muestra una notificación con un botón *Batch details*. Utiliza *Batch details* para abrir el lote y seguir su progreso, o abre la vista *Batches* para monitorear los lotes activos y completados.
+Haz clic en *OK* para iniciar el lote. Una vez aceptada la solicitud, se muestra una notificación con un botón *Batch details*. Utiliza *Batch details* para abrir el lote y seguir su progreso, o abre la vista xref:batches.adoc[Batches] para monitorear los lotes activos y completados.
 
 image::batch-operation-10.png[align="center", width="1552"]
 

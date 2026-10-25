@@ -1,4 +1,4 @@
-= DMN Decisions
+= Decision Tables
 
 The application provides comprehensive support for DMN (Decision Model and Notation) decision tables through the *DMN → Decisions* menu item.
 
@@ -35,20 +35,14 @@ The following actions are available:
 | *View*
 | Displays detailed DMN table information. See <<view-desicion-details>>.
 
-| *Evaluate decision*
-| Opens a standalone evaluation view for the selected decision table. See xref:decision-evaluation.adoc[Evaluating Decisions].
+| *Evaluate decision* [.ee]#EE#
+| Opens a standalone evaluation view for the selected decision table. Available in the Enterprise edition, see xref:decision-evaluation.adoc[Evaluating Decisions] [.ee]#EE#.
 |===
 
 [[deploy-dmn-table]]
 == Deploying DMN Table
 
-To deploy a DMN table:
-
-. In the *Decisions* view, click *Deploy*
-. In the *New decision deployment* view, click *Upload* and select your DMN 1.1(.dmn or .dmn11.xml) file.
-+
-image::deploy-decision.png[align="center", width="1186"]
-. Click *OK* to complete deployment.
+How to deploy a decision table is described in xref:deploy-decision.adoc[].
 
 [[view-desicion-details]]
 == Viewing Decision Details

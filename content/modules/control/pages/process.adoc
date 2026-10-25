@@ -53,16 +53,7 @@ See <<viewing-process>>.
 [[deploying-processes]]
 == Deploying Processes
 
-To deploy a new process or version:
-
-. In the *Processes* view, click *Deploy*
-. In the *New process deployment* view, click *Upload* and select your BPMN 2.0 XML file.
-+
-image::deploy-process.png[align="center", width="1552"]
-+
-The system will validate the BPMN 2.0 syntax and display a preview of the process diagram.
-
-. Click *OK* to complete deployment.
+How to deploy a new process or a new process version is described in xref:deploy-process.adoc[].
 
 [[starting-processes]]
 == Starting Processes
@@ -104,15 +95,4 @@ image::process-view-xml.png[align="center", width="1552"]
 [[process-migration]]
 == Process Migration
 
-The actions column enables migration of running process instances to newer process versions directly from the *Processes* view.
-
-. Select target process in the <<process-list,processes table>>.
-+
-image::process-migrate.png[align="center", width="1141"]
-. Click .*.. -> Migrate* in the actions column.
-. Configure migration:
-+
-image::process-instance-migrate.png[align="center", width="942"]
-+
-* *Source process*: Automatically detected (current running instances).
-* *Target process*: Select from deployed versions dropdown.
+You can move running process instances to another version of the process definition. The steps are described in xref:process-migration.adoc[].

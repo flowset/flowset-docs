@@ -1,0 +1,38 @@
+= Decision Instances
+:description: History of DMN decision table evaluations: the list, filters, and evaluation details.
+
+A decision instance stores one evaluation of a DMN decision table: which input values the table received, which rules matched, and what result it returned. The *Decision instances* view shows these records for all decision tables of the connected engine. To open it, select *Decision instances* in the application menu (the *DMN* group).
+
+NOTE: The list is built from the engine history. If the engine history level does not record decision evaluations, the list is empty. History levels are described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/history/[History].
+
+[[list]]
+== Decision instance list
+
+For each instance the list shows:
+
+* *Id*: the decision instance identifier;
+* *Decision*: the decision table and its version;
+* *Evaluation time*;
+* *Process* and *Process instance*, if the decision was evaluated from a process (a business rule task);
+* *Activity*: the process element that triggered the evaluation.
+
+You can filter the list:
+
+* by decision table and decision version;
+* by evaluation time (*Evaluated after*, *Evaluated before*);
+* by process key;
+* by activity;
+* by decision instance or process instance identifier.
+
+[[details]]
+== Evaluation details
+
+To open a decision instance, select it in the list and click *View*. The *Decision instance* window contains:
+
+* the *General information* panel: the instance identifier, the decision table, the process, the process instance, and the activity, with links to the decision table and the process instance;
+* the decision table with the matched rules highlighted;
+* the *Inputs* and *Outputs* tabs with the values the table was evaluated with.
+
+How to read the rule highlighting and the decision requirements diagram (DRD) is described in xref:dmn-decisions.adoc#view-dmn-table-instance[Analyzing Decision Instances].
+
+The decision instances of a specific table are also shown in the details of that table in the xref:dmn-decisions.adoc[Decision Tables] view.

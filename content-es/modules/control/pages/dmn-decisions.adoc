@@ -1,4 +1,4 @@
-= Decisiones DMN
+= Tablas de decisión
 
 La aplicación ofrece soporte integral para tablas de decisión DMN (Decision Model and Notation) a través del elemento de menú *DMN → Decisions*.
 
@@ -35,20 +35,14 @@ Las siguientes acciones están disponibles:
 | *View*
 | Muestra información detallada de la tabla DMN. Consulta <<view-desicion-details>>.
 
-| *Evaluate decision*
-| Abre una vista de evaluación independiente para la tabla de decisión seleccionada. Consulta xref:decision-evaluation.adoc[Evaluación de decisiones].
+| *Evaluate decision* [.ee]#EE#
+| Abre una vista de evaluación independiente para la tabla de decisión seleccionada. Disponible en la edición Enterprise, consulta xref:decision-evaluation.adoc[Evaluación de decisiones] [.ee]#EE#.
 |===
 
 [[deploy-dmn-table]]
 == Despliegue de una tabla DMN
 
-Para desplegar una tabla DMN:
-
-. En la vista *Decisions*, haz clic en *Deploy*
-. En la vista *New decision deployment*, haz clic en *Upload* y selecciona tu archivo DMN 1.1 (.dmn o .dmn11.xml).
-+
-image::deploy-decision.png[align="center", width="1186"]
-. Haz clic en *OK* para completar el despliegue.
+Cómo desplegar una tabla de decisión se describe en xref:deploy-decision.adoc[].
 
 [[view-desicion-details]]
 == Visualización de los detalles de la decisión

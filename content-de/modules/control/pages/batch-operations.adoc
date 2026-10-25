@@ -1,7 +1,7 @@
-= Batch-Operationen
+= Batch-Operationen ausführen
 :page-edition: enterprise
 
-Mit Flowset Control können Sie eine neue Batch-Operation erstellen und ausführen, die dieselbe Aktion gleichzeitig auf viele laufende Prozessinstanzen anwendet. Anstatt dieselbe Änderung Instanz für Instanz zu wiederholen, wählen Sie eine Operation aus, bestimmen die Ziel-Prozessinstanzen über einen Filter, geben die Operationsparameter an und starten einen einzigen asynchronen Batch.
+In der Enterprise-Edition können Sie mit Flowset Control eine neue Batch-Operation erstellen und ausführen, die dieselbe Aktion gleichzeitig auf viele laufende Prozessinstanzen anwendet. Anstatt dieselbe Änderung Instanz für Instanz zu wiederholen, wählen Sie eine Operation aus, bestimmen die Ziel-Prozessinstanzen über einen Filter, geben die Operationsparameter an und starten einen einzigen asynchronen Batch.
 
 Ein Batch wird von der BPM-Engine asynchron ausgeführt: Er wird in kleinere Jobs aufgeteilt, die der Job Executor im Hintergrund verarbeitet, sodass die Anwendung reaktionsfähig bleibt, während eine große Anzahl von Instanzen verarbeitet wird.
 
@@ -30,7 +30,7 @@ Der Assistent *Execute batch* unterstützt vier Operationstypen:
 
 Sie können einen neuen Batch an zwei Stellen starten:
 
-* Ansicht *Batches* -> Registerkarte *Active* -> *Execute new*.
+* Ansicht xref:batches.adoc[Batches] -> Registerkarte *Active* -> *Execute new*.
 * Ansicht *Process instances* -> Dropdown-Schaltfläche -> *Execute batch*.
 
 image::batch-operation-1.png[align="center", width="1552"]
@@ -131,7 +131,7 @@ image::batch-operation-9.png[align="center", width="1552"]
 Es kann eine Warnung angezeigt werden, wenn der Batch für einige Instanzen möglicherweise keine Wirkung hat - zum Beispiel, wenn Retries für Prozessinstanzen festgelegt werden, die keine aktiven Jobs oder External Tasks haben.
 ====
 
-Klicken Sie auf *OK*, um den Batch zu starten. Nachdem die Anfrage akzeptiert wurde, wird eine Benachrichtigung mit einer Schaltfläche *Batch details* angezeigt. Verwenden Sie *Batch details*, um den Batch zu öffnen und seinen Fortschritt zu verfolgen, oder öffnen Sie die Ansicht *Batches*, um aktive und abgeschlossene Batches zu überwachen.
+Klicken Sie auf *OK*, um den Batch zu starten. Nachdem die Anfrage akzeptiert wurde, wird eine Benachrichtigung mit einer Schaltfläche *Batch details* angezeigt. Verwenden Sie *Batch details*, um den Batch zu öffnen und seinen Fortschritt zu verfolgen, oder öffnen Sie die Ansicht xref:batches.adoc[Batches], um aktive und abgeschlossene Batches zu überwachen.
 
 image::batch-operation-10.png[align="center", width="1552"]
 

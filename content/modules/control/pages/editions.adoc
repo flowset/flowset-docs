@@ -1,0 +1,154 @@
+[[editions]]
+= Flowset Control Editions
+:navtitle: Compare Editions
+:description: How the Community and Enterprise editions of Flowset Control differ: the features of each edition.
+
+Flowset Control comes in two editions. The *Community* edition is free and open source: it lets you browse processes, instances, incidents, user tasks, decisions, and deployments. The *Enterprise* edition is commercial: it includes all Community features and additional features for analyzing and managing process execution.
+
+Pages about Enterprise features are marked with the [.ee]#EE# badge in the documentation menu, and the page header shows the edition. How to install an Enterprise license is described in xref:license.adoc[].
+
+[[features]]
+== Features by Edition
+
+[cols="3,1,1", options="header"]
+|===
+| Feature | Community | Enterprise
+
+3+h| Getting Started
+
+| xref:connecting-engine.adoc[Connecting to engines]
+| ✓
+| ✓
+
+3+h| Monitoring
+
+| xref:dashboard.adoc[Dashboard]
+| ✓
+| ✓
+
+| xref:engine-monitoring.adoc[Engine monitoring]
+| —
+| ✓
+
+3+h| Processes
+
+| xref:process.adoc[Processes]: browsing and starting
+| ✓
+| ✓
+
+| xref:process-instances.adoc[Process instances]: browsing, suspending, terminating
+| ✓
+| ✓
+
+| xref:incidents.adoc[Incidents]: browsing and retrying
+| ✓
+| ✓
+
+| xref:process-migration.adoc[Instance migration] to a new process version
+| ✓
+| ✓
+
+| xref:process-instance-modification.adoc[Instance modification]
+| —
+| ✓
+
+| xref:messages.adoc[Sending messages] from the diagram
+| —
+| ✓
+
+| xref:process-variable-history.adoc[Variable history]
+| —
+| ✓
+
+| xref:process-documentation.adoc[Element documentation]
+| —
+| ✓
+
+| xref:transactions.adoc[Transaction boundaries] on the diagram
+| —
+| ✓
+
+| xref:heatmap.adoc[Heatmap]
+| —
+| ✓
+
+3+h| DMN Decisions
+
+| xref:dmn-decisions.adoc[Decision tables]
+| ✓
+| ✓
+
+| xref:decision-instances.adoc[Decision instances]
+| ✓
+| ✓
+
+| xref:decision-evaluation.adoc[Decision evaluation]
+| —
+| ✓
+
+3+h| User Tasks
+
+| xref:user-tasks.adoc[User tasks]: completing, reassigning
+| ✓
+| ✓
+
+3+h| Jobs and Batch Operations
+
+| xref:process-instance-jobs.adoc[Jobs] of an instance: retrying, suspending, detailed view
+| ✓
+| ✓
+
+| xref:jobs.adoc[Job management]: the Jobs screen, priority and due date, job definitions
+| —
+| ✓
+
+| xref:batches.adoc[Batch operations]: list and progress
+| ✓
+| ✓
+
+| xref:batch-operations.adoc[Running batch operations]
+| —
+| ✓
+
+3+h| Deployment
+
+| xref:deployments.adoc[Deployments]
+| ✓
+| ✓
+
+| xref:deploy-process.adoc[Deploying a process]
+| ✓
+| ✓
+
+| xref:deploy-decision.adoc[Deploying a decision table]
+| ✓
+| ✓
+
+3+h| Administration
+
+| xref:access-management.adoc[Users and resource roles]
+| ✓
+| ✓
+
+| xref:access-management.adoc#row-level-roles[Row-level roles and predefined roles]
+| —
+| ✓
+
+| xref:oidc.adoc[Single sign-on (SSO)]
+| ✓
+| ✓
+
+| xref:database.adoc[Databases]: HSQLDB, PostgreSQL, MySQL
+| ✓
+| ✓
+
+3+h| AI Assistant and Licensing
+
+| xref:ai-assistant.adoc[AI assistant]
+| —
+| ✓
+
+| xref:license.adoc[License]
+| —
+| ✓
+|===

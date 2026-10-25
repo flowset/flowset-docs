@@ -1,0 +1,40 @@
+= Batch Operations
+:description: Batch operations of the engine: active and completed batches, execution progress, and batch details.
+
+A batch operation applies one action, such as migration or deletion, to many process instances at once. The engine runs it asynchronously: it splits the batch into jobs and processes them in the background. The mechanism is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch[Batch].
+
+The *Batches* view shows the batches of the connected engine and their progress. To open it, select *Batches* in the application menu.
+
+TIP: To start a new batch operation from the interface, use the xref:batch-operations.adoc[batch operation wizard] [.ee]#EE#. In the Community edition, batches are created through the engine API, and this view shows how they run.
+
+[[active]]
+== Active batches
+
+The *Active* tab lists batches that are still running. For each batch it shows:
+
+* *Id*: the batch identifier;
+* *Type*: the operation type, for example process instance migration;
+* *Start time*;
+* *State*: running or suspended;
+* *Failed jobs* and *Total jobs*;
+* *Progress*: the share of processed jobs.
+
+You can filter the list by state (all, active, suspended) and by execution result (all, with failures, without failures).
+
+[[completed]]
+== Completed batches
+
+The *Completed* tab lists batches that have finished. For each batch it shows *Id*, *Type*, *Start time*, *End time*, and *Total jobs*.
+
+[[details]]
+== Batch details
+
+To open information about a batch, select it in the list and click *View*. The *Batch details* window shows:
+
+* the batch identifier, type, and state;
+* the number of jobs created, batch jobs per seed, and invocations per batch job;
+* the start time and the execution start time;
+* the identifiers of the seed, monitor, and batch job definitions;
+* the user who created the batch.
+
+The *Refresh* button above the list loads the current state of the batches from the engine.

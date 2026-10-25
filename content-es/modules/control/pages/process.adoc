@@ -53,16 +53,7 @@ Consulta <<viewing-process>>.
 [[deploying-processes]]
 == Despliegue de procesos
 
-Para desplegar un nuevo proceso o versión:
-
-. En la vista *Processes*, haz clic en *Deploy*
-. En la vista *New process deployment*, haz clic en *Upload* y selecciona tu archivo XML BPMN 2.0.
-+
-image::deploy-process.png[align="center", width="1552"]
-+
-El sistema validará la sintaxis BPMN 2.0 y mostrará una vista previa del diagrama de proceso.
-
-. Haz clic en *OK* para completar el despliegue.
+Cómo desplegar un proceso nuevo o una nueva versión de un proceso se describe en xref:deploy-process.adoc[].
 
 [[starting-processes]]
 == Inicio de procesos
@@ -104,15 +95,4 @@ image::process-view-xml.png[align="center", width="1552"]
 [[process-migration]]
 == Migración de procesos
 
-La columna de acciones permite migrar instancias de proceso en ejecución a versiones de proceso más recientes directamente desde la vista *Processes*.
-
-. Selecciona el proceso de destino en la <<process-list,tabla de procesos>>.
-+
-image::process-migrate.png[align="center", width="1141"]
-. Haz clic en *... -> Migrate* en la columna de acciones.
-. Configura la migración:
-+
-image::process-instance-migrate.png[align="center", width="942"]
-+
-* *Source process*: Detectado automáticamente (instancias en ejecución actuales).
-* *Target process*: Selecciona entre el desplegable de versiones desplegadas.
+Puedes mover las instancias de proceso en ejecución a otra versión de la definición de proceso. Los pasos se describen en xref:process-migration.adoc[].

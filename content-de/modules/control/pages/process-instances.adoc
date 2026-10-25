@@ -71,24 +71,24 @@ image::process-instance-variable.png[align="center", width="1168"]
 ** *User tasks*. Eine Liste aktiver Aufgaben anzeigen und Aufgaben anderen Benutzern neu zuweisen:
 +
 image::process-instance-user-task.png[align="center", width="1168"]
-** *Jobs*
+** *Jobs*. Jobs der Instanz: erneut ausführen, aussetzen und aktivieren (siehe xref:process-instance-jobs.adoc[Jobs]).
 ** *External tasks*
-** *Incidents*
+** *Incidents*. Incidents der Instanz (siehe xref:incidents.adoc[Incidents]).
 
 * Der Tab *History* zeigt eine Liste aller Benutzeraufgaben (sowohl abgeschlossene als auch aktive), eine umfassende Liste abgeschlossener Aktivitäten und die letzten Werte der Prozessvariablen an. Der Tab *History* ist sowohl für aktive als auch für abgeschlossene Prozessinstanzen verfügbar.
 +
 image::process-instance-history.png[align="center", width="1163"]
 +
 In Flowset Control Enterprise enthält der Tab *History* außerdem den Tab *Variable log* mit allen Änderungen der Prozessvariablen.
-Weitere Informationen finden Sie unter xref:process-variable-history.adoc[].
+Weitere Informationen finden Sie unter xref:process-variable-history.adoc[] [.ee]#EE#.
 
 * Das rechte Panel zeigt die für die Prozessinstanz verfügbaren <<actions,Aktionen>> an, darunter:
 
 ** Anzeigen von Instanzinformationen.
 ** Neuladen der Prozessinstanz.
 ** Anhalten der Instanz.
-** xref:process.adoc#process-migration[Migrieren] der Instanz auf eine neue Version der Prozessdefinition.
-** xref:process-instance-modification.adoc#modify-single-instance[Modifizieren] der aktuell laufenden Prozessinstanz durch Verschieben von Tokens zwischen Aktivitäten.
+** xref:process-migration.adoc#from-instance[Migrieren] der Instanz auf eine neue Version der Prozessdefinition.
+** xref:process-instance-modification.adoc#modify-single-instance[Modifizieren] der aktuell laufenden Prozessinstanz durch Verschieben von Tokens zwischen Aktivitäten [.ee]#EE#.
 ** Beenden der Prozessinstanz.
 +
 image::process-instance-info.png[align="center", width="1166"]
