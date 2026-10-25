@@ -1,0 +1,37 @@
+= Release 2025.0
+
+The first stable Flowset release: Flowset Control 2025.0 and Flowset Tasklist 2025.0. Earlier versions of Control were published as betas, `1.0.0-beta.1` to `1.0.0-beta.6`.
+
+== Flowset Control 2025.0.0
+
+Flowset Control is a web application for administering external BPM engines. You connect an engine, monitor it, and manage the processes deployed to it. Control is built on the open-source Jmix framework and is intended for developers, integrators, and administrators of BPM platforms.
+
+Supported engines: Camunda 7 and Operaton. The interface is available in English, German, Spanish, and Russian.
+
+Control requires Java 17. Installation is described in xref:control:setup.adoc[].
+
+=== Patch 2025.0.1
+
+Improvements:
+
+* When you terminate a process instance from the *Process Instance* screen, you can specify a reason.
+* The termination reason is shown in the instance information.
+* The process start dialog has a *Business Key* field.
+
+Bug fixes:
+
+* `NullPointerException` when clicking the call activity overlay in the process preview.
+* The wrong mode was selected after refreshing the *Process instances* page.
+* Process activities were sorted incorrectly.
+
+Release notes on GitHub:
+https://github.com/flowset/flowset-control-community/releases/tag/2025.0.0[2025.0.0],
+https://github.com/flowset/flowset-control-community/releases/tag/2025.0.1[2025.0.1].
+
+== Flowset Tasklist 2025.0.0
+
+Flowset Tasklist is a React application template for people who work with business processes: a task list, starting processes, and start and user task forms. It has no backend of its own and works directly with the engine REST API. Camunda 7 and Operaton are supported.
+
+The template is meant to be used as a starting point and adapted to your needs. Installation is described in xref:tasklist:setup.adoc[].
+
+Release notes on GitHub: https://github.com/flowset/flowset-tasklist-react-community/releases/tag/2025.0.0[2025.0.0].

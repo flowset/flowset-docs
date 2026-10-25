@@ -1,0 +1,23 @@
+= Release 1.0
+
+The first Enterprise release: Flowset Control Enterprise 1.0.0. It matches Community release xref:ROOT:whats-new/community/2025.0.adoc[2025.0] and includes everything in it. Flowset has no engine of its own, so the Enterprise edition covers Control only.
+
+== Flowset Control 1.0.0
+
+Control Enterprise 1.0.0 adds the following features to Flowset Control 2025.0.
+
+=== BPM Engine Monitoring
+
+The details of a connected engine have a *Monitoring* section. Control reads metrics from an engine endpoint, such as Spring Boot Actuator. You enter the URL, load the list of available metrics, pick the ones you need, and add tags if required. The values are shown on the engine screen and are updated with the *Refresh* button. You can also add a link to an external dashboard, such as Grafana, and open it in one click. See xref:control:engine-monitoring.adoc[].
+
+=== Heatmap
+
+The *Heatmap* section shows on the process diagram which execution paths are used most often. You can build the map for any process version and use it to find bottlenecks. See xref:control:heatmap.adoc[].
+
+=== Sending Messages
+
+You can send a message to the engine from the diagram of a process instance that is waiting on an *Intermediate Message Catch Event* or a *Boundary Message Event*. Previously this required a manual call to the REST API. See xref:control:messages.adoc[].
+
+=== Process Element Documentation
+
+If a developer filled in `Documentation` for an element in the BPMN XML, Control shows that text on the diagram. An operator can see what a task or gateway is for without opening the source model. See xref:control:process-documentation.adoc[].

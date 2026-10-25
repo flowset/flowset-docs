@@ -1,0 +1,35 @@
+= Release 1.1
+
+Flowset Control Enterprise 1.1.0. It matches Community release xref:ROOT:whats-new/community/2026.0.adoc[2026.0] and includes everything in it, as well as the features of xref:ROOT:whats-new/enterprise/1.0.adoc[Enterprise 1.0].
+
+== Flowset Control 1.1.0
+
+New in this version:
+
+=== Batch Operations
+
+You can apply one action to many running process instances at once: update process variables, send a message, or set the number of retries for external tasks or jobs. The engine runs the batch asynchronously through the Job Executor, so the interface stays responsive even with thousands of instances. You start a batch from the *Batches* view or from the process instance list. See xref:control:batch-operations.adoc[].
+
+=== Decision Evaluation
+
+You can evaluate a DMN decision table from Control without starting a process: enter the inputs and check the result. This is useful for testing business rules on examples and for investigating how a decision behaves in production. See xref:control:decision-evaluation.adoc[].
+
+=== Jobs
+
+A new section covers the engine's asynchronous jobs: timers, asynchronous continuations, and other background work of the Job Executor. You manage jobs in three places: the *Jobs* screen, the *Jobs* tab of a process instance, and the *Job definitions* tab of a process definition. See xref:control:jobs.adoc[].
+
+=== Process Instance Modification
+
+You can move tokens of a running process from one activity to another directly on the diagram. This helps when you need to recover a process after a failure, repeat part of a large process, or realign execution after incorrect input data. See xref:control:process-instance-modification.adoc[].
+
+=== Transaction Boundaries
+
+The diagram highlights commit points and wait states of the engine. They show where the process saves its state, where new transactions start, whether asynchronous continuations are placed correctly, and where steps may be executed again. See xref:control:transactions.adoc[].
+
+=== Predefined Roles and Row-Level Security
+
+Control Enterprise includes ready-made roles for common responsibilities: *Process Admin*, *BPM Admin*, *Process Viewer*, *Process Operator*, *Process Release Manager*, and *User & Role Admin*. Each area, such as process definitions, jobs, or incidents, also has separate roles for read access, individual actions, and full access. The *Roles* screen shows resource roles and row-level roles on two tabs. Row-level roles restrict access to individual objects, for example to specific BPM engines. See xref:control:access-management.adoc[].
+
+=== Deployment to WildFly and JBoss EAP
+
+Control can be deployed to WildFly and JBoss EAP. See xref:control:setup.adoc#wildfly[WildFly Bundle].
