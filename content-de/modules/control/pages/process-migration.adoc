@@ -1,0 +1,25 @@
+= Migration von Prozessinstanzen
+:description: Laufende Prozessinstanzen auf eine andere Version der Prozessdefinition verschieben.
+
+Die Migration verschiebt laufende Prozessinstanzen auf eine andere Version der Prozessdefinition, zum Beispiel nach der Bereitstellung eines korrigierten Modells. Wie die Engine die Migration ausführt, ist in der Operaton-Dokumentation beschrieben: {operaton-docs-url}/user-guide/process-engine/process-instance-migration[Process Instance Migration].
+
+[[from-process-list]]
+== Migration aus der Prozessansicht
+
+Die Aktionsspalte ermöglicht die Migration laufender Prozessinstanzen auf neuere Prozessversionen direkt aus der Ansicht *Processes*.
+
+. Wählen Sie den Zielprozess in der xref:process.adoc#process-list[Prozesstabelle] aus.
++
+image::process-migrate.png[align="center", width="1141"]
+. Klicken Sie in der Aktionsspalte auf .*.. -> Migrate*.
+. Konfigurieren Sie die Migration:
++
+image::process-instance-migrate.png[align="center", width="942"]
++
+* *Source process*: Automatisch erkannt (aktuell laufende Instanzen).
+* *Target process*: Auswahl aus dem Dropdown der bereitgestellten Versionen.
+
+[[from-instance]]
+== Migration einer einzelnen Instanz
+
+Die Migration einer einzelnen Instanz können Sie aus der xref:process-instances.adoc#detailed-instance[Detailansicht der Prozessinstanz] starten. Die Migrationsaktion befindet sich im rechten Bereich.

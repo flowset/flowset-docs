@@ -1,0 +1,115 @@
+= Process Engines
+:navtitle: Process Engines
+:description: Operaton is the recommended process engine for Flowset, backed by commercial support from Flowset as an Operaton partner. Engines with the Camunda 7 API are compatible as well.
+
+Flowset tools work on top of a BPM process engine that executes processes and decisions. *Operaton* is the engine at the core of Flowset. Engines that share the Camunda 7 API are also compatible: Camunda 7, CIB seven, and Fluxnova.
+
+[[operaton]]
+== Operaton: the Recommended Engine
+
+[.engine-primary]
+****
+[.engine-badge]#Recommended engine · Operaton partner#
+
+Operaton is an open-source BPM engine and a community fork of Camunda 7. It executes BPMN 2.0 processes, evaluates DMN 1.3 decisions, and runs CMMN 1.1 cases. Flowset is developed and tested on Operaton first.
+
+Flowset is an Operaton partner and provides commercial support for the engine: help with incidents and performance, fixes, upgrades, and migration from Camunda 7.
+
+[.engine-actions]
+{operaton-docs-url}/[Operaton documentation ↗,window=_blank,role="engine-btn primary"]
+{flowset-support-url}[Contact us about support,role=engine-btn]
+****
+
+[[engine-role]]
+== What Operaton Does
+
+* Executes BPMN processes: moves process instances through the diagram, stops at wait states such as user tasks and message events, and saves their state.
+* Evaluates DMN decision tables, either from a business rule task or through the API.
+* Runs jobs in the background: timers, asynchronous continuations, and retries after failures.
+* Creates incidents when a job or an external task runs out of retries.
+* Stores runtime and history data in a relational database.
+* Provides a Java API for applications with an embedded engine and a REST API for remote clients.
+
+[[components]]
+== How Flowset Tools Work with Operaton
+
+[cols="1,3,2", options="header"]
+|===
+| Tool | Role | Details
+
+| Control
+| Connects to one or more engines through their REST API. Shows processes, instances, incidents, jobs, decisions, and deployments, and lets you manage them.
+| xref:control:connecting-engine.adoc[]
+
+| Studio
+| Creates Spring Boot applications with an embedded engine in IntelliJ IDEA. Models BPMN and DMN diagrams and forms for the engine and generates delegate code.
+| xref:studio:new-project-wizard.adoc[]
+
+| Tasklist
+| Works with user tasks and starts processes through the engine REST API. Has no backend of its own.
+| xref:tasklist:connecting-engine.adoc[]
+|===
+
+[[supported-engines]]
+== Supported and Compatible Engines
+
+[cols="2,2,3", options="header"]
+|===
+| Engine | Support | Documentation
+
+| *Operaton*
+| [.engine-supported]#Commercial support#
+| {operaton-docs-url}/[Operaton docs ↗,window=_blank]
+
+| Camunda 7
+| Compatible
+| {camunda7-docs-url}/[Camunda 7 docs ↗,window=_blank]
+
+| CIB seven
+| Compatible
+| {cibseven-docs-url}/[CIB seven docs ↗,window=_blank]
+
+| Fluxnova
+| Compatible
+| {fluxnova-docs-url}/[Fluxnova docs ↗,window=_blank]
+|===
+
+* *Commercial support*: Flowset tools are developed and tested on this engine, and Flowset provides commercial support for the engine itself.
+* *Compatible*: Flowset tools work with the engine through its Camunda 7 API. Flowset does not provide support for the engine itself; it is supported by its vendor or community.
+
+[[camunda-7]]
+NOTE: Camunda 7 Community Edition reached end of life in October 2025; version 7.24 is its final release. To keep receiving updates, move to Operaton: follow the {operaton-docs-url}/update/camunda-to-operaton[Camunda to Operaton migration guide ↗,window=_blank]. Flowset can help with the migration as part of {flowset-support-url}[commercial support].
+
+[[operaton-docs]]
+== Operaton Documentation
+
+The sections of the Operaton documentation you will need most often:
+
+[.cards]
+* {operaton-get-started-url}/[Get Started ↗,window=_blank]
++
+First steps with BPMN, DMN, and Spring Boot.
+* {operaton-docs-url}/user-guide/process-engine/[Process Engine ↗,window=_blank]
++
+Process engine concepts: API, variables, jobs, incidents, history, and transactions.
+* {operaton-docs-url}/user-guide/spring-boot-integration/[Spring Boot Integration ↗,window=_blank]
++
+Running an embedded engine in a Spring Boot application and its configuration properties.
+* {operaton-docs-url}/user-guide/dmn-engine/[DMN Engine ↗,window=_blank]
++
+Evaluating decisions and using the DMN engine API.
+* {operaton-docs-url}/reference/rest/[REST API ↗,window=_blank]
++
+Engine REST API used by Control and Tasklist.
+* {operaton-docs-url}/reference/bpmn20/[BPMN 2.0 Reference ↗,window=_blank]
++
+Supported BPMN elements and their engine-specific attributes.
+* {operaton-docs-url}/reference/dmn/[DMN 1.3 Reference ↗,window=_blank]
++
+Decision tables, FEEL expressions, and hit policies.
+* {operaton-docs-url}/installation/[Installation ↗,window=_blank]
++
+Installing the engine: Docker images, Spring Boot, and other distributions.
+* {operaton-docs-url}/update/[Update and Migration ↗,window=_blank]
++
+Updating the engine and migrating from Camunda 7.

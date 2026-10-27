@@ -1,0 +1,18 @@
+= Despliegue de un proceso
+:description: Desplegar un proceso BPMN 2.0 nuevo o una nueva versión de un proceso en el motor conectado.
+
+Puedes desplegar un proceso nuevo, o una nueva versión de uno existente, en el motor conectado directamente desde Control. Los procesos desplegados aparecen en la vista xref:process.adoc[Procesos], y el registro del despliegue, en la vista xref:deployments.adoc[Despliegues].
+
+[[deploy]]
+== Despliegue
+
+Para desplegar un nuevo proceso o versión:
+
+. En la vista *Processes*, haz clic en *Deploy*
+. En la vista *New process deployment*, haz clic en *Upload* y selecciona tu archivo XML BPMN 2.0.
++
+image::deploy-process.png[align="center", width="1552"]
++
+El sistema validará la sintaxis BPMN 2.0 y mostrará una vista previa del diagrama de proceso.
+
+. Haz clic en *OK* para completar el despliegue.

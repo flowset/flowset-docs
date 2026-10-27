@@ -1,0 +1,38 @@
+= Instancias de decisión
+:description: Historial de evaluaciones de tablas de decisión DMN: la lista, los filtros y los detalles de la evaluación.
+
+Una instancia de decisión guarda una evaluación de una tabla de decisión DMN: qué valores de entrada recibió la tabla, qué reglas coincidieron y qué resultado devolvió. La vista *Decision instances* muestra estos registros para todas las tablas de decisión del motor conectado. Para abrirla, selecciona *Decision instances* en el menú de la aplicación (grupo *DMN*).
+
+NOTE: La lista se construye a partir del historial del motor. Si el nivel de historial del motor no registra las evaluaciones de decisiones, la lista está vacía. Los niveles de historial se describen en la documentación de Operaton: {operaton-docs-url}/user-guide/process-engine/history/[History].
+
+[[list]]
+== Lista de instancias de decisión
+
+Para cada instancia la lista muestra:
+
+* *Id*: el identificador de la instancia de decisión;
+* *Decision*: la tabla de decisión y su versión;
+* *Evaluation time*;
+* *Process* y *Process instance*, si la decisión se evaluó desde un proceso (una business rule task);
+* *Activity*: el elemento del proceso que provocó la evaluación.
+
+Puedes filtrar la lista:
+
+* por tabla de decisión y versión de la decisión;
+* por hora de evaluación (*Evaluated after*, *Evaluated before*);
+* por clave del proceso;
+* por actividad;
+* por identificador de la instancia de decisión o de la instancia de proceso.
+
+[[details]]
+== Detalles de la evaluación
+
+Para abrir una instancia de decisión, selecciónala en la lista y haz clic en *View*. La ventana *Decision instance* contiene:
+
+* el panel *General information*: el identificador de la instancia, la tabla de decisión, el proceso, la instancia de proceso y la actividad, con enlaces a la tabla de decisión y a la instancia de proceso;
+* la tabla de decisión con las reglas coincidentes resaltadas;
+* las pestañas *Inputs* y *Outputs* con los valores con los que se evaluó la tabla.
+
+Cómo interpretar el resaltado de reglas y el diagrama de requisitos de decisión (DRD) se describe en xref:dmn-decisions.adoc#view-dmn-table-instance[Análisis de instancias de decisión].
+
+Las instancias de decisión de una tabla concreta también se muestran en los detalles de esa tabla en la vista xref:dmn-decisions.adoc[Tablas de decisión].

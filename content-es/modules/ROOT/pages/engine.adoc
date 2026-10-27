@@ -1,0 +1,115 @@
+= Motores de procesos
+:navtitle: Motores de procesos
+:description: Operaton es el motor de procesos recomendado para Flowset, con soporte comercial de Flowset como partner de Operaton. Los motores con la API de Camunda 7 también son compatibles.
+
+Las herramientas de Flowset funcionan sobre un motor de procesos BPM que ejecuta procesos y decisiones. *Operaton* es el motor en el núcleo de Flowset. Los motores que comparten la API de Camunda 7 también son compatibles: Camunda 7, CIB seven y Fluxnova.
+
+[[operaton]]
+== Operaton: el motor recomendado
+
+[.engine-primary]
+****
+[.engine-badge]#Motor recomendado · Partner de Operaton#
+
+Operaton es un motor BPM de código abierto y un fork comunitario de Camunda 7. Ejecuta procesos BPMN 2.0, evalúa decisiones DMN 1.3 y ejecuta casos CMMN 1.1. Flowset se desarrolla y se prueba primero sobre Operaton.
+
+Flowset es partner de Operaton y ofrece soporte comercial para el motor: ayuda con incidencias y rendimiento, correcciones, actualizaciones y migración desde Camunda 7.
+
+[.engine-actions]
+{operaton-docs-url}/[Documentación de Operaton (en inglés) ↗,window=_blank,role="engine-btn primary"]
+{flowset-support-url}[Contactar sobre soporte,role=engine-btn]
+****
+
+[[engine-role]]
+== Qué hace Operaton
+
+* Ejecuta procesos BPMN: hace avanzar las instancias de proceso por el diagrama, se detiene en estados de espera como tareas de usuario y eventos de mensaje, y guarda su estado.
+* Evalúa tablas de decisión DMN, desde una tarea de regla de negocio o a través de la API.
+* Ejecuta trabajos en segundo plano: temporizadores, continuaciones asíncronas y reintentos tras fallos.
+* Crea incidentes cuando un trabajo o una tarea externa agota sus reintentos.
+* Almacena los datos de ejecución y del historial en una base de datos relacional.
+* Ofrece una API Java para aplicaciones con motor embebido y una API REST para clientes remotos.
+
+[[components]]
+== Cómo trabajan las herramientas de Flowset con Operaton
+
+[cols="1,3,2", options="header"]
+|===
+| Herramienta | Función | Más información
+
+| Control
+| Se conecta a uno o varios motores a través de su API REST. Muestra procesos, instancias, incidentes, trabajos, decisiones y despliegues, y te permite gestionarlos.
+| xref:control:connecting-engine.adoc[]
+
+| Studio
+| Crea aplicaciones Spring Boot con motor embebido en IntelliJ IDEA. Modela diagramas BPMN y DMN y formularios para el motor y genera el código de delegados.
+| xref:studio:new-project-wizard.adoc[]
+
+| Tasklist
+| Trabaja con tareas de usuario e inicia procesos a través de la API REST del motor. No tiene backend propio.
+| xref:tasklist:connecting-engine.adoc[]
+|===
+
+[[supported-engines]]
+== Motores soportados y compatibles
+
+[cols="2,2,3", options="header"]
+|===
+| Motor | Soporte | Documentación
+
+| *Operaton*
+| [.engine-supported]#Soporte comercial#
+| {operaton-docs-url}/[Docs de Operaton ↗,window=_blank]
+
+| Camunda 7
+| Compatible
+| {camunda7-docs-url}/[Docs de Camunda 7 ↗,window=_blank]
+
+| CIB seven
+| Compatible
+| {cibseven-docs-url}/[Docs de CIB seven ↗,window=_blank]
+
+| Fluxnova
+| Compatible
+| {fluxnova-docs-url}/[Docs de Fluxnova ↗,window=_blank]
+|===
+
+* *Soporte comercial*: las herramientas de Flowset se desarrollan y se prueban sobre este motor, y Flowset ofrece soporte comercial para el propio motor.
+* *Compatible*: las herramientas de Flowset funcionan con el motor a través de su API de Camunda 7. Flowset no ofrece soporte para el propio motor; lo soportan su proveedor o su comunidad.
+
+[[camunda-7]]
+NOTE: Camunda 7 Community Edition llegó al final de su vida útil en octubre de 2025; la versión 7.24 es la última. Para seguir recibiendo actualizaciones, pasa a Operaton con la {operaton-docs-url}/update/camunda-to-operaton[guía de migración de Camunda a Operaton ↗,window=_blank] (en inglés). Flowset puede ayudarte con la migración como parte del {flowset-support-url}[soporte comercial].
+
+[[operaton-docs]]
+== Documentación de Operaton
+
+Las secciones de la documentación de Operaton (en inglés) que más necesitarás:
+
+[.cards]
+* {operaton-get-started-url}/[Primeros pasos ↗,window=_blank]
++
+Primeros pasos con BPMN, DMN y Spring Boot.
+* {operaton-docs-url}/user-guide/process-engine/[Motor de procesos ↗,window=_blank]
++
+Conceptos del motor de procesos: API, variables, trabajos, incidentes, historial y transacciones.
+* {operaton-docs-url}/user-guide/spring-boot-integration/[Integración con Spring Boot ↗,window=_blank]
++
+Ejecución de un motor embebido en una aplicación Spring Boot y sus propiedades de configuración.
+* {operaton-docs-url}/user-guide/dmn-engine/[Motor DMN ↗,window=_blank]
++
+Evaluación de decisiones y uso de la API del motor DMN.
+* {operaton-docs-url}/reference/rest/[API REST ↗,window=_blank]
++
+API REST del motor que usan Control y Tasklist.
+* {operaton-docs-url}/reference/bpmn20/[Referencia BPMN 2.0 ↗,window=_blank]
++
+Elementos BPMN compatibles y sus atributos específicos del motor.
+* {operaton-docs-url}/reference/dmn/[Referencia DMN 1.3 ↗,window=_blank]
++
+Tablas de decisión, expresiones FEEL y políticas de resultado.
+* {operaton-docs-url}/installation/[Instalación ↗,window=_blank]
++
+Instalación del motor: imágenes Docker, Spring Boot y otras distribuciones.
+* {operaton-docs-url}/update/[Actualización y migración ↗,window=_blank]
++
+Actualización del motor y migración desde Camunda 7.

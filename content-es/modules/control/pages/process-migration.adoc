@@ -1,0 +1,25 @@
+= Migración de instancias de proceso
+:description: Mover instancias de proceso en ejecución a otra versión de la definición de proceso.
+
+La migración mueve las instancias de proceso en ejecución a otra versión de la definición de proceso, por ejemplo después de desplegar un modelo corregido. Cómo realiza el motor la migración se describe en la documentación de Operaton: {operaton-docs-url}/user-guide/process-engine/process-instance-migration[Process Instance Migration].
+
+[[from-process-list]]
+== Migración desde la vista de procesos
+
+La columna de acciones permite migrar instancias de proceso en ejecución a versiones de proceso más recientes directamente desde la vista *Processes*.
+
+. Selecciona el proceso de destino en la xref:process.adoc#process-list[tabla de procesos].
++
+image::process-migrate.png[align="center", width="1141"]
+. Haz clic en *... -> Migrate* en la columna de acciones.
+. Configura la migración:
++
+image::process-instance-migrate.png[align="center", width="942"]
++
+* *Source process*: Detectado automáticamente (instancias en ejecución actuales).
+* *Target process*: Selecciona entre el desplegable de versiones desplegadas.
+
+[[from-instance]]
+== Migración de una sola instancia
+
+Puedes iniciar la migración de una sola instancia desde la xref:process-instances.adoc#detailed-instance[vista detallada de la instancia de proceso]. La acción de migración está en el panel derecho.

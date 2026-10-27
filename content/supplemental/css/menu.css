@@ -56,3 +56,41 @@
   letter-spacing: .02em;
   vertical-align: .15em;
 }
+
+/* Process Engines page: primary engine block */
+.doc .sidebarblock.engine-primary { background: none; padding: 0; border-radius: 0; }
+.doc .sidebarblock.engine-primary > .content {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--fl-ee-border, #8DBFCA);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: var(--fl-tint, #E2F0F2);
+}
+.doc .sidebarblock.engine-primary .paragraph:first-child p { margin-top: 0; }
+.doc .engine-badge {
+  display: inline-block;
+  padding: .1rem .6rem;
+  border: 1px solid var(--fl-ee-border, #8DBFCA);
+  border-radius: 999px;
+  background: var(--fl-bg, #fff);
+  color: var(--fl-action, #176278);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.doc .engine-actions p { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 0; }
+.doc a.engine-btn {
+  display: inline-block;
+  padding: .45rem .9rem;
+  border: 1px solid var(--fl-ee-border, #8DBFCA);
+  border-radius: 6px;
+  background: var(--fl-bg, #fff);
+  color: var(--fl-action, #176278);
+  font-size: .875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.doc a.engine-btn:hover { border-color: var(--fl-action, #176278); }
+.doc a.engine-btn.primary { background: var(--fl-btn, #176278); border-color: var(--fl-btn, #176278); color: #fff; }
+.doc a.engine-btn.primary:hover { background: var(--fl-btn-hover, #114E60); }
+.doc td .engine-supported { color: var(--fl-brand, #369D55); font-weight: 700; }

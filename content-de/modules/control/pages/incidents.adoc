@@ -1,0 +1,61 @@
+= Incidents
+:description: Incidents der verbundenen Engine: Liste, Filter, Details eines Incidents und erneute Ausführung fehlgeschlagener Schritte.
+
+Ein Incident ist ein Fehler, durch den eine Prozessinstanz nicht fortgesetzt werden kann, zum Beispiel wenn ein Job oder ein externer Task keine Wiederholungen mehr hat. Der Mechanismus ist in der Operaton-Dokumentation beschrieben: {operaton-docs-url}/user-guide/process-engine/incidents[Incidents].
+
+Die Ansicht *Incidents* zeigt die offenen Incidents der verbundenen Engine über alle Prozesse hinweg. Um sie zu öffnen, wählen Sie *Incidents* im Anwendungsmenü. Die Incidents einer bestimmten Prozessinstanz werden auch auf dem Tab *Incidents* der xref:process-instances.adoc#detailed-instance[Detailansicht der Instanz] angezeigt, und solche Instanzen sind in der Instanzliste mit einem Symbol markiert.
+
+[[list]]
+== Liste der Incidents
+
+Für jeden Incident zeigt die Liste:
+
+* *Id*: den Bezeichner des Incidents, der die <<details,Details des Incidents>> öffnet;
+* *Type*: den Typ des Incidents, zum Beispiel ein fehlgeschlagener Job oder ein fehlgeschlagener externer Task;
+* *Message*: den Fehlertext;
+* *Process* und *Process instance*;
+* *Activity*: das Prozesselement, an dem der Incident aufgetreten ist;
+* *Creation date*.
+
+Sie können die Liste filtern:
+
+* nach Prozess und Prozessversion;
+* nach Typ des Incidents, einschließlich eines eigenen Typs (Wert *Custom*);
+* nach Text der Meldung;
+* nach Aktivität;
+* nach Bezeichner der Prozessinstanz;
+* nach Erstellungsdatum.
+
+[[retry]]
+== Fehlgeschlagene Schritte erneut ausführen
+
+Wurde ein Incident durch einen Job oder einen externen Task ohne verbleibende Wiederholungen verursacht, können Sie den Schritt erneut ausführen: Control erhöht die Anzahl der verbleibenden Wiederholungen, und die Engine versucht den Schritt noch einmal.
+
+So führen Sie mehrere Incidents erneut aus:
+
+. Markieren Sie die Incidents in der Liste.
+. Klicken Sie auf die Schaltfläche für die erneute Ausführung über der Liste.
+. Geben Sie im Dialog *Retry failed activities* die neue Anzahl der Wiederholungen im Feld *Retries* ein und bestätigen Sie.
+
+Die Anzahl der Wiederholungen wird asynchron erhöht. Aktualisieren Sie die Liste, um das Ergebnis zu sehen.
+
+Für einen einzelnen Incident ist die erneute Ausführung in den Details des Incidents verfügbar: Je nach Typ öffnet sich der Dialog *Retry failed job* oder *Retry external task*.
+
+TIP: Ist die Fehlerursache nicht behoben, erscheint der Incident wieder, sobald die neuen Wiederholungen aufgebraucht sind. Prüfen Sie vorher die Fehlermeldung und den Stacktrace.
+
+[[details]]
+== Details eines Incidents
+
+Um einen Incident zu öffnen, klicken Sie auf seinen Bezeichner oder wählen ihn aus und klicken auf *View*. Das Fenster hat drei Gruppen:
+
+* *General*: Bezeichner, Typ, Meldung, Erstellungsdatum und Payload (zum Beispiel der Bezeichner des Jobs oder externen Tasks);
+* *Process & activity*: Prozess, Prozessinstanz, Aktivität und fehlgeschlagene Aktivität;
+* *Related incidents*: der verursachende Incident und der Root-Incident, wenn dieser Incident durch einen anderen ausgelöst wurde.
+
+In diesem Fenster können Sie:
+
+* den Stacktrace des Fehlers öffnen;
+* zum Prozess, zur Prozessinstanz oder zum zugehörigen Job oder externen Task wechseln;
+* den verursachenden Incident oder den Root-Incident öffnen;
+* den Bezeichner des Incidents und die Payload kopieren;
+* <<retry,den fehlgeschlagenen Schritt erneut ausführen>>.

@@ -10,3 +10,10 @@ asciidoc:
     locale: de
     minimal-idea-version: '2024.1'
     idea-download-site: 'https://www.jetbrains.com/idea/download/'
+    operaton-docs-url: 'https://docs.operaton.org/docs/documentation'
+    operaton-get-started-url: 'https://docs.operaton.org/docs/get-started'
+    operaton-rest-api-url: 'https://docs.operaton.org/reference/latest/rest-api'
+    camunda7-docs-url: 'https://docs.camunda.org/manual/7.24'
+    cibseven-docs-url: 'https://docs.cibseven.org/manual/latest'
+    fluxnova-docs-url: 'https://docs.fluxnova.finos.org'
+    flowset-support-url: 'mailto:info@flowset.io'

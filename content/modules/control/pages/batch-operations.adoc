@@ -7,8 +7,8 @@ A batch is executed asynchronously by the BPM engine: it is split into smaller j
 
 For background on batch operations, see:
 
-* https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch-operations[Operaton batch operations documentation]
-* https://docs.operaton.org/reference/latest/rest-api/#tag/Batch[Operaton Batch REST API]
+* {operaton-docs-url}/user-guide/process-engine/batch-operations[Operaton batch operations documentation]
+* {operaton-rest-api-url}/#tag/Batch[Operaton Batch REST API]
 
 [WARNING]
 ====

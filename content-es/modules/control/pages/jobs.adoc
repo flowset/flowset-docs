@@ -3,7 +3,7 @@
 
 La sección *Jobs* permite ver y gestionar los trabajos asíncronos del motor BPM.
 
-Un trabajo es un elemento de ejecución interno que el motor crea para el trabajo diferido o asíncrono: disparar temporizadores, ejecutar actividades de forma asíncrona y otras operaciones realizadas en segundo plano por el Job Executor. En la sección https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor] se ofrece una descripción detallada de este mecanismo.
+Un trabajo es un elemento de ejecución interno que el motor crea para el trabajo diferido o asíncrono: disparar temporizadores, ejecutar actividades de forma asíncrona y otras operaciones realizadas en segundo plano por el Job Executor. En la sección {operaton-docs-url}/user-guide/process-engine/the-job-executor/[Job Executor] se ofrece una descripción detallada de este mecanismo.
 
 Los trabajos se pueden gestionar en tres lugares de la aplicación:
 

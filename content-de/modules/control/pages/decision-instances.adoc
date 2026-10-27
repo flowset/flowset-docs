@@ -1,0 +1,38 @@
+= Entscheidungsinstanzen
+:description: Verlauf der Auswertungen von DMN-Entscheidungstabellen: Liste, Filter und Details der Auswertung.
+
+Eine Entscheidungsinstanz speichert eine Auswertung einer DMN-Entscheidungstabelle: welche Eingabewerte die Tabelle erhalten hat, welche Regeln zutrafen und welches Ergebnis sie zurückgegeben hat. Die Ansicht *Decision instances* zeigt diese Einträge für alle Entscheidungstabellen der verbundenen Engine. Um sie zu öffnen, wählen Sie *Decision instances* im Anwendungsmenü (Gruppe *DMN*).
+
+NOTE: Die Liste wird aus dem Verlauf der Engine aufgebaut. Wenn die Verlaufsstufe der Engine keine Entscheidungsauswertungen aufzeichnet, ist die Liste leer. Die Verlaufsstufen sind in der Operaton-Dokumentation beschrieben: {operaton-docs-url}/user-guide/process-engine/history/[History].
+
+[[list]]
+== Liste der Entscheidungsinstanzen
+
+Für jede Instanz zeigt die Liste:
+
+* *Id*: den Bezeichner der Entscheidungsinstanz;
+* *Decision*: die Entscheidungstabelle und ihre Version;
+* *Evaluation time*;
+* *Process* und *Process instance*, wenn die Entscheidung aus einem Prozess ausgewertet wurde (Business Rule Task);
+* *Activity*: das Prozesselement, das die Auswertung ausgelöst hat.
+
+Sie können die Liste filtern:
+
+* nach Entscheidungstabelle und Version der Entscheidung;
+* nach Auswertungszeit (*Evaluated after*, *Evaluated before*);
+* nach Prozessschlüssel;
+* nach Aktivität;
+* nach Bezeichner der Entscheidungsinstanz oder der Prozessinstanz.
+
+[[details]]
+== Details der Auswertung
+
+Um eine Entscheidungsinstanz zu öffnen, wählen Sie sie in der Liste aus und klicken auf *View*. Das Fenster *Decision instance* enthält:
+
+* den Bereich *General information*: Bezeichner der Instanz, Entscheidungstabelle, Prozess, Prozessinstanz und Aktivität, mit Links zur Entscheidungstabelle und zur Prozessinstanz;
+* die Entscheidungstabelle mit hervorgehobenen zutreffenden Regeln;
+* die Tabs *Inputs* und *Outputs* mit den Werten, mit denen die Tabelle ausgewertet wurde.
+
+Wie Sie die Hervorhebung der Regeln und das Entscheidungsanforderungsdiagramm (DRD) lesen, ist unter xref:dmn-decisions.adoc#view-dmn-table-instance[Entscheidungsinstanzen analysieren] beschrieben.
+
+Die Entscheidungsinstanzen einer bestimmten Tabelle werden auch in den Details dieser Tabelle in der Ansicht xref:dmn-decisions.adoc[Entscheidungstabellen] angezeigt.

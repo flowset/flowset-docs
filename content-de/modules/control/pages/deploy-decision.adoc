@@ -1,0 +1,15 @@
+= Entscheidungstabelle bereitstellen
+:description: Eine DMN-Entscheidungstabelle in der verbundenen Engine bereitstellen.
+
+Sie können eine DMN-Entscheidungstabelle direkt aus Control in der verbundenen Engine bereitstellen. Bereitgestellte Tabellen erscheinen in der Ansicht xref:dmn-decisions.adoc[Entscheidungstabellen], der Eintrag zum Deployment in der Ansicht xref:deployments.adoc[Deployments].
+
+[[deploy]]
+== Bereitstellung
+
+So stellen Sie eine DMN-Tabelle bereit:
+
+. Klicken Sie in der Ansicht *Decisions* auf *Deploy*
+. Klicken Sie in der Ansicht *New decision deployment* auf *Upload* und wählen Sie Ihre DMN-1.1-Datei (.dmn oder .dmn11.xml) aus.
++
+image::deploy-decision.png[align="center", width="1186"]
+. Klicken Sie auf *OK*, um das Deployment abzuschließen.

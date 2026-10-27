@@ -1,7 +1,7 @@
 = Process Instance Migration
 :description: Moving running process instances to another version of the process definition.
 
-Migration moves running process instances to another version of the process definition, for example after you deploy a fixed model. How the engine performs migration is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/process-instance-migration[Process Instance Migration].
+Migration moves running process instances to another version of the process definition, for example after you deploy a fixed model. How the engine performs migration is described in the Operaton documentation: {operaton-docs-url}/user-guide/process-engine/process-instance-migration[Process Instance Migration].
 
 [[from-process-list]]
 == Migrating from the Processes view

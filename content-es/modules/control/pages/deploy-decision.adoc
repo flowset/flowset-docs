@@ -1,0 +1,15 @@
+= Despliegue de una tabla de decisión
+:description: Desplegar una tabla de decisión DMN en el motor conectado.
+
+Puedes desplegar una tabla de decisión DMN en el motor conectado directamente desde Control. Las tablas desplegadas aparecen en la vista xref:dmn-decisions.adoc[Tablas de decisión], y el registro del despliegue, en la vista xref:deployments.adoc[Despliegues].
+
+[[deploy]]
+== Despliegue
+
+Para desplegar una tabla DMN:
+
+. En la vista *Decisions*, haz clic en *Deploy*
+. En la vista *New decision deployment*, haz clic en *Upload* y selecciona tu archivo DMN 1.1 (.dmn o .dmn11.xml).
++
+image::deploy-decision.png[align="center", width="1186"]
+. Haz clic en *OK* para completar el despliegue.

@@ -1,0 +1,154 @@
+[[editions]]
+= Ediciones de Flowset Control
+:navtitle: Comparar ediciones
+:description: En qué se diferencian las ediciones Community y Enterprise de Flowset Control: las funciones de cada edición.
+
+Flowset Control tiene dos ediciones. La edición *Community* es gratuita y de código abierto: permite consultar procesos, instancias, incidentes, tareas de usuario, decisiones y despliegues. La edición *Enterprise* es comercial: incluye todas las funciones de Community y funciones adicionales para analizar y gestionar la ejecución de procesos.
+
+Las páginas sobre funciones Enterprise llevan la etiqueta [.ee]#EE# en el menú de la documentación, y el encabezado de la página indica la edición. Cómo instalar una licencia Enterprise se describe en xref:flowset:control:license.adoc[License (en inglés)].
+
+[[features]]
+== Funciones por edición
+
+[cols="3,1,1", options="header"]
+|===
+| Función | Community | Enterprise
+
+3+h| Primeros pasos
+
+| xref:connecting-engine.adoc[Conexión con motores]
+| ✓
+| ✓
+
+3+h| Monitoreo
+
+| xref:dashboard.adoc[Dashboard]
+| ✓
+| ✓
+
+| xref:engine-monitoring.adoc[Monitoreo del motor]
+| —
+| ✓
+
+3+h| Procesos
+
+| xref:process.adoc[Procesos]: consulta e inicio
+| ✓
+| ✓
+
+| xref:process-instances.adoc[Instancias de proceso]: consulta, suspensión, finalización
+| ✓
+| ✓
+
+| xref:incidents.adoc[Incidentes]: consulta y reintento
+| ✓
+| ✓
+
+| xref:process-migration.adoc[Migración de instancias] a una nueva versión del proceso
+| ✓
+| ✓
+
+| xref:process-instance-modification.adoc[Modificación de instancias]
+| —
+| ✓
+
+| xref:messages.adoc[Envío de mensajes] desde el diagrama
+| —
+| ✓
+
+| xref:process-variable-history.adoc[Historial de variables]
+| —
+| ✓
+
+| xref:process-documentation.adoc[Documentación de elementos]
+| —
+| ✓
+
+| xref:transactions.adoc[Límites de transacción] en el diagrama
+| —
+| ✓
+
+| xref:heatmap.adoc[Mapa de calor]
+| —
+| ✓
+
+3+h| Decisiones DMN
+
+| xref:dmn-decisions.adoc[Tablas de decisión]
+| ✓
+| ✓
+
+| xref:decision-instances.adoc[Instancias de decisión]
+| ✓
+| ✓
+
+| xref:decision-evaluation.adoc[Evaluación de decisiones]
+| —
+| ✓
+
+3+h| Tareas de usuario
+
+| xref:user-tasks.adoc[Tareas de usuario]: completar, reasignar
+| ✓
+| ✓
+
+3+h| Trabajos y operaciones por lotes
+
+| xref:process-instance-jobs.adoc[Trabajos] de una instancia: reintento, suspensión, vista detallada
+| ✓
+| ✓
+
+| xref:jobs.adoc[Gestión de trabajos]: pantalla Jobs, prioridad y fecha de vencimiento, definiciones de trabajos
+| —
+| ✓
+
+| xref:batches.adoc[Operaciones por lotes]: lista y progreso
+| ✓
+| ✓
+
+| xref:batch-operations.adoc[Ejecución de operaciones por lotes]
+| —
+| ✓
+
+3+h| Despliegue
+
+| xref:deployments.adoc[Despliegues]
+| ✓
+| ✓
+
+| xref:deploy-process.adoc[Despliegue de un proceso]
+| ✓
+| ✓
+
+| xref:deploy-decision.adoc[Despliegue de una tabla de decisión]
+| ✓
+| ✓
+
+3+h| Administración
+
+| xref:access-management.adoc[Usuarios y roles de recursos]
+| ✓
+| ✓
+
+| xref:access-management.adoc#row-level-roles[Roles de nivel de fila y roles predefinidos]
+| —
+| ✓
+
+| xref:oidc.adoc[Inicio de sesión único (SSO)]
+| ✓
+| ✓
+
+| xref:database.adoc[Bases de datos]: HSQLDB, PostgreSQL, MySQL
+| ✓
+| ✓
+
+3+h| Asistente de IA y licencias
+
+| xref:ai-assistant.adoc[Asistente de IA]
+| —
+| ✓
+
+| xref:flowset:control:license.adoc[License (en inglés)]
+| —
+| ✓
+|===

@@ -1,0 +1,154 @@
+[[editions]]
+= Editionen von Flowset Control
+:navtitle: Editionen vergleichen
+:description: Wie sich die Editionen Community und Enterprise von Flowset Control unterscheiden: die Funktionen jeder Edition.
+
+Flowset Control gibt es in zwei Editionen. Die Edition *Community* ist kostenlos und Open Source: Sie können damit Prozesse, Instanzen, Incidents, Benutzeraufgaben, Entscheidungen und Deployments anzeigen. Die Edition *Enterprise* ist kommerziell: Sie enthält alle Funktionen von Community und zusätzliche Funktionen zur Analyse und Steuerung der Prozessausführung.
+
+Seiten zu Enterprise-Funktionen sind im Dokumentationsmenü mit dem Badge [.ee]#EE# markiert, und der Seitenkopf zeigt die Edition. Wie Sie eine Enterprise-Lizenz installieren, ist unter xref:flowset:control:license.adoc[License (auf Englisch)] beschrieben.
+
+[[features]]
+== Funktionen nach Edition
+
+[cols="3,1,1", options="header"]
+|===
+| Funktion | Community | Enterprise
+
+3+h| Erste Schritte
+
+| xref:connecting-engine.adoc[Verbindung zu Engines]
+| ✓
+| ✓
+
+3+h| Überwachung
+
+| xref:dashboard.adoc[Dashboard]
+| ✓
+| ✓
+
+| xref:engine-monitoring.adoc[Überwachung der Engine]
+| —
+| ✓
+
+3+h| Prozesse
+
+| xref:process.adoc[Prozesse]: anzeigen und starten
+| ✓
+| ✓
+
+| xref:process-instances.adoc[Prozessinstanzen]: anzeigen, aussetzen, beenden
+| ✓
+| ✓
+
+| xref:incidents.adoc[Incidents]: anzeigen und erneut ausführen
+| ✓
+| ✓
+
+| xref:process-migration.adoc[Migration von Instanzen] auf eine neue Prozessversion
+| ✓
+| ✓
+
+| xref:process-instance-modification.adoc[Modifikation von Instanzen]
+| —
+| ✓
+
+| xref:messages.adoc[Senden von Messages] aus dem Diagramm
+| —
+| ✓
+
+| xref:process-variable-history.adoc[Variablenverlauf]
+| —
+| ✓
+
+| xref:process-documentation.adoc[Dokumentation von Elementen]
+| —
+| ✓
+
+| xref:transactions.adoc[Transaktionsgrenzen] im Diagramm
+| —
+| ✓
+
+| xref:heatmap.adoc[Heatmap]
+| —
+| ✓
+
+3+h| DMN-Entscheidungen
+
+| xref:dmn-decisions.adoc[Entscheidungstabellen]
+| ✓
+| ✓
+
+| xref:decision-instances.adoc[Entscheidungsinstanzen]
+| ✓
+| ✓
+
+| xref:decision-evaluation.adoc[Auswertung von Entscheidungen]
+| —
+| ✓
+
+3+h| Benutzeraufgaben
+
+| xref:user-tasks.adoc[Benutzeraufgaben]: abschließen, neu zuweisen
+| ✓
+| ✓
+
+3+h| Jobs und Batch-Operationen
+
+| xref:process-instance-jobs.adoc[Jobs] einer Instanz: erneut ausführen, aussetzen, Detailansicht
+| ✓
+| ✓
+
+| xref:jobs.adoc[Job-Verwaltung]: Bildschirm Jobs, Priorität und Fälligkeitsdatum, Job-Definitionen
+| —
+| ✓
+
+| xref:batches.adoc[Batch-Operationen]: Liste und Fortschritt
+| ✓
+| ✓
+
+| xref:batch-operations.adoc[Batch-Operationen ausführen]
+| —
+| ✓
+
+3+h| Bereitstellung
+
+| xref:deployments.adoc[Deployments]
+| ✓
+| ✓
+
+| xref:deploy-process.adoc[Prozess bereitstellen]
+| ✓
+| ✓
+
+| xref:deploy-decision.adoc[Entscheidungstabelle bereitstellen]
+| ✓
+| ✓
+
+3+h| Administration
+
+| xref:access-management.adoc[Benutzer und Ressourcenrollen]
+| ✓
+| ✓
+
+| xref:access-management.adoc#row-level-roles[Rollen auf Zeilenebene und vordefinierte Rollen]
+| —
+| ✓
+
+| xref:oidc.adoc[Single Sign-On (SSO)]
+| ✓
+| ✓
+
+| xref:database.adoc[Datenbanken]: HSQLDB, PostgreSQL, MySQL
+| ✓
+| ✓
+
+3+h| KI-Assistent und Lizenz
+
+| xref:ai-assistant.adoc[KI-Assistent]
+| —
+| ✓
+
+| xref:flowset:control:license.adoc[License (auf Englisch)]
+| —
+| ✓
+|===

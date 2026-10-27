@@ -7,8 +7,8 @@ Ein Batch wird von der BPM-Engine asynchron ausgeführt: Er wird in kleinere Job
 
 Hintergrundinformationen zu Batch-Operationen finden Sie unter:
 
-* https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch-operations[Operaton-Dokumentation zu Batch-Operationen]
-* https://docs.operaton.org/reference/latest/rest-api/#tag/Batch[Operaton Batch REST API]
+* {operaton-docs-url}/user-guide/process-engine/batch-operations[Operaton-Dokumentation zu Batch-Operationen]
+* {operaton-rest-api-url}/#tag/Batch[Operaton Batch REST API]
 
 [WARNING]
 ====

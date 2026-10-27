@@ -1,7 +1,7 @@
 = Batch Operations
 :description: Batch operations of the engine: active and completed batches, execution progress, and batch details.
 
-A batch operation applies one action, such as migration or deletion, to many process instances at once. The engine runs it asynchronously: it splits the batch into jobs and processes them in the background. The mechanism is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch[Batch].
+A batch operation applies one action, such as migration or deletion, to many process instances at once. The engine runs it asynchronously: it splits the batch into jobs and processes them in the background. The mechanism is described in the Operaton documentation: {operaton-docs-url}/user-guide/process-engine/batch[Batch].
 
 The *Batches* view shows the batches of the connected engine and their progress. To open it, select *Batches* in the application menu.
 

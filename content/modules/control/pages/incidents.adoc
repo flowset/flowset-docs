@@ -1,7 +1,7 @@
 = Incidents
 :description: Incidents of the connected engine: the list, filters, incident details, and retrying failed steps.
 
-An incident is an error that stops a process instance from continuing, for example when a job or an external task has run out of retries. The mechanism is described in the Operaton documentation: https://docs.operaton.org/docs/documentation/user-guide/process-engine/incidents[Incidents].
+An incident is an error that stops a process instance from continuing, for example when a job or an external task has run out of retries. The mechanism is described in the Operaton documentation: {operaton-docs-url}/user-guide/process-engine/incidents[Incidents].
 
 The *Incidents* view shows open incidents of the connected engine across all processes. To open it, select *Incidents* in the application menu. The incidents of a specific process instance are also shown on the *Incidents* tab of the xref:process-instances.adoc#detailed-instance[detailed instance view], and such instances are marked with an icon in the instance list.
 

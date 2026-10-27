@@ -1,7 +1,7 @@
 = Jobs
 :description: Jobs of a running process instance: viewing, retrying, suspending, and activating them.
 
-A job is an internal execution element that the engine creates for deferred or asynchronous work: firing timers, executing activities asynchronously, and other operations performed in the background by the Job Executor. A detailed description of this mechanism is provided in the https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor] section.
+A job is an internal execution element that the engine creates for deferred or asynchronous work: firing timers, executing activities asynchronously, and other operations performed in the background by the Job Executor. A detailed description of this mechanism is provided in the {operaton-docs-url}/user-guide/process-engine/the-job-executor/[Job Executor] section.
 
 The jobs of a specific process instance are shown on the *Jobs* tab of the detailed instance view. There you can retry a failed job, suspend or activate it, and open the detailed view with the error text. All jobs of the engine on one screen are shown by the *Jobs* screen, described in xref:jobs.adoc[Job Management] [.ee]#EE#.
 

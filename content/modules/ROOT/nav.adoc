@@ -9,6 +9,12 @@
 *** xref:ROOT:whats-new/enterprise/1.1.adoc[]
 *** xref:ROOT:whats-new/enterprise/1.0.adoc[]
 
+* xref:ROOT:engine.adoc[]
+** {operaton-docs-url}/[Operaton ↗]
+** {cibseven-docs-url}/[CIB seven ↗]
+** {fluxnova-docs-url}/[Fluxnova ↗]
+** {camunda7-docs-url}/[Camunda 7 ↗]
+
 include::control:partial$nav.adoc[]
 include::studio:partial$nav.adoc[]
 include::tasklist:partial$nav.adoc[]

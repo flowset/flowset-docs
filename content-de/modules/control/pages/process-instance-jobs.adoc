@@ -1,0 +1,77 @@
+= Jobs
+:description: Jobs einer laufenden Prozessinstanz: anzeigen, erneut ausführen, aussetzen und aktivieren.
+
+Ein Job ist ein internes Ausführungselement, das die Engine für aufgeschobene oder asynchrone Arbeit erstellt: das Auslösen von Timern, das asynchrone Ausführen von Aktivitäten und weitere Vorgänge, die im Hintergrund vom Job Executor ausgeführt werden. Eine ausführliche Beschreibung dieses Mechanismus finden Sie im Abschnitt {operaton-docs-url}/user-guide/process-engine/the-job-executor/[Job Executor].
+
+Die Jobs einer bestimmten Prozessinstanz werden auf dem Tab *Jobs* der Detailansicht der Instanz angezeigt. Dort können Sie einen fehlgeschlagenen Job erneut ausführen, ihn aussetzen oder aktivieren und die Detailansicht mit dem Fehlertext öffnen. Alle Jobs der Engine auf einem Bildschirm zeigt der Bildschirm *Jobs*, beschrieben unter xref:jobs.adoc[Job-Verwaltung] [.ee]#EE#.
+
+[[jobs-tab]]
+== Jobs-Tab in einer Prozessinstanz
+
+Der Tab *Jobs* ist auf dem Bildschirm der xref:process-instances.adoc#detailed-instance[Detailansicht einer Prozessinstanz] (Block *Runtime*) verfügbar und zeigt die Jobs der ausgewählten Instanz an.
+
+image::jobs-tab.png[align="center", width="1552"]
+
+Für jeden Job werden die Spalten *Job*, *Failed activity*, *Create time*, *Retries*, *Priority* und *State* angezeigt; die Aktionen *Retry*, *Activate* und *Suspend* stehen zur Verfügung.
+
+TIP: Ein Klick auf den Wert in der Spalte *Failed activity* hebt das entsprechende Element im Diagramm der Prozessinstanz hervor, was hilft, die Fehlerstelle schnell zu lokalisieren.
+
+[[jobs-actions]]
+== Job-Vorgänge
+
+[cols="1,3", options="header", frame=none, grid=rows]
+|===
+| Aktion | Beschreibung
+
+| *Retry*
+| Legt eine neue Anzahl an Ausführungsversuchen fest, woraufhin der Job Executor den Job erneut aufnehmen und ausführen kann. Nur für Jobs verfügbar, deren Anzahl der Versuche `0` ist.
+
+| *Activate*
+| Setzt die Ausführung eines zuvor angehaltenen Jobs fort. Nur für Jobs im Status *Suspended* verfügbar.
+
+| *Suspend*
+| Hält die Ausführung eines aktiven Jobs an. Nur für Jobs im Status *Active* verfügbar.
+
+|===
+
+In der Enterprise-Edition können Sie außerdem die Priorität und das Fälligkeitsdatum eines Jobs ändern. Siehe xref:jobs.adoc#job-details-ee[Weitere Job-Aktionen] [.ee]#EE#.
+
+[[jobs-retry]]
+=== Erneutes Ausführen eines Jobs
+
+So führen Sie einen mit Fehler beendeten Job erneut aus:
+
+. Wählen Sie einen Job mit dem *Retries*-Wert `0` aus und klicken Sie auf *Retry*.
+. Geben Sie im geöffneten Dialog im Feld *Retries* die Anzahl der Ausführungsversuche an (Standard ist `1`; der Wert muss positiv sein).
++
+image::job-retry-dialog.png[align="center", width="720"]
+. Klicken Sie auf *Retry*, um die neue Anzahl an Versuchen anzuwenden.
+
+[[job-details]]
+== Detailansicht eines Jobs
+
+Um detaillierte Informationen zu einem Job zu öffnen, klicken Sie auf dessen Bezeichner oder verwenden Sie die Aktion *View*.
+
+image::job-details.png[align="center", width="1100"]
+
+Der Bildschirm enthält detaillierte Informationen über den Job:
+
+* *Job Id* — der Job-Bezeichner, mit der Möglichkeit, ihn zu kopieren.
+* *Job type* — der Job-Typ, zum Beispiel `timer-intermediate-transition` (ein Timer-Ereignis) oder `async-continuation` (asynchrone Fortsetzung). Für das Feld wird ein lokalisierter Tooltip angezeigt, der den Typ erläutert.
+* *State* — der aktuelle Job-Status (*Active* / *Suspended*).
+* *Creation date* und *Due date* — der Erstellungszeitpunkt und das Fälligkeitsdatum des Jobs.
+* *Priority* — die Priorität des Jobs.
+* *Retries* — die verbleibende Anzahl an Ausführungsversuchen.
+* *Activity* und *Failed activity* — die Aktivität des Jobs und die Aktivität, bei der der Fehler aufgetreten ist.
+* *Process* — die Prozessdefinition; die Navigationsschaltfläche öffnet die xref:process.adoc[Prozessdefinition].
+* *Process instance* — die Prozessinstanz; die Navigationsschaltfläche öffnet die xref:process-instances.adoc#detailed-instance[Detailansicht der Instanz].
+* *Exception message* und Stacktrace — der Text und der vollständige Aufrufstapel des Ausführungsfehlers.
+
+Für einen mit Fehler beendeten Job (*Retries* = `0`) zeigen die Felder *Exception message* und Stacktrace die Ursache des Fehlers an, und die Aktion *Retry* ermöglicht die erneute Ausführung des Jobs.
+
+image::job-details-failed.png[align="center", width="1100"]
+
+[[job-details-actions]]
+=== Aktionen in der Detailansicht
+
+Am unteren Rand des Bildschirms stehen die Aktionen *Retry*, *Activate* / *Suspend*, *Copy stacktrace* (Aufrufstapel kopieren) und *Copy error message* (Fehlertext kopieren) zur Verfügung.

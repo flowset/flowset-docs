@@ -1,0 +1,18 @@
+= Prozess bereitstellen
+:description: Einen neuen BPMN-2.0-Prozess oder eine neue Prozessversion in der verbundenen Engine bereitstellen.
+
+Sie können einen neuen Prozess oder eine neue Version eines vorhandenen Prozesses direkt aus Control in der verbundenen Engine bereitstellen. Bereitgestellte Prozesse erscheinen in der Ansicht xref:process.adoc[Prozesse], der Eintrag zum Deployment in der Ansicht xref:deployments.adoc[Deployments].
+
+[[deploy]]
+== Bereitstellung
+
+So stellen Sie einen neuen Prozess oder eine neue Version bereit:
+
+. Klicken Sie in der Ansicht *Processes* auf *Deploy*
+. Klicken Sie in der Ansicht *New process deployment* auf *Upload* und wählen Sie Ihre BPMN 2.0-XML-Datei aus.
++
+image::deploy-process.png[align="center", width="1552"]
++
+Das System validiert die BPMN 2.0-Syntax und zeigt eine Vorschau des Prozessdiagramms an.
+
+. Klicken Sie auf *OK*, um die Bereitstellung abzuschließen.

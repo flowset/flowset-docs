@@ -3,7 +3,7 @@
 
 Der Bereich *Jobs* dient dem Anzeigen und Verwalten der asynchronen Jobs der BPM-Engine.
 
-Ein Job ist ein internes Ausführungselement, das die Engine für aufgeschobene oder asynchrone Arbeit erstellt: das Auslösen von Timern, das asynchrone Ausführen von Aktivitäten und weitere Vorgänge, die im Hintergrund vom Job Executor ausgeführt werden. Eine ausführliche Beschreibung dieses Mechanismus finden Sie im Abschnitt https://docs.operaton.org/docs/documentation/user-guide/process-engine/the-job-executor/[Job Executor].
+Ein Job ist ein internes Ausführungselement, das die Engine für aufgeschobene oder asynchrone Arbeit erstellt: das Auslösen von Timern, das asynchrone Ausführen von Aktivitäten und weitere Vorgänge, die im Hintergrund vom Job Executor ausgeführt werden. Eine ausführliche Beschreibung dieses Mechanismus finden Sie im Abschnitt {operaton-docs-url}/user-guide/process-engine/the-job-executor/[Job Executor].
 
 Jobs können an drei Stellen in der Anwendung verwaltet werden:
 

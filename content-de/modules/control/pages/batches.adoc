@@ -1,0 +1,40 @@
+= Batch-Operationen
+:description: Batch-Operationen der Engine: aktive und abgeschlossene Batches, Fortschritt der Ausführung und Batch-Details.
+
+Eine Batch-Operation wendet eine Aktion, etwa eine Migration oder ein Löschen, gleichzeitig auf viele Prozessinstanzen an. Die Engine führt sie asynchron aus: Sie teilt den Batch in Jobs auf und verarbeitet diese im Hintergrund. Der Mechanismus ist in der Operaton-Dokumentation beschrieben: {operaton-docs-url}/user-guide/process-engine/batch[Batch].
+
+Die Ansicht *Batches* zeigt die Batches der verbundenen Engine und ihren Fortschritt. Um sie zu öffnen, wählen Sie *Batches* im Anwendungsmenü.
+
+TIP: Eine neue Batch-Operation starten Sie aus der Oberfläche mit dem xref:batch-operations.adoc[Assistenten für Batch-Operationen] [.ee]#EE#. In der Community-Edition werden Batches über die API der Engine erstellt, und diese Ansicht zeigt ihre Ausführung.
+
+[[active]]
+== Aktive Batches
+
+Der Tab *Active* zeigt Batches, die noch laufen. Für jeden Batch werden angezeigt:
+
+* *Id*: der Bezeichner des Batches;
+* *Type*: der Operationstyp, zum Beispiel die Migration von Prozessinstanzen;
+* *Start time*;
+* *State*: läuft oder ausgesetzt;
+* *Failed jobs* und *Total jobs*;
+* *Progress*: der Anteil der verarbeiteten Jobs.
+
+Sie können die Liste nach Zustand (alle, aktiv, ausgesetzt) und nach Ausführungsergebnis (alle, mit Fehlern, ohne Fehler) filtern.
+
+[[completed]]
+== Abgeschlossene Batches
+
+Der Tab *Completed* zeigt Batches, die beendet sind. Für jeden Batch werden *Id*, *Type*, *Start time*, *End time* und *Total jobs* angezeigt.
+
+[[details]]
+== Batch-Details
+
+Um Informationen zu einem Batch zu öffnen, wählen Sie ihn in der Liste aus und klicken auf *View*. Das Fenster *Batch details* zeigt:
+
+* Bezeichner, Typ und Zustand des Batches;
+* die Anzahl der erstellten Jobs, der Batch-Jobs pro Seed und der Aufrufe pro Batch-Job;
+* die Startzeit und die Startzeit der Ausführung;
+* die Bezeichner der Definitionen von Seed-, Monitor- und Batch-Job;
+* den Benutzer, der den Batch erstellt hat.
+
+Die Schaltfläche *Refresh* über der Liste lädt den aktuellen Zustand der Batches aus der Engine.

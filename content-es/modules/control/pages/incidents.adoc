@@ -1,0 +1,61 @@
+= Incidentes
+:description: Incidentes del motor conectado: la lista, los filtros, los detalles del incidente y el reintento de pasos fallidos.
+
+Un incidente es un error que impide que una instancia de proceso continúe, por ejemplo cuando un trabajo o una tarea externa se ha quedado sin reintentos. El mecanismo se describe en la documentación de Operaton: {operaton-docs-url}/user-guide/process-engine/incidents[Incidents].
+
+La vista *Incidents* muestra los incidentes abiertos del motor conectado en todos los procesos. Para abrirla, selecciona *Incidents* en el menú de la aplicación. Los incidentes de una instancia de proceso concreta también aparecen en la pestaña *Incidents* de la xref:process-instances.adoc#detailed-instance[vista detallada de la instancia], y esas instancias se marcan con un icono en la lista de instancias.
+
+[[list]]
+== Lista de incidentes
+
+Para cada incidente la lista muestra:
+
+* *Id*: el identificador del incidente, que abre los <<details,detalles del incidente>>;
+* *Type*: el tipo de incidente, por ejemplo un trabajo fallido o una tarea externa fallida;
+* *Message*: el texto del error;
+* *Process* y *Process instance*;
+* *Activity*: el elemento del proceso donde se produjo el incidente;
+* *Creation date*.
+
+Puedes filtrar la lista:
+
+* por proceso y versión del proceso;
+* por tipo de incidente, incluido un tipo personalizado (el valor *Custom*);
+* por texto del mensaje;
+* por actividad;
+* por identificador de la instancia de proceso;
+* por fecha de creación.
+
+[[retry]]
+== Reintento de pasos fallidos
+
+Si un incidente lo causó un trabajo o una tarea externa que se quedó sin reintentos, puedes volver a ejecutar el paso: Control aumenta el número de reintentos restantes y el motor intenta ejecutar el paso de nuevo.
+
+Para reintentar varios incidentes:
+
+. Selecciona los incidentes en la lista.
+. Haz clic en el botón de reintento sobre la lista.
+. En el diálogo *Retry failed activities*, indica el nuevo número de reintentos en el campo *Retries* y confirma.
+
+El número de reintentos se aumenta de forma asíncrona. Actualiza la lista para ver el resultado.
+
+Para un solo incidente, el reintento está disponible en los detalles del incidente: se abre el diálogo *Retry failed job* o *Retry external task*, según el tipo de incidente.
+
+TIP: Si la causa del error no se ha corregido, el incidente vuelve a aparecer cuando se agotan los nuevos reintentos. Revisa antes el mensaje de error y el stack trace.
+
+[[details]]
+== Detalles del incidente
+
+Para abrir un incidente, haz clic en su identificador o selecciónalo y haz clic en *View*. La ventana tiene tres grupos:
+
+* *General*: el identificador, el tipo, el mensaje, la fecha de creación y el payload (por ejemplo, el identificador del trabajo o de la tarea externa);
+* *Process & activity*: el proceso, la instancia de proceso, la actividad y la actividad fallida;
+* *Related incidents*: el incidente causante y el incidente raíz, si este incidente lo causó otro.
+
+Desde esta ventana puedes:
+
+* abrir el stack trace del error;
+* ir al proceso, a la instancia de proceso o al trabajo o tarea externa relacionados;
+* abrir el incidente causante o el incidente raíz;
+* copiar el identificador del incidente y el payload;
+* <<retry,reintentar el paso fallido>>.

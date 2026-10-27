@@ -7,7 +7,7 @@
     <button class="nav-item-toggle"></button>
     {{/if}}
     {{#if ./url}}
-    <a class="nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}">{{{./content}}}
+    <a class="nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}"{{#if (eq ./urlType 'external')}} target="_blank" rel="noopener"{{/if}}>{{{./content}}}
       {{~#if (eq (page-edition ./url) 'enterprise')}}<span class="nav-ee" title="{{t 'eeFeature'}}">EE</span>{{/if~}}
     </a>
     {{else}}

@@ -1,0 +1,40 @@
+= Operaciones por lotes
+:description: Operaciones por lotes del motor: lotes activos y completados, progreso de ejecución y detalles del lote.
+
+Una operación por lotes aplica una acción, como una migración o una eliminación, a muchas instancias de proceso a la vez. El motor la ejecuta de forma asíncrona: divide el lote en trabajos y los procesa en segundo plano. El mecanismo se describe en la documentación de Operaton: {operaton-docs-url}/user-guide/process-engine/batch[Batch].
+
+La vista *Batches* muestra los lotes del motor conectado y su progreso. Para abrirla, selecciona *Batches* en el menú de la aplicación.
+
+TIP: Para iniciar una nueva operación por lotes desde la interfaz, usa el xref:batch-operations.adoc[asistente de operaciones por lotes] [.ee]#EE#. En la edición Community, los lotes se crean mediante la API del motor, y esta vista muestra cómo se ejecutan.
+
+[[active]]
+== Lotes activos
+
+La pestaña *Active* muestra los lotes que siguen en ejecución. Para cada lote se muestra:
+
+* *Id*: el identificador del lote;
+* *Type*: el tipo de operación, por ejemplo la migración de instancias de proceso;
+* *Start time*;
+* *State*: en ejecución o suspendido;
+* *Failed jobs* y *Total jobs*;
+* *Progress*: la proporción de trabajos procesados.
+
+Puedes filtrar la lista por estado (todos, activos, suspendidos) y por resultado de ejecución (todos, con fallos, sin fallos).
+
+[[completed]]
+== Lotes completados
+
+La pestaña *Completed* muestra los lotes que han terminado. Para cada lote se muestran *Id*, *Type*, *Start time*, *End time* y *Total jobs*.
+
+[[details]]
+== Detalles del lote
+
+Para abrir la información de un lote, selecciónalo en la lista y haz clic en *View*. La ventana *Batch details* muestra:
+
+* el identificador, el tipo y el estado del lote;
+* el número de trabajos creados, de trabajos por iteración y de invocaciones por trabajo;
+* la hora de inicio y la hora de inicio de la ejecución;
+* los identificadores de las definiciones de los trabajos inicial, de monitoreo y del lote;
+* el usuario que creó el lote.
+
+El botón *Refresh* sobre la lista carga el estado actual de los lotes desde el motor.

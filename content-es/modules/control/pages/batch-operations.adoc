@@ -7,8 +7,8 @@ El motor BPM ejecuta los lotes de forma asíncrona: cada lote se divide en traba
 
 Para obtener información general sobre las operaciones por lotes, consulta:
 
-* https://docs.operaton.org/docs/documentation/user-guide/process-engine/batch-operations[Documentación de operaciones por lotes de Operaton]
-* https://docs.operaton.org/reference/latest/rest-api/#tag/Batch[API REST de lotes de Operaton]
+* {operaton-docs-url}/user-guide/process-engine/batch-operations[Documentación de operaciones por lotes de Operaton]
+* {operaton-rest-api-url}/#tag/Batch[API REST de lotes de Operaton]
 
 [WARNING]
 ====
